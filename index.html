@@ -414,7 +414,25 @@ td.num{font-family:var(--mono)}
 .vs-sort.on{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
 .vs-nick{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;position:sticky;left:0;background:var(--panel)}
 .vs-tbl tr.me td{background:color-mix(in srgb,var(--bolt) 14%,var(--panel))}
-.vs-zero{color:var(--warn)} .vs-none td{opacity:.75}
+.vs-legend{display:flex;gap:14px;flex-wrap:wrap;padding:4px 18px 8px;font:600 12.5px/1.3 var(--body);color:var(--muted)}
+.vs-legend span{display:inline-flex;align-items:center;gap:6px}
+.vs-sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+td.vs-z0,.vs-sw.vs-z0{background:color-mix(in srgb,var(--warn) 30%,transparent);color:var(--fg)}
+td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent);color:var(--fg)}
+.vs-z0t{color:var(--warn);font-weight:800} .vs-lowt{color:var(--mid);font-weight:800}
+.vs-pl{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vs-pl:hover{color:var(--teal);text-decoration:underline}
+@media (min-width:861px){#actSheet:has(.vs-plsheet){width:min(720px,96vw)}}
+.vs-pltbl td,.vs-pltbl th{padding:8px 6px;font-size:12.5px}
+.vs-pltbl th:first-child,.vs-pltbl td:first-child{padding-left:8px} .vs-wk{white-space:nowrap;font-size:12.5px}
+.vsm-list{display:flex;flex-direction:column;gap:6px}
+.vsm-row{display:grid;grid-template-columns:minmax(0,1fr) 34px 34px 70px;gap:8px;align-items:center;border:0;border-radius:12px;padding:8px 10px;background:var(--panel-2);color:var(--fg);font:600 14px/1.2 var(--body);text-align:left;cursor:pointer}
+.vsm-row.warn{background:color-mix(in srgb,var(--bolt) 18%,var(--panel-2))} .vsm-row.danger{background:color-mix(in srgb,var(--warn) 18%,var(--panel-2))}
+.vsm-nick{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.vsm-flag{width:10px;height:10px;border-radius:50%;flex:none;background:var(--bolt)} .vsm-row.danger .vsm-flag{background:var(--warn)}
+.vsm-b{display:inline-grid;place-items:center;height:24px;border-radius:8px;font:800 13px/1 var(--mono)}
+.vsm-b.z{background:color-mix(in srgb,var(--warn) 30%,transparent)} .vsm-b.l{background:color-mix(in srgb,var(--bolt) 30%,transparent)}
+.vsm-row .mono{text-align:right;font-size:12.5px}
 .vs-upv{color:var(--grass)} .vs-dnv{color:var(--warn)}
 .vs-tbl tfoot td{border-top:1px solid var(--line);font-size:13px}
 .vs-hrow{display:grid;grid-template-columns:1fr auto auto auto;gap:12px;align-items:center;text-align:left;background:var(--panel-2);border:0;border-radius:12px;padding:10px 12px;color:var(--fg);font:600 14px/1.3 var(--body);cursor:pointer}
@@ -1187,6 +1205,7 @@ html.boot #v-load{display:flex!important}
           <div class="mem" id="members"></div>
           <div id="removedBox"></div>
         </div>
+        <div class="panel pad stack" id="hqVs" hidden></div>
         <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h"></span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p"></p><div class="row" style="gap:6px" id="seedList"></div></div>
       </div>
       <div class="hq-col hq-side">
@@ -1253,6 +1272,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=3071a7a96e"></script>
+<script src="app.js?v=83b37d960c"></script>
 </body>
 </html>
