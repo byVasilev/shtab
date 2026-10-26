@@ -804,6 +804,13 @@ html.boot #v-load{display:flex!important}
         <button data-tab="news"><svg><use href="#i-news"/></svg><span data-i18n="nav_news"></span></button>
         <button data-tab="hq" id="hqTab" hidden><svg><use href="#i-hq"/></svg><span data-i18n="nav_hq"></span><span class="dotn" id="hqCnt" hidden></span></button>
       </nav>
+      <nav class="tabs" data-i18n-aria="own_h" id="ownNav" hidden>
+        <button data-ot="ally" aria-current="page"><svg><use href="#i-shield"/></svg><span data-i18n="own_tab_ally"></span></button>
+        <button data-ot="people"><svg><use href="#i-user"/></svg><span data-i18n="own_tab_people"></span></button>
+        <button data-ot="stats"><svg><use href="#i-chart"/></svg><span data-i18n="own_tab_stats"></span></button>
+        <button data-ot="inbox"><svg><use href="#i-msg"/></svg><span data-i18n="own_tab_inbox"></span><span class="dotn" id="inboxCnt" hidden></span></button>
+        <button data-ot="cast"><svg><use href="#i-send"/></svg><span data-i18n="own_tab_cast"></span></button>
+      </nav>
       <div class="lang" role="group" data-i18n-aria="lang_aria">
         <button data-lang="ru" aria-pressed="true">RU</button>
         <button data-lang="en" aria-pressed="false">EN</button>
@@ -1059,13 +1066,6 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-owner">
     <div class="vh">
       <div><h1 data-i18n="own_h"></h1><p data-i18n="own_p"></p></div>
-      <div class="seg" role="group" style="flex-wrap:wrap">
-        <button data-ot="ally" aria-pressed="true" data-i18n="own_tab_ally"></button>
-        <button data-ot="people" aria-pressed="false" data-i18n="own_tab_people"></button>
-        <button data-ot="stats" aria-pressed="false" data-i18n="own_tab_stats"></button>
-        <button data-ot="inbox" aria-pressed="false"><span data-i18n="own_tab_inbox"></span> <span class="dotn" id="inboxCnt" hidden></span></button>
-        <button data-ot="cast" aria-pressed="false" data-i18n="own_tab_cast"></button>
-      </div>
       <button class="btn ghost sm" data-signout data-i18n="logout"></button>
     </div>
     <div class="panel pad stack" id="ownTg" style="margin-bottom:16px;gap:10px"></div>
@@ -1179,6 +1179,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=ec41dab1fb"></script>
+<script src="app.js?v=e7bfd9af76"></script>
 </body>
 </html>
