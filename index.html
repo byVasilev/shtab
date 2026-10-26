@@ -375,19 +375,36 @@ td.num{font-family:var(--mono)}
 #vsNewForm{margin-bottom:16px}
 .vs-opp-f{display:grid;grid-template-columns:110px minmax(0,1fr) 100px;gap:10px}
 @media (max-width:520px){.vs-opp-f{grid-template-columns:1fr 1fr}.vs-opp-f .f:nth-child(2){grid-column:1/-1;grid-row:2}}
-.vs-score{display:flex;align-items:center;gap:14px 20px;flex-wrap:wrap;margin-bottom:16px}
-.vs-score h2{margin:6px 0 0;font:600 22px/1.2 var(--display)}
-.vs-count{display:flex;align-items:baseline;gap:6px;margin-left:auto;font:600 34px/1 var(--display)}
-.vs-count span{color:var(--muted)}
+.vs-score{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px 18px;padding:20px 22px;margin-bottom:16px;
+  background:linear-gradient(100deg,color-mix(in srgb,var(--teal) 16%,var(--panel)) 0%,var(--panel) 42%,var(--panel) 58%,color-mix(in srgb,var(--warn) 14%,var(--panel)) 100%)}
+.vs-score.win{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--grass) 60%,transparent)} .vs-score.loss{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--warn) 55%,transparent)}
+.vs-side{display:flex;flex-direction:column;gap:4px;min-width:0}
+.vs-side.them{text-align:right;align-items:flex-end}
+.vs-tag{font:600 30px/1 var(--display);letter-spacing:.01em}
+.vs-side.us .vs-tag{color:var(--teal)} .vs-side.them .vs-tag{color:var(--warn)}
+.vs-nm{font:700 16px/1.25 var(--body);overflow-wrap:anywhere}
+.vs-mid{display:flex;flex-direction:column;align-items:center;gap:8px}
+.vs-badge{display:inline-grid;place-items:center;min-width:52px;height:30px;padding:0 10px;border-radius:10px;background:var(--bolt);color:var(--on-bolt);
+  font:700 16px/1 var(--display);font-style:italic;letter-spacing:.06em;box-shadow:0 3px 0 var(--bolt-side);transform:rotate(-4deg)}
+.vs-count{display:flex;align-items:baseline;gap:8px;font:600 40px/1 var(--display)}
+.vs-count .us{color:var(--teal)} .vs-count .them{color:var(--warn)} .vs-count span{color:var(--muted);font-size:30px}
+.vs-rule{grid-column:1/-1;margin:0;text-align:center}
+@media (max-width:620px){.vs-score{grid-template-columns:1fr 1fr;padding:16px}.vs-mid{grid-column:1/-1;grid-row:2}.vs-tag{font-size:24px}.vs-nm{font-size:14px}}
 .vs-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:12px;margin-bottom:16px}
-.vs-day{padding:14px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--panel-3)}
-.vs-day.win{border-top-color:var(--grass)} .vs-day.loss{border-top-color:var(--warn)}
+.vs-day{padding:14px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--dc,var(--panel-3))}
+.vs-day.future{opacity:.62}
+.vs-day.today{box-shadow:0 0 0 2px var(--bolt),0 10px 30px -14px color-mix(in srgb,var(--bolt) 60%,transparent)}
+.vs-day.win{border-top-color:var(--grass);background:color-mix(in srgb,var(--grass) 12%,var(--panel))}
+.vs-day.loss{border-top-color:var(--warn);background:color-mix(in srgb,var(--warn) 11%,var(--panel))}
 .vs-dh{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.vs-dh b{display:inline-flex;align-items:center;gap:8px}
+.vs-dot{width:10px;height:10px;border-radius:3px;background:var(--dc,var(--muted));display:inline-block}
 .vs-dh .muted{font-size:13px}
-.vs-theme{font:600 14px/1.3 var(--body);color:var(--muted)}
+.vs-theme{font:700 14px/1.3 var(--body);color:var(--fg);opacity:.85}
 .vs-meta{display:flex;gap:6px;flex-wrap:wrap}
+.vs-wchip{background:var(--bolt);color:var(--on-bolt)}
 .vs-sum{display:flex;gap:8px;align-items:baseline;min-height:24px}
-.vs-sum b{font:600 20px/1 var(--display)} .vs-sum .muted{font-size:13px}
+.vs-sum b{font:600 22px/1 var(--display);color:var(--teal)} .vs-sum .muted{font-size:13px}
 .vs-acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
 .vs-tbl{margin-bottom:16px}
 .vs-th{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:16px 18px 4px}
@@ -1236,6 +1253,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=dc47b9c9fd"></script>
+<script src="app.js?v=3071a7a96e"></script>
 </body>
 </html>
