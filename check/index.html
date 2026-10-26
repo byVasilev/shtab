@@ -17,7 +17,7 @@
 <div id="list"></div>
 <div id="sum"></div>
 <script>
-const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", PX = "https://api.shtabsoyuza.ru", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
+const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", PX = "https://89.111.153.87", PXN = "https://api.shtabsoyuza.ru", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
 // each check downloads something real and reports size and time; big downloads catch connections cut midway
 const checks = [
   ["Сайт (GitHub)", "сама страница и программа сайта", () => fetch("/app.js?c=" + Date.now(), {cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
@@ -26,7 +26,8 @@ const checks = [
   ["База: данные", "Supabase, обычный запрос сайта", () => fetch(SB + "/rest/v1/rpc/invite_info", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_invite:"S25QQIVWUY"}), cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
   ["База: большой ответ", "Supabase, 120 КБ — обрыв посередине видно здесь", () => fetch(SB + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
   ["Уведомления (функции)", "Supabase Edge Functions", () => fetch(SB + "/functions/v1/tg", {method:"OPTIONS", cache:"no-store"}).then(r => [r.ok || r.status === 204, 0])],
-  ["Посредник: короткий ответ", "запасной путь через api.shtabsoyuza.ru", () => fetch(PX + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["Посредник по имени", "api.shtabsoyuza.ru", () => fetch(PXN + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["Посредник: короткий ответ", "запасной путь по адресу сервера", () => fetch(PX + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
   ["Посредник: большой ответ", "запасной путь, 120 КБ", () => fetch(PX + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
 ];
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("нет ответа за " + ms / 1000 + " с")), ms))]);
