@@ -373,6 +373,8 @@ td.num{font-family:var(--mono)}
 .vs-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .vs-top select{flex:1;min-width:220px;max-width:520px}
 #vsNewForm{margin-bottom:16px}
+.vs-opp-f{display:grid;grid-template-columns:110px minmax(0,1fr) 100px;gap:10px}
+@media (max-width:520px){.vs-opp-f{grid-template-columns:1fr 1fr}.vs-opp-f .f:nth-child(2){grid-column:1/-1;grid-row:2}}
 .vs-score{display:flex;align-items:center;gap:14px 20px;flex-wrap:wrap;margin-bottom:16px}
 .vs-score h2{margin:6px 0 0;font:600 22px/1.2 var(--display)}
 .vs-count{display:flex;align-items:baseline;gap:6px;margin-left:auto;font:600 34px/1 var(--display)}
@@ -1234,6 +1236,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=a704979d0e"></script>
+<script src="app.js?v=dc47b9c9fd"></script>
 </body>
 </html>
