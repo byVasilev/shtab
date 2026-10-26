@@ -443,6 +443,12 @@ td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent
 @keyframes spin{to{transform:rotate(360deg)}}
 .okline{margin:0;color:var(--grass);font-weight:700}
 .vs-rlist{display:flex;flex-direction:column;gap:6px}
+.vs-shots{display:flex;gap:6px;flex-wrap:wrap}
+.vs-shots .chip{font-size:12px;height:24px} .vs-shots .chip.thin{background:color-mix(in srgb,var(--warn) 22%,var(--panel-2))}
+.vs-bad{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:12px;background:color-mix(in srgb,var(--warn) 14%,var(--panel-2))}
+.vs-bad .mono{font-size:12.5px;overflow-wrap:anywhere}
+.vs-add{display:grid;grid-template-columns:80px minmax(0,1fr) 110px auto;gap:8px;margin-top:10px;align-items:center}
+@media (max-width:520px){.vs-add{grid-template-columns:70px minmax(0,1fr)}.vs-add #vsAddPts{grid-column:1}.vs-add .btn{grid-column:2}}
 .vs-rrow{display:grid;grid-template-columns:34px minmax(0,1fr) 104px auto;gap:8px;align-items:center;padding:8px;border-radius:12px;background:var(--panel-2)}
 .vs-rrow.guess{background:color-mix(in srgb,var(--bolt) 18%,var(--panel-2))} .vs-rrow.new{background:color-mix(in srgb,var(--warn) 16%,var(--panel-2))}
 .vs-rrow.dup{outline:2px solid var(--warn)}
@@ -1281,6 +1287,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=977d26337b"></script>
+<script src="app.js?v=1df7aa5b94"></script>
 </body>
 </html>
