@@ -758,6 +758,8 @@ html.boot #v-load{display:flex!important}
 #v-load img{animation:loadpulse 1.2s ease-in-out infinite}
 @keyframes loadpulse{50%{transform:scale(.92);opacity:.7}}
 @media (prefers-reduced-motion:reduce){#v-load img{animation:none}}
+#loadSlow{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font:500 15px/1.4 var(--body)}
+#loadSlow[hidden]{display:none} #loadSlow p{margin:0} #loadSlow a{color:var(--teal)}
 </style>
 </head>
 <body>
@@ -816,7 +818,20 @@ html.boot #v-load{display:flex!important}
   <div class="viewbar" id="viewbar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg><span id="viewbarTxt"></span><button class="btn sm" data-owner data-i18n="view_back"></button></div>
 
   <!-- LANDING (public link) -->
-  <section class="view" id="v-load" aria-busy="true"><img src="art/web/logo.png" alt="" width="64" height="64"><span data-i18n="loading"></span></section>
+  <section class="view" id="v-load" aria-busy="true"><img src="art/web/logo.png" alt="" width="64" height="64"><span data-i18n="loading"></span>
+    <div id="loadSlow" hidden><p></p><button class="btn" type="button" onclick="location.reload()"></button><a href="check/"></a></div></section>
+  <script>
+  // the database can be slow or cut off on some networks: after a while offer a reload and the connection check
+  setTimeout(function(){
+    if(!document.documentElement.classList.contains("boot")) return;
+    var en = false; try { en = (localStorage.getItem("lang") || navigator.language).slice(0, 2) === "en"; } catch(e) {}
+    var b = document.getElementById("loadSlow");
+    b.querySelector("p").textContent = en ? "The connection is slow. Try reloading the page." : "Связь медленная. Попробуйте обновить страницу.";
+    b.querySelector("button").textContent = en ? "Reload" : "Обновить";
+    b.querySelector("a").textContent = en ? "Check the connection" : "Проверить связь";
+    b.hidden = false;
+  }, 15000);
+  </script>
   <section class="view on" id="v-land">
     <div class="hero">
       <div class="stack" style="gap:18px">
@@ -1164,6 +1179,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=c8b650cf75"></script>
+<script src="app.js?v=f333439554"></script>
 </body>
 </html>
