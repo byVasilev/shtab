@@ -649,6 +649,8 @@ details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .mrow .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .rank-sel{height:38px;background:var(--panel-2);border:1.5px solid var(--line);border-radius:11px;padding:0 8px;font:700 13.5px/1 var(--body);color:var(--fg)}
 .more-btn{align-self:center;margin-top:8px}
+.pct-row{display:flex;flex-direction:column;gap:6px}
+.pct-k{font:800 13px/1 var(--body)} .pct-k.b{color:var(--brick)} .pct-k.s{color:var(--teal)}
 .ally-ren{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px;align-items:center}
 .ally-ren .btn{grid-column:1/-1;justify-self:start}
 .ally-ren .inp{height:42px}
@@ -1245,11 +1247,18 @@ html.boot #v-load{display:flex!important}
         <div class="panel pad stack">
           <h3 data-i18n="pct_h"></h3>
           <p class="hint" style="font-size:14px" data-i18n="pct_p"></p>
-          <div class="pick" style="grid-template-columns:repeat(3,1fr)" id="pctPick">
-            <input type="radio" name="pct" id="p5" value="5"><label class="g" for="p5">5%</label>
-            <input type="radio" name="pct" id="p10" value="10"><label class="g" for="p10">10%</label>
-            <input type="radio" name="pct" id="p15" value="15" checked><label class="g" for="p15">15%</label>
-          </div>
+          <div class="pct-row"><span class="pct-k b" data-i18n="build"></span>
+            <div class="pick" style="grid-template-columns:repeat(3,1fr)">
+              <input type="radio" name="pct_build" id="p_build_5" value="5"><label class="g" for="p_build_5">5%</label>
+              <input type="radio" name="pct_build" id="p_build_10" value="10"><label class="g" for="p_build_10">10%</label>
+              <input type="radio" name="pct_build" id="p_build_15" value="15" checked><label class="g" for="p_build_15">15%</label>
+            </div></div>
+          <div class="pct-row"><span class="pct-k s" data-i18n="sci"></span>
+            <div class="pick" style="grid-template-columns:repeat(3,1fr)">
+              <input type="radio" name="pct_sci" id="p_sci_5" value="5"><label class="g" for="p_sci_5">5%</label>
+              <input type="radio" name="pct_sci" id="p_sci_10" value="10"><label class="g" for="p_sci_10">10%</label>
+              <input type="radio" name="pct_sci" id="p_sci_15" value="15" checked><label class="g" for="p_sci_15">15%</label>
+            </div></div>
           <div class="stack" id="rulesBox" style="gap:10px;border-top:1px solid var(--line);padding-top:16px"></div>
         </div>
         <div class="panel pad stack" id="annBox">
@@ -1294,6 +1303,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=220fd22ddf"></script>
+<script src="app.js?v=2066e3716b"></script>
 </body>
 </html>
