@@ -219,6 +219,8 @@ section.view.on{display:block;animation:rise .35s ease both}
 
 /* the alliance name is dropped on phones so the state number fits */
 @media (max-width:480px){#allyName .an{display:none}}
+/* with the tabs in the header there's no room for the full name: it stays in the tooltip */
+@media (min-width:861px){.bar:has(#nav:not([hidden])) #allyName .an{display:none}}
 .hero .lead{font-size:17px;color:var(--muted);max-width:52ch}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .hero-art{position:relative;min-width:0}
@@ -1279,6 +1281,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=600c7bed36"></script>
+<script src="app.js?v=977d26337b"></script>
 </body>
 </html>
