@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- Штаб союза — connection check. (c) 2026 byVasilev. All rights reserved. -->
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Проверка связи — Штаб союза</title>
+<style>
+  body{margin:0;font:16px/1.45 system-ui,-apple-system,sans-serif;background:#0c171d;color:#e8f1f2;padding:20px}
+  h1{font-size:22px;margin:0 0 6px} p{color:#9fb6bb;margin:0 0 16px}
+  .row{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#132631;margin-bottom:8px}
+  .row b{display:block} .row small{color:#9fb6bb}
+  .st{flex:none;width:26px;text-align:center;font-size:18px}
+  button{font:700 16px system-ui;padding:12px 18px;border-radius:12px;border:0;background:#ffc928;color:#2a1f00;margin:8px 0 16px}
+  #sum{padding:14px;border-radius:12px;background:#1b3340;white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace}
+</style></head><body>
+<h1>Проверка связи</h1>
+<p>Откройте эту страницу <b>без VPN</b> там, где сайт не работает (например, на мобильном интернете), и пришлите скриншот результата.</p>
+<button id="go">Проверить ещё раз</button>
+<div id="list"></div>
+<div id="sum"></div>
+<script>
+const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
+// each check downloads something real and reports size and time; big downloads catch connections cut midway
+const checks = [
+  ["Сайт (GitHub)", "сама страница и программа сайта", () => fetch("/app.js?c=" + Date.now(), {cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["jsDelivr", "библиотека связи с базой", () => fetch("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js", {cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 50000, t.length]))],
+  ["База: короткий ответ", "Supabase, маленький запрос", () => fetch(SB + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["База: данные", "Supabase, обычный запрос сайта", () => fetch(SB + "/rest/v1/rpc/invite_info", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_invite:"S25QQIVWUY"}), cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["База: большой ответ", "Supabase, 120 КБ — обрыв посередине видно здесь", () => fetch(SB + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
+  ["Уведомления (функции)", "Supabase Edge Functions", () => fetch(SB + "/functions/v1/tg", {method:"OPTIONS", cache:"no-store"}).then(r => [r.ok || r.status === 204, 0])],
+];
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("нет ответа за " + ms / 1000 + " с")), ms))]);
+async function run(){
+  const list = document.getElementById("list"), sum = []; list.innerHTML = ""; document.getElementById("sum").textContent = "Проверяю…";
+  for(const [name, what, fn] of checks){
+    const row = document.createElement("div"); row.className = "row";
+    row.innerHTML = `<span class="st">⏳</span><div><b>${name}</b><small>${what}</small></div>`; list.appendChild(row);
+    const t0 = performance.now(); let ok = false, note = "";
+    try { const [good, size] = await withTimeout(fn(), 15000); ok = good; note = `${Math.round(performance.now() - t0)} мс${size ? ", " + Math.round(size / 1024) + " КБ" : ""}`; }
+    catch(e){ note = String(e.message || e); }
+    row.querySelector(".st").textContent = ok ? "✅" : "❌";
+    row.querySelector("small").textContent = `${what} — ${note}`;
+    sum.push(`${ok ? "OK " : "XX "} ${name}: ${note}`);
+  }
+  document.getElementById("sum").textContent = sum.join("\n") + "\n\n" + new Date().toLocaleString("ru-RU") + "\n" + navigator.userAgent;
+}
+document.getElementById("go").onclick = run; run();
+</script></body></html>
