@@ -1,6 +1,6 @@
 # Штаб союза
 
-> Сервис для союзов Tiles Survive (очередь бафов, БМ, рейд, новости, уведомления): https://byvasilev.github.io/shtab/
+> Сервис для союзов Tiles Survive (очередь бафов, БМ, рейд, новости, уведомления): https://shtabsoyuza.ru/
 
 ## Licence / Лицензия
 

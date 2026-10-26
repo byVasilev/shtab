@@ -2,7 +2,7 @@
 
 Сервис для союзов Tiles Survive: очередь бафов, БМ, рейд, новости и уведомления.
 
-👉 https://byvasilev.github.io/shtab/ · Telegram: [@shtab_soyuza_bot](https://t.me/shtab_soyuza_bot)
+👉 https://shtabsoyuza.ru/ · Telegram: [@shtab_soyuza_bot](https://t.me/shtab_soyuza_bot)
 
 Здесь лежат только файлы, которые сайт отдаёт браузеру. Исходный код сервиса закрыт.
 
