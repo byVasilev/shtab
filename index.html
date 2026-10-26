@@ -428,7 +428,11 @@ td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent
 .vs-pltbl td,.vs-pltbl th{padding:8px 6px;font-size:12.5px}
 .vs-pltbl th:first-child,.vs-pltbl td:first-child{padding-left:8px} .vs-wk{white-space:nowrap;font-size:12.5px}
 .vsm-list{display:flex;flex-direction:column;gap:6px}
-.vsm-row{display:grid;grid-template-columns:minmax(0,1fr) 34px 34px 70px;gap:8px;align-items:center;border:0;border-radius:12px;padding:8px 10px;background:var(--panel-2);color:var(--fg);font:600 13.5px/1.2 var(--body);text-align:left;cursor:pointer}
+.vsm-head{display:grid;gap:8px;padding:0 10px;font:800 10.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.vsm-head span:not(:first-child){text-align:center} .vsm-head span:last-child{text-align:right}
+.vsm-period{align-items:center} .vsm-period .hint{margin-right:2px}
+.vsm-row .vsm-b{justify-self:center;min-width:30px}
+.vsm-row{display:grid;gap:8px;align-items:center;border:0;border-radius:12px;padding:8px 10px;background:var(--panel-2);color:var(--fg);font:600 13.5px/1.2 var(--body);text-align:left;cursor:pointer}
 .vsm-row.warn{background:color-mix(in srgb,var(--bolt) 18%,var(--panel-2))} .vsm-row.danger{background:color-mix(in srgb,var(--warn) 18%,var(--panel-2))}
 .vsm-nick{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .vsm-flag{width:10px;height:10px;border-radius:50%;flex:none;background:var(--bolt)} .vsm-row.danger .vsm-flag{background:var(--warn)}
@@ -1287,6 +1291,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=1df7aa5b94"></script>
+<script src="app.js?v=0f3da19e42"></script>
 </body>
 </html>
