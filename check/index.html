@@ -8,7 +8,7 @@
   .row{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#132631;margin-bottom:8px}
   .row b{display:block} .row small{color:#9fb6bb}
   .st{flex:none;width:26px;text-align:center;font-size:18px}
-  button{font:700 16px system-ui;padding:12px 18px;border-radius:12px;border:0;background:#ffc928;color:#2a1f00;margin:8px 0 16px}
+  button{font:700 16px system-ui;padding:12px 18px;border-radius:12px;border:0;background:#ffc928;color:#2a1f00;margin:8px 0 16px} button:disabled{opacity:.5}
   #sum{padding:14px;border-radius:12px;background:#1b3340;white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace}
 </style></head><body>
 <h1>Проверка связи</h1>
@@ -17,7 +17,7 @@
 <div id="list"></div>
 <div id="sum"></div>
 <script>
-const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
+const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", PX = "https://api.shtabsoyuza.ru", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
 // each check downloads something real and reports size and time; big downloads catch connections cut midway
 const checks = [
   ["Сайт (GitHub)", "сама страница и программа сайта", () => fetch("/app.js?c=" + Date.now(), {cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
@@ -26,9 +26,13 @@ const checks = [
   ["База: данные", "Supabase, обычный запрос сайта", () => fetch(SB + "/rest/v1/rpc/invite_info", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_invite:"S25QQIVWUY"}), cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
   ["База: большой ответ", "Supabase, 120 КБ — обрыв посередине видно здесь", () => fetch(SB + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
   ["Уведомления (функции)", "Supabase Edge Functions", () => fetch(SB + "/functions/v1/tg", {method:"OPTIONS", cache:"no-store"}).then(r => [r.ok || r.status === 204, 0])],
+  ["Посредник: короткий ответ", "запасной путь через api.shtabsoyuza.ru", () => fetch(PX + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["Посредник: большой ответ", "запасной путь, 120 КБ", () => fetch(PX + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
 ];
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("нет ответа за " + ms / 1000 + " с")), ms))]);
+let running = false;
 async function run(){
+  if(running) return; running = true; const btn = document.getElementById("go"); btn.disabled = true;
   const list = document.getElementById("list"), sum = []; list.innerHTML = ""; document.getElementById("sum").textContent = "Проверяю…";
   for(const [name, what, fn] of checks){
     const row = document.createElement("div"); row.className = "row";
@@ -41,6 +45,7 @@ async function run(){
     sum.push(`${ok ? "OK " : "XX "} ${name}: ${note}`);
   }
   document.getElementById("sum").textContent = sum.join("\n") + "\n\n" + new Date().toLocaleString("ru-RU") + "\n" + navigator.userAgent;
+  running = false; btn.disabled = false;
 }
 document.getElementById("go").onclick = run; run();
 </script></body></html>
