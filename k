@@ -1,0 +1,1 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkqrl2RqCXl9KbS11vJNrfu5nGjJSkjPfTdE5Dv4qzD shtab-proxy
