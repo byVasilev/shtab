@@ -40,3 +40,8 @@ Disallow: /
 
 User-agent: *
 Allow: /
+Disallow: /check/
+Disallow: /owner/
+
+Sitemap: https://shtabsoyuza.ru/sitemap.xml
+

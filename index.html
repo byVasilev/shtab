@@ -17,7 +17,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Штаб союза">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Штаб союза</title>
+<title>Штаб союза — очередь бафов, битва союзов и рейд для Tiles Survive</title>
+<meta name="description" content="Бесплатный сервис для союзов Tiles Survive: очередь бафов со своей нормой, очки битвы союзов (VS) со скринов через ИИ, боевая мощь, группы на рейд за резервуар, бот для чата союза в Telegram и ВКонтакте. Для R4 и R5 и всех игроков союза.">
+<link rel="canonical" href="https://shtabsoyuza.ru/">
+<!-- how a shared link looks in Telegram, VK and elsewhere -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Штаб союза">
+<meta property="og:url" content="https://shtabsoyuza.ru/">
+<meta property="og:title" content="Штаб союза — бафы, VS и рейд в одном штабе">
+<meta property="og:description" content="Сервис для R4 и R5 в Tiles Survive: очередь бафов, очки битвы союзов со скринов, группы на рейд, бот для чата союза в Telegram и ВК. Бесплатно.">
+<meta property="og:image" content="https://shtabsoyuza.ru/art/web/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shtabsoyuza.ru/art/web/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Штаб союза","alternateName":"Alliance HQ","url":"https://shtabsoyuza.ru/","applicationCategory":"GameApplication","operatingSystem":"Web, iOS, Android, Telegram","inLanguage":["ru","en"],"description":"Сервис для союзов Tiles Survive: очередь бафов, битва союзов (VS) со скринов через ИИ, боевая мощь, рейд за резервуар, бот для Telegram и ВКонтакте.","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}</script>
 <script>
 // a theme the player picked wins over the system one
 try { var th = localStorage.getItem("theme"); if(th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th); } catch(e) {}
@@ -1016,39 +1032,39 @@ html.boot #v-load{display:flex!important}
     <div class="bar">
       <button class="brand" data-home>
         <img src="art/web/logo.png" alt="" width="40" height="40">
-        <span><b data-i18n="brand_title"></b><small id="allyName"></small></span>
+        <span><b data-i18n="brand_title">Штаб союза</b><small id="allyName"></small></span>
       </button>
       <nav class="tabs" data-i18n-aria="nav_aria" id="nav" hidden>
-        <button data-tab="now" aria-current="page"><svg><use href="#i-bolt"/></svg><span data-i18n="nav_now"></span></button>
-        <button data-tab="queue"><svg><use href="#i-q"/></svg><span data-i18n="nav_queue"></span></button>
-        <button data-tab="power"><svg><use href="#i-shield"/></svg><span data-i18n="nav_power"></span></button>
-        <button data-tab="raid"><svg><use href="#i-raid"/></svg><span data-i18n="nav_raid"></span></button>
-        <button data-tab="vs"><svg><use href="#i-vs"/></svg><span data-i18n="nav_vs"></span></button>
-        <button data-tab="news"><svg><use href="#i-news"/></svg><span data-i18n="nav_news"></span></button>
-        <button data-tab="hq" id="hqTab" hidden><svg><use href="#i-hq"/></svg><span data-i18n="nav_hq"></span><span class="dotn" id="hqCnt" hidden></span></button>
+        <button data-tab="now" aria-current="page"><svg><use href="#i-bolt"/></svg><span data-i18n="nav_now">Бафы</span></button>
+        <button data-tab="queue"><svg><use href="#i-q"/></svg><span data-i18n="nav_queue">Очередь</span></button>
+        <button data-tab="power"><svg><use href="#i-shield"/></svg><span data-i18n="nav_power">БМ</span></button>
+        <button data-tab="raid"><svg><use href="#i-raid"/></svg><span data-i18n="nav_raid">Рейд</span></button>
+        <button data-tab="vs"><svg><use href="#i-vs"/></svg><span data-i18n="nav_vs">VS</span></button>
+        <button data-tab="news"><svg><use href="#i-news"/></svg><span data-i18n="nav_news">Новости</span></button>
+        <button data-tab="hq" id="hqTab" hidden><svg><use href="#i-hq"/></svg><span data-i18n="nav_hq">Штаб</span><span class="dotn" id="hqCnt" hidden></span></button>
       </nav>
       <nav class="tabs" data-i18n-aria="own_h" id="ownNav" hidden>
-        <button data-ot="ally" aria-current="page"><svg><use href="#i-shield"/></svg><span data-i18n="own_tab_ally"></span></button>
-        <button data-ot="people"><svg><use href="#i-user"/></svg><span data-i18n="own_tab_people"></span></button>
-        <button data-ot="stats"><svg><use href="#i-chart"/></svg><span data-i18n="own_tab_stats"></span></button>
-        <button data-ot="inbox"><svg><use href="#i-msg"/></svg><span data-i18n="own_tab_inbox"></span><span class="dotn" id="inboxCnt" hidden></span></button>
-        <button data-ot="cast"><svg><use href="#i-send"/></svg><span data-i18n="own_tab_cast"></span></button>
+        <button data-ot="ally" aria-current="page"><svg><use href="#i-shield"/></svg><span data-i18n="own_tab_ally">Союзы</span></button>
+        <button data-ot="people"><svg><use href="#i-user"/></svg><span data-i18n="own_tab_people">Игроки</span></button>
+        <button data-ot="stats"><svg><use href="#i-chart"/></svg><span data-i18n="own_tab_stats">Статистика</span></button>
+        <button data-ot="inbox"><svg><use href="#i-msg"/></svg><span data-i18n="own_tab_inbox">Обращения</span><span class="dotn" id="inboxCnt" hidden></span></button>
+        <button data-ot="cast"><svg><use href="#i-send"/></svg><span data-i18n="own_tab_cast">Рассылка</span></button>
       </nav>
       <div class="lang" role="group" data-i18n-aria="lang_aria">
         <button data-lang="ru" aria-pressed="true">RU</button>
         <button data-lang="en" aria-pressed="false">EN</button>
       </div>
       <button class="theme-btn" data-themetoggle data-i18n-aria="theme_aria"><svg class="sun"><use href="#i-sun"/></svg><svg class="moon"><use href="#i-moon"/></svg></button>
-      <button class="btn sm ghost" id="signInBtn" data-goauth="login" data-i18n-aria="sign_in"><svg aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="sign_in"></span></button>
+      <button class="btn sm ghost" id="signInBtn" data-goauth="login" data-i18n-aria="sign_in"><svg aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="sign_in">Войти</span></button>
       <button class="me-chip" id="meChip" data-tab="profile" hidden><span class="ava" id="meAva"></span><span class="nm" id="meNick"></span></button>
     </div>
   </header>
-  <div class="viewbar" id="updBar" hidden><span data-i18n="upd_bar"></span><button class="btn sm" data-reloadsite data-i18n="upd_btn"></button></div>
+  <div class="viewbar" id="updBar" hidden><span data-i18n="upd_bar">Сайт обновился — откройте новую версию.</span><button class="btn sm" data-reloadsite data-i18n="upd_btn">Обновить</button></div>
   <div class="viewbar freezebar" id="freezeBar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-lock"/></svg><span id="freezeTxt"></span></div>
-  <div class="viewbar" id="viewbar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg><span id="viewbarTxt"></span><button class="btn sm" data-owner data-i18n="view_back"></button></div>
+  <div class="viewbar" id="viewbar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg><span id="viewbarTxt"></span><button class="btn sm" data-owner data-i18n="view_back">К панели владельца</button></div>
 
   <!-- LANDING (public link) -->
-  <section class="view" id="v-load" aria-busy="true"><img src="art/web/logo.png" alt="" width="64" height="64"><span data-i18n="loading"></span>
+  <section class="view" id="v-load" aria-busy="true"><img src="art/web/logo.png" alt="" width="64" height="64"><span data-i18n="loading">Загрузка…</span>
     <div id="loadSlow" hidden><p></p><button class="btn" type="button" onclick="location.reload()"></button><a href="check/"></a></div></section>
   <script>
   // the database can be slow or cut off on some networks: after a while offer a reload and the connection check
@@ -1065,41 +1081,41 @@ html.boot #v-load{display:flex!important}
   <section class="view on" id="v-land">
     <div class="hero">
       <div class="stack" style="gap:18px">
-        <span class="eyebrow" data-i18n="land_eyebrow"></span>
-        <h1 data-i18n="land_h"></h1>
-        <p class="lead" data-i18n="land_lead"></p>
+        <span class="eyebrow" data-i18n="land_eyebrow">Для союзов Tiles Survive</span>
+        <h1 data-i18n="land_h">Бафы, БМ и порядок в союзе — <em>в одном штабе</em></h1>
+        <p class="lead" data-i18n="land_lead">Хватит вести очереди в чатах и таблицах. Игроки сами встают в очередь на бафы, вносят боевую мощь и видят, кому кидать сейчас. R5 и R4 управляют всем с телефона.</p>
         <div class="ctas" id="landCtas">
-          <button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create"></span></button>
-          <button class="btn ghost" data-goauth="invite" data-i18n="land_cta_invite"></button>
+          <button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
+          <button class="btn ghost" data-goauth="invite" data-i18n="land_cta_invite">У меня есть приглашение</button>
         </div>
-        <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back"></span></button></div>
-        <div class="trust"><span class="chip" data-i18n="land_t1"></span><span class="chip" data-i18n="land_t4"></span><span class="chip" data-i18n="land_t2"></span><span class="chip" data-i18n="land_t3"></span></div>
+        <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button></div>
+        <div class="trust"><span class="chip" data-i18n="land_t1">Работает с телефона</span><span class="chip" data-i18n="land_t4">Есть в Telegram</span><span class="chip" data-i18n="land_t2">Русский и English</span><span class="chip" data-i18n="land_t3">До 100 игроков в союзе</span></div>
       </div>
       <div class="hero-art">
-        <img class="isl" src="art/web/island.png" data-i18n-alt="island_alt" alt="" width="840" height="470">
-        <div class="fcard a"><img src="art/web/build.png" alt="" width="34" height="34"><div><small data-i18n="land_card1_s"></small>Ironfox · <span class="mono">7/13</span></div></div>
-        <div class="fcard b"><img src="art/web/logo.png" alt="" width="34" height="34"><div><small data-i18n="land_card2_s"></small><span class="mono" data-i18n="land_card2"></span></div></div>
+        <img class="isl" src="art/web/island.png" data-i18n-alt="island_alt" alt="Островок из тайлов с поселением в тумане" width="840" height="470">
+        <div class="fcard a"><img src="art/web/build.png" alt="" width="34" height="34"><div><small data-i18n="land_card1_s">Стройка · получено</small>Ironfox · <span class="mono">7/13</span></div></div>
+        <div class="fcard b"><img src="art/web/logo.png" alt="" width="34" height="34"><div><small data-i18n="land_card2_s">БМ союза</small><span class="mono" data-i18n="land_card2">9,84 млрд</span></div></div>
       </div>
     </div>
 
     <!-- the two main features get a full-width block each, with a preview of the real screen (made-up names) -->
     <section class="spot">
       <div class="spot-txt">
-        <span class="eyebrow" data-i18n="sp1_eye"></span>
-        <h2 data-i18n="sp1_h"></h2>
-        <p data-i18n="sp1_p"></p>
-        <ul class="spot-pts"><li data-i18n="sp1_l1"></li><li data-i18n="sp1_l2"></li><li data-i18n="sp1_l3"></li></ul>
+        <span class="eyebrow" data-i18n="sp1_eye">Главное каждый день</span>
+        <h2 data-i18n="sp1_h">Очередь бафов, которая двигается сама</h2>
+        <p data-i18n="sp1_p">Игрок встаёт в очередь на стройку или исследование — сервис сам считает его норму по дням в таймере и силе бафов. Кинул баф — нажал кнопку, очередь сдвинулась. Без списков в чате и споров, кто следующий.</p>
+        <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Норма</b> по дням в таймере и % бафов — отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Лимит за заход</b>: набрал — уходит в конец очереди</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="panel mock-buff">
-          <div class="mb-h"><img src="art/web/build.png" alt="" width="44" height="44"><b data-i18n="build"></b><span class="chip" data-i18n="sp1_norm"></span></div>
-          <span class="eyebrow" data-i18n="sp1_now"></span>
+          <div class="mb-h"><img src="art/web/build.png" alt="" width="44" height="44"><b data-i18n="build">Стройка</b><span class="chip" data-i18n="sp1_norm">13 бафов по 10%</span></div>
+          <span class="eyebrow" data-i18n="sp1_now">Сейчас кидаем</span>
           <div class="mb-who"><span class="ava r3"><span>I</span></span><div><b>Ironfox</b><small class="mono">X:503 · Y:569</small></div><span class="mb-n mono">7<small>/13</small></span></div>
           <div class="meter"><i style="width:54%;background:var(--brick)"></i></div>
-          <button class="btn bolt" type="button" tabindex="-1"><svg><use href="#i-bolt"/></svg><span data-i18n="sp1_btn"></span></button>
-          <div class="mb-next"><span class="eyebrow" data-i18n="sp1_next"></span>
-            <div><span class="mono muted">2</span><b>Velmora</b><span class="muted" data-i18n="sp1_q2"></span></div>
-            <div><span class="mono muted">3</span><b>Brightwing</b><span class="muted" data-i18n="sp1_q3"></span></div>
+          <button class="btn bolt" type="button" tabindex="-1"><svg><use href="#i-bolt"/></svg><span data-i18n="sp1_btn">Я кинул баф</span></button>
+          <div class="mb-next"><span class="eyebrow" data-i18n="sp1_next">Дальше</span>
+            <div><span class="mono muted">2</span><b>Velmora</b><span class="muted" data-i18n="sp1_q2">9 дн · 14 бафов</span></div>
+            <div><span class="mono muted">3</span><b>Brightwing</b><span class="muted" data-i18n="sp1_q3">6 дн · 11 бафов</span></div>
           </div>
         </div>
       </div>
@@ -1107,32 +1123,32 @@ html.boot #v-load{display:flex!important}
 
     <section class="spot spot-vs rev">
       <div class="spot-txt">
-        <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai"></span><span data-i18n="sp2_eye"></span></span>
-        <h2 data-i18n="sp2_h"></h2>
-        <p data-i18n="sp2_p"></p>
-        <ul class="spot-pts"><li data-i18n="sp2_l1"></li><li data-i18n="sp2_l2"></li><li data-i18n="sp2_l3"></li></ul>
+        <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
+        <h2 data-i18n="sp2_h">Битва союзов: очки каждого игрока — прямо со скринов</h2>
+        <p data-i18n="sp2_p">R4 загружает скрины дневного рейтинга из игры, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд. Сервис раскладывает очки по игрокам и копит историю неделя за неделей.</p>
+        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Кто сколько принёс</b> в каждый день битвы и за неделю</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><b>Метки в Штабе</b>: кто часто вносит 0 или меньше 10M — за неделю, 3 недели или всё время</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="vs-flow">
           <div class="game-shot">
-            <div class="gs-tabs"><span class="on" data-i18n="sp2_d1"></span><span data-i18n="sp2_d2"></span><span data-i18n="sp2_d3"></span></div>
+            <div class="gs-tabs"><span class="on" data-i18n="sp2_d1">пн</span><span data-i18n="sp2_d2">вт</span><span data-i18n="sp2_d3">ср</span></div>
             <div class="gs-row"><span class="gs-r">17</span><div><small>#512 [WLF]</small>Stormkid</div><span class="gs-p">46,25M</span></div>
             <div class="gs-row"><span class="gs-r">18</span><div><small>#512 [WLF]</small>Lunaria</div><span class="gs-p">45,48M</span></div>
             <div class="gs-row"><span class="gs-r">19</span><div><small>#512 [WLF]</small>Oakbeard</div><span class="gs-p">44,85M</span></div>
-            <span class="gs-cap" data-i18n="sp2_shot"></span>
+            <span class="gs-cap" data-i18n="sp2_shot">скрин из игры</span>
           </div>
-          <div class="vs-arrow"><span class="ai-badge big" data-i18n="sp_ai"></span><svg viewBox="0 0 40 16"><path d="M2 8h32M28 3l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small data-i18n="sp2_sec"></small></div>
+          <div class="vs-arrow"><span class="ai-badge big" data-i18n="sp_ai">ИИ</span><svg viewBox="0 0 40 16"><path d="M2 8h32M28 3l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small data-i18n="sp2_sec">15 сек</small></div>
           <div class="panel mock-vs">
             <div class="mv-score"><b class="us">[WLF]</b><span class="mv-badge">VS</span><b class="them">[FNX]</b><span class="mv-count"><i class="us">5</i>:<i class="them">2</i></span></div>
             <table>
-              <thead><tr><th data-i18n="vs_player"></th><th data-i18n="sp2_d1"></th><th data-i18n="sp2_d2"></th><th data-i18n="sp2_d3"></th><th data-i18n="vs_total"></th></tr></thead>
+              <thead><tr><th data-i18n="vs_player">Игрок</th><th data-i18n="sp2_d1">пн</th><th data-i18n="sp2_d2">вт</th><th data-i18n="sp2_d3">ср</th><th data-i18n="vs_total">Неделя</th></tr></thead>
               <tbody>
                 <tr><td>Stormkid</td><td>46,2M</td><td>51,0M</td><td>48,7M</td><td><b>145,9M</b></td></tr>
                 <tr><td>Lunaria</td><td>45,5M</td><td class="lo">8,1M</td><td>39,0M</td><td><b>92,6M</b></td></tr>
                 <tr><td>Oakbeard</td><td class="lo">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
               </tbody>
             </table>
-            <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1"></span></span><span><i class="f yel"></i><span data-i18n="sp2_f2"></span></span></div>
+            <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1">Oakbeard · 4 балла</span></span><span><i class="f yel"></i><span data-i18n="sp2_f2">Lunaria · 1</span></span></div>
           </div>
         </div>
       </div>
@@ -1140,52 +1156,59 @@ html.boot #v-load{display:flex!important}
 
     <section class="spot spot-nt">
       <div class="spot-txt">
-        <span class="eyebrow" data-i18n="sp3_eye"></span>
-        <h2 data-i18n="sp3_h"></h2>
-        <p data-i18n="sp3_p"></p>
-        <ul class="spot-pts"><li data-i18n="sp3_l1"></li><li data-i18n="sp3_l2"></li><li data-i18n="sp3_l3"></li><li data-i18n="sp3_l4"></li></ul>
+        <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
+        <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
+        <p data-i18n="sp3_p">Добавьте бота в чат союза в Telegram или в беседу ВКонтакте — он сам напишет, чья очередь на бафы, кого нет на координатах, когда готов план рейда, новости и итоги битвы союзов. А каждый игрок подключает личные уведомления — в Telegram, ВК или прямо в браузере телефона.</p>
+        <ul class="spot-pts"><li data-i18n="sp3_l1"><b>«Я кинул баф» прямо в чате</b> — баф засчитается без захода на сайт</li><li data-i18n="sp3_l2"><b>Команды в чате</b>: очередь, счёт битвы союзов и ближайший рейд одним сообщением</li><li data-i18n="sp3_l3"><b>Личные уведомления</b>: ваша очередь, план рейда, объявления R4/R5 — каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l4"><b>Автоматически</b>: объявления по расписанию — каждый день или раз в неделю</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="nt-stack">
-          <div class="push"><img src="art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h"></b><span data-i18n="sp3_push_p"></span></div><small data-i18n="sp3_push_t"></small></div>
+          <div class="push"><img src="art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
           <div class="chat tg">
-            <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat"></b></div>
+            <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat">Чат союза [WLF]</b></div>
             <div class="bubble"><span class="bot-n">Штаб союза</span>
-              <p data-i18n="sp3_tg_msg"></p>
-              <div class="kb"><span data-i18n="sp3_btn_buff"></span><span data-i18n="sp3_btn_open"></span></div></div>
+              <p data-i18n="sp3_tg_msg">⚡ <b>Кидаем бафы на 🔨 стройку</b>
+Сейчас: <b>Ironfox</b> — X:503 Y:569
+Норма: осталось 6 из 13
+Следом: Velmora</p>
+              <div class="kb"><span data-i18n="sp3_btn_buff">✅ Я кинул баф</span><span data-i18n="sp3_btn_open">Открыть Штаб</span></div></div>
           </div>
           <div class="chat vk">
-            <div class="chat-h"><span class="chat-ic vk">VK</span><b data-i18n="sp3_vk_chat"></b></div>
+            <div class="chat-h"><span class="chat-ic vk">VK</span><b data-i18n="sp3_vk_chat">Беседа союза [WLF]</b></div>
             <div class="bubble"><span class="bot-n">Штаб союза</span>
-              <p data-i18n="sp3_vk_msg"></p>
-              <div class="kb"><span data-i18n="sp3_btn_queue"></span><span data-i18n="sp3_btn_vs"></span></div></div>
+              <p data-i18n="sp3_vk_msg">⚔️ Битва союзов: итоги за понедельник
+Союз принёс 2,53B, в рейтинге 86 игроков.
+🥇 Stormkid — 78,07M
+🥈 Lunaria — 74,07M
+🥉 Oakbeard — 71,19M</p>
+              <div class="kb"><span data-i18n="sp3_btn_queue">Очередь</span><span data-i18n="sp3_btn_vs">Битва союзов</span></div></div>
           </div>
         </div>
       </div>
     </section>
 
     <div class="features">
-      <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h"></h3><p data-i18n="f5_p"></p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h"></h3><p data-i18n="f2_p"></p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"></h3><p data-i18n="f9_p"></p></div>
-      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h"></h3><p data-i18n="f4_p"></p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h"></h3><p data-i18n="f3_p"></p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h"></h3><p data-i18n="f6_p"></p></div>
+      <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">R4 отмечают основу и резерв как в игре, а сервис сам раскладывает 30 сильнейших по группам. У каждой группы маршрут по зданиям со старта и по таймеру, и каждый игрок видит свой план.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Каждый вносит БМ своих отрядов. Таблица с сортировкой, рост за неделю и графики — сразу видно, кого ставить на событие.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h">Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
+      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и гайды</h3><p data-i18n="f4_p">Объявления руководства и инструкции для новичков в одном месте, а не в сотне сообщений чата.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h">Ранги R1–R5</h3><p data-i18n="f3_p">Как в игре: R5 назначает R4, R4 помогают вести союз, исключённые пропадают из всех списков.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Вход по нику или ID и PIN, подбор PIN блокируется, забытый PIN сбрасывает R4. История БМ привязана к ID из игры и переходит вместе с игроком в новый союз.</p></div>
     </div>
 
-    <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow"></span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h"></h2></div>
+    <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Три шага, и союз в деле</h2></div>
     <div class="steps">
-      <div class="panel step"><span class="num">1</span><div><h3 data-i18n="s1_h"></h3><p data-i18n="s1_p"></p></div></div>
-      <div class="panel step"><span class="num">2</span><div><h3 data-i18n="s2_h"></h3><p data-i18n="s2_p"></p></div></div>
-      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h"></h3><p data-i18n="s3_p"></p></div></div>
+      <div class="panel step"><span class="num">1</span><div><h3 data-i18n="s1_h">R5 или R4 создаёт союз</h3><p data-i18n="s1_p">Название, тег и штат. Создатель становится R5 и может потом передать роль главе.</p></div></div>
+      <div class="panel step"><span class="num">2</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение. Без неё к вам не попасть.</p></div></div>
+      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник, координаты и PIN. R5 или R4 подтверждают, что человек из союза.</p></div></div>
     </div>
 
     <div class="panel cta-band">
-      <div><h2 style="font-size:clamp(19px,3.6vw,24px)" data-i18n="band_h"></h2><p data-i18n="band_p"></p></div>
-      <button class="btn bolt" data-goauth="create" id="bandCreate"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create"></span></button>
-      <button class="btn bolt" data-tab="now" id="bandBack" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="land_back"></span></button>
+      <div><h2 style="font-size:clamp(19px,3.6vw,24px)" data-i18n="band_h">Союз живёт сам, без создателя сервиса</h2><p data-i18n="band_p">Всем внутри управляют ваши R5 и R4. Ушёл лидер — передайте R5, и всё продолжит работать.</p></div>
+      <button class="btn bolt" data-goauth="create" id="bandCreate"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
+      <button class="btn bolt" data-tab="now" id="bandBack" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button>
     </div>
-    <p class="foot" data-i18n="foot"></p>
+    <p class="foot" data-i18n="foot">Штаб союза — фанатский сервис, не связан с разработчиками Tiles Survive.</p>
   </section>
 
   <!-- AUTH -->
@@ -1198,29 +1221,29 @@ html.boot #v-load{display:flex!important}
 
   <!-- NOW -->
   <section class="view" id="v-now">
-    <div class="vh"><div><h1 data-i18n="now_h"></h1><p data-i18n="now_p"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="now_h">Кому кидаем сейчас</h1><p data-i18n="now_p">Найдите поселение по координатам, киньте баф в игре и отметьте здесь.</p></div></div>
     <div class="pinslot"></div>
-    <details class="panel coords-help"><summary><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="find_h"></span></summary>
-      <ol class="steps-list"><li data-i18n="find1"></li><li data-i18n="find2"></li><li data-i18n="find3"></li></ol></details>
+    <details class="panel coords-help"><summary><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="find_h">Как найти игрока по координатам</span></summary>
+      <ol class="steps-list"><li data-i18n="find1">Откройте карту.</li><li data-i18n="find2">В самом верху нажмите на звёздочку с координатами.</li><li data-i18n="find3">В открывшемся окне замените цифры X и Y на координаты из карточки ниже и нажмите «Вперёд».</li></ol></details>
     <div class="now" id="nowCards"></div>
     <div class="how">
-      <div data-i18n="how1"></div>
-      <div data-i18n="how2"></div>
-      <div data-i18n="how3"></div>
+      <div data-i18n="how1"><b>Один получатель за раз</b>Все кидают бафы текущему игроку, пока он не наберёт норму. Потом очередь сама переходит к следующему.</div>
+      <div data-i18n="how2"><b>Норма считается сама</b>По числу дней в таймере. После нормы остаётся около 5 дней, дальше игрок справится сам.</div>
+      <div data-i18n="how3"><b>Свой баф раз в 2 дня</b>Отметить чаще нельзя. Получатель видит, кто отметился, и может сообщить, если баф не пришёл.</div>
     </div>
   </section>
 
   <!-- QUEUE -->
   <section class="view" id="v-queue">
     <div class="vh">
-      <div><h1 data-i18n="q_h"></h1></div>
+      <div><h1 data-i18n="q_h">Очередь</h1></div>
       <div class="row">
         <div class="seg" role="group" data-i18n-aria="q_seg_aria">
-          <button data-q="build" aria-pressed="true" data-i18n="build"></button>
-          <button data-q="sci" aria-pressed="false" data-i18n="sci"></button>
-          <button data-q="arch" aria-pressed="false" data-i18n="arch"></button>
+          <button data-q="build" aria-pressed="true" data-i18n="build">Стройка</button>
+          <button data-q="sci" aria-pressed="false" data-i18n="sci">Исследование</button>
+          <button data-q="arch" aria-pressed="false" data-i18n="arch">Архив</button>
         </div>
-        <button class="btn bolt sm" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join"></span></button>
+        <button class="btn bolt sm" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
       </div>
     </div>
     <div class="panel qwrap" id="qwrap"></div>
@@ -1229,29 +1252,29 @@ html.boot #v-load{display:flex!important}
 
   <!-- JOIN -->
   <section class="view" id="v-join">
-    <div class="vh"><div><h1 data-i18n="join_h"></h1><p data-i18n="join_p"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="join_h">Записаться на бафы</h1><p data-i18n="join_p">Ник и координаты берутся из профиля. Проверьте, что они актуальны.</p></div></div>
     <div class="formgrid">
       <form class="panel pad stack" id="joinForm" novalidate style="gap:18px">
-        <p class="frz" id="joinFrz" style="margin:0" hidden data-i18n="frz_join"></p>
+        <p class="frz" id="joinFrz" style="margin:0" hidden data-i18n="frz_join">❄ Запись закрыта до старта сезона. Очередь пока составляют R4 и R5, а когда сезон начнётся, запись откроют.</p>
         <div class="idrow" id="joinId"></div>
         <fieldset class="f">
-          <legend data-i18n="join_what"></legend>
+          <legend data-i18n="join_what">Что ускоряем</legend>
           <div class="pick">
-            <input type="radio" name="jType" id="tB" value="build" checked><label class="b" for="tB"><svg><use href="#i-build"/></svg><span data-i18n="build"></span></label>
-            <input type="radio" name="jType" id="tS" value="sci"><label class="s" for="tS"><svg><use href="#i-sci"/></svg><span data-i18n="sci"></span></label>
+            <input type="radio" name="jType" id="tB" value="build" checked><label class="b" for="tB"><svg><use href="#i-build"/></svg><span data-i18n="build">Стройка</span></label>
+            <input type="radio" name="jType" id="tS" value="sci"><label class="s" for="tS"><svg><use href="#i-sci"/></svg><span data-i18n="sci">Исследование</span></label>
           </div>
         </fieldset>
         <div class="f">
-          <label for="jDays" data-i18n="join_days"></label>
+          <label for="jDays" data-i18n="join_days">Сколько дней в таймере</label>
           <input class="inp mono" id="jDays" type="number" min="1" max="200" value="30" inputmode="numeric">
         </div>
-        <p class="note" data-i18n="join_run_hint"></p>
+        <p class="note" data-i18n="join_run_hint"><b>Записывайтесь, только когда уже запустили</b> стройку или исследование в игре. Дни берите из таймера.</p>
         <div class="calc"><div class="big" id="jNorm">13</div><p id="jNormTxt"></p></div>
         <p class="err" id="jErr" role="alert"></p>
-        <button class="btn bolt wide" type="submit"><svg><use href="#i-bolt"/></svg><span data-i18n="join_btn"></span></button>
+        <button class="btn bolt wide" type="submit"><svg><use href="#i-bolt"/></svg><span data-i18n="join_btn">Встать в очередь</span></button>
       </form>
       <aside class="panel pad stack">
-        <h3 data-i18n="my_entries"></h3>
+        <h3 data-i18n="my_entries">Ваши записи</h3>
         <div class="stack" style="gap:10px" id="myEntries"></div>
       </aside>
     </div>
@@ -1259,39 +1282,39 @@ html.boot #v-load{display:flex!important}
 
   <!-- POWER -->
   <section class="view" id="v-power">
-    <div class="vh"><div><h1 data-i18n="pw_h"></h1><p data-i18n="pw_p"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="pw_h">Боевая мощь союза</h1><p data-i18n="pw_p">БМ в миллионах. Обновляйте 1–2 раза в неделю, таблица видна всему союзу.</p></div></div>
     <div class="pinslot"></div>
     <div class="stats" id="pwStats"></div>
     <div class="pwgrid">
       <form class="panel pad stack" id="pwForm" novalidate>
-        <h3 data-i18n="pw_mine"></h3>
+        <h3 data-i18n="pw_mine">Мой БМ</h3>
         <div id="pwMine"></div>
       </form>
       <div class="panel pw">
         <div class="tools">
           <input class="inp" id="pwSearch" type="search" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
           <div class="chips" role="group" data-i18n-aria="pw_filter_aria">
-            <button data-pf="all" aria-pressed="true" data-i18n="pf_all"></button>
-            <button data-pf="stale" aria-pressed="false" data-i18n="pf_stale"></button>
-            <button data-pf="none" aria-pressed="false" data-i18n="pf_none"></button>
+            <button data-pf="all" aria-pressed="true" data-i18n="pf_all">Все</button>
+            <button data-pf="stale" aria-pressed="false" data-i18n="pf_stale">Давно не обновляли</button>
+            <button data-pf="none" aria-pressed="false" data-i18n="pf_none">Не вносили</button>
           </div>
           <span class="pwcount" id="pwCount"></span>
         </div>
         <div class="tbl"><table><thead id="pwHead"></thead><tbody id="pwBody"></tbody></table></div>
       </div>
     </div>
-    <p class="hint" id="pwDemoNote" style="margin-top:16px" data-i18n="pw_demo_note"></p>
+    <p class="hint" id="pwDemoNote" style="margin-top:16px" data-i18n="pw_demo_note">Демо: цифры БМ взяты из вашей таблицы, история роста и даты обновлений придуманы для графиков.</p>
   </section>
 
   <!-- RAID -->
   <section class="view" id="v-raid">
-    <div class="vh"><div><h1 data-i18n="raid_h"></h1><p id="raidSub"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="raid_h">Рейд на резервуар</h1><p id="raidSub"></p></div></div>
     <div id="raidBody"></div>
   </section>
 
   <!-- ALLIANCE VS -->
   <section class="view" id="v-vs">
-    <div class="vh"><div><h1 data-i18n="vs_h"></h1><p id="vsSub"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="vs_h">Битва союзов</h1><p id="vsSub"></p></div></div>
     <div id="vsBody"></div>
     <input type="file" id="vsFiles" accept="image/*" multiple hidden>
   </section>
@@ -1299,17 +1322,17 @@ html.boot #v-load{display:flex!important}
   <!-- NEWS -->
   <section class="view" id="v-news">
     <div class="vh">
-      <div><h1 data-i18n="news_h"></h1><p data-i18n="news_p"></p></div>
-      <button class="btn bolt sm" id="newsAdd" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add"></span></button>
+      <div><h1 data-i18n="news_h">Новости и гайды</h1><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
+      <button class="btn bolt sm" id="newsAdd" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
     </div>
     <form class="panel news-form" id="newsForm" novalidate hidden>
       <h3 id="newsFormH"></h3>
-      <div class="f"><label for="nTitle" data-i18n="news_title"></label><input class="inp" id="nTitle" maxlength="90" autocomplete="off"></div>
-      <div class="f"><label for="nText" data-i18n="news_text"></label><textarea class="inp" id="nText" maxlength="1200"></textarea></div>
-      <label class="check"><input type="checkbox" id="nPin"><span data-i18n="news_pin_check"></span></label>
-      <label class="check"><input type="checkbox" id="nPush"><span data-i18n="news_push_check"></span></label>
+      <div class="f"><label for="nTitle" data-i18n="news_title">Заголовок</label><input class="inp" id="nTitle" maxlength="90" autocomplete="off"></div>
+      <div class="f"><label for="nText" data-i18n="news_text">Текст</label><textarea class="inp" id="nText" maxlength="1200"></textarea></div>
+      <label class="check"><input type="checkbox" id="nPin"><span data-i18n="news_pin_check">Закрепить: показывать на вкладках «Бафы» и «БМ»</span></label>
+      <label class="check"><input type="checkbox" id="nPush"><span data-i18n="news_push_check">Отправить уведомление игрокам</span></label>
       <p class="err" role="alert"></p>
-      <div class="row"><button class="btn bolt" type="submit" id="nSubmit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel"></button></div>
+      <div class="row"><button class="btn bolt" type="submit" id="nSubmit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
     </form>
     <div class="news">
       <div class="panel" id="newsList"></div>
@@ -1319,17 +1342,17 @@ html.boot #v-load{display:flex!important}
 
   <!-- PROFILE -->
   <section class="view" id="v-profile">
-    <div class="vh"><div><h1 data-i18n="prof_h"></h1><p data-i18n="prof_p"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="prof_h">Профиль</h1><p data-i18n="prof_p">По этим координатам вас ищут, когда кидают бафы.</p></div></div>
     <div class="formgrid">
       <form class="panel pad stack" id="profForm" novalidate style="gap:18px">
         <div class="idrow" id="profId"></div>
         <div class="f">
-          <label for="pNick" data-i18n="nick"></label>
+          <label for="pNick" data-i18n="nick">Ник в игре</label>
           <input class="inp" id="pNick" autocomplete="off" maxlength="24">
-          <span class="hint" data-i18n="nick_change_hint"></span>
+          <span class="hint" data-i18n="nick_change_hint">Сменили ник в игре — поменяйте и здесь. Старый ник сохранится в истории, чтобы вас узнали.</span>
         </div>
         <div class="f">
-          <label for="pX" data-i18n="coords"></label>
+          <label for="pX" data-i18n="coords">Координаты поселения</label>
           <div class="xy">
             <div class="cell"><span>X:</span><input id="pX" inputmode="numeric" data-i18n-aria="coord_x"></div>
             <div class="cell"><span>Y:</span><input id="pY" inputmode="numeric" data-i18n-aria="coord_y"></div>
@@ -1338,33 +1361,33 @@ html.boot #v-load{display:flex!important}
         </div>
         <p class="err" id="pErr" role="alert"></p>
         <div class="row">
-          <button class="btn" type="submit" data-i18n="save_profile"></button>
-          <button class="btn ghost" type="button" id="pSame" data-i18n="same_coords"></button>
+          <button class="btn" type="submit" data-i18n="save_profile">Сохранить</button>
+          <button class="btn ghost" type="button" id="pSame" data-i18n="same_coords">Не переезжал, всё верно</button>
         </div>
-        <div class="danger-zone" id="pinBox"><details><summary class="eyebrow" style="cursor:pointer" data-i18n="pin_ch_h"></summary>
+        <div class="danger-zone" id="pinBox"><details><summary class="eyebrow" style="cursor:pointer" data-i18n="pin_ch_h">Сменить PIN</summary>
           <div class="stack" style="gap:12px;margin-top:12px">
-            <div class="f"><label for="cpOld" data-i18n="pin_cur"></label><input class="inp pin" id="cpOld" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="current-password"></div>
-            <div class="f"><label for="cpNew" data-i18n="pin_next"></label><input class="inp pin" id="cpNew" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="new-password"></div>
+            <div class="f"><label for="cpOld" data-i18n="pin_cur">Текущий PIN</label><input class="inp pin" id="cpOld" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="current-password"></div>
+            <div class="f"><label for="cpNew" data-i18n="pin_next">Новый PIN</label><input class="inp pin" id="cpNew" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="new-password"></div>
             <p class="err" id="cpErr"></p>
-            <button class="btn sm" type="button" data-chpin style="align-self:flex-start" data-i18n="pin_save"></button></div></details></div>
+            <button class="btn sm" type="button" data-chpin style="align-self:flex-start" data-i18n="pin_save">Сохранить PIN</button></div></details></div>
         <div class="danger-zone">
-          <span class="eyebrow" data-i18n="acc_h"></span>
+          <span class="eyebrow" data-i18n="acc_h">Аккаунт и союз</span>
           <p class="hint" id="leaveNote"></p>
           <div class="row" style="gap:8px;flex-wrap:wrap">
-            <button class="btn ghost sm" type="button" data-demo="" data-i18n="logout"></button>
+            <button class="btn ghost sm" type="button" data-demo="" data-i18n="logout">Выйти из аккаунта</button>
             <button class="btn ghost sm" type="button" id="leaveBtn" data-leaveally></button>
           </div>
         </div>
       </form>
       <aside class="panel pad stack">
-        <h3 data-i18n="howcoords_h"></h3>
-        <figure class="guide-shot"><img src="art/web/coords-guide.jpg" data-i18n-alt="shot_alt" alt="" width="755" height="375"><span class="ring" aria-hidden="true"></span></figure>
+        <h3 data-i18n="howcoords_h">Как узнать свои координаты</h3>
+        <figure class="guide-shot"><img src="art/web/coords-guide.jpg" data-i18n-alt="shot_alt" alt="Карточка поселения в игре: координаты X и Y слева под иконкой" width="755" height="375"><span class="ring" aria-hidden="true"></span></figure>
         <ol class="steps-list">
-          <li data-i18n="step1"></li>
-          <li data-i18n="step2"></li>
-          <li data-i18n="step3"></li>
+          <li data-i18n="step1">Откройте карту и нажмите на своё поселение.</li>
+          <li data-i18n="step2">В карточке «Поселение» слева будут ваши координаты, например <span class="mono">X:503 Y:569</span>.</li>
+          <li data-i18n="step3">Впишите X и Y в поля на этой странице.</li>
         </ol>
-        <p class="note" data-i18n="moved_note"></p>
+        <p class="note" data-i18n="moved_note"><b>Переехали?</b> Обновите координаты сразу после переезда, иначе вас просто не найдут и не дадут бафы.</p>
       </aside>
     </div>
     <div class="panel pad stack" id="notifyBox" style="margin-top:20px"></div>
@@ -1373,36 +1396,36 @@ html.boot #v-load{display:flex!important}
   <!-- OWNER (service creator) -->
   <section class="view" id="v-owner">
     <div class="vh">
-      <div><h1 data-i18n="own_h"></h1><p data-i18n="own_p"></p></div>
-      <button class="btn ghost sm" data-signout data-i18n="logout"></button>
+      <div><h1 data-i18n="own_h">Панель владельца</h1><p data-i18n="own_p">Все подключённые союзы и обращения от их R5 и R4. Внутри союзов всем управляют они сами — вы можете только смотреть и заблокировать нарушителя.</p></div>
+      <button class="btn ghost sm" data-signout data-i18n="logout">Выйти из аккаунта</button>
     </div>
     <div class="panel pad stack" id="ownTg" style="margin-bottom:16px;gap:10px"></div>
     <div class="stats" id="ownStats"></div>
     <div class="panel" id="ownAlly"><div class="own-list" id="ownList"></div></div>
     <div class="panel pad stack" id="ownPeople" hidden>
       <input class="inp" id="ownFind" type="search" style="max-width:420px" autocomplete="off" data-i18n-ph="own_find_ph" data-i18n-aria="own_find_ph">
-      <p class="hint" id="ownFindHint" data-i18n="own_find_hint"></p>
+      <p class="hint" id="ownFindHint" data-i18n="own_find_hint">Минимум 2 символа. Ищет во всех союзах.</p>
       <div class="stack" style="gap:10px" id="ownFound"></div>
     </div>
     <div class="stack" id="ownStatsTab" hidden style="gap:16px"></div>
     <div class="panel pad" id="ownInbox" hidden><div class="fb-list" id="inboxList"></div></div>
     <div class="panel pad stack" id="ownCast" hidden>
-      <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bell"/></svg><span data-i18n="cast_h"></span></h3>
-      <p class="hint" style="font-size:14px" data-i18n="cast_p"></p>
+      <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bell"/></svg><span data-i18n="cast_h">Уведомление пользователям сервиса</span></h3>
+      <p class="hint" style="font-size:14px" data-i18n="cast_p">Расскажите о доработках и новых функциях. Придёт тем, у кого включены уведомления в браузере или подключён Telegram, во всех союзах (кроме заблокированных).</p>
       <form class="stack" id="castForm" novalidate style="gap:12px;max-width:560px">
-        <div class="f"><label for="castAudience" data-i18n="cast_aud"></label>
-          <select class="inp" id="castAudience"><option value="all" data-i18n="cast_all"></option><option value="staff" data-i18n="cast_staff"></option><option value="r5" data-i18n="cast_r5"></option><option value="r4" data-i18n="cast_r4"></option></select>
+        <div class="f"><label for="castAudience" data-i18n="cast_aud">Кому</label>
+          <select class="inp" id="castAudience"><option value="all" data-i18n="cast_all">Всем игрокам</option><option value="staff" data-i18n="cast_staff">R5 и R4</option><option value="r5" data-i18n="cast_r5">Только R5</option><option value="r4" data-i18n="cast_r4">Только R4</option></select>
           <span class="hint" id="castReach"></span></div>
-        <div class="f"><label for="castTitle" data-i18n="ann_title"></label><input class="inp" id="castTitle" maxlength="80" autocomplete="off" data-i18n-ph="cast_title_ph"></div>
-        <div class="f"><label for="castBody" data-i18n="ann_body"></label><textarea class="inp" id="castBody" maxlength="300" style="min-height:90px" data-i18n-ph="cast_body_ph"></textarea></div>
-        <div class="f"><span class="lbl" data-i18n="ann_when"></span>
-          <div class="seg"><button type="button" data-castwhen="now" aria-pressed="true" data-i18n="ann_now"></button><button type="button" data-castwhen="at" aria-pressed="false" data-i18n="ann_at"></button></div></div>
-        <div class="xy" id="castAt" hidden><div class="f"><label for="castDate" data-i18n="ann_date"></label><input class="inp mono" type="date" id="castDate"></div>
-          <div class="f"><label for="castTime" data-i18n="ann_time"></label><input class="inp mono" type="time" id="castTime" value="19:00"></div></div>
-        <div class="f"><label for="castRepeat" data-i18n="ann_repeat"></label>
-          <select class="inp" id="castRepeat"><option value="once" data-i18n="ann_once"></option><option value="daily" data-i18n="ann_daily"></option><option value="weekly" data-i18n="ann_weekly"></option></select></div>
+        <div class="f"><label for="castTitle" data-i18n="ann_title">Заголовок</label><input class="inp" id="castTitle" maxlength="80" autocomplete="off" data-i18n-ph="cast_title_ph"></div>
+        <div class="f"><label for="castBody" data-i18n="ann_body">Текст</label><textarea class="inp" id="castBody" maxlength="300" style="min-height:90px" data-i18n-ph="cast_body_ph"></textarea></div>
+        <div class="f"><span class="lbl" data-i18n="ann_when">Когда</span>
+          <div class="seg"><button type="button" data-castwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-castwhen="at" aria-pressed="false" data-i18n="ann_at">В назначенное время</button></div></div>
+        <div class="xy" id="castAt" hidden><div class="f"><label for="castDate" data-i18n="ann_date">Дата</label><input class="inp mono" type="date" id="castDate"></div>
+          <div class="f"><label for="castTime" data-i18n="ann_time">Время (МСК)</label><input class="inp mono" type="time" id="castTime" value="19:00"></div></div>
+        <div class="f"><label for="castRepeat" data-i18n="ann_repeat">Повтор</label>
+          <select class="inp" id="castRepeat"><option value="once" data-i18n="ann_once">Один раз</option><option value="daily" data-i18n="ann_daily">Каждый день</option><option value="weekly" data-i18n="ann_weekly">Каждую неделю</option></select></div>
         <p class="err" role="alert"></p>
-        <button class="btn bolt" type="submit" style="align-self:flex-start" id="castSubmit" data-i18n="ann_send"></button>
+        <button class="btn bolt" type="submit" style="align-self:flex-start" id="castSubmit" data-i18n="ann_send">Отправить</button>
       </form>
       <div class="stack" style="gap:10px;max-width:720px" id="castList"></div>
     </div>
@@ -1410,19 +1433,19 @@ html.boot #v-load{display:flex!important}
 
   <!-- HQ (R5 / R4) -->
   <section class="view" id="v-hq">
-    <div class="vh"><div><h1 data-i18n="hq_h"></h1><p data-i18n="hq_p"></p></div></div>
+    <div class="vh"><div><h1 data-i18n="hq_h">Штаб</h1><p data-i18n="hq_p">Участники, ранги, заявки, жалобы и настройки. Видят только R5 и R4.</p></div></div>
     <!-- HQ is split into tabs by topic; counters show where something is waiting -->
     <div class="seg hq-tabs" role="tablist">
-      <button data-hqtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people"></span><span class="dotn" id="hqtPeople" hidden></span></button>
-      <button data-hqtab="activity" role="tab"><svg><use href="#i-chart"/></svg><span data-i18n="hqt_activity"></span><span class="dotn" id="hqtActivity" hidden></span></button>
-      <button data-hqtab="comms" role="tab"><svg><use href="#i-send"/></svg><span data-i18n="hqt_comms"></span><span class="dotn" id="hqtComms" hidden></span></button>
-      <button data-hqtab="settings" role="tab"><svg><use href="#i-hq"/></svg><span data-i18n="hqt_settings"></span></button>
+      <button data-hqtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people">Состав</span><span class="dotn" id="hqtPeople" hidden></span></button>
+      <button data-hqtab="activity" role="tab"><svg><use href="#i-chart"/></svg><span data-i18n="hqt_activity">Активность</span><span class="dotn" id="hqtActivity" hidden></span></button>
+      <button data-hqtab="comms" role="tab"><svg><use href="#i-send"/></svg><span data-i18n="hqt_comms">Связь</span><span class="dotn" id="hqtComms" hidden></span></button>
+      <button data-hqtab="settings" role="tab"><svg><use href="#i-hq"/></svg><span data-i18n="hqt_settings">Настройки</span></button>
     </div>
     <div class="hq hq-pane" data-pane="people">
       <div class="hq-col hq-main">
-        <div class="panel pad stack"><h3><span data-i18n="hq_new"></span> <span class="cnt" id="cReq"></span></h3><div class="stack" style="gap:10px" id="reqs"></div></div>
+        <div class="panel pad stack"><h3><span data-i18n="hq_new">Новые игроки</span> <span class="cnt" id="cReq"></span></h3><div class="stack" style="gap:10px" id="reqs"></div></div>
         <div class="panel pad stack">
-          <h3><span data-i18n="mem_h"></span> <span class="cnt neutral" id="cMem"></span></h3>
+          <h3><span data-i18n="mem_h">Участники союза</span> <span class="cnt neutral" id="cMem"></span></h3>
           <p class="hint" id="memNote"></p>
           <input class="inp" id="memSearch" type="search" style="max-width:340px" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
           <div class="mem" id="members"></div>
@@ -1431,14 +1454,14 @@ html.boot #v-load{display:flex!important}
       </div>
       <div class="hq-col hq-side">
         <div class="panel pad stack">
-          <h3 data-i18n="invite_h"></h3>
-          <p class="hint" style="font-size:14px" data-i18n="invite_p"></p>
-          <div class="invite"><span class="mono" id="inv"></span><button class="btn ghost sm" data-copyinv data-i18n="copy"></button></div>
-          <span class="eyebrow" data-i18n="inv_tg"></span>
-          <div class="invite"><span class="mono" id="invTg"></span><button class="btn ghost sm" data-copytg data-i18n="copy"></button></div>
-          <button class="btn danger sm" id="newInv" style="align-self:flex-start" data-i18n="new_inv"></button>
+          <h3 data-i18n="invite_h">Ссылка-приглашение</h3>
+          <p class="hint" style="font-size:14px" data-i18n="invite_p">Без неё в союз не попасть. Если ссылка ушла за пределы союза, смените её — старая перестанет работать.</p>
+          <div class="invite"><span class="mono" id="inv"></span><button class="btn ghost sm" data-copyinv data-i18n="copy">Скопировать</button></div>
+          <span class="eyebrow" data-i18n="inv_tg">Для Telegram — откроет бота сразу с приглашением</span>
+          <div class="invite"><span class="mono" id="invTg"></span><button class="btn ghost sm" data-copytg data-i18n="copy">Скопировать</button></div>
+          <button class="btn danger sm" id="newInv" style="align-self:flex-start" data-i18n="new_inv">Сменить ссылку</button>
         </div>
-        <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h"></span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p"></p><div class="row" style="gap:6px" id="seedList"></div></div>
+        <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h">Ещё не зарегистрировались</span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p">Игроки из списка союза. Когда кто-то из них подаст заявку и вы её примете, ему сразу вернутся ранг и БМ.</p><div class="row" style="gap:6px" id="seedList"></div></div>
       </div>
     </div>
     <div class="hq hq-pane" data-pane="activity">
@@ -1446,26 +1469,26 @@ html.boot #v-load{display:flex!important}
         <div class="panel pad stack" id="hqVs" hidden></div>
       </div>
       <div class="hq-col hq-side">
-        <div class="panel pad stack"><h3><span data-i18n="hq_dis"></span> <span class="cnt" id="cDis"></span></h3><div class="stack" style="gap:10px" id="disputes"></div></div>
-        <div class="panel pad stack"><h3><span data-i18n="hq_stale"></span> <span class="cnt" id="cStale"></span></h3><div class="row" style="gap:6px" id="staleList"></div><button class="btn sm bolt" id="remind" style="align-self:flex-start" data-i18n="remind"></button></div>
+        <div class="panel pad stack"><h3><span data-i18n="hq_dis">Баф не пришёл</span> <span class="cnt" id="cDis"></span></h3><div class="stack" style="gap:10px" id="disputes"></div></div>
+        <div class="panel pad stack"><h3><span data-i18n="hq_stale">БМ не обновляли больше недели</span> <span class="cnt" id="cStale"></span></h3><div class="row" style="gap:6px" id="staleList"></div><button class="btn sm bolt" id="remind" style="align-self:flex-start" data-i18n="remind">Напомнить им</button></div>
       </div>
     </div>
     <div class="hq hq-pane" data-pane="comms">
       <div class="hq-col hq-main">
         <div class="panel pad stack" id="annBox">
-          <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bolt"/></svg><span data-i18n="ann_h"></span></h3>
+          <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bolt"/></svg><span data-i18n="ann_h">Уведомления игрокам</span></h3>
           <p class="hint" style="font-size:14px" id="annReach"></p>
           <form class="stack" id="annForm" novalidate style="gap:12px">
-            <div class="f"><label for="annTitle" data-i18n="ann_title"></label><input class="inp" id="annTitle" maxlength="80" autocomplete="off" data-i18n-ph="ann_title_ph"></div>
-            <div class="f"><label for="annBody" data-i18n="ann_body"></label><textarea class="inp" id="annBody" maxlength="300" style="min-height:90px" data-i18n-ph="ann_body_ph"></textarea></div>
-            <div class="f"><span class="lbl" data-i18n="ann_when"></span>
-              <div class="seg ann-when"><button type="button" data-annwhen="now" aria-pressed="true" data-i18n="ann_now"></button><button type="button" data-annwhen="at" aria-pressed="false" data-i18n="ann_at"></button></div></div>
-            <div class="xy" id="annAt" hidden><div class="f"><label for="annDate" data-i18n="ann_date"></label><input class="inp mono" type="date" id="annDate"></div>
-              <div class="f"><label for="annTime" data-i18n="ann_time"></label><input class="inp mono" type="time" id="annTime" value="20:00"></div></div>
-            <div class="f"><label for="annRepeat" data-i18n="ann_repeat"></label>
-              <select class="inp" id="annRepeat"><option value="once" data-i18n="ann_once"></option><option value="daily" data-i18n="ann_daily"></option><option value="weekly" data-i18n="ann_weekly"></option></select></div>
+            <div class="f"><label for="annTitle" data-i18n="ann_title">Заголовок</label><input class="inp" id="annTitle" maxlength="80" autocomplete="off" data-i18n-ph="ann_title_ph"></div>
+            <div class="f"><label for="annBody" data-i18n="ann_body">Текст</label><textarea class="inp" id="annBody" maxlength="300" style="min-height:90px" data-i18n-ph="ann_body_ph"></textarea></div>
+            <div class="f"><span class="lbl" data-i18n="ann_when">Когда</span>
+              <div class="seg ann-when"><button type="button" data-annwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-annwhen="at" aria-pressed="false" data-i18n="ann_at">В назначенное время</button></div></div>
+            <div class="xy" id="annAt" hidden><div class="f"><label for="annDate" data-i18n="ann_date">Дата</label><input class="inp mono" type="date" id="annDate"></div>
+              <div class="f"><label for="annTime" data-i18n="ann_time">Время (МСК)</label><input class="inp mono" type="time" id="annTime" value="20:00"></div></div>
+            <div class="f"><label for="annRepeat" data-i18n="ann_repeat">Повтор</label>
+              <select class="inp" id="annRepeat"><option value="once" data-i18n="ann_once">Один раз</option><option value="daily" data-i18n="ann_daily">Каждый день</option><option value="weekly" data-i18n="ann_weekly">Каждую неделю</option></select></div>
             <p class="err" role="alert"></p>
-            <button class="btn bolt" type="submit" style="align-self:flex-start" id="annSubmit" data-i18n="ann_send"></button>
+            <button class="btn bolt" type="submit" style="align-self:flex-start" id="annSubmit" data-i18n="ann_send">Отправить</button>
           </form>
           <div class="stack" style="gap:10px" id="annList"></div>
         </div>
@@ -1475,15 +1498,15 @@ html.boot #v-load{display:flex!important}
         <div class="panel pad stack" id="vkGroupBox"></div>
         <div class="panel pad stack" id="devBox" hidden></div>
         <form class="panel pad stack" id="fbForm" novalidate>
-          <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="fb_h"></span></h3>
-          <p class="hint" style="font-size:14px" data-i18n="fb_p"></p>
+          <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="fb_h">Написать создателю сервиса</span></h3>
+          <p class="hint" style="font-size:14px" data-i18n="fb_p">Идеи, что улучшить, или что-то сломалось — напишите. Видят только R5 и R4 вашего союза и владелец сервиса.</p>
           <div class="xy" style="flex-wrap:wrap">
-            <div class="f" style="flex:0 1 220px"><label for="fbType" data-i18n="fb_type"></label>
-              <select class="inp" id="fbType"><option value="idea" data-i18n="fb_idea"></option><option value="bug" data-i18n="fb_bug"></option><option value="other" data-i18n="fb_other"></option></select></div>
+            <div class="f" style="flex:0 1 220px"><label for="fbType" data-i18n="fb_type">Тема</label>
+              <select class="inp" id="fbType"><option value="idea" data-i18n="fb_idea">Идея или пожелание</option><option value="bug" data-i18n="fb_bug">Что-то не работает</option><option value="other" data-i18n="fb_other">Другое</option></select></div>
           </div>
-          <div class="f"><label for="fbText" data-i18n="fb_text"></label><textarea class="inp" id="fbText" data-i18n-ph="fb_ph"></textarea></div>
+          <div class="f"><label for="fbText" data-i18n="fb_text">Сообщение</label><textarea class="inp" id="fbText" data-i18n-ph="fb_ph"></textarea></div>
           <p class="err" role="alert"></p>
-          <button class="btn teal" type="submit" style="align-self:flex-start" data-i18n="fb_send"></button>
+          <button class="btn teal" type="submit" style="align-self:flex-start" data-i18n="fb_send">Отправить</button>
           <div id="fbMine"></div>
         </form>
       </div>
@@ -1491,15 +1514,15 @@ html.boot #v-load{display:flex!important}
     <div class="hq hq-pane" data-pane="settings">
       <div class="hq-col hq-main">
         <div class="panel pad stack">
-          <h3 data-i18n="pct_h"></h3>
-          <p class="hint" style="font-size:14px" data-i18n="pct_p"></p>
-          <div class="pct-row"><span class="pct-k b" data-i18n="build"></span>
+          <h3 data-i18n="pct_h">Бафы в союзе сейчас</h3>
+          <p class="hint" style="font-size:14px" data-i18n="pct_p">От этого считается норма. Стройка и исследование качаются отдельно, поэтому процент у каждого свой. В начале сезона бафы слабее, и людям нужно больше штук.</p>
+          <div class="pct-row"><span class="pct-k b" data-i18n="build">Стройка</span>
             <div class="pick" style="grid-template-columns:repeat(3,1fr)">
               <input type="radio" name="pct_build" id="p_build_5" value="5"><label class="g" for="p_build_5">5%</label>
               <input type="radio" name="pct_build" id="p_build_10" value="10"><label class="g" for="p_build_10">10%</label>
               <input type="radio" name="pct_build" id="p_build_15" value="15" checked><label class="g" for="p_build_15">15%</label>
             </div></div>
-          <div class="pct-row"><span class="pct-k s" data-i18n="sci"></span>
+          <div class="pct-row"><span class="pct-k s" data-i18n="sci">Исследование</span>
             <div class="pick" style="grid-template-columns:repeat(3,1fr)">
               <input type="radio" name="pct_sci" id="p_sci_5" value="5"><label class="g" for="p_sci_5">5%</label>
               <input type="radio" name="pct_sci" id="p_sci_10" value="10"><label class="g" for="p_sci_10">10%</label>
@@ -1513,16 +1536,16 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
   </section>
-  <div class="app-foot" id="appFoot" hidden><button class="btn ghost sm" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn"></span></button></div>
+  <div class="app-foot" id="appFoot" hidden><button class="btn ghost sm" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn">О сервисе</span></button></div>
 </div>
 
 <dialog class="act" id="actSheet"><div class="act-b" id="actSheetB"></div></dialog>
 <dialog class="sheet" id="pwSheet"><div class="sheet-b" id="pwSheetB"></div></dialog>
 
-<div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastUndo" data-i18n="undo"></button></div>
+<div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastUndo" data-i18n="undo">Отменить</button></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=8f705fcc92"></script>
+<script src="app.js?v=376639fb5d"></script>
 </body>
 </html>
