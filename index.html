@@ -412,7 +412,8 @@ td.num{font-family:var(--mono)}
 .vs-lock{display:inline-flex;align-items:center;gap:6px;height:30px;min-width:30px;justify-content:center;padding:0 7px;border-radius:9px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);cursor:pointer;font:700 12px/1 var(--body);flex:none}
 .vs-lock svg{width:16px;height:16px}
 .vs-lock.on{background:color-mix(in srgb,var(--grass) 22%,var(--panel-2));border-color:color-mix(in srgb,var(--grass) 55%,var(--line));color:var(--grass)}
-.vs-lock.armed{background:var(--bolt);border-color:var(--bolt);color:var(--on-bolt)}
+.vs-lock.armed{background:var(--bolt);border-color:var(--bolt);color:var(--on-bolt);order:3;flex:1 1 100%;height:34px}
+.vs-dh{flex-wrap:wrap;row-gap:8px}
 .vs-lock.ro{cursor:default}
 .vs-prelim{background:color-mix(in srgb,var(--bolt) 22%,var(--panel-2));color:var(--fg)}
 .vs-day.locked .vs-sum b{color:var(--grass)}
@@ -1475,6 +1476,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=63307a502b"></script>
+<script src="app.js?v=2dba890bfc"></script>
 </body>
 </html>
