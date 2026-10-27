@@ -465,6 +465,67 @@ td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent
 @media (max-width:520px){.vs-hrow{grid-template-columns:1fr auto auto}.vs-hrow .pill{display:none}.vs-rrow{grid-template-columns:28px minmax(0,1fr) 44px;grid-template-areas:"rank read read" "rank pts x"}
   .vs-rank{grid-area:rank}.vs-read{grid-area:read}.vs-pts{grid-area:pts}.vs-rrow .btn{grid-area:x}}
 
+/* ---------- landing: the two main features, each with a preview of the real screen ---------- */
+.spot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:center;margin-top:64px;padding:34px;border-radius:28px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--brick) 12%,var(--panel)) 0%,var(--panel) 55%);border:1px solid var(--line);box-shadow:0 30px 60px -40px var(--shadow)}
+.spot.rev{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.spot.rev .spot-txt{order:2} .spot.rev .spot-demo{order:1}
+.spot-vs{background:linear-gradient(225deg,color-mix(in srgb,var(--teal) 15%,var(--panel)) 0%,var(--panel) 50%,color-mix(in srgb,var(--warn) 8%,var(--panel)) 100%)}
+.spot-txt{display:flex;flex-direction:column;gap:14px}
+.spot-txt h2{font-size:clamp(22px,3.4vw,34px);line-height:1.12}
+.spot-txt p{color:var(--muted);font-size:16px;max-width:52ch}
+.spot-pts{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.spot-pts li{position:relative;padding-left:26px;font-size:15px;color:var(--fg)}
+.spot-pts li::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:5px;background:var(--brick);box-shadow:0 2px 0 var(--brick-side)}
+.spot-vs .spot-pts li::before{background:var(--teal);box-shadow:0 2px 0 var(--teal-side)}
+.spot-pts b{font-weight:800}
+.ai-badge{display:inline-grid;place-items:center;height:22px;padding:0 8px;border-radius:8px;background:linear-gradient(135deg,var(--teal),#8a7dff);color:#fff;font:800 11.5px/1 var(--body);letter-spacing:.06em;margin-right:6px}
+.ai-badge.big{height:28px;padding:0 10px;font-size:13px;margin:0}
+.spot-demo{min-width:0;display:flex;justify-content:center}
+
+/* buff preview */
+.mock-buff{width:min(100%,380px);padding:18px;display:flex;flex-direction:column;gap:12px;transform:rotate(-1.2deg);box-shadow:0 30px 50px -28px rgba(0,0,0,.6)}
+.mb-h{display:flex;align-items:center;gap:10px} .mb-h b{font:600 18px/1 var(--display)} .mb-h .chip{margin-left:auto}
+.mb-who{display:flex;align-items:center;gap:12px}
+.mb-who .ava{width:42px;height:42px;font-size:16px}
+.mb-who b{display:block;font-size:17px} .mb-who small{color:var(--muted)}
+.mb-n{margin-left:auto;font:600 28px/1 var(--display)} .mb-n small{font-size:16px;color:var(--muted)}
+.mock-buff .btn{width:100%;pointer-events:none}
+.mb-next{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.mb-next div{display:grid;grid-template-columns:18px 1fr auto;gap:8px;font-size:14px}
+
+/* VS preview: game screenshot -> AI -> table */
+.vs-flow{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:10px;width:100%}
+.game-shot{position:relative;width:156px;padding:10px 8px 22px;border-radius:16px;background:linear-gradient(180deg,#3a6fb5,#5a3f9c);box-shadow:0 20px 40px -20px rgba(0,0,0,.7);transform:rotate(-3deg)}
+.gs-tabs{display:flex;gap:4px;margin-bottom:6px} .gs-tabs span{flex:1;text-align:center;font:800 10px/18px var(--body);border-radius:6px;background:#6f93c9;color:#e8f0ff}
+.gs-tabs span.on{background:#e8f0ff;color:#28364d}
+.gs-row{display:grid;grid-template-columns:20px 1fr auto;gap:5px;align-items:center;background:#c6d9ea;border-radius:7px;padding:5px 6px;margin-top:4px;color:#26344a;font:700 10.5px/1.15 var(--body)}
+.gs-row small{display:block;font-size:8.5px;opacity:.75} .gs-r{font:900 13px/1 var(--display);color:#3b4a63} .gs-p{font-weight:800}
+.gs-cap{position:absolute;bottom:5px;left:0;right:0;text-align:center;font:700 9.5px/1 var(--body);color:#dfe8ff;opacity:.8}
+.vs-arrow{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--teal)} .vs-arrow svg{width:40px;height:16px} .vs-arrow small{font:700 11px/1 var(--body);color:var(--muted)}
+.mock-vs{padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 30px 50px -28px rgba(0,0,0,.6);min-width:0}
+.mv-score{display:flex;align-items:center;gap:8px;font:600 15px/1 var(--display)}
+.mv-score .us{color:var(--teal)} .mv-score .them{color:var(--warn)}
+.mv-badge{background:var(--bolt);color:var(--on-bolt);border-radius:7px;padding:3px 6px;font:700 11px/1 var(--display);font-style:italic;transform:rotate(-4deg)}
+.mv-count{margin-left:auto;font-size:22px} .mv-count i{font-style:normal} .mv-count .us{color:var(--teal)} .mv-count .them{color:var(--warn)}
+.mock-vs table{font-size:12px} .mock-vs th{padding:6px 5px;font-size:9.5px} .mock-vs td{padding:6px 5px;font-family:var(--mono);font-weight:600}
+.mock-vs td:first-child,.mock-vs th:first-child{padding-left:4px;font-family:var(--body)} .mock-vs th:not(:first-child),.mock-vs td:not(:first-child){text-align:right}
+.mock-vs td.lo{background:color-mix(in srgb,var(--bolt) 30%,transparent)} .mock-vs td.z{background:color-mix(in srgb,var(--warn) 30%,transparent)}
+.mv-flags{display:flex;gap:12px;flex-wrap:wrap;font:700 12px/1 var(--body);color:var(--muted)}
+.mv-flags span{display:inline-flex;align-items:center;gap:6px} .mv-flags .f{width:9px;height:9px;border-radius:50%} .f.red{background:var(--warn)} .f.yel{background:var(--muted)}
+
+@media (max-width:900px){
+  .spot,.spot.rev{grid-template-columns:1fr;padding:22px;gap:24px;margin-top:44px}
+  .spot.rev .spot-txt,.spot.rev .spot-demo{order:0}
+}
+@media (max-width:560px){
+  .spot,.spot.rev{padding:18px;border-radius:22px}
+  .vs-flow{grid-template-columns:1fr;justify-items:center}
+  .vs-arrow{flex-direction:row;gap:8px} .vs-arrow svg{transform:rotate(90deg)}
+  .game-shot{width:200px}
+  .mock-vs{width:100%}
+}
+
 /* ---------- join / profile ---------- */
 .formgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:860px){.formgrid{grid-template-columns:1fr}}
@@ -969,8 +1030,63 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
 
+    <!-- the two main features get a full-width block each, with a preview of the real screen (made-up names) -->
+    <section class="spot">
+      <div class="spot-txt">
+        <span class="eyebrow" data-i18n="sp1_eye"></span>
+        <h2 data-i18n="sp1_h"></h2>
+        <p data-i18n="sp1_p"></p>
+        <ul class="spot-pts"><li data-i18n="sp1_l1"></li><li data-i18n="sp1_l2"></li><li data-i18n="sp1_l3"></li></ul>
+      </div>
+      <div class="spot-demo" aria-hidden="true">
+        <div class="panel mock-buff">
+          <div class="mb-h"><img src="art/web/build.png" alt="" width="44" height="44"><b data-i18n="build"></b><span class="chip" data-i18n="sp1_norm"></span></div>
+          <span class="eyebrow" data-i18n="sp1_now"></span>
+          <div class="mb-who"><span class="ava r3"><span>I</span></span><div><b>Ironfox</b><small class="mono">X:503 · Y:569</small></div><span class="mb-n mono">7<small>/13</small></span></div>
+          <div class="meter"><i style="width:54%;background:var(--brick)"></i></div>
+          <button class="btn bolt" type="button" tabindex="-1"><svg><use href="#i-bolt"/></svg><span data-i18n="sp1_btn"></span></button>
+          <div class="mb-next"><span class="eyebrow" data-i18n="sp1_next"></span>
+            <div><span class="mono muted">2</span><b>Velmora</b><span class="muted" data-i18n="sp1_q2"></span></div>
+            <div><span class="mono muted">3</span><b>Brightwing</b><span class="muted" data-i18n="sp1_q3"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spot spot-vs rev">
+      <div class="spot-txt">
+        <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai"></span><span data-i18n="sp2_eye"></span></span>
+        <h2 data-i18n="sp2_h"></h2>
+        <p data-i18n="sp2_p"></p>
+        <ul class="spot-pts"><li data-i18n="sp2_l1"></li><li data-i18n="sp2_l2"></li><li data-i18n="sp2_l3"></li></ul>
+      </div>
+      <div class="spot-demo" aria-hidden="true">
+        <div class="vs-flow">
+          <div class="game-shot">
+            <div class="gs-tabs"><span class="on" data-i18n="sp2_d1"></span><span data-i18n="sp2_d2"></span><span data-i18n="sp2_d3"></span></div>
+            <div class="gs-row"><span class="gs-r">17</span><div><small>#512 [WLF]</small>Stormkid</div><span class="gs-p">46,25M</span></div>
+            <div class="gs-row"><span class="gs-r">18</span><div><small>#512 [WLF]</small>Lunaria</div><span class="gs-p">45,48M</span></div>
+            <div class="gs-row"><span class="gs-r">19</span><div><small>#512 [WLF]</small>Oakbeard</div><span class="gs-p">44,85M</span></div>
+            <span class="gs-cap" data-i18n="sp2_shot"></span>
+          </div>
+          <div class="vs-arrow"><span class="ai-badge big" data-i18n="sp_ai"></span><svg viewBox="0 0 40 16"><path d="M2 8h32M28 3l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small data-i18n="sp2_sec"></small></div>
+          <div class="panel mock-vs">
+            <div class="mv-score"><b class="us">[WLF]</b><span class="mv-badge">VS</span><b class="them">[FNX]</b><span class="mv-count"><i class="us">5</i>:<i class="them">2</i></span></div>
+            <table>
+              <thead><tr><th data-i18n="vs_player"></th><th data-i18n="sp2_d1"></th><th data-i18n="sp2_d2"></th><th data-i18n="sp2_d3"></th><th data-i18n="vs_total"></th></tr></thead>
+              <tbody>
+                <tr><td>Stormkid</td><td>46,2M</td><td>51,0M</td><td>48,7M</td><td><b>145,9M</b></td></tr>
+                <tr><td>Lunaria</td><td>45,5M</td><td class="lo">8,1M</td><td>39,0M</td><td><b>92,6M</b></td></tr>
+                <tr><td>Oakbeard</td><td class="lo">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
+              </tbody>
+            </table>
+            <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1"></span></span><span><i class="f yel"></i><span data-i18n="sp2_f2"></span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="features">
-      <div class="panel feat"><div class="ic"><img src="art/web/build.png" alt="" width="52" height="52"></div><h3 data-i18n="f1_h"></h3><p data-i18n="f1_p"></p></div>
       <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h"></h3><p data-i18n="f5_p"></p></div>
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h"></h3><p data-i18n="f2_p"></p></div>
       <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="f7_h"></h3><p data-i18n="f7_p"></p></div>
@@ -1304,6 +1420,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=6c1afd1324"></script>
+<script src="app.js?v=372aa49fce"></script>
 </body>
 </html>
