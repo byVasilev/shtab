@@ -425,6 +425,12 @@ td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent
 .vs-pl{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vs-pl:hover{color:var(--teal);text-decoration:underline}
 @media (min-width:861px){#actSheet:has(.vs-plsheet){width:min(720px,96vw)}}
+/* the player's VS history slides up on phones and fades in on desktop */
+#actSheet[open]:has(.vs-plsheet){animation:sheetFade .22s ease-out}
+@media (max-width:860px){#actSheet[open]:has(.vs-plsheet){animation:sheetUp .28s cubic-bezier(.2,.8,.2,1)}}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:none}}
+@keyframes sheetFade{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#actSheet[open]:has(.vs-plsheet){animation:none}}
 .vs-pltbl td,.vs-pltbl th{padding:8px 6px;font-size:12.5px}
 .vs-pltbl th:first-child,.vs-pltbl td:first-child{padding-left:8px} .vs-wk{white-space:nowrap;font-size:12.5px}
 .vsm-list{display:flex;flex-direction:column;gap:6px}
@@ -1459,6 +1465,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=59c0163bf5"></script>
+<script src="app.js?v=d23ca51bf2"></script>
 </body>
 </html>
