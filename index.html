@@ -526,6 +526,14 @@ td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent
   .mock-vs{width:100%}
 }
 
+.hq-tabs{display:flex;width:100%;margin-bottom:18px;overflow-x:auto;scrollbar-width:none}
+.hq-tabs::-webkit-scrollbar{display:none}
+.hq-tabs button{flex:1 0 auto;justify-content:center;position:relative;height:42px;gap:8px}
+.hq-tabs button svg{width:18px;height:18px}
+.hq-tabs .dotn{position:static;margin-left:2px}
+.hq-pane[hidden]{display:none}
+@media (max-width:520px){.hq-tabs button{flex:1 1 0;flex-direction:column;gap:3px;height:54px;padding:0 4px;font-size:11.5px}.hq-tabs .dotn{position:absolute;top:4px;right:calc(50% - 22px)}}
+
 /* ---------- join / profile ---------- */
 .formgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:860px){.formgrid{grid-template-columns:1fr}}
@@ -1340,7 +1348,14 @@ html.boot #v-load{display:flex!important}
   <!-- HQ (R5 / R4) -->
   <section class="view" id="v-hq">
     <div class="vh"><div><h1 data-i18n="hq_h"></h1><p data-i18n="hq_p"></p></div></div>
-    <div class="hq">
+    <!-- HQ is split into tabs by topic; counters show where something is waiting -->
+    <div class="seg hq-tabs" role="tablist">
+      <button data-hqtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people"></span><span class="dotn" id="hqtPeople" hidden></span></button>
+      <button data-hqtab="activity" role="tab"><svg><use href="#i-chart"/></svg><span data-i18n="hqt_activity"></span><span class="dotn" id="hqtActivity" hidden></span></button>
+      <button data-hqtab="comms" role="tab"><svg><use href="#i-send"/></svg><span data-i18n="hqt_comms"></span><span class="dotn" id="hqtComms" hidden></span></button>
+      <button data-hqtab="settings" role="tab"><svg><use href="#i-hq"/></svg><span data-i18n="hqt_settings"></span></button>
+    </div>
+    <div class="hq hq-pane" data-pane="people">
       <div class="hq-col hq-main">
         <div class="panel pad stack"><h3><span data-i18n="hq_new"></span> <span class="cnt" id="cReq"></span></h3><div class="stack" style="gap:10px" id="reqs"></div></div>
         <div class="panel pad stack">
@@ -1350,11 +1365,8 @@ html.boot #v-load{display:flex!important}
           <div class="mem" id="members"></div>
           <div id="removedBox"></div>
         </div>
-        <div class="panel pad stack" id="hqVs" hidden></div>
-        <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h"></span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p"></p><div class="row" style="gap:6px" id="seedList"></div></div>
       </div>
       <div class="hq-col hq-side">
-        <div class="panel pad stack" id="devBox" hidden></div>
         <div class="panel pad stack">
           <h3 data-i18n="invite_h"></h3>
           <p class="hint" style="font-size:14px" data-i18n="invite_p"></p>
@@ -1363,26 +1375,20 @@ html.boot #v-load{display:flex!important}
           <div class="invite"><span class="mono" id="invTg"></span><button class="btn ghost sm" data-copytg data-i18n="copy"></button></div>
           <button class="btn danger sm" id="newInv" style="align-self:flex-start" data-i18n="new_inv"></button>
         </div>
-        <div class="panel pad stack" id="tgGroupBox"></div>
+        <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h"></span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p"></p><div class="row" style="gap:6px" id="seedList"></div></div>
+      </div>
+    </div>
+    <div class="hq hq-pane" data-pane="activity">
+      <div class="hq-col hq-main">
+        <div class="panel pad stack" id="hqVs" hidden></div>
+      </div>
+      <div class="hq-col hq-side">
         <div class="panel pad stack"><h3><span data-i18n="hq_dis"></span> <span class="cnt" id="cDis"></span></h3><div class="stack" style="gap:10px" id="disputes"></div></div>
         <div class="panel pad stack"><h3><span data-i18n="hq_stale"></span> <span class="cnt" id="cStale"></span></h3><div class="row" style="gap:6px" id="staleList"></div><button class="btn sm bolt" id="remind" style="align-self:flex-start" data-i18n="remind"></button></div>
-        <div class="panel pad stack">
-          <h3 data-i18n="pct_h"></h3>
-          <p class="hint" style="font-size:14px" data-i18n="pct_p"></p>
-          <div class="pct-row"><span class="pct-k b" data-i18n="build"></span>
-            <div class="pick" style="grid-template-columns:repeat(3,1fr)">
-              <input type="radio" name="pct_build" id="p_build_5" value="5"><label class="g" for="p_build_5">5%</label>
-              <input type="radio" name="pct_build" id="p_build_10" value="10"><label class="g" for="p_build_10">10%</label>
-              <input type="radio" name="pct_build" id="p_build_15" value="15" checked><label class="g" for="p_build_15">15%</label>
-            </div></div>
-          <div class="pct-row"><span class="pct-k s" data-i18n="sci"></span>
-            <div class="pick" style="grid-template-columns:repeat(3,1fr)">
-              <input type="radio" name="pct_sci" id="p_sci_5" value="5"><label class="g" for="p_sci_5">5%</label>
-              <input type="radio" name="pct_sci" id="p_sci_10" value="10"><label class="g" for="p_sci_10">10%</label>
-              <input type="radio" name="pct_sci" id="p_sci_15" value="15" checked><label class="g" for="p_sci_15">15%</label>
-            </div></div>
-          <div class="stack" id="rulesBox" style="gap:10px;border-top:1px solid var(--line);padding-top:16px"></div>
-        </div>
+      </div>
+    </div>
+    <div class="hq hq-pane" data-pane="comms">
+      <div class="hq-col hq-main">
         <div class="panel pad stack" id="annBox">
           <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bolt"/></svg><span data-i18n="ann_h"></span></h3>
           <p class="hint" style="font-size:14px" id="annReach"></p>
@@ -1400,6 +1406,10 @@ html.boot #v-load{display:flex!important}
           </form>
           <div class="stack" style="gap:10px" id="annList"></div>
         </div>
+      </div>
+      <div class="hq-col hq-side">
+        <div class="panel pad stack" id="tgGroupBox"></div>
+        <div class="panel pad stack" id="devBox" hidden></div>
         <form class="panel pad stack" id="fbForm" novalidate>
           <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="fb_h"></span></h3>
           <p class="hint" style="font-size:14px" data-i18n="fb_p"></p>
@@ -1414,6 +1424,30 @@ html.boot #v-load{display:flex!important}
         </form>
       </div>
     </div>
+    <div class="hq hq-pane" data-pane="settings">
+      <div class="hq-col hq-main">
+        <div class="panel pad stack">
+          <h3 data-i18n="pct_h"></h3>
+          <p class="hint" style="font-size:14px" data-i18n="pct_p"></p>
+          <div class="pct-row"><span class="pct-k b" data-i18n="build"></span>
+            <div class="pick" style="grid-template-columns:repeat(3,1fr)">
+              <input type="radio" name="pct_build" id="p_build_5" value="5"><label class="g" for="p_build_5">5%</label>
+              <input type="radio" name="pct_build" id="p_build_10" value="10"><label class="g" for="p_build_10">10%</label>
+              <input type="radio" name="pct_build" id="p_build_15" value="15" checked><label class="g" for="p_build_15">15%</label>
+            </div></div>
+          <div class="pct-row"><span class="pct-k s" data-i18n="sci"></span>
+            <div class="pick" style="grid-template-columns:repeat(3,1fr)">
+              <input type="radio" name="pct_sci" id="p_sci_5" value="5"><label class="g" for="p_sci_5">5%</label>
+              <input type="radio" name="pct_sci" id="p_sci_10" value="10"><label class="g" for="p_sci_10">10%</label>
+              <input type="radio" name="pct_sci" id="p_sci_15" value="15" checked><label class="g" for="p_sci_15">15%</label>
+            </div></div>
+          <div class="stack" id="rulesBox" style="gap:10px;border-top:1px solid var(--line);padding-top:16px"></div>
+        </div>
+      </div>
+      <div class="hq-col hq-side">
+        <div class="panel pad stack" id="allyBox"></div>
+      </div>
+    </div>
   </section>
   <div class="app-foot" id="appFoot" hidden><button class="btn ghost sm" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn"></span></button></div>
 </div>
@@ -1425,6 +1459,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=ea7ac52205"></script>
+<script src="app.js?v=e7d9f0a155"></script>
 </body>
 </html>
