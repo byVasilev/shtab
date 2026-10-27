@@ -757,6 +757,8 @@ details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .rank-sel{height:38px;background:var(--panel-2);border:1.5px solid var(--line);border-radius:11px;padding:0 8px;font:700 13.5px/1 var(--body);color:var(--fg)}
 .more-btn{align-self:center;margin-top:8px}
 .tgg-ev{display:flex;flex-direction:column;gap:8px}
+.tr-note{display:block;margin-top:6px;font:600 12px/1.4 var(--body);color:var(--muted)}
+details.guide .tr-note{padding:0 20px 10px}
 #tgGroupBox a.btn{text-decoration:none}
 .tgg-how ol{margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font:500 13.5px/1.45 var(--body);color:var(--muted)}
 .tgg-cmds{margin:0;padding:12px 14px;border-radius:12px;background:var(--panel-2);font:600 13px/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
@@ -1348,8 +1350,7 @@ html.boot #v-load{display:flex!important}
         <div class="danger-zone">
           <span class="eyebrow" data-i18n="acc_h"></span>
           <p class="hint" id="leaveNote"></p>
-          <div class="row">
-            <button class="btn ghost sm" type="button" data-about data-i18n="about_btn"></button>
+          <div class="row" style="gap:8px;flex-wrap:wrap">
             <button class="btn ghost sm" type="button" data-demo="" data-i18n="logout"></button>
             <button class="btn ghost sm" type="button" id="leaveBtn" data-leaveally></button>
           </div>
@@ -1522,6 +1523,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=03ff211dda"></script>
+<script src="app.js?v=8f705fcc92"></script>
 </body>
 </html>
