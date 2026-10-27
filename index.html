@@ -325,6 +325,9 @@ fieldset.f{border:0;padding:0;margin:0}
 .tiles i.new{animation:drop .55s cubic-bezier(.3,1.6,.5,1)}
 @keyframes drop{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
 .give{width:100%}
+.give-t{display:flex;flex-direction:column;align-items:center;line-height:1.15;white-space:normal;text-align:center;min-width:0}
+.give-t small{font:600 11.5px/1.25 var(--body);opacity:.78;margin-top:3px}
+.give:has(.give-t){height:auto;min-height:56px;padding-top:8px;padding-bottom:8px}
 .rc .give:not(:disabled){--c:var(--rc);--cs:var(--rcs);--ct:var(--rct)}
 .give small{font-weight:600;font-size:13px;opacity:.85}
 .log{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:14px;font:500 13.5px/1.35 var(--body);color:var(--muted)}
@@ -1476,6 +1479,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=2dba890bfc"></script>
+<script src="app.js?v=b92dfb7c6e"></script>
 </body>
 </html>
