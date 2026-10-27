@@ -711,6 +711,8 @@ details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .mrow .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .rank-sel{height:38px;background:var(--panel-2);border:1.5px solid var(--line);border-radius:11px;padding:0 8px;font:700 13.5px/1 var(--body);color:var(--fg)}
 .more-btn{align-self:center;margin-top:8px}
+.tgg-ev{display:flex;flex-direction:column;gap:8px}
+.tgg-cmds{margin:0;padding:12px 14px;border-radius:12px;background:var(--panel-2);font:600 13px/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
 .pct-row{display:flex;flex-direction:column;gap:6px}
 .pct-k{font:800 13px/1 var(--body)} .pct-k.b{color:var(--brick)} .pct-k.s{color:var(--teal)}
 .ally-ren{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px;align-items:center}
@@ -1359,6 +1361,7 @@ html.boot #v-load{display:flex!important}
           <div class="invite"><span class="mono" id="invTg"></span><button class="btn ghost sm" data-copytg data-i18n="copy"></button></div>
           <button class="btn danger sm" id="newInv" style="align-self:flex-start" data-i18n="new_inv"></button>
         </div>
+        <div class="panel pad stack" id="tgGroupBox"></div>
         <div class="panel pad stack"><h3><span data-i18n="hq_dis"></span> <span class="cnt" id="cDis"></span></h3><div class="stack" style="gap:10px" id="disputes"></div></div>
         <div class="panel pad stack"><h3><span data-i18n="hq_stale"></span> <span class="cnt" id="cStale"></span></h3><div class="row" style="gap:6px" id="staleList"></div><button class="btn sm bolt" id="remind" style="align-self:flex-start" data-i18n="remind"></button></div>
         <div class="panel pad stack">
@@ -1420,6 +1423,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=84f875cc1c"></script>
+<script src="app.js?v=03d8081599"></script>
 </body>
 </html>
