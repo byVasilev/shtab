@@ -552,6 +552,25 @@ td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent
 .hq-pane[hidden]{display:none}
 @media (max-width:520px){.hq-tabs button{flex:1 1 0;flex-direction:column;gap:3px;height:54px;padding:0 4px;font-size:11.5px}.hq-tabs .dotn{position:absolute;top:4px;right:calc(50% - 22px)}}
 
+.spot-nt{background:linear-gradient(135deg,color-mix(in srgb,#2aa1de 14%,var(--panel)) 0%,var(--panel) 50%,color-mix(in srgb,#4c75a3 16%,var(--panel)) 100%)}
+.spot-nt .spot-pts li::before{background:#2aa1de;box-shadow:0 2px 0 #1a6f9c}
+.nt-stack{position:relative;width:min(100%,430px);display:flex;flex-direction:column;gap:12px}
+.chat{border-radius:18px;background:var(--panel-2);border:1px solid var(--line);padding:10px 12px 12px;box-shadow:0 24px 44px -30px rgba(0,0,0,.65)}
+.chat.tg{transform:rotate(-1.2deg)} .chat.vk{transform:rotate(1deg);margin-left:22px}
+.chat-h{display:flex;align-items:center;gap:8px;font:700 13px/1 var(--body);color:var(--muted);margin-bottom:8px}
+.chat-ic{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;color:#fff;font:800 10px/1 var(--body)}
+.chat-ic.tg{background:#2aa1de;font-size:12px} .chat-ic.vk{background:#4c75a3}
+.bubble{background:var(--panel);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.bot-n{font:800 12.5px/1 var(--body);color:#7c8cff}
+.chat.vk .bot-n{color:#6d9be0}
+.bubble p{margin:0;font:500 13.5px/1.45 var(--body);white-space:pre-line}
+.kb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
+.kb span{display:grid;place-items:center;min-height:30px;border-radius:9px;background:var(--panel-3);font:700 12px/1.1 var(--body);text-align:center;padding:4px}
+.push{align-self:flex-end;width:min(290px,86%);margin-right:-8px;display:grid;grid-template-columns:32px 1fr auto;gap:8px;align-items:start;padding:10px 12px;border-radius:16px;
+  background:color-mix(in srgb,var(--panel) 88%,#fff);border:1px solid var(--line);box-shadow:0 20px 40px -18px rgba(0,0,0,.7);transform:rotate(2deg)}
+.push img{border-radius:8px} .push b{display:block;font:800 12.5px/1.2 var(--body)} .push span{font:500 12px/1.3 var(--body);color:var(--muted)} .push small{font:600 10.5px/1 var(--body);color:var(--muted)}
+@media (max-width:560px){.chat.vk{margin-left:0}.push{width:100%;margin-right:0;transform:none}}
+
 /* ---------- join / profile ---------- */
 .formgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:860px){.formgrid{grid-template-columns:1fr}}
@@ -1117,11 +1136,35 @@ html.boot #v-load{display:flex!important}
       </div>
     </section>
 
+    <section class="spot spot-nt">
+      <div class="spot-txt">
+        <span class="eyebrow" data-i18n="sp3_eye"></span>
+        <h2 data-i18n="sp3_h"></h2>
+        <p data-i18n="sp3_p"></p>
+        <ul class="spot-pts"><li data-i18n="sp3_l1"></li><li data-i18n="sp3_l2"></li><li data-i18n="sp3_l3"></li><li data-i18n="sp3_l4"></li></ul>
+      </div>
+      <div class="spot-demo" aria-hidden="true">
+        <div class="nt-stack">
+          <div class="push"><img src="art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h"></b><span data-i18n="sp3_push_p"></span></div><small data-i18n="sp3_push_t"></small></div>
+          <div class="chat tg">
+            <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat"></b></div>
+            <div class="bubble"><span class="bot-n">Штаб союза</span>
+              <p data-i18n="sp3_tg_msg"></p>
+              <div class="kb"><span data-i18n="sp3_btn_buff"></span><span data-i18n="sp3_btn_open"></span></div></div>
+          </div>
+          <div class="chat vk">
+            <div class="chat-h"><span class="chat-ic vk">VK</span><b data-i18n="sp3_vk_chat"></b></div>
+            <div class="bubble"><span class="bot-n">Штаб союза</span>
+              <p data-i18n="sp3_vk_msg"></p>
+              <div class="kb"><span data-i18n="sp3_btn_queue"></span><span data-i18n="sp3_btn_vs"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="features">
       <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h"></h3><p data-i18n="f5_p"></p></div>
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h"></h3><p data-i18n="f2_p"></p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="f7_h"></h3><p data-i18n="f7_p"></p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-send"/></svg></div><h3 data-i18n="f8_h"></h3><p data-i18n="f8_p"></p></div>
       <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"></h3><p data-i18n="f9_p"></p></div>
       <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h"></h3><p data-i18n="f4_p"></p></div>
       <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h"></h3><p data-i18n="f3_p"></p></div>
@@ -1479,6 +1522,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=b92dfb7c6e"></script>
+<script src="app.js?v=03ff211dda"></script>
 </body>
 </html>
