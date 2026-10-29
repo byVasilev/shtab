@@ -271,7 +271,8 @@ section.view.on{display:block;animation:rise .35s ease both}
 .feat .ic svg{width:28px;height:28px}
 .feat p{color:var(--muted);font-size:14px}
 .steps-h{margin-top:56px;margin-bottom:18px}
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:1100px){.steps{grid-template-columns:1fr 1fr}}
 .step{padding:20px;display:flex;gap:14px;align-items:flex-start}
 .step .num{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--bolt);color:var(--on-bolt);font:700 15px/1 var(--display)}
 .step p{color:var(--muted);font-size:14px;margin-top:4px}
@@ -1155,7 +1156,7 @@ html.boot #v-load{display:flex!important}
         <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
         <h2 data-i18n="sp2_h">Битва союзов: очки каждого игрока — прямо со скринов</h2>
         <p data-i18n="sp2_p">R4 загружает скрины дневного рейтинга из игры, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд. Сервис раскладывает очки по игрокам и копит историю неделя за неделей.</p>
-        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Кто сколько принёс</b> в каждый день битвы и за неделю</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><b>Метки в Штабе</b>: кто часто вносит 0 или меньше 10M — за неделю, 3 недели или всё время</li></ul>
+        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Кто сколько принёс</b> в каждый день битвы и за неделю</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><b>Метки в Штабе</b>: кто часто вносит 0 или меньше 10M — за неделю, 3 недели или всё время</li><li data-i18n="sp2_l4"><b>Видны даже нули</b>: состав союза загружается по скринам списка из игры, ещё до того, как все зарегистрировались</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="vs-flow">
@@ -1225,11 +1226,12 @@ html.boot #v-load{display:flex!important}
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Вход по нику или ID и PIN, подбор PIN блокируется, забытый PIN сбрасывает R4. История БМ привязана к ID из игры и переходит вместе с игроком в новый союз.</p></div>
     </div>
 
-    <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Три шага, и союз в деле</h2></div>
+    <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Четыре шага, и союз в деле</h2></div>
     <div class="steps">
       <div class="panel step"><span class="num">1</span><div><h3 data-i18n="s1_h">R5 или R4 создаёт союз</h3><p data-i18n="s1_p">Название, тег и штат. Создатель становится R5 и может потом передать роль главе.</p></div></div>
-      <div class="panel step"><span class="num">2</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение — обычная и для Telegram. Без неё к вам не попасть.</p></div></div>
-      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. R5 или R4 подтверждают заявку; если состав загружен из игры, ранг вернётся сам.</p></div></div>
+      <div class="panel step"><span class="num">2</span><div><h3 data-i18n="sr_h">Загрузите состав из игры</h3><p data-i18n="sr_p">Несколько скринов списка союза — и Штаб знает всех: видно, кто ещё не зарегистрировался, а в битве союзов — кто не набрал ни очка.</p></div></div>
+      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение — обычная и для Telegram. Без неё к вам не попасть.</p></div></div>
+      <div class="panel step"><span class="num">4</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. R5 или R4 подтверждают заявку; если состав загружен из игры, ранг вернётся сам.</p></div></div>
     </div>
 
     <div class="panel cta-band">
@@ -1578,6 +1580,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=bd1d9dba51"></script>
+<script src="app.js?v=4700347f34"></script>
 </body>
 </html>
