@@ -267,11 +267,28 @@ section.view.on{display:block;animation:rise .35s ease both}
 .ver-pill span{height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:var(--panel-2);color:var(--teal)}
 .ver-pill:hover span,.ver-pill:focus-visible span{background:var(--teal);color:var(--on-teal)}
 .land-stats{display:flex;flex-wrap:wrap;margin-top:6px}
-.land-stats div{display:flex;flex-direction:column;gap:4px;padding:2px 22px;border-left:1px solid var(--line)}
-.land-stats div:first-child{padding-left:0;border-left:0}
-.land-stats b{font:600 28px/1 var(--display);font-variant-numeric:tabular-nums}
-.land-stats span{font:700 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:520px){.land-stats div{padding:2px 14px}.land-stats b{font-size:22px}}
+.land-stats > div{display:flex;flex-direction:column;gap:4px;padding:2px 22px;border-left:1px solid var(--line)}
+.land-stats > div:first-child{padding-left:0;border-left:0}
+/* split-flap digits: the four halves stay put, only the two moving ones turn, so nothing jumps when a flip ends */
+.flipn{display:flex;gap:4px;--fh:42px}
+.fdg{position:relative;width:calc(var(--fh) * .72);height:var(--fh);perspective:600px;font:600 calc(var(--fh) * .56)/var(--fh) var(--display);text-align:center;color:var(--fg)}
+.fdg .h{position:absolute;left:0;width:100%;height:calc(var(--fh) / 2);overflow:hidden;background:var(--panel-3);backface-visibility:hidden;transform:translateZ(0)}
+.fdg .h span{position:absolute;left:0;width:100%;height:var(--fh);top:0}
+.fdg .t{top:0;border-radius:8px 8px 0 0}
+.fdg .b{top:calc(var(--fh) / 2);border-radius:0 0 8px 8px;background:color-mix(in srgb,var(--panel-3) 88%,#000)}
+.fdg .b span{top:calc(var(--fh) / -2)}
+.fdg::after{content:"";position:absolute;left:0;right:0;top:calc(var(--fh) / 2 - .5px);height:1px;background:var(--panel);z-index:3}
+.fdg .ft,.fdg .fb{visibility:hidden;z-index:2}
+.fdg .ft{transform-origin:50% 100%}
+.fdg .fb{transform-origin:50% 0;transform:rotateX(90deg)}
+.fdg.go .ft{visibility:visible;animation:fdgTop .28s cubic-bezier(.55,0,.9,.5) forwards}
+.fdg.go .fb{visibility:visible;animation:fdgBot .3s .28s cubic-bezier(.2,.6,.3,1) forwards}
+@keyframes fdgTop{from{transform:rotateX(0)}to{transform:rotateX(-90deg)}}
+@keyframes fdgBot{from{transform:rotateX(90deg)}to{transform:rotateX(0)}}
+@media (prefers-reduced-motion:reduce){.fdg.go .ft,.fdg.go .fb{animation:none;visibility:hidden}}
+.land-stats > div > span{font:700 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.land-stats > div{gap:8px}
+@media (max-width:520px){.land-stats > div{padding:2px 12px}.flipn{--fh:34px}}
 .ally-card{min-width:190px}
 .ally-rot{display:block;height:34px;overflow:hidden}
 .ally-in{display:flex;flex-direction:column;gap:2px;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
@@ -1681,6 +1698,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=0afc3fabed"></script>
+<script src="app.js?v=5e1d8eccc5"></script>
 </body>
 </html>
