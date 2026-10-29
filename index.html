@@ -270,10 +270,11 @@ section.view.on{display:block;animation:rise .35s ease both}
 .land-stats > div{display:flex;flex-direction:column;gap:4px;padding:2px 22px;border-left:1px solid var(--line)}
 .land-stats > div:first-child{padding-left:0;border-left:0}
 /* split-flap digits: the four halves stay put, only the two moving ones turn, so nothing jumps when a flip ends */
-.flipn{display:flex;gap:4px;--fh:42px}
-.fdg{position:relative;width:calc(var(--fh) * .72);height:var(--fh);perspective:600px;font:600 calc(var(--fh) * .56)/var(--fh) var(--display);text-align:center;color:var(--fg)}
+.flipn{display:flex;gap:4px;--fh:42px;--fw:30px;--fs:24px}
+/* sizes are plain values: Safari drops a font shorthand that holds calc() */
+.fdg{position:relative;width:var(--fw);height:var(--fh);perspective:600px;font-family:var(--display);font-weight:600;font-size:var(--fs);line-height:var(--fh);text-align:center;color:var(--fg)}
 .fdg .h{position:absolute;left:0;width:100%;height:calc(var(--fh) / 2);overflow:hidden;background:var(--panel-3);backface-visibility:hidden;transform:translateZ(0)}
-.fdg .h span{position:absolute;left:0;width:100%;height:var(--fh);top:0}
+.fdg .h span{position:absolute;left:0;width:100%;height:var(--fh);top:0;line-height:var(--fh)}
 .fdg .t{top:0;border-radius:8px 8px 0 0}
 .fdg .b{top:calc(var(--fh) / 2);border-radius:0 0 8px 8px;background:color-mix(in srgb,var(--panel-3) 88%,#000)}
 .fdg .b span{top:calc(var(--fh) / -2)}
@@ -288,7 +289,7 @@ section.view.on{display:block;animation:rise .35s ease both}
 @media (prefers-reduced-motion:reduce){.fdg.go .ft,.fdg.go .fb{animation:none;visibility:hidden}}
 .land-stats > div > span{font:700 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .land-stats > div{gap:8px}
-@media (max-width:520px){.land-stats > div{padding:2px 12px}.flipn{--fh:34px}}
+@media (max-width:520px){.land-stats > div{padding:2px 12px}.flipn{--fh:34px;--fw:25px;--fs:19px}}
 .ally-card{min-width:190px}
 .ally-rot{display:block;height:34px;overflow:hidden}
 .ally-in{display:flex;flex-direction:column;gap:2px;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
@@ -1698,6 +1699,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=5e1d8eccc5"></script>
+<script src="app.js?v=71539702ba"></script>
 </body>
 </html>
