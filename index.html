@@ -467,8 +467,9 @@ td.num{font-family:var(--mono)}
 .vs-legend span{display:inline-flex;align-items:center;gap:6px}
 .vs-sw{width:14px;height:14px;border-radius:4px;display:inline-block}
 td.vs-z0,.vs-sw.vs-z0{background:color-mix(in srgb,var(--warn) 30%,transparent);color:var(--fg)}
+td.vs-rew,.vs-sw.vs-rew{background:color-mix(in srgb,color-mix(in srgb,var(--warn) 50%,var(--bolt)) 32%,transparent);color:var(--fg)}
 td.vs-low,.vs-sw.vs-low{background:color-mix(in srgb,var(--bolt) 30%,transparent);color:var(--fg)}
-.vs-z0t{color:var(--warn);font-weight:800} .vs-lowt{color:var(--mid);font-weight:800}
+.vs-z0t{color:var(--warn);font-weight:800} .vs-rewt{color:color-mix(in srgb,var(--warn) 50%,var(--bolt));font-weight:800} .vs-lowt{color:var(--mid);font-weight:800}
 .vs-pl{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vs-pl:hover{color:var(--teal);text-decoration:underline}
 @media (min-width:861px){#actSheet:has(.vs-plsheet){width:min(720px,96vw)}}
@@ -1156,7 +1157,7 @@ html.boot #v-load{display:flex!important}
         <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
         <h2 data-i18n="sp2_h">Битва союзов: очки каждого игрока — прямо со скринов</h2>
         <p data-i18n="sp2_p">R4 загружает скрины дневного рейтинга из игры, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд. Сервис раскладывает очки по игрокам и копит историю неделя за неделей.</p>
-        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Кто сколько принёс</b> в каждый день битвы и за неделю</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><b>Метки в Штабе</b>: кто часто вносит 0 или меньше 10M — за неделю, 3 недели или всё время</li><li data-i18n="sp2_l4"><b>Видны даже нули</b>: состав союза загружается по скринам списка из игры, ещё до того, как все зарегистрировались</li></ul>
+        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Кто сколько принёс</b> в каждый день битвы и за неделю</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><b>Метки в Штабе</b>: кто часто вносит 0, не добирает 5M на все награды дня или норму союза — за неделю, 3 недели или всё время</li><li data-i18n="sp2_l4"><b>Видны даже нули</b>: состав союза загружается по скринам списка из игры, ещё до того, как все зарегистрировались</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="vs-flow">
@@ -1564,6 +1565,13 @@ html.boot #v-load{display:flex!important}
             </div></div>
           <div class="stack" id="rulesBox" style="gap:10px;border-top:1px solid var(--line);padding-top:16px"></div>
         </div>
+        <div class="panel pad stack" id="vsMinBox">
+          <h3 data-i18n="vsmin_h">Норма союза в битве (VS)</h3>
+          <p class="hint" style="font-size:14px" data-i18n="vsmin_p">Сколько очков в день вы ждёте от каждого. В таблице VS всегда подсвечиваются нули и дни меньше 5M (не все награды дня), а с нормой — ещё и дни ниже неё.</p>
+          <div class="row" style="gap:8px;align-items:center"><input class="inp mono" id="vsMinIn" inputmode="decimal" style="max-width:120px" data-i18n-ph="vsmin_ph"><b>M</b>
+            <button class="btn teal sm" data-vsminsave data-i18n="save">Сохранить</button><button class="btn ghost sm" data-vsminclear data-i18n="vsmin_clear">Без нормы</button></div>
+          <p class="muted" style="margin:0;font-size:13.5px" id="vsMinNow"></p>
+        </div>
       </div>
       <div class="hq-col hq-side">
         <div class="panel pad stack" id="allyBox"></div>
@@ -1580,6 +1588,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=4700347f34"></script>
+<script src="app.js?v=c9f680a711"></script>
 </body>
 </html>
