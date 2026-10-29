@@ -568,7 +568,9 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .mv-count{margin-left:auto;font-size:22px} .mv-count i{font-style:normal} .mv-count .us{color:var(--teal)} .mv-count .them{color:var(--warn)}
 .mock-vs table{font-size:12px} .mock-vs th{padding:6px 5px;font-size:9.5px} .mock-vs td{padding:6px 5px;font-family:var(--mono);font-weight:600}
 .mock-vs td:first-child,.mock-vs th:first-child{padding-left:4px;font-family:var(--body)} .mock-vs th:not(:first-child),.mock-vs td:not(:first-child){text-align:right}
-.mock-vs td.lo{background:color-mix(in srgb,var(--bolt) 30%,transparent)} .mock-vs td.z{background:color-mix(in srgb,var(--warn) 30%,transparent)}
+/* the same three looks as the real VS table (alliance minimum 10M here) */
+.mock-vs td.z{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--vz) 75%,transparent) 0 5px,color-mix(in srgb,var(--vz) 25%,transparent) 5px 10px)}
+.mock-vs td.rw{background:var(--vrf)} .mock-vs td.lo{background:var(--vyf);color:var(--vyc);box-shadow:inset 3px 0 0 var(--vy)}
 .mv-flags{display:flex;gap:12px;flex-wrap:wrap;font:700 12px/1 var(--body);color:var(--muted)}
 .mv-flags span{display:inline-flex;align-items:center;gap:6px} .mv-flags .f{width:9px;height:9px;border-radius:50%} .f.red{background:var(--warn)} .f.yel{background:var(--muted)}
 
@@ -1180,7 +1182,7 @@ html.boot #v-load{display:flex!important}
               <tbody>
                 <tr><td>Stormkid</td><td>46,2M</td><td>51,0M</td><td>48,7M</td><td><b>145,9M</b></td></tr>
                 <tr><td>Lunaria</td><td>45,5M</td><td class="lo">8,1M</td><td>39,0M</td><td><b>92,6M</b></td></tr>
-                <tr><td>Oakbeard</td><td class="lo">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
+                <tr><td>Oakbeard</td><td class="rw">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
               </tbody>
             </table>
             <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1">Oakbeard · 4 балла</span></span><span><i class="f yel"></i><span data-i18n="sp2_f2">Lunaria · 1</span></span></div>
@@ -1592,6 +1594,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=6b042ac4cf"></script>
+<script src="app.js?v=9559e73dc3"></script>
 </body>
 </html>
