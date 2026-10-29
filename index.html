@@ -250,8 +250,9 @@ section.view.on{display:block;animation:rise .35s ease both}
 .trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .pfor{display:grid;gap:18px;padding:24px}
 .pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
-.pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-.pfor li{display:flex;gap:12px;align-items:flex-start;background:var(--panel-2);border-radius:14px;padding:14px;font-size:14.5px;line-height:1.4;color:var(--muted)}
+.pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
+@media (max-width:560px){.pfor ul{grid-template-columns:1fr}.pfor li{flex-direction:row}}
+.pfor li{display:flex;flex-direction:column;gap:10px;align-items:flex-start;background:var(--panel-2);border-radius:14px;padding:14px;font-size:14.5px;line-height:1.4;color:var(--muted)}
 .pfor li b{color:var(--fg);display:block;margin-bottom:2px}
 .pfor li svg{width:22px;height:22px;flex:none;margin-top:1px}
 .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:56px}
@@ -1111,11 +1112,11 @@ html.boot #v-load{display:flex!important}
     <section class="panel pfor">
       <div><span class="eyebrow" data-i18n="pf_eyebrow">Для игроков</span><h2 data-i18n="pf_h">Что получает каждый в союзе</h2></div>
       <ul>
-        <li><svg style="color:var(--bolt)"><use href="#i-q"/></svg><span data-i18n="pf1"><b>Видно, когда ваша очередь</b> — и сколько бафов осталось до вас</span></li>
-        <li><svg style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="pf2"><b>Уведомления там, где удобно</b> — ВК, Telegram или браузер</span></li>
-        <li><svg style="color:var(--grass)"><use href="#i-bolt"/></svg><span data-i18n="pf3"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза</span></li>
-        <li><svg style="color:var(--brick)"><use href="#i-chart"/></svg><span data-i18n="pf4"><b>Своя история БМ</b> — рост отрядов неделя за неделей</span></li>
-        <li><svg style="color:var(--teal)"><use href="#i-raid"/></svg><span data-i18n="pf5"><b>Личный план на рейд</b> — своя группа и маршрут</span></li>
+        <li><svg style="color:var(--bolt)"><use href="#i-q"/></svg><span data-i18n="pf1"><b>Видно, когда ваша очередь</b>и сколько бафов осталось до вас</span></li>
+        <li><svg style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="pf2"><b>Уведомления там, где удобно</b>ВК, Telegram или браузер</span></li>
+        <li><svg style="color:var(--grass)"><use href="#i-bolt"/></svg><span data-i18n="pf3"><b>Одна кнопка «Я кинул баф»</b>на сайте или прямо в чате союза</span></li>
+        <li><svg style="color:var(--brick)"><use href="#i-chart"/></svg><span data-i18n="pf4"><b>Своя история БМ</b>рост отрядов неделя за неделей</span></li>
+        <li><svg style="color:var(--teal)"><use href="#i-raid"/></svg><span data-i18n="pf5"><b>Личный план на рейд</b>своя группа и маршрут</span></li>
       </ul>
     </section>
 
@@ -1567,6 +1568,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=ad652f517c"></script>
+<script src="app.js?v=48df175d73"></script>
 </body>
 </html>
