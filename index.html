@@ -347,6 +347,14 @@ section.view.on{display:block;animation:rise .35s ease both}
 /* the R4/R5 tag on points that are for the alliance's leaders */
 .r45{display:inline-flex;align-items:center;height:20px;padding:0 7px;margin-right:8px;border-radius:6px;background:color-mix(in srgb,var(--bolt) 22%,transparent);color:var(--fg);font:800 10.5px/1 var(--body);letter-spacing:.04em;vertical-align:2px}
 .feat h3 .r45{vertical-align:3px}
+/* forgotten PIN: the ways back in, and the code for an in-game letter */
+.fg-opt{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:14px;background:var(--panel-2);text-align:left}
+.fg-opt > div{display:flex;flex-direction:column;gap:6px;align-items:flex-start;min-width:0}
+.fg-opt p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}
+.fg-n{flex:none;width:26px;height:26px;border-radius:9px;display:grid;place-items:center;background:var(--teal);color:var(--on-teal);font:700 13px/1 var(--display)}
+.vcode{display:flex;flex-direction:column;gap:10px;align-items:center;padding:14px;border-radius:14px;background:var(--panel-2);font-size:14px;line-height:1.45;text-align:center}
+.vcode b.mono{font-size:32px;letter-spacing:.25em;color:var(--teal)}
+.vcode-own{margin:0;padding:8px 10px;border-radius:10px;background:color-mix(in srgb,var(--teal) 12%,transparent);font-size:13.5px}
 .pfor{display:grid;gap:18px;padding:24px;margin-top:40px}
 .pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
 .pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
@@ -1576,6 +1584,7 @@ html.boot #v-load{display:flex!important}
     </div>
     <div class="hq hq-pane" data-pane="people">
       <div class="hq-col hq-main">
+        <div class="panel pad stack" id="pinReqBox" hidden></div>
         <div class="panel pad stack ros-rev" id="rosterReview" hidden></div>
         <div class="panel pad stack"><h3><span data-i18n="hq_new">Новые игроки</span> <span class="cnt" id="cReq"></span></h3><div class="stack" style="gap:10px" id="reqs"></div></div>
         <div class="panel pad stack">
@@ -1689,6 +1698,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=9f24f9607a"></script>
+<script src="app.js?v=0a74f8eecd"></script>
 </body>
 </html>
