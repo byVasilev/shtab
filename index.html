@@ -247,6 +247,15 @@ section.view.on{display:block;animation:rise .35s ease both}
 .fcard.a{left:0;bottom:12%}
 .fcard.b{right:2%;top:6%}
 .fcard .mono{font-size:15px}
+.ros-how summary{cursor:pointer;font-weight:800;font-size:14px}
+.ros-how ol{margin:8px 0 0;padding-left:20px;font-size:14px;color:var(--muted);display:grid;gap:4px}
+.ros-rev h4{margin:6px 0 0;font-size:15px}
+.ros-sum{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:16px}
+.ros-list{display:grid;gap:8px}
+.ros-row{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:8px;align-items:center}
+.ros-diff{align-items:flex-start}
+.ros-row .inp{min-height:38px;padding:6px 10px;font-size:14px}
+#rosterBox .spin{width:22px;height:22px;border-width:3px}
 .pfor{display:grid;gap:18px;padding:24px;margin-top:40px}
 .pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
 .pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
@@ -1220,7 +1229,7 @@ html.boot #v-load{display:flex!important}
     <div class="steps">
       <div class="panel step"><span class="num">1</span><div><h3 data-i18n="s1_h">R5 или R4 создаёт союз</h3><p data-i18n="s1_p">Название, тег и штат. Создатель становится R5 и может потом передать роль главе.</p></div></div>
       <div class="panel step"><span class="num">2</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение — обычная и для Telegram. Без неё к вам не попасть.</p></div></div>
-      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. R5 или R4 подтверждают заявку; если состав союза загружен заранее, ранг и БМ вернутся сами.</p></div></div>
+      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. R5 или R4 подтверждают заявку; если состав загружен из игры, ранг вернётся сам.</p></div></div>
     </div>
 
     <div class="panel cta-band">
@@ -1337,6 +1346,7 @@ html.boot #v-load{display:flex!important}
     <div class="vh"><div><h1 data-i18n="vs_h">Битва союзов</h1><p id="vsSub"></p></div></div>
     <div id="vsBody"></div>
     <input type="file" id="vsFiles" accept="image/*" multiple hidden>
+    <input type="file" id="rosterFiles" accept="image/*" multiple hidden>
   </section>
 
   <!-- NEWS -->
@@ -1463,6 +1473,7 @@ html.boot #v-load{display:flex!important}
     </div>
     <div class="hq hq-pane" data-pane="people">
       <div class="hq-col hq-main">
+        <div class="panel pad stack ros-rev" id="rosterReview" hidden></div>
         <div class="panel pad stack"><h3><span data-i18n="hq_new">Новые игроки</span> <span class="cnt" id="cReq"></span></h3><div class="stack" style="gap:10px" id="reqs"></div></div>
         <div class="panel pad stack">
           <h3><span data-i18n="mem_h">Участники союза</span> <span class="cnt neutral" id="cMem"></span></h3>
@@ -1481,7 +1492,8 @@ html.boot #v-load{display:flex!important}
           <div class="invite"><span class="mono" id="invTg"></span><button class="btn ghost sm" data-copytg data-i18n="copy">Скопировать</button></div>
           <button class="btn danger sm" id="newInv" style="align-self:flex-start" data-i18n="new_inv">Сменить ссылку</button>
         </div>
-        <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h">Ещё не зарегистрировались</span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p">Игроки из списка союза. Когда кто-то из них подаст заявку и вы её примете, ему сразу вернутся ранг и БМ.</p><div class="row" style="gap:6px" id="seedList"></div></div>
+        <div class="panel pad stack" id="rosterBox"></div>
+        <div class="panel pad stack" id="seedBox" hidden><h3><span data-i18n="seed_h">Ещё не зарегистрировались</span> <span class="cnt neutral" id="cSeed"></span></h3><p class="hint" data-i18n="seed_p">Игроки из списка союза. Когда кто-то из них подаст заявку и вы её примете, ему сразу вернётся ранг (и БМ, если она была в списке). В битве союзов у них видны нули.</p><div class="row" style="gap:6px" id="seedList"></div></div>
       </div>
     </div>
     <div class="hq hq-pane" data-pane="activity">
@@ -1566,6 +1578,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=a3f76c01dd"></script>
+<script src="app.js?v=bd1d9dba51"></script>
 </body>
 </html>
