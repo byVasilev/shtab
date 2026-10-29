@@ -344,6 +344,9 @@ section.view.on{display:block;animation:rise .35s ease both}
 .del-box{display:flex;flex-direction:column;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
 .del-step{margin:0;font:800 13px/1.2 var(--body);color:var(--muted)}
 .del-box.armed1 .del-step{color:var(--mid)} .del-box.armed2 .del-step{color:var(--warn)}
+/* the R4/R5 tag on points that are for the alliance's leaders */
+.r45{display:inline-flex;align-items:center;height:20px;padding:0 7px;margin-right:8px;border-radius:6px;background:color-mix(in srgb,var(--bolt) 22%,transparent);color:var(--fg);font:800 10.5px/1 var(--body);letter-spacing:.04em;vertical-align:2px}
+.feat h3 .r45{vertical-align:3px}
 .pfor{display:grid;gap:18px;padding:24px;margin-top:40px}
 .pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
 .pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
@@ -1210,26 +1213,13 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
 
-    <!-- what an ordinary player gets: the service is for the whole alliance, not only R4/R5 -->
-    <section class="panel pfor">
-      <div><span class="eyebrow" data-i18n="pf_eyebrow">Для игроков</span><h2 data-i18n="pf_h">Что получает каждый в союзе</h2></div>
-      <ul>
-        <li><svg style="color:var(--bolt)"><use href="#i-q"/></svg><span data-i18n="pf1"><b>Видно, когда ваша очередь</b>и сколько бафов осталось до вас</span></li>
-        <li><svg style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="pf2"><b>Уведомления там, где удобно</b>ВК, Telegram или браузер</span></li>
-        <li><svg style="color:var(--grass)"><use href="#i-bolt"/></svg><span data-i18n="pf3"><b>Одна кнопка «Я кинул баф»</b>на сайте или прямо в чате союза</span></li>
-        <li><svg style="color:var(--brick)"><use href="#i-chart"/></svg><span data-i18n="pf4"><b>Своя история БМ</b>рост отрядов неделя за неделей</span></li>
-        <li><svg style="color:var(--teal)"><use href="#i-raid"/></svg><span data-i18n="pf5"><b>Личный план на рейд</b>своя группа и маршрут</span></li>
-      </ul>
-    </section>
-
-
     <!-- the two main features get a full-width block each, with a preview of the real screen (made-up names) -->
     <section class="spot">
       <div class="spot-txt">
         <span class="eyebrow" data-i18n="sp1_eye">Главное каждый день</span>
         <h2 data-i18n="sp1_h">Очередь бафов, которая двигается сама</h2>
-        <p data-i18n="sp1_p">Игрок встаёт в очередь на стройку или исследование — сервис сам считает его норму по дням в таймере и силе бафов. Кинул баф — нажал кнопку, очередь сдвинулась. Без списков в чате и споров, кто следующий.</p>
-        <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Норма</b> по дням в таймере и % бафов — отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Лимит за заход</b>: набрал — уходит в конец очереди</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li></ul>
+        <p data-i18n="sp1_p">Встаёте в очередь на стройку или исследование, и сервис сам считает вашу норму по дням в таймере. Всегда видно, кто получает бафы сейчас, кто следующий и когда ваша очередь. Кинули баф — нажали кнопку, очередь сдвинулась. Без списков в чате и споров, кто следующий.</p>
+        <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Своя норма</b> по дням в таймере — отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><span class="r45">R4/R5</span>Лимит за заход, % бафов и заморозка очереди между сезонами</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="panel mock-buff">
@@ -1249,9 +1239,9 @@ html.boot #v-load{display:flex!important}
     <section class="spot spot-vs rev">
       <div class="spot-txt">
         <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
-        <h2 data-i18n="sp2_h">Битва союзов: очки каждого игрока — прямо со скринов</h2>
-        <p data-i18n="sp2_p">R4 загружает скрины дневного рейтинга из игры, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд. Сервис раскладывает очки по игрокам и копит историю неделя за неделей.</p>
-        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Кто сколько принёс</b> в каждый день битвы и за неделю</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><b>Метки в Штабе</b>: кто часто вносит 0, не добирает 5M на все награды дня или норму союза — за неделю, 3 недели или всё время</li><li data-i18n="sp2_l4"><b>Видны даже нули</b>: состав союза загружается по скринам списка из игры, ещё до того, как все зарегистрировались</li></ul>
+        <h2 data-i18n="sp2_h">Битва союзов: очки каждого — прямо со скринов</h2>
+        <p data-i18n="sp2_p">Видно, сколько вы принесли в каждый день битвы и за неделю, и как это выглядит рядом с остальными. Скрины дневного рейтинга загружает R4, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд.</p>
+        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Ваши очки по дням</b> и история неделя за неделей</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><span class="r45">R4/R5</span><b>Метки «кто отстаёт»</b>: нули, меньше 5M и ниже нормы союза</li><li data-i18n="sp2_l4"><span class="r45">R4/R5</span><b>Видны даже нули</b>: состав загружается по скринам списка из игры</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="vs-flow">
@@ -1283,8 +1273,8 @@ html.boot #v-load{display:flex!important}
       <div class="spot-txt">
         <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
         <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
-        <p data-i18n="sp3_p">Добавьте бота в чат союза в Telegram или в беседу ВКонтакте — он сам напишет, чья очередь на бафы, кого нет на координатах, когда готов план рейда, новости и итоги битвы союзов. А каждый игрок подключает личные уведомления — в Telegram, ВК или прямо в браузере телефона.</p>
-        <ul class="spot-pts"><li data-i18n="sp3_l1"><b>«Я кинул баф» прямо в чате</b> — баф засчитается без захода на сайт</li><li data-i18n="sp3_l2"><b>Команды в чате</b>: очередь, счёт битвы союзов и ближайший рейд одним сообщением</li><li data-i18n="sp3_l3"><b>Личные уведомления</b>: ваша очередь, план рейда, объявления R4/R5 — каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l4"><b>Автоматически</b>: объявления по расписанию — каждый день или раз в неделю</li></ul>
+        <p data-i18n="sp3_p">Уведомления приходят туда, где вам удобно: в Telegram, ВК или в браузер телефона — ваша очередь, план рейда, объявления. А бот в чате союза сам пишет, чья очередь на бафы, кого нет на координатах и итоги битвы союзов.</p>
+        <ul class="spot-pts"><li data-i18n="sp3_l1"><b>Личные уведомления</b>: каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l2"><b>«Я кинул баф» прямо в чате</b> — без захода на сайт</li><li data-i18n="sp3_l3"><b>Команды в чате</b>: очередь, счёт битвы и ближайший рейд одним сообщением</li><li data-i18n="sp3_l4"><span class="r45">R4/R5</span><b>Объявления по расписанию</b> — каждый день или раз в неделю</li></ul>
       </div>
       <div class="spot-demo" aria-hidden="true">
         <div class="nt-stack">
@@ -1313,12 +1303,12 @@ html.boot #v-load{display:flex!important}
     </section>
 
     <div class="features">
-      <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">R4 отмечают основу и резерв как в игре, а сервис сам раскладывает 30 сильнейших по группам. У каждой группы маршрут по зданиям со старта и по таймеру, и каждый игрок видит свой план.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Каждый вносит БМ своих отрядов. Таблица с сортировкой, рост за неделю и графики — сразу видно, кого ставить на событие.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h">Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
-      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и гайды</h3><p data-i18n="f4_p">Новости с закреплением и отправкой в уведомления, гайды любой длины, которые R4 и R5 правят сами.</p></div>
+      <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">Каждый видит свою группу и маршрут по зданиям со старта и по таймеру. R4 отмечают основу и резерв как в игре, а 30 сильнейших сервис раскладывает по группам сам.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Вносите БМ своих отрядов и видите свой рост неделя за неделей. Руководству — общая таблица с сортировкой, чтобы знать, кого ставить на событие.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"><span class="r45">R4/R5</span>Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
+      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и гайды</h3><p data-i18n="f4_p">Объявления и инструкции для новичков в одном месте, а не в сотне сообщений чата. Пишут и правят R4 и R5.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h">Ранги R1–R5</h3><p data-i18n="f3_p">Как в игре: R5 назначает R4, R4 помогают вести союз, исключённые пропадают из всех списков.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Вход по нику или ID и PIN, подбор PIN блокируется, забытый PIN сбрасывает R4. История БМ привязана к ID из игры и переходит вместе с игроком в новый союз.</p></div>
+      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Ник или ID и PIN, который придумываете сами; подбор PIN блокируется. Ваша история БМ привязана к ID из игры и переходит с вами в новый союз.</p></div>
     </div>
 
     <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Четыре шага, и союз в деле</h2></div>
@@ -1699,6 +1689,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=71539702ba"></script>
+<script src="app.js?v=9f24f9607a"></script>
 </body>
 </html>
