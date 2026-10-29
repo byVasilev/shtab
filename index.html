@@ -18,21 +18,21 @@
 <meta name="apple-mobile-web-app-title" content="Штаб союза">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Штаб союза — очередь бафов, битва союзов и рейд для Tiles Survive</title>
-<meta name="description" content="Бесплатный сервис для союзов Tiles Survive: очередь бафов со своей нормой, очки битвы союзов (VS) со скринов через ИИ, боевая мощь, группы на рейд за резервуар, бот для чата союза в Telegram и ВКонтакте. Для R4 и R5 и всех игроков союза.">
+<meta name="description" content="Бесплатный сервис для союзов Tiles Survive: очередь бафов со своей нормой, очки битвы союзов (VS) со скринов через ИИ, боевая мощь, группы на рейд за резервуар, бот для чата союза в Telegram и ВКонтакте. Для каждого игрока и для руководства союза. Без VPN, просто в браузере.">
 <link rel="canonical" href="https://shtabsoyuza.ru/">
 <!-- how a shared link looks in Telegram, VK and elsewhere -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Штаб союза">
 <meta property="og:url" content="https://shtabsoyuza.ru/">
-<meta property="og:title" content="Штаб союза — бафы, VS и рейд в одном штабе">
-<meta property="og:description" content="Сервис для R4 и R5 в Tiles Survive: очередь бафов, очки битвы союзов со скринов, группы на рейд, бот для чата союза в Telegram и ВК. Бесплатно.">
-<meta property="og:image" content="https://shtabsoyuza.ru/art/web/og.jpg">
+<meta property="og:title" content="Штаб союза — бафы, VS и рейд для всего союза">
+<meta property="og:description" content="Очередь на бафы, уведомления в ВК и Telegram, своя БМ и план на рейд — для каждого игрока и для руководства союза в Tiles Survive. Без VPN, просто в браузере. Бесплатно.">
+<meta property="og:image" content="https://shtabsoyuza.ru/art/web/og2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://shtabsoyuza.ru/art/web/og.jpg">
+<meta name="twitter:image" content="https://shtabsoyuza.ru/art/web/og2.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Штаб союза","alternateName":"Alliance HQ","url":"https://shtabsoyuza.ru/","applicationCategory":"GameApplication","operatingSystem":"Web, iOS, Android, Telegram","inLanguage":["ru","en"],"description":"Сервис для союзов Tiles Survive: очередь бафов, битва союзов (VS) со скринов через ИИ, боевая мощь, рейд за резервуар, бот для Telegram и ВКонтакте.","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}</script>
 <script>
 // a theme the player picked wins over the system one
@@ -248,6 +248,12 @@ section.view.on{display:block;animation:rise .35s ease both}
 .fcard.b{right:2%;top:6%}
 .fcard .mono{font-size:15px}
 .trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.pfor{display:grid;gap:18px;padding:24px}
+.pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
+.pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pfor li{display:flex;gap:12px;align-items:flex-start;background:var(--panel-2);border-radius:14px;padding:14px;font-size:14.5px;line-height:1.4;color:var(--muted)}
+.pfor li b{color:var(--fg);display:block;margin-bottom:2px}
+.pfor li svg{width:22px;height:22px;flex:none;margin-top:1px}
 .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:56px}
 .feat-hi{border-color:color-mix(in srgb,var(--teal) 55%,var(--line));box-shadow:inset 0 3px 0 var(--teal),inset 0 1px 0 var(--edge),0 22px 44px -30px var(--shadow)}
 .feat{padding:20px;display:flex;flex-direction:column;gap:10px}
@@ -1086,13 +1092,13 @@ html.boot #v-load{display:flex!important}
       <div class="stack" style="gap:18px">
         <span class="eyebrow" data-i18n="land_eyebrow">Для союзов Tiles Survive</span>
         <h1 data-i18n="land_h">Бафы, БМ и порядок в союзе — <em>в одном штабе</em></h1>
-        <p class="lead" data-i18n="land_lead">Хватит вести очереди в чатах и таблицах. Игроки сами встают в очередь на бафы, вносят боевую мощь и видят, кому кидать сейчас. R5 и R4 управляют всем с телефона.</p>
+        <p class="lead" data-i18n="land_lead">Ваша очередь на бафы, уведомления и план на рейд — в одном месте. Без VPN: просто браузер или Telegram. А R5 и R4 ведут союз с телефона — очередь, БМ, битву союзов и рейд.</p>
         <div class="ctas" id="landCtas">
           <button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
           <button class="btn ghost" data-goauth="invite" data-i18n="land_cta_invite">У меня есть приглашение</button>
         </div>
         <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button></div>
-        <div class="trust"><span class="chip" data-i18n="land_t1">Работает с телефона</span><span class="chip" data-i18n="land_t4">Есть в Telegram</span><span class="chip" data-i18n="land_t2">Русский и English</span><span class="chip" data-i18n="land_t3">До 100 игроков в союзе</span></div>
+        <div class="trust"><span class="chip" data-i18n="land_t1">Без VPN, с телефона</span><span class="chip" data-i18n="land_t4">Есть в Telegram</span><span class="chip" data-i18n="land_t2">Русский и English</span><span class="chip" data-i18n="land_t3">До 100 игроков в союзе</span></div>
       </div>
       <div class="hero-art">
         <img class="isl" src="art/web/island.png" data-i18n-alt="island_alt" alt="Островок из тайлов с поселением в тумане" width="840" height="470">
@@ -1100,6 +1106,18 @@ html.boot #v-load{display:flex!important}
         <div class="fcard b"><img src="art/web/logo.png" alt="" width="34" height="34"><div><small data-i18n="land_card2_s">БМ союза</small><span class="mono" data-i18n="land_card2">9,84 млрд</span></div></div>
       </div>
     </div>
+
+    <!-- what an ordinary player gets: the service is for the whole alliance, not only R4/R5 -->
+    <section class="panel pfor">
+      <div><span class="eyebrow" data-i18n="pf_eyebrow">Для игроков</span><h2 data-i18n="pf_h">Что получает каждый в союзе</h2></div>
+      <ul>
+        <li><svg style="color:var(--bolt)"><use href="#i-q"/></svg><span data-i18n="pf1"><b>Видно, когда ваша очередь</b> — и сколько бафов осталось до вас</span></li>
+        <li><svg style="color:var(--teal)"><use href="#i-msg"/></svg><span data-i18n="pf2"><b>Уведомления там, где удобно</b> — ВК, Telegram или браузер</span></li>
+        <li><svg style="color:var(--grass)"><use href="#i-bolt"/></svg><span data-i18n="pf3"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза</span></li>
+        <li><svg style="color:var(--brick)"><use href="#i-chart"/></svg><span data-i18n="pf4"><b>Своя история БМ</b> — рост отрядов неделя за неделей</span></li>
+        <li><svg style="color:var(--teal)"><use href="#i-raid"/></svg><span data-i18n="pf5"><b>Личный план на рейд</b> — своя группа и маршрут</span></li>
+      </ul>
+    </section>
 
     <!-- the two main features get a full-width block each, with a preview of the real screen (made-up names) -->
     <section class="spot">
@@ -1194,7 +1212,7 @@ html.boot #v-load{display:flex!important}
       <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">R4 отмечают основу и резерв как в игре, а сервис сам раскладывает 30 сильнейших по группам. У каждой группы маршрут по зданиям со старта и по таймеру, и каждый игрок видит свой план.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Каждый вносит БМ своих отрядов. Таблица с сортировкой, рост за неделю и графики — сразу видно, кого ставить на событие.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h">Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
-      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и гайды</h3><p data-i18n="f4_p">Объявления руководства и инструкции для новичков в одном месте, а не в сотне сообщений чата.</p></div>
+      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и гайды</h3><p data-i18n="f4_p">Новости с закреплением и отправкой в уведомления, гайды любой длины, которые R4 и R5 правят сами.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h">Ранги R1–R5</h3><p data-i18n="f3_p">Как в игре: R5 назначает R4, R4 помогают вести союз, исключённые пропадают из всех списков.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Вход по нику или ID и PIN, подбор PIN блокируется, забытый PIN сбрасывает R4. История БМ привязана к ID из игры и переходит вместе с игроком в новый союз.</p></div>
     </div>
@@ -1202,8 +1220,8 @@ html.boot #v-load{display:flex!important}
     <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Три шага, и союз в деле</h2></div>
     <div class="steps">
       <div class="panel step"><span class="num">1</span><div><h3 data-i18n="s1_h">R5 или R4 создаёт союз</h3><p data-i18n="s1_p">Название, тег и штат. Создатель становится R5 и может потом передать роль главе.</p></div></div>
-      <div class="panel step"><span class="num">2</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение. Без неё к вам не попасть.</p></div></div>
-      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник, координаты и PIN. R5 или R4 подтверждают, что человек из союза.</p></div></div>
+      <div class="panel step"><span class="num">2</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение — обычная и для Telegram. Без неё к вам не попасть.</p></div></div>
+      <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. R5 или R4 подтверждают заявку; если состав союза загружен заранее, ранг и БМ вернутся сами.</p></div></div>
     </div>
 
     <div class="panel cta-band">
@@ -1549,6 +1567,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=060c3156ab"></script>
+<script src="app.js?v=ad652f517c"></script>
 </body>
 </html>
