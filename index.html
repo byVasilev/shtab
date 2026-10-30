@@ -493,6 +493,10 @@ fieldset.f{border:0;padding:0;margin:0}
 .seg{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:3px;gap:2px}
 .seg button{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;border:0;background:none;height:36px;padding:0 13px;border-radius:10px;font:800 13.5px/1 var(--body);color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--panel-3);color:var(--fg)}
+/* the four "when" choices share the width evenly; two rows on a phone */
+.seg.ann-when{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
+.seg.ann-when button{justify-content:center;padding:0 6px}
+@media (max-width:480px){.seg.ann-when{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .qwrap.build{--c:var(--brick);--on-c:var(--on-brick);--soft:var(--brick-soft)} .qwrap.sci{--c:var(--teal);--on-c:var(--on-teal);--soft:var(--teal-soft)}
 .qlist{list-style:none;margin:0;padding:6px 0}
 .qi{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 18px;border-top:1px solid var(--line)}
@@ -1571,7 +1575,7 @@ html.boot #v-load{display:flex!important}
         <div class="f"><label for="castTitle" data-i18n="ann_title">Заголовок</label><input class="inp" id="castTitle" maxlength="80" autocomplete="off" data-i18n-ph="cast_title_ph"></div>
         <div class="f"><label for="castBody" data-i18n="ann_body">Текст</label><textarea class="inp" id="castBody" maxlength="300" style="min-height:90px" data-i18n-ph="cast_body_ph"></textarea></div>
         <div class="f"><span class="lbl" data-i18n="ann_when">Когда</span>
-          <div class="seg"><button type="button" data-castwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-castwhen="at" aria-pressed="false" data-i18n="ann_at">В назначенное время</button></div></div>
+          <div class="seg"><button type="button" data-castwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-castwhen="at" aria-pressed="false" data-i18n="ann_at">Один раз</button></div></div>
         <div class="xy" id="castAt" hidden><div class="f"><label for="castDate" data-i18n="ann_date">Дата</label><input class="inp mono" type="date" id="castDate"></div>
           <div class="f"><label for="castTime" data-i18n="ann_time">Время (МСК)</label><input class="inp mono" type="time" id="castTime" value="19:00"></div></div>
         <div class="f"><label for="castRepeat" data-i18n="ann_repeat">Повтор</label>
@@ -1637,7 +1641,8 @@ html.boot #v-load{display:flex!important}
             <div class="f"><label for="annTitle" data-i18n="ann_title">Заголовок</label><input class="inp" id="annTitle" maxlength="80" autocomplete="off" data-i18n-ph="ann_title_ph"></div>
             <div class="f"><label for="annBody" data-i18n="ann_body">Текст</label><textarea class="inp" id="annBody" maxlength="300" style="min-height:90px" data-i18n-ph="ann_body_ph"></textarea></div>
             <div class="f"><span class="lbl" data-i18n="ann_when">Когда</span>
-              <div class="seg ann-when"><button type="button" data-annwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-annwhen="at" aria-pressed="false" data-i18n="ann_at">В назначенное время</button><button type="button" data-annwhen="days" aria-pressed="false" data-i18n="ann_days">По дням недели</button><button type="button" data-annwhen="none" aria-pressed="false" data-i18n="ann_none">Без расписания</button></div></div>
+              <div class="seg ann-when"><button type="button" data-annwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-annwhen="at" aria-pressed="false" data-i18n="ann_at">Один раз</button><button type="button" data-annwhen="days" aria-pressed="false" data-i18n="ann_days">По дням</button><button type="button" data-annwhen="none" aria-pressed="false" data-i18n="ann_none">Вручную</button></div>
+              <p class="hint" style="margin:0" id="annWhenHint"></p></div>
             <div class="xy" id="annAt" hidden><div class="f"><label for="annDate" data-i18n="ann_date">Дата</label><input class="inp mono" type="date" id="annDate"></div>
               <div class="f"><label for="annTime" data-i18n="ann_time">Время (МСК)</label><input class="inp mono" type="time" id="annTime" value="20:00"></div></div>
             <div class="stack" id="annDays" hidden style="gap:10px">
@@ -1714,6 +1719,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=72541e82e7"></script>
+<script src="app.js?v=405e13d642"></script>
 </body>
 </html>
