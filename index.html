@@ -424,6 +424,9 @@ select.inp{appearance:auto}
 .pin{font-family:var(--mono);letter-spacing:.5em;text-align:center;font-size:20px}
 .xy{display:flex;gap:10px}
 .xy > *{flex:1;min-width:0}
+/* iPhone gives date and time fields a fixed minimum width that pushed them out of their column */
+input.inp[type="date"],input.inp[type="time"]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;width:100%;text-align:left}
+input.inp[type="date"]::-webkit-date-and-time-value,input.inp[type="time"]::-webkit-date-and-time-value{text-align:left;margin:0}
 .cell{display:flex;align-items:center;height:48px;background:var(--field,var(--panel-2));border:1.5px solid var(--line);border-radius:12px;padding-left:14px}
 .cell span{font:700 15px/1 var(--mono);color:var(--muted)}
 .cell input{border:0;background:none;height:100%;padding:0 10px 0 6px;width:100%;font:700 17px/1 var(--mono);outline:none;min-width:0}
@@ -1719,6 +1722,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=405e13d642"></script>
+<script src="app.js?v=3e8eee9990"></script>
 </body>
 </html>
