@@ -257,6 +257,11 @@ section.view.on{display:block;animation:rise .35s ease both}
 .ros-list{display:grid;gap:8px}
 .ros-row{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:8px;align-items:center}
 .ros-diff{align-items:flex-start}
+.ros-row{grid-template-columns:76px minmax(0,1fr) auto}
+.ros-row > .ros-tag,.ros-row > .ros-sug{grid-column:2 / -1}
+.ros-tag{justify-self:start;font:700 11px/1 var(--body);padding:4px 7px;border-radius:7px;background:var(--panel-3);color:var(--muted)}
+.ros-tag.new{background:color-mix(in srgb,var(--teal) 18%,transparent);color:var(--fg)}
+.ros-sug{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;padding:8px 10px;border-radius:10px;background:color-mix(in srgb,var(--bolt) 14%,transparent);font-size:13.5px}
 .ros-row .inp{min-height:38px;padding:6px 10px;font-size:14px}
 #rosterBox .spin{width:22px;height:22px;border-width:3px}
 /* landing: version pill, counter, alliance card */
@@ -1744,6 +1749,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=6d0138683c"></script>
+<script src="app.js?v=24a5b43494"></script>
 </body>
 </html>
