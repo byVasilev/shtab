@@ -366,6 +366,19 @@ section.view.on{display:block;animation:rise .35s ease both}
 .ann-item.editing{outline:2px solid var(--teal);outline-offset:2px}
 .roster-bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between;margin:12px 16px 4px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--teal) 10%,var(--panel-2))}
 .roster-bar > div{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1 1 260px}
+/* VS: tabs, the opponent form, next week's line, history list */
+.vs-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.vs-opp-box{border-color:color-mix(in srgb,var(--bolt) 45%,var(--line))}
+.vs-next{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:14px 18px}
+.vs-next b{flex:1;min-width:200px}
+.vs-back{align-self:flex-start;font-size:15px}
+.vs-hsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.vs-hsum{grid-template-columns:1fr 1fr}}
+.vs-hsum > div{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.vs-hsum b{font:600 24px/1 var(--display)} .vs-hsum b.ok{color:var(--grass)} .vs-hsum b.bad{color:var(--warn)}
+.vs-hsum span{font:700 11.5px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.vs-htbl tbody tr{cursor:pointer} .vs-htbl tbody tr:hover td{background:var(--panel-2)}
+.htag{color:var(--teal)}
 .pfor{display:grid;gap:18px;padding:24px;margin-top:40px}
 .pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
 .pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
@@ -1723,6 +1736,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=808ca0de6e"></script>
+<script src="app.js?v=743e1f6c9c"></script>
 </body>
 </html>
