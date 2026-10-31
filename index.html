@@ -379,6 +379,13 @@ section.view.on{display:block;animation:rise .35s ease both}
 .vs-hsum span{font:700 11.5px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .vs-htbl tbody tr{cursor:pointer} .vs-htbl tbody tr:hover td{background:var(--panel-2)}
 .htag{color:var(--teal)}
+/* power of players from the game list who haven't signed up yet (R4/R5) */
+.pw-seed{margin-top:16px}
+.pw-seed .pw-seed-h{padding:16px 18px 6px;display:flex;flex-direction:column;gap:4px}
+.pw-seed td.sq{font-family:var(--mono);text-align:right}
+.seed-tag{font:700 10.5px/1 var(--body);padding:3px 6px;border-radius:6px;background:var(--panel-3);color:var(--muted);vertical-align:2px;letter-spacing:.02em}
+.seed-sq{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.seed-sq{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .pfor{display:grid;gap:18px;padding:24px;margin-top:40px}
 .pfor h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
 .pfor ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}
@@ -1473,6 +1480,7 @@ html.boot #v-load{display:flex!important}
         <div class="tbl"><table><thead id="pwHead"></thead><tbody id="pwBody"></tbody></table></div>
       </div>
     </div>
+    <div class="panel pw-seed" id="pwSeed" hidden></div>
     <p class="hint" id="pwDemoNote" style="margin-top:16px" data-i18n="pw_demo_note">Демо: цифры БМ взяты из вашей таблицы, история роста и даты обновлений придуманы для графиков.</p>
   </section>
 
@@ -1736,6 +1744,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=7b3ae81c40"></script>
+<script src="app.js?v=6d0138683c"></script>
 </body>
 </html>
