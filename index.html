@@ -8,6 +8,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://telegram.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' data: blob: https://xfxbobchtfkjsrcspmsv.supabase.co wss://xfxbobchtfkjsrcspmsv.supabase.co https://89.111.153.87 wss://89.111.153.87; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0c171d">
 <meta name="robots" content="noai, noimageai">
@@ -1160,6 +1161,91 @@ body.frozen .q-tools,body.frozen .qi .adm,body.frozen [data-gadd],body.frozen .g
 .dev-msg{max-width:85%;padding:10px 12px;border-radius:14px;background:var(--panel-2);font-size:14px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
 .dev-msg small{display:block;margin-top:4px;font:600 11.5px/1 var(--body);color:var(--muted)}
 .dev-msg.mine{align-self:flex-end;background:color-mix(in srgb,var(--teal) 16%,var(--panel-2))}
+
+/* ---------- buttons standing together: one width, one height, no jumble ---------- */
+div:has(> .btn + .btn):not(:has(> :not(.btn,[hidden]))){display:inline-grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px;width:fit-content;max-width:100%;align-items:stretch}
+div:has(> .btn + .btn):not(:has(> :not(.btn,[hidden]))) > .btn{width:100%;min-width:0;padding-inline:14px;white-space:normal;margin:0}
+div.vs-acts.vs-acts.vs-acts{display:grid;width:auto;grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+div.vs-acts.vs-acts.vs-acts > .btn:first-child{grid-column:1/-1}
+.btn.btn.btn:disabled{--c:var(--panel-2);--cs:var(--line);--ct:var(--muted)}
+.chips{display:inline-grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);width:fit-content;max-width:100%}
+.chips button{padding:0 14px;white-space:nowrap}
+.chips.vsm-period{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr))}
+.chips.vsm-period .hint{grid-column:1/-1;margin:0}
+.seg:not(.ann-when){display:inline-grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.seg:not(.ann-when) button{justify-content:center}
+.tri{display:inline-grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.tiles{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px}
+.tiles i{width:auto}
+.pool-cnt{position:sticky;top:84px;z-index:2;padding:9px 16px;background:var(--panel);border-bottom:1px solid var(--line);font:700 13px/1.3 var(--body);color:var(--muted)}
+.gr.neg{color:var(--warn)} .gr.zero{color:var(--muted)}
+/* easier to hit */
+.lang button{height:34px}
+.x{width:38px;height:38px}
+.xyfix{padding:6px 0}
+.xyfix-l{padding:8px 0;margin-top:0}
+.vs-sort{padding:8px 4px;margin:-8px -4px}
+.pw th button{padding:8px 4px;margin:-8px -4px}
+/* the page doesn't show through above the floating header */
+header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:calc(80px + 30px);z-index:-1;pointer-events:none;background:linear-gradient(var(--bg) 78%,transparent)}
+/* room for the whole header on small laptops and tablets */
+.brand{flex:none}
+@media (min-width:861px) and (max-width:1160px){.me-chip .nm{display:none} nav.tabs button{padding:0 8px}}
+@media (min-width:861px) and (max-width:1010px){nav.tabs button svg{display:none} .brand small{display:none}}
+@media (min-width:861px){.vs-days{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){
+  .pool-cnt{top:74px}
+  /* the nickname stays in view while a wide table scrolls */
+  .vs-tbl th:nth-child(2),.vs-tbl td:nth-child(2),.pw-seed th:first-child,.pw-seed td:first-child,.vs-pltbl th:first-child,.vs-pltbl td:first-child{position:sticky;left:0;z-index:1;background:var(--panel)}
+  .vs-tbl td:nth-child(2),.pw-seed td:first-child{max-width:132px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* a soft shadow on the right says there is more to scroll to */
+  .tbl{background-image:linear-gradient(to left,var(--panel) 40%,transparent),linear-gradient(to left,rgba(0,0,0,.32),transparent);background-position:100% 0,100% 0;background-size:28px 100%,16px 100%;background-repeat:no-repeat;background-attachment:local,scroll}
+}
+@media (max-width:640px){
+  div:has(> .btn + .btn):not(:has(> :not(.btn,[hidden]))){display:grid;grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  div:has(> .btn + .btn):not(:has(> :not(.btn,[hidden]))) > .btn{padding:6px 10px;line-height:1.15}
+  div:has(> .btn + .btn):not(:has(> :not(.btn,[hidden]))) > .btn:first-child:nth-last-child(2n+1 of :not([hidden])){grid-column:1/-1}
+  .qi .adm.adm.adm{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .qi .adm.adm.adm > .btn{padding-inline:2px;font-size:13px}
+  .chips{display:grid;grid-auto-flow:row;width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .chips:has(> button:nth-child(4):last-child),.chips:has(> button:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chips button{height:auto;min-height:38px;padding:6px 8px;white-space:normal;line-height:1.15;border-radius:12px}
+  .chips button:last-child:nth-child(3n+2){grid-column:span 2}
+  .seg:not(.ann-when){display:grid;width:100%}
+  .seg:not(.ann-when) button{padding:0 6px;font-size:13px;min-width:0}
+  .vs-top > .btn{width:100%}
+  .ev-bar .inp{max-width:none;flex-basis:100%}
+  .prow .who3{flex:1 1 100%}
+  .prow .tri{flex:1 1 0;display:grid}
+  .tri button{height:40px;padding:0 4px}
+  .prow .iconbtn{width:46px;height:46px}
+  .pw th,.pw td{padding-inline:8px}
+  .pw th:first-child,.pw td:first-child{padding-left:12px}
+  .pw th:last-child,.pw td:last-child{padding-right:12px}
+  .pw .rk{width:30px}
+  .pw .nk{max-width:138px;overflow:hidden;text-overflow:ellipsis}
+  .pw th{letter-spacing:.03em}
+  /* "who falls behind": the nickname on its own line, numbers evenly below it */
+  .vsm-head,.vsm-row{grid-template-columns:repeat(var(--n),minmax(0,1fr))!important}
+  .vsm-head span:first-child{display:none}
+  .vsm-head span{text-align:center}
+  .vsm-head span:last-child{text-align:center}
+  .vsm-nick{grid-column:1/-1}
+  .vsm-row .vsm-b{justify-self:center}
+  .vsm-row .mono{text-align:center}
+}
+@media (max-width:520px){
+  .land-stats:has(> :nth-child(4)){display:grid;grid-template-columns:repeat(2,auto);justify-content:start;row-gap:14px}
+  .land-stats:has(> :nth-child(4)) > div:nth-child(3){padding-left:0;border-left:0}
+}
+/* letters in avatars keep their own colour and size wherever a row styles its spans */
+span.ava.ava.ava.ava{font:800 15px/1 var(--body)}
+span.ava.ava.ava.ava.lg{font-size:18px}
+.me-chip span.ava.ava.ava.ava{font-size:13px} .mchip span.ava.ava.ava.ava{font-size:11px}
+span.ava.ava.ava.ava > span{color:inherit;font:inherit}
+span.ava.ava.ava.ava.r5{color:var(--on-bolt)} span.ava.ava.ava.ava.r4{color:var(--on-teal)}
+span.ava.ava.ava.ava.r3,span.ava.ava.ava.ava:not(.r1,.r2,.r4,.r5){color:var(--on-grass)}
+span.ava.ava.ava.ava.r2{color:var(--fg)} span.ava.ava.ava.ava.r1{color:#fff}
 </style>
 
 <style>
@@ -1439,7 +1525,7 @@ html.boot #v-load{display:flex!important}
           <button data-q="sci" aria-pressed="false" data-i18n="sci">Исследование</button>
           <button data-q="arch" aria-pressed="false" data-i18n="arch">Архив</button>
         </div>
-        <button class="btn bolt sm" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
+        <button class="btn bolt sm" id="qJoinBtn" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
       </div>
     </div>
     <div class="panel qwrap" id="qwrap"></div>
@@ -1559,7 +1645,7 @@ html.boot #v-load{display:flex!important}
         </div>
         <p class="err" id="pErr" role="alert"></p>
         <div class="row">
-          <button class="btn" type="submit" data-i18n="save_profile">Сохранить</button>
+          <button class="btn bolt" type="submit" data-i18n="save_profile">Сохранить</button>
           <button class="btn ghost" type="button" id="pSame" data-i18n="same_coords">Не переезжал, всё верно</button>
         </div>
         <div class="danger-zone" id="pinBox"><details><summary class="eyebrow" style="cursor:pointer" data-i18n="pin_ch_h">Сменить PIN</summary>
@@ -1698,7 +1784,7 @@ html.boot #v-load{display:flex!important}
               <label class="check"><input type="checkbox" id="annToPl" checked><span data-i18n="ann_to_pl">Игрокам: пуш, Telegram и ВК</span></label>
               <label class="check"><input type="checkbox" id="annToChat" checked><span data-i18n="ann_to_chat">Ботом в чат союза</span></label></div>
             <p class="err" role="alert"></p>
-            <div class="row" style="gap:8px"><button class="btn bolt" type="submit" id="annSubmit" data-i18n="ann_send">Отправить</button><button class="btn" type="submit" id="annAsNew" hidden data-i18n="ann_as_new">Сохранить как новую</button><button class="btn ghost" type="button" id="annCancel" data-anncancel hidden data-i18n="ros_cancel">Отмена</button></div>
+            <div class="row" style="gap:8px"><button class="btn bolt" type="submit" id="annSubmit" data-i18n="ann_send">Отправить</button><button class="btn ghost" type="submit" id="annAsNew" hidden data-i18n="ann_as_new">Сохранить как новую</button><button class="btn ghost" type="button" id="annCancel" data-anncancel hidden data-i18n="ros_cancel">Отмена</button></div>
           </form>
           <h4 class="ann-count" id="annCount"></h4>
           <div class="stack" style="gap:10px" id="annList"></div>
@@ -1745,7 +1831,7 @@ html.boot #v-load{display:flex!important}
           <h3 data-i18n="vsmin_h">Норма союза в битве (VS)</h3>
           <p class="hint" style="font-size:14px" data-i18n="vsmin_p">Сколько очков в день вы ждёте от каждого. В таблице VS всегда подсвечиваются нули и дни меньше 5M (не все награды дня), а с нормой — ещё и дни ниже неё.</p>
           <div class="row" style="gap:8px;align-items:center"><input class="inp mono" id="vsMinIn" inputmode="decimal" style="max-width:120px" data-i18n-ph="vsmin_ph"><b>M</b>
-            <button class="btn teal sm" data-vsminsave data-i18n="save">Сохранить</button><button class="btn ghost sm" data-vsminclear data-i18n="vsmin_clear">Без нормы</button></div>
+            <button class="btn bolt sm" data-vsminsave data-i18n="save">Сохранить</button><button class="btn ghost sm" data-vsminclear data-i18n="vsmin_clear">Без нормы</button></div>
           <p class="muted" style="margin:0;font-size:13.5px" id="vsMinNow"></p>
         </div>
       </div>
@@ -1765,6 +1851,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=11ea7aaa16"></script>
+<script src="app.js?v=765ced15c9"></script>
 </body>
 </html>
