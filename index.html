@@ -1240,6 +1240,20 @@ header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:
   .land-stats:has(> :nth-child(4)){display:grid;grid-template-columns:repeat(2,auto);justify-content:start;row-gap:14px}
   .land-stats:has(> :nth-child(4)) > div:nth-child(3){padding-left:0;border-left:0}
 }
+/* raid head: status on top, then date, time and buttons on one line, all the same height */
+.ev-head{flex-direction:column;align-items:stretch}
+.ev-head > .ev-meta{flex:none;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ev-ctl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px}
+.ev-when{display:flex;align-items:center;gap:8px}
+.ev-when input.inp.ev-dt[type]{height:44px;line-height:41px;width:172px}
+.ev-when input.inp.ev-dt[type="time"]{width:112px}
+.ev-when input.inp.ev-dt[type]::-webkit-date-and-time-value{line-height:41px;height:41px}
+.ev-ctl .acts .btn{min-height:44px}
+@media (max-width:640px){
+  .ev-ctl{flex-direction:column;align-items:stretch}
+  .ev-when{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto}
+  .ev-when input.inp.ev-dt[type],.ev-when input.inp.ev-dt[type="time"]{width:100%;padding-inline:6px}
+}
 /* letters in avatars keep their own colour and size wherever a row styles its spans */
 span.ava.ava.ava.ava{font:800 15px/1 var(--body)}
 span.ava.ava.ava.ava.lg{font-size:18px}
@@ -1853,6 +1867,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=3cbd237171"></script>
+<script src="app.js?v=eab113d93d"></script>
 </body>
 </html>
