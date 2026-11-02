@@ -1256,6 +1256,11 @@ header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:
   .ev-when .hint{grid-column:1/-1}
   .ev-when input.inp.ev-dt[type],.ev-when input.inp.ev-dt[type="time"]{width:100%;padding-inline:6px}
 }
+/* waiting list: a cross next to the nickname, second tap confirms */
+.seed-chip{height:34px;padding:0 4px 0 12px}
+.seed-x{display:inline-grid;place-items:center;min-width:26px;height:26px;margin-left:2px;padding:0 6px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 12px/1 var(--body);cursor:pointer}
+.seed-x:hover{background:var(--panel-3);color:var(--fg)}
+.seed-chip.armed .seed-x{background:var(--warn);color:#fff}
 /* a nickname that opens the player page */
 .pfl{all:unset;cursor:pointer;overflow-wrap:anywhere;text-decoration:underline dashed var(--muted);text-decoration-thickness:1px;text-underline-offset:4px}
 .pfl:hover{color:var(--teal)} .pfl:focus-visible{outline:3px solid var(--bolt);border-radius:4px}
@@ -1928,6 +1933,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=6914ba3552"></script>
+<script src="app.js?v=7966aa9dad"></script>
 </body>
 </html>
