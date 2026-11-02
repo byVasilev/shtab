@@ -1270,11 +1270,12 @@ header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:
 }
 /* the player page */
 .pf{display:flex;flex-direction:column;gap:14px}
+.prof-tabs{margin-bottom:16px}
 .btn.back-btn{align-self:flex-start;width:auto;gap:4px;padding-left:9px;font-size:14px;margin-bottom:12px}
 .pf > .btn.back-btn{margin-bottom:0}
 .pf-hero{padding:18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
 .pf-title{display:flex;flex-direction:column;gap:6px;min-width:0}
-.pf-title h1{font:600 clamp(21px,4vw,27px)/1.15 var(--display);overflow-wrap:anywhere;margin:0}
+.pf-title h2{font:600 clamp(21px,4vw,27px)/1.15 var(--display);overflow-wrap:anywhere;margin:0}
 .pf-facts{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border-top:1px solid var(--line);padding-top:14px}
 .pf-facts > div{display:flex;flex-direction:column;gap:5px;min-width:0}
 .pf-facts b{font:700 14px/1.3 var(--body);overflow-wrap:anywhere} .pf-facts b.mono{font-family:var(--mono)}
@@ -1698,7 +1699,10 @@ html.boot #v-load{display:flex!important}
 
   <!-- PROFILE -->
   <section class="view" id="v-profile">
-    <div class="vh"><div><h1 data-i18n="prof_h">Профиль</h1><p data-i18n="prof_p">По этим координатам вас ищут, когда кидают бафы.</p></div></div>
+    <div class="vh"><div><h1 data-i18n="prof_h">Профиль</h1><p id="profLead" data-i18n="prof_p">По этим координатам вас ищут, когда кидают бафы.</p></div></div>
+    <div class="seg vs-tabs prof-tabs" role="tablist"><button role="tab" data-proftab="data" data-i18n="prof_tab_data">Мои данные</button><button role="tab" data-proftab="set" data-i18n="prof_tab_set">Настройки</button></div>
+    <div id="pfMine" class="pf"></div>
+    <div id="profSet">
     <div class="formgrid">
       <form class="panel pad stack" id="profForm" novalidate style="gap:18px">
         <div class="idrow" id="profId"></div>
@@ -1749,6 +1753,7 @@ html.boot #v-load{display:flex!important}
       </aside>
     </div>
     <div class="panel pad stack" id="notifyBox" style="margin-top:20px"></div>
+    </div>
   </section>
 
   <!-- OWNER (service creator) -->
@@ -1923,6 +1928,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=0ce0d4313f"></script>
+<script src="app.js?v=f271e0c7b0"></script>
 </body>
 </html>
