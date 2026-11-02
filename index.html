@@ -377,8 +377,10 @@ section.view.on{display:block;animation:rise .35s ease both}
 .vs-next{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:14px 18px}
 .vs-next b{flex:1;min-width:200px}
 .vs-back{align-self:flex-start;font-size:15px}
-.vs-hsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-@media (max-width:640px){.vs-hsum{grid-template-columns:1fr 1fr}}
+.vs-hsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.vs-hsum.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:640px){.vs-hsum.n4{grid-template-columns:1fr 1fr}
+  .vs-hsum.n3{gap:8px} .vs-hsum.n3 > div{padding:12px 10px} .vs-hsum.n3 span{font-size:10.5px;letter-spacing:.02em}}
 .vs-hsum > div{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .vs-hsum b{font:600 24px/1 var(--display)} .vs-hsum b.ok{color:var(--grass)} .vs-hsum b.bad{color:var(--warn)}
 .vs-hsum span{font:700 11.5px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -1763,6 +1765,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=2115c68b3e"></script>
+<script src="app.js?v=3add254b29"></script>
 </body>
 </html>
