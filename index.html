@@ -1182,7 +1182,8 @@ div.vs-acts.vs-acts.vs-acts > .btn:first-child{grid-column:1/-1}
 /* easier to hit */
 .lang button{height:34px}
 .x{width:38px;height:38px}
-.xyfix{padding:6px 0}
+.xyfix{padding:6px 0;border-bottom:0;text-decoration:underline dashed var(--muted);text-underline-offset:3px}
+#tgGroupBox > .btn,#vkGroupBox > .btn,#tgGroupBox > div > .btn,#vkGroupBox > div > .btn{width:100%;align-self:stretch}
 .xyfix-l{padding:8px 0;margin-top:0}
 .vs-sort{padding:8px 4px;margin:-8px -4px}
 .pw th button{padding:8px 4px;margin:-8px -4px}
@@ -1211,6 +1212,7 @@ header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:
   .chips:has(> button:nth-child(4):last-child),.chips:has(> button:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
   .chips button{height:auto;min-height:38px;padding:6px 8px;white-space:normal;line-height:1.15;border-radius:12px}
   .chips button:last-child:nth-child(3n+2){grid-column:span 2}
+  .chips.vsm-period.vsm-period{grid-template-columns:repeat(3,minmax(0,1fr))}
   .seg:not(.ann-when){display:grid;width:100%}
   .seg:not(.ann-when) button{padding:0 6px;font-size:13px;min-width:0}
   .vs-top > .btn{width:100%}
@@ -1851,6 +1853,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=765ced15c9"></script>
+<script src="app.js?v=3cbd237171"></script>
 </body>
 </html>
