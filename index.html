@@ -276,11 +276,13 @@ section.view.on{display:block;animation:rise .35s ease both}
 .land-stats > div{display:flex;flex-direction:column;gap:4px;padding:2px 22px;border-left:1px solid var(--line)}
 .land-stats > div:first-child{padding-left:0;border-left:0}
 /* split-flap digits: the four halves stay put, only the two moving ones turn, so nothing jumps when a flip ends */
-.flipn{display:flex;gap:4px;--fh:42px;--fw:30px;--fs:24px}
+.flipn{display:flex;gap:4px;--fh:42px;--fw:30px;--fs:24px;--fb:30px}
 /* sizes are plain values: Safari drops a font shorthand that holds calc() */
 .fdg{position:relative;width:var(--fw);height:var(--fh);perspective:600px;font-family:var(--display);font-weight:600;font-size:var(--fs);line-height:var(--fh);text-align:center;color:var(--fg)}
 .fdg .h{position:absolute;left:0;width:100%;height:calc(var(--fh) / 2);overflow:hidden;background:var(--panel-3);backface-visibility:hidden;transform:translateZ(0)}
-.fdg .h span{position:absolute;left:0;width:100%;height:var(--fh);top:0;line-height:var(--fh)}
+/* an invisible strut sets the baseline at a fixed distance, whatever font metrics a browser reads: digits stay centred on the seam */
+.fdg .h span{position:absolute;left:0;width:100%;top:0;line-height:0;white-space:nowrap}
+.fdg .h span::before{content:"";display:inline-block;width:0;height:var(--fb)}
 .fdg .t{top:0;border-radius:8px 8px 0 0}
 .fdg .b{top:calc(var(--fh) / 2);border-radius:0 0 8px 8px;background:color-mix(in srgb,var(--panel-3) 88%,#000)}
 .fdg .b span{top:calc(var(--fh) / -2)}
@@ -295,7 +297,7 @@ section.view.on{display:block;animation:rise .35s ease both}
 @media (prefers-reduced-motion:reduce){.fdg.go .ft,.fdg.go .fb{animation:none;visibility:hidden}}
 .land-stats > div > span{font:700 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .land-stats > div{gap:8px}
-@media (max-width:520px){.land-stats > div{padding:2px 12px}.flipn{--fh:34px;--fw:25px;--fs:19px}}
+@media (max-width:520px){.land-stats > div{padding:2px 12px}.flipn{--fh:34px;--fw:25px;--fs:19px;--fb:24px}}
 /* landing: two columns under the headline, the counter and the calculators line up with the two buttons above */
 .land-acts{display:grid;gap:12px;width:min(520px,100%);margin-top:6px}
 .hero #landCtas{display:grid;grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;margin:0}
@@ -308,7 +310,7 @@ a.btn{text-decoration:none}
 .land-row .land-stats > div,.land-row .land-stats > div:first-child{flex:1 1 auto;align-items:center;gap:5px;padding:0 3px;border-left:0;border-right:1px solid var(--line)}
 .land-row .land-stats > div:last-child{border-right:0}
 .land-row .land-stats > div > span{font-size:9.5px;letter-spacing:.05em;text-align:center}
-.land-row .flipn{gap:2px;--fh:34px;--fw:20px;--fs:16px}
+.land-row .flipn{gap:2px;--fh:34px;--fw:20px;--fs:16px;--fb:23px}
 .land-row .fdg .t{border-radius:6px 6px 0 0}
 .land-row .fdg .b{border-radius:0 0 6px 6px}
 .land-row .land-stats:has(> :nth-child(4)){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}
@@ -317,14 +319,14 @@ a.btn{text-decoration:none}
 @media (max-width:640px){
   .land-acts,.hero #landCtas,.land-row{gap:10px}
   .land-acts .btn{font-size:14px}
-  .land-row .flipn{gap:1px;--fh:26px;--fw:16px;--fs:13px}
+  .land-row .flipn{gap:1px;--fh:26px;--fw:16px;--fs:13px;--fb:18px}
   .land-row .fdg .t{border-radius:4px 4px 0 0}
   .land-row .fdg .b{border-radius:0 0 4px 4px}
   .land-calc span{width:min-content;text-align:left}
   .land-row .land-stats > div > span{font-size:8.5px;letter-spacing:.03em}
 }
 @media (max-width:370px){
-  .land-row .flipn{gap:0;--fw:13px;--fs:12px}
+  .land-row .flipn{gap:0;--fw:14px;--fs:13px;--fb:18px}
   .land-row .land-stats > div,.land-row .land-stats > div:first-child{padding:0 2px}
   .land-row .land-stats > div > span{font-size:8px;letter-spacing:0}
 }
@@ -1974,6 +1976,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=463658c295"></script>
+<script src="app.js?v=341ffdc85d"></script>
 </body>
 </html>
