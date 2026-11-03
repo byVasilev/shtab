@@ -1189,7 +1189,8 @@ div.vs-acts.vs-acts.vs-acts > .btn:first-child{grid-column:1/-1}
 .vs-sort{padding:8px 4px;margin:-8px -4px}
 .pw th button{padding:8px 4px;margin:-8px -4px}
 /* the page doesn't show through above the floating header */
-header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:calc(80px + 30px);z-index:-1;pointer-events:none;background:linear-gradient(var(--bg) 78%,transparent)}
+header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:calc(80px + 30px);z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+html.scrolled header.top::before{opacity:1}
 /* room for the whole header on small laptops and tablets */
 .brand{flex:none}
 @media (min-width:861px) and (max-width:1160px){.me-chip .nm{display:none} nav.tabs button{padding:0 8px}}
@@ -1935,6 +1936,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=69f55e43ed"></script>
+<script src="app.js?v=cbe04d2849"></script>
 </body>
 </html>
