@@ -296,6 +296,38 @@ section.view.on{display:block;animation:rise .35s ease both}
 .land-stats > div > span{font:700 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .land-stats > div{gap:8px}
 @media (max-width:520px){.land-stats > div{padding:2px 12px}.flipn{--fh:34px;--fw:25px;--fs:19px}}
+/* landing: two columns under the headline, the counter and the calculators line up with the two buttons above */
+.land-acts{display:grid;gap:12px;width:min(520px,100%);margin-top:6px}
+.hero #landCtas{display:grid;grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;margin:0}
+.hero #landBack{display:grid;width:100%;margin:0}
+.hero #landBack .btn{width:100%}
+.land-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:center}
+.land-calc{grid-column:2;width:100%;padding-inline:10px;white-space:normal;line-height:1.2}
+a.btn{text-decoration:none}
+.land-row .land-stats{grid-column:1;flex-wrap:nowrap;margin:0;min-width:0}
+.land-row .land-stats > div,.land-row .land-stats > div:first-child{flex:1 1 auto;align-items:center;gap:5px;padding:0 3px;border-left:0;border-right:1px solid var(--line)}
+.land-row .land-stats > div:last-child{border-right:0}
+.land-row .land-stats > div > span{font-size:9.5px;letter-spacing:.05em;text-align:center}
+.land-row .flipn{gap:2px;--fh:34px;--fw:20px;--fs:16px}
+.land-row .fdg .t{border-radius:6px 6px 0 0}
+.land-row .fdg .b{border-radius:0 0 6px 6px}
+.land-row .land-stats:has(> :nth-child(4)){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}
+.land-row .land-stats:has(> :nth-child(4)) > div:nth-child(2){border-right:0}
+.g-calc{width:100%;margin-bottom:12px}
+@media (max-width:640px){
+  .land-acts,.hero #landCtas,.land-row{gap:10px}
+  .land-acts .btn{font-size:14px}
+  .land-row .flipn{gap:1px;--fh:26px;--fw:16px;--fs:13px}
+  .land-row .fdg .t{border-radius:4px 4px 0 0}
+  .land-row .fdg .b{border-radius:0 0 4px 4px}
+  .land-calc span{width:min-content;text-align:left}
+  .land-row .land-stats > div > span{font-size:8.5px;letter-spacing:.03em}
+}
+@media (max-width:370px){
+  .land-row .flipn{gap:0;--fw:13px;--fs:12px}
+  .land-row .land-stats > div,.land-row .land-stats > div:first-child{padding:0 2px}
+  .land-row .land-stats > div > span{font-size:8px;letter-spacing:0}
+}
 .ally-card{min-width:190px}
 .ally-rot{display:block;height:34px;overflow:hidden}
 .ally-in{display:flex;flex-direction:column;gap:2px;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
@@ -1348,6 +1380,7 @@ html.boot #v-load{display:flex!important}
   <symbol id="i-sci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2 4 14h7l-1.5 8L19 10h-7z" fill="currentColor"/></symbol>
   <symbol id="i-q" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-cstar" viewBox="-50 -50 100 100" stroke-width="5" stroke-linejoin="round"><path fill="#ffd768" stroke="#ffd768" d="M0 0L-12.5 -21.7L0.0 -44.0Z"/><path fill="#f39a14" stroke="#f39a14" d="M0 0L0.0 -44.0L12.5 -21.7Z"/><path fill="#ffd768" stroke="#ffd768" d="M0 0L12.5 -21.7L38.1 -22.0Z"/><path fill="#f39a14" stroke="#f39a14" d="M0 0L38.1 -22.0L25.0 0.0Z"/><path fill="#ffd768" stroke="#ffd768" d="M0 0L25.0 0.0L38.1 22.0Z"/><path fill="#f39a14" stroke="#f39a14" d="M0 0L38.1 22.0L12.5 21.7Z"/><path fill="#ffd768" stroke="#ffd768" d="M0 0L12.5 21.7L0.0 44.0Z"/><path fill="#f39a14" stroke="#f39a14" d="M0 0L0.0 44.0L-12.5 21.7Z"/><path fill="#ffd768" stroke="#ffd768" d="M0 0L-12.5 21.7L-38.1 22.0Z"/><path fill="#f39a14" stroke="#f39a14" d="M0 0L-38.1 22.0L-25.0 0.0Z"/><path fill="#ffd768" stroke="#ffd768" d="M0 0L-25.0 0.0L-38.1 -22.0Z"/><path fill="#f39a14" stroke="#f39a14" d="M0 0L-38.1 -22.0L-12.5 -21.7Z"/></symbol>
   <symbol id="i-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2M8 9h5M8 13h5"/></symbol>
   <symbol id="i-hq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4l9 3-9 3"/><path d="M3 21h18"/></symbol>
@@ -1429,12 +1462,17 @@ html.boot #v-load{display:flex!important}
         <div class="hero-top"><span class="eyebrow" data-i18n="land_eyebrow">Для союзов Tiles Survive</span><button class="ver-pill" type="button" data-chg><i></i><b id="verPill"></b><span data-i18n="chg_open">Что нового →</span></button></div>
         <h1 data-i18n="land_h">Бафы, БМ и порядок в союзе — <em>в одном штабе</em></h1>
         <p class="lead" data-i18n="land_lead">Ваша очередь на бафы, уведомления и план на рейд — в одном месте — в браузере или в Telegram. А R5 и R4 ведут союз с телефона — очередь, БМ, битву союзов и рейд.</p>
+        <div class="land-acts">
         <div class="ctas" id="landCtas">
           <button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
           <button class="btn ghost" data-goauth="invite" data-i18n="land_cta_invite">У меня есть приглашение</button>
         </div>
         <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button></div>
-        <div class="land-stats" id="landStats" hidden></div>
+        <div class="land-row">
+          <div class="land-stats" id="landStats" hidden></div>
+          <a class="btn ghost land-calc" href="calc/"><svg aria-hidden="true"><use href="#i-cstar"/></svg><span data-i18n="calc_h">Калькуляторы героев</span></a>
+        </div>
+        </div>
       </div>
       <div class="hero-art">
         <img class="isl" src="art/web/island.png" data-i18n-alt="island_alt" alt="Островок из тайлов с поселением в тумане" width="840" height="470">
@@ -1936,6 +1974,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=e5c6b95f3a"></script>
+<script src="app.js?v=463658c295"></script>
 </body>
 </html>
