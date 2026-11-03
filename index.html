@@ -207,7 +207,7 @@ html[data-theme="dark"] .theme-btn .sun{display:block} html[data-theme="dark"] .
 @media (max-width:380px){.bar{gap:6px}.brand{gap:8px}.brand img{width:32px;height:32px}.lang button{min-width:28px;padding:0 4px}.theme-btn{width:32px;height:32px}}
 /* on phones the header sign-in is an icon; the landing page has the big buttons */
 #signInBtn svg{display:none;width:18px;height:18px}
-@media (max-width:480px){#signInBtn{padding:0;width:36px;min-height:36px}#signInBtn span{display:none}#signInBtn svg{display:block}}
+@media (max-width:480px){#signInBtn{flex:none;padding:0;width:36px;min-height:36px}#signInBtn span{display:none}#signInBtn svg{display:block}}
 @media (max-width:350px){.brand > span{display:none}}
 
 /* ---------- demo strip & view-only banner ---------- */
@@ -329,6 +329,71 @@ a.btn{text-decoration:none}
   .land-row .flipn{gap:0;--fw:14px;--fs:13px;--fb:18px}
   .land-row .land-stats > div,.land-row .land-stats > div:first-child{padding:0 2px}
   .land-row .land-stats > div > span{font-size:8px;letter-spacing:0}
+}
+/* ---------- hero calculators ---------- */
+.calc-wrap{display:grid;gap:14px}
+.calc-back{justify-self:start}
+.calc-wrap h1{font-size:22px}
+.calc-mode{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px;max-width:420px}
+.calc-mode button{min-height:44px;border:0;background:none;border-radius:10px;color:var(--muted);font:800 15px/1 var(--body);cursor:pointer}
+.calc-mode button[aria-selected="true"]{background:var(--panel-3);color:var(--fg)}
+.calc-grid{display:grid;gap:14px}
+.calc-l,.calc-r{display:grid;gap:14px;min-width:0;align-content:start}
+.calc-p{padding:16px;display:grid;gap:14px;min-width:0}
+.calc-stars{display:grid;gap:6px}
+.calc-srow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.calc-star{display:block;width:100%;height:auto;max-width:78px;margin:auto;overflow:visible}
+.calc-star.full.gold{filter:drop-shadow(0 2px 5px rgba(255,174,43,.45))}
+.calc-star.full.pur{filter:drop-shadow(0 2px 5px rgba(183,119,255,.45))}
+.calc-star g{cursor:pointer}
+.calc-star path{stroke-width:5;stroke-linejoin:round;transition:fill .12s,stroke .12s}
+.calc-star .e1{fill:var(--panel-3);stroke:var(--panel-3)}
+.calc-star .e2{fill:color-mix(in srgb,var(--panel-3) 86%,#000);stroke:color-mix(in srgb,var(--panel-3) 86%,#000)}
+.calc-star .p1{fill:#d3a2ff;stroke:#d3a2ff} .calc-star .p2{fill:#9a55ee;stroke:#9a55ee}
+.calc-star .g1{fill:#ffd768;stroke:#ffd768} .calc-star .g2{fill:#f39a14;stroke:#f39a14}
+.calc-star line{stroke:rgba(0,0,0,.28);stroke-width:2;stroke-linecap:round;pointer-events:none}
+.calc-now{display:grid;grid-template-columns:48px 1fr 48px;gap:8px;align-items:center}
+.calc-now output{text-align:center;font-weight:800;line-height:1.2}
+.calc-step{min-height:46px;border:1px solid var(--line);background:var(--panel-2);border-radius:12px;color:var(--fg);font:700 20px/1 var(--mono);cursor:pointer;padding:0}
+.calc-step:disabled{opacity:.4;cursor:default}
+.calc-chips{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.calc-chips button{min-height:42px;border:1px solid var(--line);background:var(--panel-2);border-radius:11px;color:var(--fg);font:700 14px/1 var(--mono);cursor:pointer;padding:0}
+.calc-chips button[aria-pressed="true"]{background:var(--bolt);border-color:var(--bolt);color:var(--on-bolt)}
+.calc-chips button:disabled{opacity:.32;cursor:default}
+.calc-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.calc-f{display:grid;gap:5px;min-width:0;align-content:end}
+.calc-f label{font-size:13px;font-weight:700;color:var(--muted)}
+.calc-in{width:100%;min-width:0;min-height:46px;background:var(--field,var(--bg-2));border:1px solid var(--line);border-radius:12px;padding:0 12px;color:var(--fg);font:700 16px/1 var(--mono);-moz-appearance:textfield;appearance:textfield}
+.calc-in::-webkit-outer-spin-button,.calc-in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.calc-res{background:var(--panel-2);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:10px}
+.calc-big{font:700 clamp(32px,10vw,42px)/1.05 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--accent-h,var(--bolt))}
+.calc-sub{font-weight:700;color:var(--muted);font-size:14px}
+.calc-prog{height:10px;border-radius:99px;background:var(--panel-3);overflow:hidden}
+.calc-prog i{display:block;height:100%;background:var(--grass);border-radius:99px;transition:width .2s}
+.calc-miss{font-weight:800}
+.calc-miss:empty{display:none}
+.calc-miss.short{color:var(--warn)} .calc-miss.ok{color:var(--up)}
+.calc-res details{font-size:13.5px;color:var(--muted)}
+.calc-res summary{cursor:pointer;font-weight:700;padding-block:3px}
+.calc-lines{display:grid;gap:4px;margin-top:6px;font-variant-numeric:tabular-nums}
+.calc-lines div{display:flex;justify-content:space-between;gap:10px}
+.calc-lines b{font-family:var(--mono);color:var(--fg)}
+.calc-skills{display:grid;gap:10px}
+.calc-skill{display:grid;grid-template-columns:minmax(64px,auto) 150px 1fr;gap:10px;align-items:center}
+.calc-skill b{font-weight:700;font-size:14px}
+.calc-cost{text-align:right;font:700 14px/1.2 var(--mono);color:var(--muted);min-width:0}
+.calc-stepper{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:4px}
+.calc-stepper .calc-in{text-align:center;padding:0 2px}
+.calc-stepper.goal{max-width:190px}
+.calc-wide{width:100%}
+.calc-promo{justify-items:center;text-align:center}
+@media (max-width:370px){.calc-skill{grid-template-columns:1fr 130px}.calc-cost{grid-column:1/-1;text-align:left}}
+@media (min-width:861px){
+  .calc-wrap h1{font-size:30px}
+  .calc-grid{grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start}
+  .calc-r{position:sticky;top:90px}
+  .calc-stars{grid-template-columns:1fr 1fr;gap:16px}
+  .calc-big{font-size:48px}
 }
 .ally-card{min-width:190px}
 .ally-rot{display:block;height:34px;overflow:hidden}
@@ -1472,7 +1537,7 @@ html.boot #v-load{display:flex!important}
         <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button></div>
         <div class="land-row">
           <div class="land-stats" id="landStats" hidden></div>
-          <a class="btn ghost land-calc" href="calc/"><svg aria-hidden="true"><use href="#i-cstar"/></svg><span data-i18n="calc_h">Калькуляторы героев</span></a>
+          <button class="btn ghost land-calc" data-tab="calc"><svg aria-hidden="true"><use href="#i-cstar"/></svg><span data-i18n="calc_h">Калькуляторы героев</span></button>
         </div>
         </div>
       </div>
@@ -1742,6 +1807,84 @@ html.boot #v-load{display:flex!important}
     </div>
   </section>
 
+  <section class="view" id="v-calc"><div class="calc-wrap">
+    <button class="btn ghost sm calc-back" data-home id="calcBack"></button>
+    <h1 data-i18n="calc_h">Калькуляторы героев</h1>
+    <div class="calc-mode" role="tablist">
+      <button role="tab" id="calcTStars" data-i18n="calc_tab_stars">Звёзды</button>
+      <button role="tab" id="calcTBooks" data-i18n="calc_tab_books">Навыки</button>
+    </div>
+    <div id="calcPStars" class="calc-grid">
+      <div class="calc-l">
+        <div class="panel calc-p">
+          <span class="eyebrow" data-i18n="calc_now_h">Сейчас у героя</span>
+          <div class="calc-stars" id="calcStars"></div>
+          <div class="calc-now">
+            <button class="calc-step" id="calcMinus" data-i18n-aria="calc_minus">−</button>
+            <output id="calcNow"></output>
+            <button class="calc-step" id="calcPlus" data-i18n-aria="calc_plus">+</button>
+          </div>
+          <p class="hint" style="margin:0" data-i18n="calc_now_hint">Нажмите на кусочек, до которого прокачан герой. Цена одинакова для SSR, SR и R.</p>
+        </div>
+        <div class="panel calc-p">
+          <span class="eyebrow" data-i18n="calc_goal_h">Цель</span>
+          <div class="calc-chips" id="calcGoalStars"></div>
+        </div>
+        <div class="panel calc-p">
+          <span class="eyebrow" data-i18n="calc_have_h">Есть в наличии</span>
+          <div class="calc-2">
+            <div class="calc-f"><label for="calcHero" data-i18n="calc_have_hero">Фрагменты героя</label><input class="calc-in" id="calcHero" type="number" inputmode="numeric" min="0" placeholder="0"></div>
+            <div class="calc-f"><label for="calcUni" data-i18n="calc_have_uni">Универсальные</label><input class="calc-in" id="calcUni" type="number" inputmode="numeric" min="0" placeholder="0"></div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-r">
+        <div class="calc-res" aria-live="polite">
+          <div class="calc-sub" id="calcSLabel"></div>
+          <div class="calc-big" id="calcSNeed"></div>
+          <div class="calc-prog" id="calcSBarW"><i id="calcSBar"></i></div>
+          <div class="calc-miss" id="calcSMiss"></div>
+          <details><summary data-i18n="calc_how">Как посчитано</summary><div class="calc-lines" id="calcSLines"></div></details>
+        </div>
+        <button class="btn ghost calc-wide" id="calcSReset" data-i18n="calc_reset">Сбросить</button>
+      </div>
+    </div>
+    <div id="calcPBooks" class="calc-grid" hidden>
+      <div class="calc-l">
+        <div class="panel calc-p">
+          <span class="eyebrow" data-i18n="calc_sk_h">Уровни навыков сейчас</span>
+          <div class="calc-skills" id="calcSkills"></div>
+        </div>
+        <div class="panel calc-p">
+          <span class="eyebrow" data-i18n="calc_sk_goal">Поднять все до уровня</span>
+          <div class="calc-stepper goal">
+            <button class="calc-step" id="calcGMinus" data-i18n-aria="calc_lower">−</button>
+            <input class="calc-in" id="calcGoalBook" type="number" inputmode="numeric" min="2" max="40" data-i18n-aria="calc_goal_lvl">
+            <button class="calc-step" id="calcGPlus" data-i18n-aria="calc_higher">+</button>
+          </div>
+          <div class="calc-chips" id="calcGoalBooks"></div>
+        </div>
+        <div class="panel calc-p">
+          <div class="calc-f"><label for="calcBooks" data-i18n="calc_sk_have">Книг навыков есть</label><input class="calc-in" id="calcBooks" type="number" inputmode="numeric" min="0" placeholder="0"></div>
+        </div>
+      </div>
+      <div class="calc-r">
+        <div class="calc-res" aria-live="polite">
+          <div class="calc-sub" id="calcBLabel"></div>
+          <div class="calc-big" id="calcBNeed"></div>
+          <div class="calc-prog" id="calcBBarW"><i id="calcBBar"></i></div>
+          <div class="calc-miss" id="calcBMiss"></div>
+        </div>
+        <button class="btn ghost calc-wide" id="calcBReset" data-i18n="calc_reset">Сбросить</button>
+      </div>
+    </div>
+    <div class="panel calc-p calc-promo" id="calcPromo" hidden>
+      <p style="margin:0" data-i18n="calc_promo">Ведёте союз? Очередь бафов, рейды и битву союзов можно держать в одном месте.</p>
+      <button class="btn bolt" data-goauth="create" data-i18n="land_cta_create">Подключить свой союз</button>
+    </div>
+    <p class="hint" style="margin:0" data-i18n="calc_note">Данные версии игры 2.6.200. Перед большими тратами сверяйте цену в игре.</p>
+  </div></section>
+
   <!-- PLAYER PAGE -->
   <section class="view" id="v-player"><div id="pfBody" class="pf"></div></section>
 
@@ -1976,6 +2119,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=341ffdc85d"></script>
+<script src="app.js?v=de0b8a40d6"></script>
 </body>
 </html>
