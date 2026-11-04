@@ -502,6 +502,7 @@ a.btn{text-decoration:none}
 .sub-note{margin:0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--bolt) 16%,transparent);font-size:14px;line-height:1.45}
 /* raid: tabs, the result line and form */
 .raid-tabs{margin-bottom:16px}
+.ctr-row{display:grid;grid-template-columns:minmax(0,160px) auto;gap:10px;justify-content:start}
 .rh-back{display:flex}
 .rh-groups{margin-top:16px}
 .raid-res{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:14px 18px;margin-bottom:16px}
@@ -1963,6 +1964,7 @@ html.boot #v-load{display:flex!important}
       <p class="hint" id="ownFindHint" data-i18n="own_find_hint">Минимум 2 символа. Ищет во всех союзах.</p>
       <div class="stack" style="gap:10px" id="ownFound"></div>
     </div>
+    <div class="panel pad stack" id="ownCtr" hidden style="margin-bottom:16px"></div>
     <div class="stack" id="ownStatsTab" hidden style="gap:16px"></div>
     <div class="panel pad" id="ownInbox" hidden><div class="fb-list" id="inboxList"></div></div>
     <div class="panel pad stack" id="ownCast" hidden>
@@ -2121,6 +2123,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=d7c4e7d60e"></script>
+<script src="app.js?v=140d70e5f7"></script>
 </body>
 </html>
