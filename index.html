@@ -236,6 +236,11 @@ section.view.on{display:block;animation:rise .35s ease both}
 .hero h1{font-size:clamp(28px,5.6vw,52px);line-height:1.08}
 .hero h1 em{font-style:normal;color:var(--accent-h,var(--bolt))}
 .app-foot{display:flex;justify-content:center;padding:28px 0 8px}
+/* Help and About side by side, the same size, the pair centred */
+.app-foot .foot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(360px,100%)}
+.app-foot .foot-pair .btn{width:100%;justify-content:center}
+/* signed in, the header is full (sections, the player's chip): Help lives in the footer instead */
+.bar:has(#nav:not([hidden])) .help-btn{display:none}
 
 /* the alliance name is dropped on phones so the state number fits */
 @media (max-width:480px){#allyName .an{display:none}}
@@ -2128,7 +2133,7 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
   </section>
-  <div class="app-foot" id="appFoot" hidden><button class="btn ghost sm" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn">О сервисе</span></button></div>
+  <div class="app-foot" id="appFoot" hidden><div class="foot-pair"><button class="btn ghost sm" type="button" data-tab="help"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="help_btn">Помощь</span></button><button class="btn ghost sm" type="button" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn">О сервисе</span></button></div></div>
 </div>
 
 <dialog class="act" id="actSheet"><div class="act-b" id="actSheetB"></div></dialog>
@@ -2138,6 +2143,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=fb9da96c33"></script>
+<script src="app.js?v=e68900b778"></script>
 </body>
 </html>
