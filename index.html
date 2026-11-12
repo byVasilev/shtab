@@ -1764,7 +1764,7 @@ html.boot #v-load{display:flex!important}
       </form>
       <div class="panel pw">
         <div class="tools">
-          <input class="inp" id="pwSearch" type="search" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
+          <input class="inp" id="pwSearch" type="search" maxlength="40" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
           <div class="chips" role="group" data-i18n-aria="pw_filter_aria">
             <button data-pf="all" aria-pressed="true" data-i18n="pf_all">Все</button>
             <button data-pf="stale" aria-pressed="false" data-i18n="pf_stale">Давно не обновляли</button>
@@ -1912,8 +1912,8 @@ html.boot #v-load{display:flex!important}
         <div class="f">
           <label for="pX" data-i18n="coords">Координаты поселения</label>
           <div class="xy">
-            <div class="cell"><span>X:</span><input id="pX" inputmode="numeric" data-i18n-aria="coord_x"></div>
-            <div class="cell"><span>Y:</span><input id="pY" inputmode="numeric" data-i18n-aria="coord_y"></div>
+            <div class="cell"><span>X:</span><input id="pX" inputmode="numeric" maxlength="4" data-i18n-aria="coord_x"></div>
+            <div class="cell"><span>Y:</span><input id="pY" inputmode="numeric" maxlength="4" data-i18n-aria="coord_y"></div>
           </div>
           <span class="hint" id="pStale"></span>
         </div>
@@ -1964,7 +1964,7 @@ html.boot #v-load{display:flex!important}
     <div class="stats" id="ownStats"></div>
     <div class="panel" id="ownAlly"><div class="own-list" id="ownList"></div></div>
     <div class="panel pad stack" id="ownPeople" hidden>
-      <input class="inp" id="ownFind" type="search" style="max-width:420px" autocomplete="off" data-i18n-ph="own_find_ph" data-i18n-aria="own_find_ph">
+      <input class="inp" id="ownFind" type="search" maxlength="40" style="max-width:420px" autocomplete="off" data-i18n-ph="own_find_ph" data-i18n-aria="own_find_ph">
       <p class="hint" id="ownFindHint" data-i18n="own_find_hint">Минимум 2 символа. Ищет во всех союзах.</p>
       <div class="stack" style="gap:10px" id="ownFound"></div>
     </div>
@@ -2011,7 +2011,7 @@ html.boot #v-load{display:flex!important}
         <div class="panel pad stack">
           <h3><span data-i18n="mem_h">Участники союза</span> <span class="cnt neutral" id="cMem"></span></h3>
           <p class="hint" id="memNote"></p>
-          <input class="inp" id="memSearch" type="search" style="max-width:340px" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
+          <input class="inp" id="memSearch" type="search" maxlength="40" style="max-width:340px" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
           <div class="mem" id="members"></div>
           <div id="removedBox"></div>
         </div>
@@ -2077,7 +2077,7 @@ html.boot #v-load{display:flex!important}
             <div class="f" style="flex:0 1 220px"><label for="fbType" data-i18n="fb_type">Тема</label>
               <select class="inp" id="fbType"><option value="idea" data-i18n="fb_idea">Идея или пожелание</option><option value="bug" data-i18n="fb_bug">Что-то не работает</option><option value="other" data-i18n="fb_other">Другое</option></select></div>
           </div>
-          <div class="f"><label for="fbText" data-i18n="fb_text">Сообщение</label><textarea class="inp" id="fbText" data-i18n-ph="fb_ph"></textarea></div>
+          <div class="f"><label for="fbText" data-i18n="fb_text">Сообщение</label><textarea class="inp" id="fbText" maxlength="2000" data-i18n-ph="fb_ph"></textarea></div>
           <p class="err" role="alert"></p>
           <button class="btn teal" type="submit" style="align-self:flex-start" data-i18n="fb_send">Отправить</button>
           <div id="fbMine"></div>
@@ -2106,7 +2106,7 @@ html.boot #v-load{display:flex!important}
         <div class="panel pad stack" id="vsMinBox">
           <h3 data-i18n="vsmin_h">Норма союза в битве (VS)</h3>
           <p class="hint" style="font-size:14px" data-i18n="vsmin_p">Сколько очков в день вы ждёте от каждого. В таблице VS всегда подсвечиваются нули и дни меньше 5M (не все награды дня), а с нормой — ещё и дни ниже неё.</p>
-          <div class="row" style="gap:8px;align-items:center"><input class="inp mono" id="vsMinIn" inputmode="decimal" style="max-width:120px" data-i18n-ph="vsmin_ph"><b>M</b>
+          <div class="row" style="gap:8px;align-items:center"><input class="inp mono" id="vsMinIn" inputmode="decimal" maxlength="12" style="max-width:120px" data-i18n-ph="vsmin_ph"><b>M</b>
             <button class="btn bolt sm" data-vsminsave data-i18n="save">Сохранить</button><button class="btn ghost sm" data-vsminclear data-i18n="vsmin_clear">Без нормы</button></div>
           <p class="muted" style="margin:0;font-size:13.5px" id="vsMinNow"></p>
         </div>
@@ -2127,6 +2127,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=8e0241adae"></script>
+<script src="app.js?v=bd6607175b"></script>
 </body>
 </html>
