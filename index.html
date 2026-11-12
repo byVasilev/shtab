@@ -780,6 +780,7 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .vs-read .mono{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vs-read select{min-height:38px;padding-top:0;padding-bottom:0}
 .vs-read .btn{align-self:flex-start;grid-area:auto}
+.bfx-row{display:grid;gap:8px;padding:10px 0;border-top:1px solid var(--line)}.bfx-who{display:flex;flex-direction:column;gap:2px;min-width:0}.bfx-who b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bfx-who span{font-size:13px}
 .vs-idle{border-color:color-mix(in srgb,var(--warn) 45%,var(--line))}.vs-idle-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.vs-idle-who{display:flex;flex-direction:column;gap:2px;min-width:0}.vs-idle-who b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media (max-width:620px){.vs-idle-row{grid-template-columns:1fr}}
 .vs-mlist{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;font-size:14px}.vs-mnew{border-color:color-mix(in srgb,var(--bolt) 45%,var(--line))}.vs-mall{margin-top:12px}
 .seg.vs-keep{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.seg.vs-keep button{justify-content:center;overflow:hidden;text-overflow:ellipsis;min-width:0}.seg.vs-keep button:disabled{opacity:.45}
@@ -2038,6 +2039,7 @@ html.boot #v-load{display:flex!important}
       </div>
       <div class="hq-col hq-side">
         <div class="panel pad stack"><h3><span data-i18n="hq_dis">Баф не пришёл</span> <span class="cnt" id="cDis"></span></h3><div class="stack" style="gap:10px" id="disputes"></div></div>
+        <div class="panel pad stack" id="hqMarks"></div>
         <div class="panel pad stack"><h3><span data-i18n="hq_stale">БМ не обновляли больше недели</span> <span class="cnt" id="cStale"></span></h3><div class="row" style="gap:6px" id="staleList"></div><button class="btn sm bolt" id="remind" style="align-self:flex-start" data-i18n="remind">Напомнить им</button></div>
       </div>
     </div>
@@ -2130,6 +2132,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=479ed50bdf"></script>
+<script src="app.js?v=d6db12e6c1"></script>
 </body>
 </html>
