@@ -780,6 +780,7 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .vs-read .mono{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vs-read select{min-height:38px;padding-top:0;padding-bottom:0}
 .vs-read .btn{align-self:flex-start;grid-area:auto}
+.seg.vs-keep{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.seg.vs-keep button{justify-content:center;overflow:hidden;text-overflow:ellipsis;min-width:0}.seg.vs-keep button:disabled{opacity:.45}
 .vs-pts{min-height:38px;text-align:right;font-family:var(--mono)}
 @media (max-width:520px){.vs-hrow{grid-template-columns:1fr auto auto}.vs-hrow .pill{display:none}.vs-rrow{grid-template-columns:28px minmax(0,1fr) 44px;grid-template-areas:"rank read read" "rank pts x"}
   .vs-rank{grid-area:rank}.vs-read{grid-area:read}.vs-pts{grid-area:pts}.vs-rrow .btn{grid-area:x}}
@@ -2128,6 +2129,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=1babe642ec"></script>
+<script src="app.js?v=4da173c67f"></script>
 </body>
 </html>
