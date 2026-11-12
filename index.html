@@ -780,6 +780,7 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .vs-read .mono{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vs-read select{min-height:38px;padding-top:0;padding-bottom:0}
 .vs-read .btn{align-self:flex-start;grid-area:auto}
+.vs-idle{border-color:color-mix(in srgb,var(--warn) 45%,var(--line))}.vs-idle-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.vs-idle-who{display:flex;flex-direction:column;gap:2px;min-width:0}.vs-idle-who b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media (max-width:620px){.vs-idle-row{grid-template-columns:1fr}}
 .vs-mlist{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;font-size:14px}.vs-mnew{border-color:color-mix(in srgb,var(--bolt) 45%,var(--line))}.vs-mall{margin-top:12px}
 .seg.vs-keep{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.seg.vs-keep button{justify-content:center;overflow:hidden;text-overflow:ellipsis;min-width:0}.seg.vs-keep button:disabled{opacity:.45}
 .vs-pts{min-height:38px;text-align:right;font-family:var(--mono)}
@@ -1431,8 +1432,7 @@ span.ava.ava.ava.ava.r5{color:var(--on-bolt)} span.ava.ava.ava.ava.r4{color:var(
 span.ava.ava.ava.ava.r3,span.ava.ava.ava.ava:not(.r1,.r2,.r4,.r5){color:var(--on-grass)}
 span.ava.ava.ava.ava.r2{color:var(--fg)} span.ava.ava.ava.ava.r1{color:#fff}
 #pinReqBox .req .btn{min-width:124px}
-@media (max-width:520px){#pinReqBox .req > div{flex-basis:100%}#pinReqBox .req .btn{flex:1 1 0}}
-</style>
+@media (max-width:520px){#pinReqBox .req > div{flex-basis:100%}#pinReqBox .req .btn{flex:1 1 0}}</style>
 
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -2130,6 +2130,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=62a89b05a6"></script>
+<script src="app.js?v=479ed50bdf"></script>
 </body>
 </html>
