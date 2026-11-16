@@ -207,8 +207,14 @@ html[data-theme="dark"] .theme-btn .sun{display:block} html[data-theme="dark"] .
 @media (max-width:380px){.bar{gap:6px}.brand{gap:8px}.brand img{width:32px;height:32px}.lang button{min-width:28px;padding:0 4px}.theme-btn{width:32px;height:32px}}
 /* on phones the header sign-in is an icon; the landing page has the big buttons */
 #signInBtn svg{display:none;width:18px;height:18px}
-@media (max-width:480px){#signInBtn{flex:none;padding:0;width:36px;min-height:36px}#signInBtn span{display:none}#signInBtn svg{display:block}}
+@media (max-width:480px){#signInBtn{flex:none;padding:0;width:38px;min-height:38px;height:38px;border-radius:12px}#signInBtn span{display:none}#signInBtn svg{display:block}}
 @media (max-width:350px){.brand > span{display:none}}
+/* the header fits a phone from the very first frame: the sign-in icon is the size of the theme button,
+   the signed-out tagline gives way, and as a last resort the title wraps instead of pushing buttons off the screen */
+@media (max-width:420px){#signInBtn{width:34px;min-height:34px;height:34px;border-radius:10px}.brand b{font-size:13px}}
+@media (max-width:380px){#signInBtn{width:32px;min-height:32px;height:32px}}
+@media (max-width:560px){.bar:has(#signInBtn:not([hidden])) .brand small{display:none}}
+@media (max-width:480px){.brand,.brand > span{flex:0 1 auto;min-width:0}.brand b{white-space:normal;line-height:1.05}}
 
 /* ---------- demo strip & view-only banner ---------- */
 .demo .demo-toggle{display:none}
@@ -239,8 +245,6 @@ section.view.on{display:block;animation:rise .35s ease both}
 /* Help and About side by side, the same size, the pair centred */
 .app-foot .foot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(360px,100%)}
 .app-foot .foot-pair .btn{width:100%;justify-content:center}
-/* signed in, the header is full (sections, the player's chip): Help lives in the footer instead */
-.bar:has(#nav:not([hidden])) .help-btn{display:none}
 
 /* the alliance name is dropped on phones so the state number fits */
 @media (max-width:480px){#allyName .an{display:none}}
@@ -1553,7 +1557,6 @@ html.boot #v-load{display:flex!important}
         <button data-lang="ru" aria-pressed="true">RU</button>
         <button data-lang="en" aria-pressed="false">EN</button>
       </div>
-      <button class="theme-btn help-btn" type="button" data-tab="help" data-i18n-aria="help_btn"><b aria-hidden="true">?</b></button>
       <button class="theme-btn" data-themetoggle data-i18n-aria="theme_aria"><svg class="sun"><use href="#i-sun"/></svg><svg class="moon"><use href="#i-moon"/></svg></button>
       <button class="btn sm ghost" id="signInBtn" data-goauth="login" data-i18n-aria="sign_in"><svg aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="sign_in">Войти</span></button>
       <button class="me-chip" id="meChip" data-tab="profile" hidden><span class="ava" id="meAva"></span><span class="nm" id="meNick"></span></button>
@@ -2179,6 +2182,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=b919e7085b"></script>
+<script src="app.js?v=d2123199a7"></script>
 </body>
 </html>
