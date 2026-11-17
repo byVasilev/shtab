@@ -947,6 +947,13 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 ol.steps-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font:500 14px/1.45 var(--body)}
 .note{font:500 13.5px/1.45 var(--body);background:var(--brick-soft);border-radius:14px;padding:12px 14px}
 .note b{font-weight:800}
+.qcheck{display:grid;gap:10px;margin-bottom:16px}.qc-top{display:flex;align-items:center;gap:8px}.qc-top h2{margin:0;font-size:18px}
+.qc-list{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.qc-card{display:grid;gap:8px;padding:12px;border-radius:14px;background:var(--panel-2);min-width:0}
+.qc-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 10px}.qc-h b{font-weight:800;overflow-wrap:anywhere}
+.qc-sub,.qc-ans{margin:0;font-size:14px}.qc-card .err:empty{display:none}
+.qc-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.qc-btns .btn{width:100%;justify-content:center;min-height:44px}.qc-btns .btn:only-child{grid-column:1/-1}
+.arch-closed{margin:0 0 10px}.arch-by{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--panel-2);color:var(--fg);font:800 12px/1 var(--body)}
 .req{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:12px;border-radius:14px;background:var(--panel-2)}
 .req > div{margin-right:auto;min-width:0;display:flex;flex-direction:column;gap:3px}
 .req b{font-weight:800;overflow-wrap:anywhere}
@@ -1788,6 +1795,7 @@ html.boot #v-load{display:flex!important}
         <button class="btn bolt sm" id="qJoinBtn" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
       </div>
     </div>
+    <div class="panel pad qcheck" id="qCheck" hidden></div>
     <div class="panel qwrap" id="qwrap"></div>
     <p class="qfoot" id="qsum"></p>
   </section>
@@ -2199,6 +2207,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=8e1b9743ae"></script>
+<script src="app.js?v=87e50edf67"></script>
 </body>
 </html>
