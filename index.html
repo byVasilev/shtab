@@ -1156,6 +1156,7 @@ details.guide .tr-note{padding:0 20px 10px}
 .fb .top b{color:var(--fg)}
 .fb .top .pill{margin-left:auto}
 .fb:has(.fb-x){position:relative}.fb:has(.fb-x) .top{padding-right:40px;min-height:32px}
+.inbox-tools{display:grid;gap:10px;margin-bottom:16px}.chips.inbox-f{display:flex;flex-wrap:wrap;width:auto}
 .fb-btns{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;margin-top:4px}.fb-btns .btn{width:100%}
 .fb .fb-x.armed{background:#e5484d;border-color:transparent;color:#fff;font-weight:800}
 .fb .fb-x{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:10px;font-size:13px}
@@ -2069,7 +2070,7 @@ html.boot #v-load{display:flex!important}
     </div>
     <div class="panel pad stack" id="ownCtr" hidden style="margin-bottom:16px"></div>
     <div class="stack" id="ownStatsTab" hidden style="gap:16px"></div>
-    <div class="panel pad" id="ownInbox" hidden><div class="fb-list" id="inboxList"></div></div>
+    <div class="panel pad" id="ownInbox" hidden><div class="inbox-tools"><input class="inp" id="inboxQ" type="search" maxlength="40" data-i18n-ph="inb_q" data-i18n-aria="inb_q"><div class="chips inbox-f" role="group" id="inboxF"></div></div><div class="fb-list" id="inboxList"></div></div>
     <div class="panel pad stack" id="ownCast" hidden>
       <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bell"/></svg><span data-i18n="cast_h">Уведомление пользователям сервиса</span></h3>
       <p class="hint" style="font-size:14px" data-i18n="cast_p">Расскажите о доработках и новых функциях. Придёт тем, у кого включены уведомления в браузере или подключён Telegram, во всех союзах (кроме заблокированных).</p>
@@ -2239,6 +2240,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=ac70b48957"></script>
+<script src="app.js?v=ebc77ae762"></script>
 </body>
 </html>
