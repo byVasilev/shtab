@@ -1074,6 +1074,24 @@ details.guide .g-more{margin:-4px 20px 14px;display:inline-block}
 .nt-help p{margin:0;color:var(--muted);font-size:14px}
 .ann-item{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:var(--panel-2)}
 .ann-item.off{opacity:.6}
+.evt-acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.evt-acts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.evt-acts .btn{width:100%;justify-content:center}
+.evt-bar{height:6px;border-radius:4px;background:var(--panel-3);overflow:hidden}
+.evt-bar i{display:block;height:100%;background:var(--teal);border-radius:4px}
+.evt-item.last .evt-bar i{background:var(--bolt)}
+.evt-left{font:700 13.5px/1.3 var(--body);color:var(--fg)}
+.evt-tops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.evt-tops .btn{width:100%;justify-content:center}
+.evt-now{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.evt-now h3{display:flex;align-items:center;gap:8px;margin:0}
+.evt-now h3 svg{width:20px;height:20px;color:var(--teal)}
+.evt-row{display:flex;flex-direction:column;gap:5px;padding:12px 14px;border-radius:12px;background:var(--panel-2)}
+.evt-row b{font:700 14.5px/1.3 var(--body)}
+.evt-row p{margin:0;font-size:13.5px;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere}
+.evt-row .meta{font-size:12.5px;color:var(--muted)}
+.evt-row.last{outline:2px solid var(--bolt);outline-offset:-2px}
+.evt-row.last .evt-bar i{background:var(--bolt)}
 .ann-item b{font:700 14px/1.3 var(--body)}
 .ann-item p{margin:0;font-size:13.5px;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere}
 .ann-item .meta{font:600 12.5px/1.3 var(--body);color:var(--muted)}
@@ -1543,6 +1561,7 @@ html.boot #v-load{display:flex!important}
   <symbol id="i-vs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></symbol>
   <symbol id="i-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M8 14h3v3H8z"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
   <symbol id="i-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></symbol>
@@ -1772,6 +1791,7 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-now">
     <div class="vh"><div><h1 data-i18n="now_h">Кому кидаем сейчас</h1><p data-i18n="now_p">Найдите поселение по координатам, киньте баф в игре и отметьте здесь.</p></div></div>
     <div class="pinslot"></div>
+    <div id="evNow"></div>
     <details class="panel coords-help"><summary><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="find_h">Как найти игрока по координатам</span></summary>
       <ol class="steps-list"><li data-i18n="find1">Откройте карту.</li><li data-i18n="find2">В самом верху нажмите на звёздочку с координатами.</li><li data-i18n="find3">В открывшемся окне замените цифры X и Y на координаты из карточки ниже и нажмите «Вперёд».</li></ol></details>
     <div class="now" id="nowCards"></div>
@@ -2080,6 +2100,7 @@ html.boot #v-load{display:flex!important}
       <button data-hqtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people">Состав</span><span class="dotn" id="hqtPeople" hidden></span></button>
       <button data-hqtab="activity" role="tab"><svg><use href="#i-chart"/></svg><span data-i18n="hqt_activity">Активность</span><span class="dotn" id="hqtActivity" hidden></span></button>
       <button data-hqtab="comms" role="tab"><svg><use href="#i-send"/></svg><span data-i18n="hqt_comms">Связь</span><span class="dotn" id="hqtComms" hidden></span></button>
+      <button data-hqtab="events" role="tab"><svg><use href="#i-cal"/></svg><span data-i18n="hqt_events">События</span><span class="dotn" id="hqtEvents" hidden></span></button>
       <button data-hqtab="settings" role="tab"><svg><use href="#i-hq"/></svg><span data-i18n="hqt_settings">Настройки</span></button>
     </div>
     <div class="hq hq-pane" data-pane="people">
@@ -2164,6 +2185,17 @@ html.boot #v-load{display:flex!important}
         </form>
       </div>
     </div>
+    <!-- game events: templates R4/R5 start in one tap, a reminder a day before the end -->
+    <div class="hq hq-pane" data-pane="events">
+      <div class="hq-col hq-main">
+        <div class="panel pad stack" id="evRunBox"></div>
+        <div class="panel pad stack" id="evTplBox"></div>
+      </div>
+      <div class="hq-col hq-side">
+        <details class="panel coords-help" open><summary><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-i18n="ev_how_h">Как работают события</span></summary>
+          <ol class="steps-list"><li data-i18n="ev_how1">Заведите шаблон для каждого события игры: название, сколько дней идёт и, если нужно, подсказку, на что тратить бонусы.</li><li data-i18n="ev_how2">Когда событие началось в игре, нажмите «Запустить». Если забыли сразу — поставьте настоящее время старта, сайт сам посчитает конец.</li><li data-i18n="ev_how3">Игроки видят событие на главной странице с таймером. За сутки до конца им и в чат союза придёт напоминание потратить бонусы.</li><li data-i18n="ev_how4">Ошиблись с датами — «Изменить». Событие кончилось раньше — «Завершить». «Напомнить» отправит напоминание ещё раз прямо сейчас.</li></ol></details>
+      </div>
+    </div>
     <div class="hq hq-pane" data-pane="settings">
       <div class="hq-col hq-main">
         <div class="panel pad stack">
@@ -2207,6 +2239,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=8311131c0e"></script>
+<script src="app.js?v=1b9b74b879"></script>
 </body>
 </html>
