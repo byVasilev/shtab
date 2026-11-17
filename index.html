@@ -970,6 +970,13 @@ ol.steps-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:
 .news-form{padding:20px;display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
 .check{display:flex;align-items:center;gap:10px;font:700 14px/1.3 var(--body);cursor:pointer}
 .check input{width:20px;height:20px;accent-color:var(--bolt);flex:none}
+/* helper rights sheet: six areas, the term, Save + Take away as an even pair */
+.hlp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.hlp-k{align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}
+.hlp-k span{display:flex;flex-direction:column;gap:2px}.hlp-k small{font:500 12.5px/1.3 var(--body);color:var(--muted)}
+.hlp-term{display:grid;grid-template-columns:repeat(3,1fr);width:100%}
+.hlp-btns{display:grid;gap:8px}.hlp-btns.two{grid-template-columns:1fr 1fr}.hlp-btns .btn{width:100%;justify-content:center}
+.help-chip{background:color-mix(in srgb,var(--bolt) 16%,var(--panel-2));color:var(--bolt)}.pf-hlp{margin:12px 0 0}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px;margin-bottom:22px}
 .stat{padding:16px 18px;display:flex;flex-direction:column;gap:8px}
 .stat .v{font:600 26px/1.1 var(--display)}
@@ -2241,6 +2248,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=c36cec55f8"></script>
+<script src="app.js?v=5993f61ec0"></script>
 </body>
 </html>
