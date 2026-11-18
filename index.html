@@ -1041,7 +1041,7 @@ ol.steps-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:
 .meter i{display:block;height:100%;background:var(--grass);border-radius:5px}
 .gr{font:700 12.5px/1 var(--mono);color:var(--up);white-space:nowrap}
 .pwgrid{display:flex;flex-direction:column;gap:20px}
-#pwMine{display:flex;flex-direction:column;gap:14px}
+[data-pw=mine]{display:flex;flex-direction:column;gap:14px}
 .sqin{display:flex;flex-direction:column;gap:8px}
 .sqin label{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,130px) 30px;align-items:center;gap:10px;font:800 14px/1 var(--body)}
 .sqin label::after{content:attr(data-unit);font:700 12px/1 var(--body);color:var(--muted)}
@@ -1051,13 +1051,13 @@ ol.steps-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:
 .total b{font:600 26px/1 var(--display);white-space:nowrap}
 .total small{grid-column:1 / -1}
 @media (min-width:760px){
-  #pwMine{display:grid;grid-template-columns:minmax(0,1fr) 260px;grid-template-areas:"sq tot" "hint btn" "err err";gap:12px 20px;align-items:center}
-  #pwMine .sqin{grid-area:sq;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-  #pwMine .sqin label{display:flex;flex-direction:column;align-items:stretch;gap:6px;font-size:12.5px;color:var(--muted)}
-  #pwMine .sqin label::after{display:none}
-  #pwMine .sqin input{text-align:center}
-  #pwMine .total{grid-area:tot;align-self:end}
-  #pwMine .hint{grid-area:hint} #pwMine .err{grid-area:err} #pwMine .btn{grid-area:btn}
+  [data-pw=mine]{display:grid;grid-template-columns:minmax(0,1fr) 260px;grid-template-areas:"sq tot" "hint btn" "err err";gap:12px 20px;align-items:center}
+  [data-pw=mine] .sqin{grid-area:sq;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  [data-pw=mine] .sqin label{display:flex;flex-direction:column;align-items:stretch;gap:6px;font-size:12.5px;color:var(--muted)}
+  [data-pw=mine] .sqin label::after{display:none}
+  [data-pw=mine] .sqin input{text-align:center}
+  [data-pw=mine] .total{grid-area:tot;align-self:end}
+  [data-pw=mine] .hint{grid-area:hint} [data-pw=mine] .err{grid-area:err} [data-pw=mine] .btn{grid-area:btn}
 }
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
 .tools .inp{flex:1 1 180px;max-width:260px;height:42px}
@@ -1895,8 +1895,42 @@ html.boot #v-load{display:flex!important}
       <div class="dn-go"><button class="btn ghost" type="button" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="dq_go_now">Кидать бафы — в разделе «Бафы» →</span></button></div>
     </div>
     <div class="demo-part" data-demo="power" hidden>
-      <div class="demo-feats">
-        <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Вносите БМ своих отрядов и видите свой рост неделя за неделей. Руководству — общая таблица с сортировкой, чтобы знать, кого ставить на событие.</p></div>
+      <section class="spot solo">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="dp_eye">Боевая мощь (БМ)</span>
+          <h2 data-i18n="dp_h">БМ всего союза в одной таблице<br>и рост каждого игрока неделя за неделей</h2>
+          <p data-i18n="dp_p">Это раздел «БМ». Раз или два в неделю каждый игрок вписывает силу своих пяти отрядов так, как она показана в игре: на это уходит минута. Сайт хранит каждое обновление, поэтому видно, кто растёт и насколько быстро. Таблицу видит весь союз: руководство сразу понимает, кого ставить на событие или в рейд, а игроки видят своё место среди союзников. Переключите «Смотреть как» на R4/R5, чтобы увидеть, что в разделе может руководство.</p>
+          <ul class="spot-pts"><li data-i18n="dp_l1"><b>Мой БМ</b>: пять полей по отрядам, итог считается сразу. Недописанные цифры не пропадут, если закрыть вкладку или переключиться в игру</li><li data-i18n="dp_l2"><b>Сводка сверху</b>: общий БМ союза и его рост за неделю, сколько игроков обновились за 7 дней и ваше место в союзе</li><li data-i18n="dp_l3"><b>Таблица</b>: каждый отряд, итог, прирост за неделю и маленький график роста. Сортировка по любому столбцу, поиск по нику, фильтры «Давно не обновляли» и «Не вносили»</li><li data-i18n="dp_l4"><b>Карточка игрока</b>: нажмите на строку, и откроется график роста по датам, отряды и метка «Растёт», «Быстро растёт» или «Без роста» за последние недели. История БМ привязана к ID из игры и переходит с игроком в новый союз</li><li data-i18n="dp_l5"><span class="r45">R4/R5</span><b>Правка чужого БМ</b> в карточке игрока и <b>«Ещё не в Штабе»</b>: отряды игроков из состава игры, которые пока не зарегистрировались. По 1-му отряду сервис раскладывает группы на рейд</li></ul>
+        </div>
+      </section>
+      <!-- a live copy of the Power section on a made-up alliance: everything stays in the page's memory -->
+      <div class="panel demo-note"><p class="dp-note"></p><button class="btn ghost sm" type="button" data-dpreset data-i18n="dn_reset">Сбросить пример</button></div>
+      <div id="demoPW">
+        <div class="dq-bar">
+          <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
+            <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dprole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dprole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
+        </div>
+        <p class="hint dq-role" id="dpRole"></p>
+        <div class="stats" data-pw="stats"></div>
+        <div class="pwgrid">
+          <form class="panel pad stack" id="dpwForm" novalidate>
+            <h3 data-i18n="pw_mine">Мой БМ</h3>
+            <div data-pw="mine"></div>
+          </form>
+          <div class="panel pw">
+            <div class="tools">
+              <input class="inp" id="dpwSearch" type="search" maxlength="40" data-i18n-ph="pw_search" data-i18n-aria="pw_search">
+              <div class="chips" role="group" data-i18n-aria="pw_filter_aria">
+                <button type="button" data-pf="all" aria-pressed="true" data-i18n="pf_all">Все</button>
+                <button type="button" data-pf="stale" aria-pressed="false" data-i18n="pf_stale">Давно не обновляли</button>
+                <button type="button" data-pf="none" aria-pressed="false" data-i18n="pf_none">Не вносили</button>
+              </div>
+              <span class="pwcount" data-pw="count"></span>
+            </div>
+            <div class="tbl"><table><thead data-pw="head"></thead><tbody data-pw="body"></tbody></table></div>
+          </div>
+        </div>
+        <div class="panel pw-seed" data-pw="seed" hidden></div>
       </div>
     </div>
     <div class="demo-part" data-demo="raid" hidden>
@@ -2016,11 +2050,11 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-power">
     <div class="vh"><div><h1 data-i18n="pw_h">Боевая мощь союза</h1><p data-i18n="pw_p">БМ в миллионах. Обновляйте 1–2 раза в неделю, таблица видна всему союзу.</p></div></div>
     <div class="pinslot"></div>
-    <div class="stats" id="pwStats"></div>
+    <div class="stats" id="pwStats" data-pw="stats"></div>
     <div class="pwgrid">
       <form class="panel pad stack" id="pwForm" novalidate>
         <h3 data-i18n="pw_mine">Мой БМ</h3>
-        <div id="pwMine"></div>
+        <div id="pwMine" data-pw="mine"></div>
       </form>
       <div class="panel pw">
         <div class="tools">
@@ -2030,12 +2064,12 @@ html.boot #v-load{display:flex!important}
             <button data-pf="stale" aria-pressed="false" data-i18n="pf_stale">Давно не обновляли</button>
             <button data-pf="none" aria-pressed="false" data-i18n="pf_none">Не вносили</button>
           </div>
-          <span class="pwcount" id="pwCount"></span>
+          <span class="pwcount" id="pwCount" data-pw="count"></span>
         </div>
-        <div class="tbl"><table><thead id="pwHead"></thead><tbody id="pwBody"></tbody></table></div>
+        <div class="tbl"><table><thead id="pwHead" data-pw="head"></thead><tbody id="pwBody" data-pw="body"></tbody></table></div>
       </div>
     </div>
-    <div class="panel pw-seed" id="pwSeed" hidden></div>
+    <div class="panel pw-seed" id="pwSeed" data-pw="seed" hidden></div>
     <p class="hint" id="pwDemoNote" style="margin-top:16px" data-i18n="pw_demo_note">Демо: цифры БМ взяты из вашей таблицы, история роста и даты обновлений придуманы для графиков.</p>
   </section>
 
@@ -2409,6 +2443,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=daa814f99f"></script>
+<script src="app.js?v=fc691f7a4b"></script>
 </body>
 </html>
