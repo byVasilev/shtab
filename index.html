@@ -598,7 +598,8 @@ a.btn{text-decoration:none}
 .dh-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background-color .2s,width .2s}
 .dh-dots i.on{width:22px;border-radius:4px;background:var(--bolt)}
 @media (max-width:640px){.dh-go.dh-prev{left:-6px}.dh-go.dh-next{right:-6px}}
-@media (max-width:900px){.dh-cards{grid-template-columns:minmax(0,1fr)}.dh-cards.scroll{grid-auto-columns:min(86%,340px)}}
+.dh-cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.dh-cards,.dh-cards.two{grid-template-columns:minmax(0,1fr)}.dh-cards.scroll{grid-auto-columns:min(86%,340px)}}
 .dh-pane .feat h3{margin:0}
 .dh-do{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
 .dh-do li{position:relative;padding-left:24px;font-size:14px;line-height:1.4}
@@ -2105,7 +2106,7 @@ html.boot #v-load{display:flex!important}
         </div>
         <div class="dh-pane" data-dhpane="events" role="tabpanel" hidden>
           <p class="dh-lead" data-i18n="dh_ev">События игры с таймером и напоминанием.</p>
-          <div class="dh-cards">
+          <div class="dh-cards two">
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-cal"/></svg></div><h3 data-i18n="ev_tpl_h">Шаблоны событий</h3><p data-i18n="dh_tpl_p">События в игре повторяются. Шаблон заводят один раз: название, сколько дней идёт и подсказку, на что тратить бонусы. Дальше запуск в одно нажатие.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b data-i18n="dh_tpl_ex_h">Магнат · 5 дней</b><span data-i18n="dh_tpl_ex">Подсказка: ускорения копите до последнего дня</span><span class="pill run" style="align-self:flex-start;margin-top:4px" data-i18n="dh_tpl_ex_on">Идёт, до конца 2 дня</span></div></div></div></div>
@@ -2607,6 +2608,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=e563306190"></script>
+<script src="app.js?v=62aba482ec"></script>
 </body>
 </html>
