@@ -1553,7 +1553,31 @@ span.ava.ava.ava.ava.r5{color:var(--on-bolt)} span.ava.ava.ava.ava.r4{color:var(
 span.ava.ava.ava.ava.r3,span.ava.ava.ava.ava:not(.r1,.r2,.r4,.r5){color:var(--on-grass)}
 span.ava.ava.ava.ava.r2{color:var(--fg)} span.ava.ava.ava.ava.r1{color:#fff}
 #pinReqBox .req .btn,#myEntries .req .btn{min-width:124px}
-@media (max-width:520px){#pinReqBox .req > div,#myEntries .req > div{flex-basis:100%}#pinReqBox .req .btn,#myEntries .req .btn{flex:1 1 0}}</style>
+@media (max-width:520px){#pinReqBox .req > div,#myEntries .req > div{flex-basis:100%}#pinReqBox .req .btn,#myEntries .req .btn{flex:1 1 0}}
+/* bigger tap areas for fingers; the look stays the same where an invisible ::after does the job */
+.ver-pill,.demo button{position:relative}
+.ver-pill::after,.demo button::after{content:"";position:absolute;inset:-8px 0}
+.demo button::after{inset:-4px 0}
+.upd-bar .x{width:38px;height:38px;top:3px;right:3px}
+.fb .fb-x{width:38px;height:38px;top:7px;right:7px}.fb:has(.fb-x) .top{padding-right:46px;min-height:38px}
+.seed-chip{padding-right:0}
+.seed-x{min-width:34px;height:34px;margin-left:4px}
+.undo-line .link{padding:8px 4px;margin:-8px -4px}
+.vs-sort,.pw th button{padding:10px 4px;margin:-10px -4px}
+@media (pointer:coarse){
+  button.mchip{height:40px}
+  .mchips{gap:8px}
+  .seg:not(.hq-tabs) button{min-height:44px}
+  .vs-lock,.vs-lock.armed{height:38px;min-width:38px}
+  .check{min-height:44px}
+  .xyfix{padding:11px 0;margin:-5px 0}
+  .xyfix.pf-nick{padding:11px 10px;margin:-5px -6px}
+}
+@media (max-width:380px){
+  .lang button,.theme-btn,#signInBtn{position:relative}
+  .lang button::after{content:"";position:absolute;inset:-4px 0}
+  .theme-btn::after,#signInBtn::after{content:"";position:absolute;inset:-4px -3px}
+}</style>
 
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -2268,6 +2292,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=85e583002b"></script>
+<script src="app.js?v=da678c6d4f"></script>
 </body>
 </html>
