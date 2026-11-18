@@ -590,6 +590,7 @@ a.btn{text-decoration:none}
 .dq-as{display:grid;gap:6px}.dq-role{margin:12px 0 16px;font-size:14px}
 .dn-q-one{margin-top:16px}.dn-mine{margin:8px 18px 4px;font-size:14px}.dn-q-one .frz.dn-mine{margin:10px 18px 16px}
 @media (max-width:640px){.dq-bar{display:grid}.dq-bar .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}.dq-bar .seg button{justify-content:center;height:40px}}
+@media (max-width:640px){#demoNews .dq-bar>.btn{width:100%;justify-content:center;height:40px}}
 .dn-go{display:grid;margin-top:16px}.dn-go .btn{justify-content:center;white-space:normal;text-align:center;min-width:0}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
 @media (max-width:900px){.features{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
@@ -1974,8 +1975,36 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
     <div class="demo-part" data-demo="news" hidden>
-      <div class="demo-feats">
-        <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и памятка</h3><p data-i18n="f4_p">Объявления и инструкции для новичков в одном месте, а не в сотне сообщений чата. Пишут и правят R4 и R5.</p></div>
+      <section class="spot solo">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="dw_eye">Новости и памятка</span>
+          <h2 data-i18n="dw_h">Объявления руководства и памятка союза<br>в одном месте, а не в сотне сообщений чата</h2>
+          <p data-i18n="dw_p">Это раздел «Новости». Здесь R4 и R5 пишут объявления союза: когда рейд, что важно на этой неделе, новые правила. Важную новость закрепляют, и она видна сверху на вкладках «Бафы» и «БМ», так что её не пропустит никто. При публикации можно сразу разослать уведомление каждому игроку. Рядом лежит памятка: то, что нужно знать всегда, особенно новичкам. Переключите «Смотреть как» на R4/R5, чтобы написать новость или пункт памятки самому.</p>
+          <ul class="spot-pts"><li data-i18n="dw_l1"><b>Лента новостей</b>: свежие сверху, закреплённая всегда первой, у каждой видно, кто и когда её написал</li><li data-i18n="dw_l2"><b>Памятка союза</b>: правила и инструкции, каждая раскрывается нажатием, длинная показывается начало и кнопка «Показать полностью». Тут же кнопка калькуляторов героев</li><li data-i18n="dw_l3"><b>На языке читателя</b>: если игрок открыл сайт на английском, новости и памятка показываются ему в переводе, и наоборот. Оригинал можно открыть одним нажатием</li><li data-i18n="dw_l4"><span class="r45">R4/R5</span><b>Новость</b>: заголовок и текст, «Закрепить» и «Отправить уведомление игрокам» в приложение, Telegram и ВК. У готовой новости кнопки «Изменить», «Закрепить» и «Удалить», а «Отправить ещё раз» шлёт её игрокам или ботом в чат союза</li><li data-i18n="dw_l5"><span class="r45">R4/R5</span><b>Памятка</b>: добавить пункт, исправить его, поставить выше или ниже, удалить. Длина текста не ограничена</li></ul>
+        </div>
+      </section>
+      <!-- a live copy of the News section on the sample alliance: everything stays in the page's memory -->
+      <div class="panel demo-note"><p class="dw-note"></p><button class="btn ghost sm" type="button" data-dwreset data-i18n="dn_reset">Сбросить пример</button></div>
+      <div id="demoNews">
+        <div class="dq-bar">
+          <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
+            <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dwrole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dwrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
+          <button class="btn bolt sm" type="button" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
+        </div>
+        <p class="hint dq-role" id="dwRole"></p>
+        <form class="panel news-form" id="dwForm" data-nw="form" novalidate hidden>
+          <h3 data-nw="formh"></h3>
+          <div class="f"><label for="dwTitle" data-i18n="news_title">Заголовок</label><input class="inp" id="dwTitle" data-nw="title" maxlength="90" autocomplete="off"></div>
+          <div class="f"><label for="dwText" data-i18n="news_text">Текст</label><textarea class="inp" id="dwText" data-nw="text" maxlength="1200"></textarea></div>
+          <label class="check"><input type="checkbox" id="dwPin" data-nw="pin"><span data-i18n="news_pin_check">Закрепить: показывать на вкладках «Бафы» и «БМ»</span></label>
+          <label class="check"><input type="checkbox" id="dwPush"><span data-i18n="news_push_check">Отправить уведомление игрокам</span></label>
+          <p class="err" role="alert"></p>
+          <div class="row"><button class="btn bolt" type="submit" data-nw="submit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
+        </form>
+        <div class="news">
+          <div class="panel" data-nw="list"></div>
+          <div class="panel" data-nw="guides"></div>
+        </div>
       </div>
     </div>
     <div class="demo-part" data-demo="hq" hidden>
@@ -2106,20 +2135,20 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-news">
     <div class="vh">
       <div><h1 data-i18n="news_h">Новости и памятка</h1><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
-      <button class="btn bolt sm" id="newsAdd" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
+      <button class="btn bolt sm" id="newsAdd" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
     </div>
-    <form class="panel news-form" id="newsForm" novalidate hidden>
-      <h3 id="newsFormH"></h3>
-      <div class="f"><label for="nTitle" data-i18n="news_title">Заголовок</label><input class="inp" id="nTitle" maxlength="90" autocomplete="off"></div>
-      <div class="f"><label for="nText" data-i18n="news_text">Текст</label><textarea class="inp" id="nText" maxlength="1200"></textarea></div>
-      <label class="check"><input type="checkbox" id="nPin"><span data-i18n="news_pin_check">Закрепить: показывать на вкладках «Бафы» и «БМ»</span></label>
+    <form class="panel news-form" id="newsForm" data-nw="form" novalidate hidden>
+      <h3 id="newsFormH" data-nw="formh"></h3>
+      <div class="f"><label for="nTitle" data-i18n="news_title">Заголовок</label><input class="inp" id="nTitle" data-nw="title" maxlength="90" autocomplete="off"></div>
+      <div class="f"><label for="nText" data-i18n="news_text">Текст</label><textarea class="inp" id="nText" data-nw="text" maxlength="1200"></textarea></div>
+      <label class="check"><input type="checkbox" id="nPin" data-nw="pin"><span data-i18n="news_pin_check">Закрепить: показывать на вкладках «Бафы» и «БМ»</span></label>
       <label class="check"><input type="checkbox" id="nPush"><span data-i18n="news_push_check">Отправить уведомление игрокам</span></label>
       <p class="err" role="alert"></p>
-      <div class="row"><button class="btn bolt" type="submit" id="nSubmit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
+      <div class="row"><button class="btn bolt" type="submit" id="nSubmit" data-nw="submit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
     </form>
     <div class="news">
-      <div class="panel" id="newsList"></div>
-      <div class="panel" id="guidesBox"></div>
+      <div class="panel" id="newsList" data-nw="list"></div>
+      <div class="panel" id="guidesBox" data-nw="guides"></div>
     </div>
   </section>
 
@@ -2458,6 +2487,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=59509eea86"></script>
+<script src="app.js?v=581e9d4c08"></script>
 </body>
 </html>
