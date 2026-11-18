@@ -577,6 +577,16 @@ a.btn{text-decoration:none}
 #v-demo .cta-band{margin-top:32px}
 .demo-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1 1 360px}.demo-ctas .btn{justify-content:center}
 @media (max-width:480px){.demo-ctas{grid-template-columns:1fr}}
+.demo-note{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 18px;margin:20px 0 18px;background:color-mix(in srgb,var(--bolt) 14%,var(--panel))}
+.demo-note p{margin:0;flex:1 1 260px;font:600 14.5px/1.45 var(--body)}
+.dn-qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;margin-top:20px}
+.dn-qh{display:flex;align-items:center;gap:10px;padding:14px 18px 4px;font-weight:800}
+.dn-qh img{width:32px;height:32px}.dn-qh .muted{margin-left:auto;font-weight:600}
+.dn-join{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end;padding:14px 18px 16px;border-top:1px solid var(--line)}
+.dn-join .btn{justify-content:center;width:100%;height:48px}.dn-join.one{grid-template-columns:1fr}
+#v-demo .demo-more{margin:18px 0 0}#v-demo .demo-more .spot{margin:0 12px 12px}
+#v-demo .spot.solo{grid-template-columns:1fr;margin-top:20px}#v-demo .spot.solo .spot-txt p{max-width:none}
+.dn-go{display:grid;margin-top:16px}.dn-go .btn{justify-content:center;white-space:normal;text-align:center;min-width:0}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
 @media (max-width:900px){.features{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
 @media (max-width:760px){
@@ -1797,33 +1807,33 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-demo">
     <div class="vh"><div><span class="eyebrow" data-i18n="demo_eye">Знакомство с разделом</span><h1 id="demoH"></h1><p id="demoP"></p></div></div>
     <div class="demo-part" data-demo="now" hidden>
-      <section class="spot">
+      <section class="spot solo">
         <div class="spot-txt">
           <span class="eyebrow" data-i18n="sp1_eye">Главное каждый день</span>
           <h2 data-i18n="sp1_h">Очередь бафов, которая двигается сама</h2>
-          <p data-i18n="sp1_p">Встаёте в очередь на стройку или исследование, и сервис сам считает вашу норму по дням в таймере. Всегда видно, кто получает бафы сейчас, кто следующий и когда ваша очередь. Кинули баф — нажали кнопку, очередь сдвинулась. Без списков в чате и споров, кто следующий.</p>
-          <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Своя норма</b> по дням в таймере — отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><span class="r45">R4/R5</span>Лимит за заход, % бафов и заморозка очереди между сезонами</li></ul>
-        </div>
-        <div class="spot-demo" aria-hidden="true">
-          <div class="panel mock-buff">
-            <div class="mb-h"><img src="art/web/build.png" alt="" width="44" height="44"><b data-i18n="build">Стройка</b><span class="chip" data-i18n="sp1_norm">13 бафов по 10%</span></div>
-            <span class="eyebrow" data-i18n="sp1_now">Сейчас кидаем</span>
-            <div class="mb-who"><span class="ava r3"><span>I</span></span><div><b>Ironfox</b><small class="mono">X:503 · Y:569</small></div><span class="mb-n mono">7<small>/13</small></span></div>
-            <div class="meter"><i style="width:54%;background:var(--brick)"></i></div>
-            <button class="btn bolt" type="button" tabindex="-1"><svg><use href="#i-bolt"/></svg><span data-i18n="sp1_btn">Я кинул баф</span></button>
-            <div class="mb-next"><span class="eyebrow" data-i18n="sp1_next">Дальше</span>
-              <div><span class="mono muted">2</span><b>Velmora</b><span class="muted" data-i18n="sp1_q2">9 дн · 14 бафов</span></div>
-              <div><span class="mono muted">3</span><b>Brightwing</b><span class="muted" data-i18n="sp1_q3">6 дн · 11 бафов</span></div>
-            </div>
-          </div>
+          <p data-i18n="sp1_p">Встаёте в очередь на стройку или исследование и пишете, сколько дней осталось в таймере. Дальше сервис считает всё сам: вашу норму, сколько дней остаётся после каждого полученного и отданного бафа, когда пройдут 48 часов перезарядки и кто следующий. Кинули баф — нажали кнопку, и очередь сдвинулась. Без списков в чате игры и таблиц очередь движется заметно быстрее: никто не ждёт, пока R4 вручную перепишет список, а R4 больше не нужно возиться с таблицами — всем проще.</p>
+          <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Норма считается сама</b> — по дням в таймере и % бафов союза, отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза; нажали по ошибке — можно отменить в течение часа</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><b>Новое исследование — новая норма</b>: впишите больше дней, и сервис сам поймёт, что вы запустили новое, не теряя места в очереди</li><li data-i18n="sp1_l5"><span class="r45">R4/R5</span><b>Блок «Ждут проверки»</b>: кто набрал лимит за заход, но не всю норму, уходит на проверку, а бафы уже получает следующий. R4 видят оценку дней и одним нажатием возвращают игрока в очередь или закрывают запись</li><li data-i18n="sp1_l6"><span class="r45">R4/R5</span>Лимит за заход, % бафов, минимум дней и заморозка очереди между сезонами — R4 остаётся только разобрать спорное</li></ul>
         </div>
       </section>
+      <!-- a live copy of the Buffs section on a made-up alliance: everything stays in the page's memory -->
+      <div class="panel demo-note"><p class="dn-note"></p><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
+      <div id="demoNow">
+        <details class="panel coords-help"><summary><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="find_h">Как найти игрока по координатам</span></summary>
+          <ol class="steps-list"><li data-i18n="find1">Откройте карту.</li><li data-i18n="find2">В самом верху нажмите на звёздочку с координатами.</li><li data-i18n="find3">В открывшемся окне замените цифры X и Y на координаты из карточки ниже и нажмите «Вперёд».</li></ol></details>
+        <div class="now"></div>
+      </div>
+      <div class="dn-go"><button class="btn ghost" type="button" data-tab="queue"><svg><use href="#i-q"/></svg><span data-i18n="dn_go_queue">Записаться в очередь →</span></button></div>
+      <div class="how">
+        <div data-i18n="how1"><b>Один получатель за раз</b>Все кидают бафы текущему игроку, пока он не наберёт норму. Потом очередь сама переходит к следующему.</div>
+        <div data-i18n="how2"><b>Норма считается сама</b>По числу дней в таймере. После нормы на таймере остаётся около 2,5 дня.</div>
+        <div data-i18n="how3"><b>Свой баф раз в 2 дня</b>Отметить чаще нельзя. Получатель видит, кто отметился, и может сообщить, если баф не пришёл.</div>
+      </div>
       <section class="spot spot-nt">
         <div class="spot-txt">
           <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
           <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
-          <p data-i18n="sp3_p">Уведомления приходят туда, где вам удобно: в Telegram, ВК или в браузер телефона — ваша очередь, план рейда, объявления. А бот в чате союза сам пишет, чья очередь на бафы, кого нет на координатах и итоги битвы союзов.</p>
-          <ul class="spot-pts"><li data-i18n="sp3_l1"><b>Личные уведомления</b>: каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l2"><b>«Я кинул баф» прямо в чате</b> — без захода на сайт</li><li data-i18n="sp3_l3"><b>Команды в чате</b>: очередь, счёт битвы и ближайший рейд одним сообщением</li><li data-i18n="sp3_l4"><span class="r45">R4/R5</span><b>Объявления по расписанию</b> — каждый день или раз в неделю</li></ul>
+          <p data-i18n="sp3_p">Уведомления приходят туда, где удобно: в Telegram, ВК или в браузер телефона. Игроку — что подошла его очередь, что пора обновить дни перед очередью, что прошли 48 часов и можно снова кидать баф, план рейда, новости и объявления. А бот в чате союза сам пишет, чья очередь на бафы, кого нет на координатах и итоги битвы союзов.</p>
+          <ul class="spot-pts"><li data-i18n="sp3_l1"><b>Личные уведомления</b>: каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l2"><b>«Я кинул баф» прямо в чате</b> — без захода на сайт</li><li data-i18n="sp3_l3"><b>Команды в чате</b>: очередь, счёт битвы и ближайший рейд одним сообщением</li><li data-i18n="sp3_l4"><span class="r45">R4/R5</span><b>Объявления по расписанию</b> — каждый день, через день или раз в неделю</li><li data-i18n="sp3_l5"><span class="r45">R4/R5</span><b>Всё важное для R4 приходит само</b>: новая заявка в союз, игрок ждёт проверки после лимита за заход, «баф не пришёл», игрок сам увеличил дни</li></ul>
         </div>
         <div class="spot-demo" aria-hidden="true">
           <div class="nt-stack">
@@ -1852,6 +1862,8 @@ html.boot #v-load{display:flex!important}
       </section>
     </div>
     <div class="demo-part" data-demo="queue" hidden>
+      <div class="panel demo-note"><p class="dn-note"></p><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
+      <div class="dn-qs" id="demoNowQ"></div>
       <div class="demo-feats">
         <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"><span class="r45">R4/R5</span>Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
       </div>
@@ -2385,6 +2397,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=b3d6bb6bd5"></script>
+<script src="app.js?v=112d1e943a"></script>
 </body>
 </html>
