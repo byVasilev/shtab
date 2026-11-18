@@ -132,7 +132,15 @@ button,a,input,select,textarea,label,summary,[role=button]{touch-action:manipula
   display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border:0;border-radius:14px;
   background:var(--c);color:var(--ct);font:800 15px/1.1 var(--body);text-align:center;white-space:nowrap;
   box-shadow:0 4px 0 var(--cs),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .08s,box-shadow .08s,filter .15s}
-@media (hover:hover){.btn:hover:not(:disabled){filter:brightness(1.06)}}
+@media (hover:hover){
+  /* mouse only: a light sheen sweeps across a button under the pointer */
+  .btn:not(:disabled){background-image:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.34) 48%,rgba(255,255,255,.12) 56%,transparent 70%);background-size:260% 100%;background-repeat:no-repeat;background-position:130% 0;transition:transform .08s,box-shadow .08s,filter .2s,background-position .7s ease}
+  .btn:hover:not(:disabled){filter:brightness(1.1) saturate(1.08);background-position:-30% 0}
+  /* menu, tabs, filters, language, theme and profile: a teal glow under the pointer */
+  nav.tabs button,.seg button,.chips button,.lang button,.theme-btn,.me-chip{transition:background-color .2s,color .2s,box-shadow .2s,border-color .2s}
+  nav.tabs button:hover:not([aria-current="page"]),.seg button:hover:not([aria-pressed="true"]):not([aria-selected="true"]),.chips button:hover:not([aria-pressed="true"]),.lang button:hover:not([aria-pressed="true"]){background-color:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--fg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--teal) 45%,transparent)}
+  .theme-btn:hover,.me-chip:hover{border-color:var(--teal);background-color:color-mix(in srgb,var(--teal) 14%,var(--panel));box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 18%,transparent)}
+}
 .btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--cs)}
 .btn:disabled{--c:var(--panel-2);--cs:var(--line);--ct:var(--muted);cursor:default;box-shadow:0 4px 0 var(--cs)}
 .btn.sm{min-height:38px;padding:0 13px;font-size:13.5px;border-radius:11px;box-shadow:0 3px 0 var(--cs),inset 0 1px 0 rgba(255,255,255,.25)}
@@ -1190,6 +1198,9 @@ details.guide .tr-note{padding:0 20px 10px}
 .trend.flat{background:var(--panel-3);color:var(--muted)}
 .from{font:700 12px/1 var(--mono);color:var(--teal)}
 .req .spark{flex:none}
+/* a join request: details and the player picker on top, then three equal buttons across the whole card */
+#reqs .req > div{flex:1 1 100%;margin-right:0}
+#reqs .req > .btn{flex:1 1 0;min-width:0;min-height:40px;padding-inline:8px}
 .transfer{display:flex;flex-direction:column;gap:10px;background:var(--panel-2);border-radius:14px;padding:14px}
 .transfer .row2{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .transfer b.big{font:600 24px/1 var(--display)}
@@ -2292,6 +2303,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=60a60d0ddc"></script>
+<script src="app.js?v=b2d2e92c6d"></script>
 </body>
 </html>
