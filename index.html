@@ -1291,6 +1291,7 @@ dialog.act{border:1px solid var(--line);padding:0;border-radius:22px;background:
 dialog.act::backdrop{background:rgba(5,12,16,.6)}
 .act-b{padding:18px;display:flex;flex-direction:column;gap:8px;max-height:80dvh;overflow:auto}
 .act-b h3{margin-bottom:6px}
+#actSheetB:focus{outline:none}
 .act-b .opt{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);font:700 14.5px/1.2 var(--body);text-align:left;color:var(--fg)}
 .act-b .opt small{font:600 12px/1 var(--mono);color:var(--muted)}
 .act-b .opt.cur{border-color:var(--bolt)}
@@ -2243,13 +2244,13 @@ html.boot #v-load{display:flex!important}
   <div class="app-foot" id="appFoot" hidden><div class="foot-pair"><button class="btn ghost sm" type="button" data-tab="help"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="help_btn">Помощь</span></button><button class="btn ghost sm" type="button" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn">О сервисе</span></button></div></div>
 </div>
 
-<dialog class="act" id="actSheet"><div class="act-b" id="actSheetB"></div></dialog>
+<dialog class="act" id="actSheet"><div class="act-b" id="actSheetB" tabindex="-1"></div></dialog>
 <dialog class="sheet" id="pwSheet"><div class="sheet-b" id="pwSheetB"></div></dialog>
 
 <div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastUndo" data-i18n="undo">Отменить</button></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=a87733a195"></script>
+<script src="app.js?v=3392c350f0"></script>
 </body>
 </html>
