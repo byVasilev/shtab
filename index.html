@@ -1410,8 +1410,25 @@ header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:
 html.scrolled header.top::before{opacity:1}
 /* room for the whole header on small laptops and tablets */
 .brand{flex:none}
-@media (min-width:861px) and (max-width:1160px){.me-chip .nm{display:none} nav.tabs button{padding:0 8px}}
-@media (min-width:861px) and (max-width:1010px){nav.tabs button svg{display:none} .brand small{display:none}}
+@media (min-width:861px) and (max-width:1160px){nav.tabs:not(.drum) button{padding:0 8px}}
+@media (min-width:861px) and (max-width:1010px){nav.tabs:not(.drum) button svg{display:none} .brand small{display:none} .bar:has(#nav.drum:not([hidden])) .me-chip .nm{display:none}}
+@media (min-width:861px) and (max-width:1160px){.bar:has(#nav:not(.drum):not([hidden])) .me-chip .nm{display:none}}
+/* the tabs sit on a drum: the open one faces you, the rest curve away to the sides */
+#nav.drum{display:block;position:relative;flex:1 1 auto;min-width:0;height:48px;padding:0;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#nav.drum::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(90deg,var(--panel) 0,color-mix(in srgb,var(--panel) 55%,transparent) 7%,transparent 22%,transparent 78%,color-mix(in srgb,var(--panel) 55%,transparent) 93%,var(--panel) 100%)}
+#nav.drum.grab{cursor:grabbing}
+#nav.drum button{position:absolute;left:50%;top:50%;white-space:nowrap;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform,opacity}
+@media (max-width:860px){
+  #nav.drum{position:fixed;height:calc(64px + env(safe-area-inset-bottom,0px));padding:0}
+  #nav.drum::after{background:linear-gradient(90deg,var(--panel) 0,transparent 20%,transparent 80%,var(--panel) 100%)}
+  #nav.drum button{top:32px;flex:none;width:68px}
+}
+.hd-rng{display:grid;gap:6px}
+.hd-rng label{display:flex;justify-content:space-between;gap:8px}
+.hd-rng output{color:var(--teal);font-variant-numeric:tabular-nums}
+.hd-rng input{width:100%;height:28px;accent-color:var(--teal)}
+.hd-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:861px){.vs-days{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){
   .pool-cnt{top:74px}
@@ -1808,7 +1825,7 @@ html.boot #v-load{display:flex!important}
       <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">Каждый видит свою группу и маршрут по зданиям со старта и по таймеру. R4 отмечают основу и резерв как в игре, а 30 сильнейших сервис раскладывает по группам сам.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Вносите БМ своих отрядов и видите свой рост неделя за неделей. Руководству — общая таблица с сортировкой, чтобы знать, кого ставить на событие.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"><span class="r45">R4/R5</span>Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
-      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и гайды</h3><p data-i18n="f4_p">Объявления и инструкции для новичков в одном месте, а не в сотне сообщений чата. Пишут и правят R4 и R5.</p></div>
+      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и памятка</h3><p data-i18n="f4_p">Объявления и инструкции для новичков в одном месте, а не в сотне сообщений чата. Пишут и правят R4 и R5.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h">Ранги R1–R5</h3><p data-i18n="f3_p">Как в игре: R5 назначает R4, R4 помогают вести союз, исключённые пропадают из всех списков.</p></div>
       <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Ник или ID и PIN, который придумываете сами; подбор PIN блокируется. Ваша история БМ привязана к ID из игры и переходит с вами в новый союз.</p></div>
     </div>
@@ -1958,7 +1975,7 @@ html.boot #v-load{display:flex!important}
   <!-- NEWS -->
   <section class="view" id="v-news">
     <div class="vh">
-      <div><h1 data-i18n="news_h">Новости и гайды</h1><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
+      <div><h1 data-i18n="news_h">Новости и памятка</h1><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
       <button class="btn bolt sm" id="newsAdd" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
     </div>
     <form class="panel news-form" id="newsForm" novalidate hidden>
@@ -2114,6 +2131,14 @@ html.boot #v-load{display:flex!important}
       </aside>
     </div>
     <div class="panel pad stack" id="notifyBox" style="margin-top:20px"></div>
+    <div class="panel pad stack" id="headBox" style="margin-top:20px">
+      <h3 data-i18n="hd_h">Меню разделов</h3>
+      <p class="hint" style="margin:0" data-i18n="hd_p">Разделы стоят на вращающемся барабане. Крутите его пальцем, мышью или двумя пальцами по тачпаду. Настройки сохраняются на этом устройстве.</p>
+      <label class="check"><input type="checkbox" id="hdAnim"><span data-i18n="hd_anim">Один оборот, когда листаете страницу вниз</span></label>
+      <div class="f hd-rng"><label for="hdBend"><span data-i18n="hd_bend">Изгиб</span><output id="hdBendV" for="hdBend"></output></label><input type="range" id="hdBend" min="35" max="85" step="1"></div>
+      <div class="f hd-rng"><label for="hdSpeed"><span data-i18n="hd_speed">Время оборота</span><output id="hdSpeedV" for="hdSpeed"></output></label><input type="range" id="hdSpeed" min="5" max="20" step="1"></div>
+      <div class="hd-pair"><button class="btn ghost sm" type="button" id="hdSpin" data-i18n="hd_spin">Показать оборот</button><button class="btn ghost sm" type="button" id="hdReset" data-i18n="hd_reset">Вернуть как было</button></div>
+    </div>
     </div>
   </section>
 
@@ -2303,6 +2328,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=b2d2e92c6d"></script>
+<script src="app.js?v=ad9bac7fb8"></script>
 </body>
 </html>
