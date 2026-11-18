@@ -586,6 +586,10 @@ a.btn{text-decoration:none}
 .dn-join .btn{justify-content:center;width:100%;height:48px}.dn-join.one{grid-template-columns:1fr}
 #v-demo .demo-more{margin:18px 0 0}#v-demo .demo-more .spot{margin:0 12px 12px}
 #v-demo .spot.solo{grid-template-columns:1fr;margin-top:20px}#v-demo .spot.solo .spot-txt p{max-width:none}
+.dq-bar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 16px;margin-top:4px}
+.dq-as{display:grid;gap:6px}.dq-role{margin:12px 0 16px;font-size:14px}
+.dn-q-one{margin-top:16px}.dn-mine{margin:8px 18px 4px;font-size:14px}.dn-q-one .frz.dn-mine{margin:10px 18px 16px}
+@media (max-width:640px){.dq-bar{display:grid}.dq-bar .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}.dq-bar .seg button{justify-content:center;height:40px}}
 .dn-go{display:grid;margin-top:16px}.dn-go .btn{justify-content:center;white-space:normal;text-align:center;min-width:0}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
 @media (max-width:900px){.features{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
@@ -1862,11 +1866,33 @@ html.boot #v-load{display:flex!important}
       </section>
     </div>
     <div class="demo-part" data-demo="queue" hidden>
+      <section class="spot solo">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="dq_eye">Очередь союза целиком</span>
+          <h2 data-i18n="dq_h">Вся очередь на одной странице и всё,<br>что с ней делают R4 и R5</h2>
+          <p data-i18n="dq_p">Здесь видна вся очередь союза, отдельно на стройку и на исследование. У каждого игрока — место, координаты, сколько дней он указал и сколько осталось по оценке сейчас, его норма бафов и сколько он уже получил. Первый в списке — тот, кому кидают бафы прямо сейчас. Игроки сами записываются и выходят, а R4 и R5 (и помощники, которым это разрешили) правят очередь прямо здесь: меняют дни, двигают игроков, добавляют и убирают. Переключите «Смотреть как» на R4/R5 и попробуйте сами.</p>
+          <ul class="spot-pts"><li data-i18n="dq_l1"><b>Стройка, исследование, архив</b> — две очереди и все закрытые записи; в архиве у каждой записи видно, кто кидал бафы</li><li data-i18n="dq_l2"><b>Оценка дней</b> — пока игрок ждёт, сервис сам считает, сколько у него осталось: время идёт, а каждый полученный и отданный баф срезает таймер</li><li data-i18n="dq_l3"><b>Ждут проверки</b> — кто получил лимит бафов за заход, но не всю норму, или у кого к его очереди дней по оценке меньше минимума. Игрок пишет, сколько осталось на самом деле, а R4 возвращает его в конец очереди с новой нормой или закрывает запись</li><li data-i18n="dq_l4"><b>Правка очереди</b> — R4/R5 меняют дни, двигают игроков вверх и вниз, исправляют координаты, убирают и добавляют вручную, например из таблицы прошлого сезона</li><li data-i18n="dq_l5"><b>Заморозка между сезонами</b> — очередь и запись на паузе, пока R4 её наполняют; запуск — одной кнопкой</li><li data-i18n="dq_l6"><b>Правила союза</b> — лимит бафов за заход для 5, 10 и 15% и минимум дней для записи R4 и R5 задают в Штабе</li></ul>
+        </div>
+      </section>
+      <!-- a live copy of the Queue section on the same made-up alliance as Buffs: everything stays in the page's memory -->
       <div class="panel demo-note"><p class="dn-note"></p><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div class="dn-qs" id="demoNowQ"></div>
-      <div class="demo-feats">
-        <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"><span class="r45">R4/R5</span>Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
+      <div id="demoQ">
+        <div class="dq-bar">
+          <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
+            <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dnrole="r2" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dnrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
+          <div class="seg" role="group" data-i18n-aria="q_seg_aria">
+            <button type="button" data-q="build" data-i18n="build">Стройка</button>
+            <button type="button" data-q="sci" data-i18n="sci">Исследование</button>
+            <button type="button" data-q="arch" data-i18n="arch">Архив</button>
+          </div>
+        </div>
+        <p class="hint dq-role" id="dqRole"></p>
+        <div class="panel pad qcheck" data-qw="check" hidden></div>
+        <div class="panel qwrap" data-qw="list"></div>
+        <p class="qfoot" data-qw="sum"></p>
+        <div id="demoNowQ"></div>
       </div>
+      <div class="dn-go"><button class="btn ghost" type="button" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="dq_go_now">Кидать бафы — в разделе «Бафы» →</span></button></div>
     </div>
     <div class="demo-part" data-demo="power" hidden>
       <div class="demo-feats">
@@ -1962,12 +1988,12 @@ html.boot #v-load{display:flex!important}
           <button data-q="sci" aria-pressed="false" data-i18n="sci">Исследование</button>
           <button data-q="arch" aria-pressed="false" data-i18n="arch">Архив</button>
         </div>
-        <button class="btn bolt sm" id="qJoinBtn" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
+        <button class="btn bolt sm" id="qJoinBtn" data-qw="join" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
       </div>
     </div>
-    <div class="panel pad qcheck" id="qCheck" hidden></div>
-    <div class="panel qwrap" id="qwrap"></div>
-    <p class="qfoot" id="qsum"></p>
+    <div class="panel pad qcheck" id="qCheck" data-qw="check" hidden></div>
+    <div class="panel qwrap" id="qwrap" data-qw="list"></div>
+    <p class="qfoot" id="qsum" data-qw="sum"></p>
   </section>
 
   <!-- JOIN -->
@@ -2397,6 +2423,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=112d1e943a"></script>
+<script src="app.js?v=39027a0fe0"></script>
 </body>
 </html>
