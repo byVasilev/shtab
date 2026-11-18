@@ -953,8 +953,11 @@ ol.steps-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:
 .note{font:500 13.5px/1.45 var(--body);background:var(--brick-soft);border-radius:14px;padding:12px 14px}
 .note b{font-weight:800}
 .qcheck{display:grid;gap:10px;margin-bottom:16px}.qc-top{display:flex;align-items:center;gap:8px}.qc-top h2{margin:0;font-size:18px}
-.qc-list{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-.qc-card{display:grid;gap:8px;padding:12px;border-radius:14px;background:var(--panel-2);min-width:0}
+.qc-list{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:6px}
+.qc-list.drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.qc-nav{margin-left:auto;display:flex;gap:8px}.qc-nav[hidden]{display:none}.qc-nav .btn{width:44px;padding:0;font-size:20px}
+.qc-card{display:grid;gap:8px;align-content:start;padding:12px;border-radius:14px;background:var(--panel-2);min-width:0;flex:0 0 min(320px,86%);scroll-snap-align:start}
+@media (min-width:900px){.qc-card{flex-basis:calc((100% - 20px) / 3)}}
 .qc-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 10px}.qc-h b{font-weight:800;overflow-wrap:anywhere}
 .qc-sub,.qc-ans{margin:0;font-size:14px}.qc-card .err:empty{display:none}
 .qc-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.qc-btns .btn{width:100%;justify-content:center;min-height:44px}.qc-btns .btn:only-child{grid-column:1/-1}
@@ -2254,6 +2257,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=98b6a79b51"></script>
+<script src="app.js?v=fb38c94680"></script>
 </body>
 </html>
