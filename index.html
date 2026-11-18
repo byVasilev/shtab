@@ -1934,8 +1934,23 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
     <div class="demo-part" data-demo="raid" hidden>
-      <div class="demo-feats">
-        <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">Каждый видит свою группу и маршрут по зданиям со старта и по таймеру. R4 отмечают основу и резерв как в игре, а 30 сильнейших сервис раскладывает по группам сам.</p></div>
+      <section class="spot solo">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="dr_eye">Рейд на резервуар</span>
+          <h2 data-i18n="dr_h">Состав, группы и маршрут по минутам<br>в одном плане на рейд</h2>
+          <p data-i18n="dr_p">Это раздел «Рейд». Перед рейдом руководство отмечает, кто идёт в основу, кто в резерв, а кто пропускает, как при записи в игре. Потом одним нажатием сервис раскладывает игроков по группам: пятеро сильнейших по 1-му отряду становятся ударной группой, остальные делят ключевые здания, лишние встают на замену. У каждой группы свой маршрут по таймеру рейда. Когда план готов, его публикуют, и каждый игрок видит свою группу, с кем идёт и какое здание брать в какую минуту. Переключите «Смотреть как» на R4/R5, чтобы собрать план самому.</p>
+          <ul class="spot-pts"><li data-i18n="dr_l1"><b>Мой план</b>: ваша группа и её лидер, вход в начале или из резерва позже, кто идёт с вами и маршрут по минутам: во сколько и какое здание брать</li><li data-i18n="dr_l2"><b>Вся раскладка</b> под вашим планом: кто в какой группе и кто стоит на замене. Вкладка <b>«История рейдов»</b>: с кем бились, победа или поражение и как стояли группы</li><li data-i18n="dr_l3"><span class="r45">R4/R5</span><b>Шаг «Пул»</b>: у каждого игрока кнопки «Основа», «Резерв» и «Нет» и заметка, поиск по нику и фильтры. Кнопка «Сообщить составу» заранее пишет каждому в бота, где он стоит</li><li data-i18n="dr_l4"><span class="r45">R4/R5</span><b>Шаг «Группы»</b>: «Разложить автоматически», своя группа под любое здание, перенос игрока нажатием на ник, лидер группы, вход из резерва и замены. На компьютере игроков можно перетаскивать мышкой</li><li data-i18n="dr_l5"><span class="r45">R4/R5</span><b>Шаг «План»</b>: свой маршрут каждой группе по времени и зданиям, текст к каждому этапу и указания группе</li><li data-i18n="dr_l6"><span class="r45">R4/R5</span><b>Публикация</b>: каждый игрок получает свой план в Telegram или ВК, а чат союза — всю раскладку. После правок план можно разослать ещё раз, и напишут только тем, чьё место изменилось</li></ul>
+        </div>
+      </section>
+      <!-- a live copy of the Raid section on the sample alliance: everything stays in the page's memory -->
+      <div class="panel demo-note"><p class="dr-note"></p><button class="btn ghost sm" type="button" data-drreset data-i18n="dn_reset">Сбросить пример</button></div>
+      <div id="demoRaid">
+        <div class="dq-bar">
+          <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
+            <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-drrole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-drrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
+        </div>
+        <p class="hint dq-role" id="drRole"></p>
+        <div data-rw="body"></div>
       </div>
     </div>
     <div class="demo-part" data-demo="vs" hidden>
@@ -2075,8 +2090,8 @@ html.boot #v-load{display:flex!important}
 
   <!-- RAID -->
   <section class="view" id="v-raid">
-    <div class="vh"><div><h1 data-i18n="raid_h">Рейд на резервуар</h1><p id="raidSub"></p></div></div>
-    <div id="raidBody"></div>
+    <div class="vh"><div><h1 data-i18n="raid_h">Рейд на резервуар</h1><p id="raidSub" data-rw="sub"></p></div></div>
+    <div id="raidBody" data-rw="body"></div>
   </section>
 
   <!-- ALLIANCE VS -->
@@ -2443,6 +2458,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=fc691f7a4b"></script>
+<script src="app.js?v=59509eea86"></script>
 </body>
 </html>
