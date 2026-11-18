@@ -556,6 +556,27 @@ a.btn{text-decoration:none}
 .cta-band{margin-top:40px;padding:26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;background:linear-gradient(120deg,var(--panel) 30%,var(--panel-2))}
 .cta-band > div{flex:1 1 280px;display:flex;flex-direction:column;gap:6px}
 .cta-band p{color:var(--muted)}
+/* home page tiles: one per section, each opens its demo for a guest */
+.land-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
+.tile{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
+.tile > :not(.ic):not(b){grid-column:1/-1}.tile .tl{align-self:start}.tile small{justify-self:start}
+.tile .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--panel-2)}
+.tile .ic img{width:40px;height:40px;object-fit:contain}.tile .ic svg{width:26px;height:26px}
+.tile b{font:800 17px/1.2 var(--display)}
+.tile .tp{color:var(--fg);font-size:14.5px;line-height:1.4;font-weight:600}
+.tile .tl{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:6px;flex:1}
+.tile .tl li{position:relative;padding-left:16px;color:var(--muted);font-size:13.5px;line-height:1.4}
+.tile .tl li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:2px;background:var(--brick)}
+.tile small{margin-top:4px;color:var(--muted);font-size:12.5px;text-decoration:underline;text-underline-offset:3px}
+@media (hover:hover){.tile{transition:border-color .2s,transform .2s}.tile:hover{border-color:color-mix(in srgb,var(--teal) 55%,var(--line));transform:translateY(-2px)}}
+@media (max-width:900px){.land-tiles{grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}}
+@media (max-width:640px){.land-tiles{grid-template-columns:1fr}}
+/* a guest's demo of a section */
+#v-demo .spot{margin-top:24px}
+.demo-feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:24px}
+#v-demo .cta-band{margin-top:32px}
+.demo-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1 1 360px}.demo-ctas .btn{justify-content:center}
+@media (max-width:480px){.demo-ctas{grid-template-columns:1fr}}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
 @media (max-width:900px){.features{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
 @media (max-width:760px){
@@ -1732,102 +1753,14 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
 
-    <!-- the two main features get a full-width block each, with a preview of the real screen (made-up names) -->
-    <section class="spot">
-      <div class="spot-txt">
-        <span class="eyebrow" data-i18n="sp1_eye">Главное каждый день</span>
-        <h2 data-i18n="sp1_h">Очередь бафов, которая двигается сама</h2>
-        <p data-i18n="sp1_p">Встаёте в очередь на стройку или исследование, и сервис сам считает вашу норму по дням в таймере. Всегда видно, кто получает бафы сейчас, кто следующий и когда ваша очередь. Кинули баф — нажали кнопку, очередь сдвинулась. Без списков в чате и споров, кто следующий.</p>
-        <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Своя норма</b> по дням в таймере — отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><span class="r45">R4/R5</span>Лимит за заход, % бафов и заморозка очереди между сезонами</li></ul>
-      </div>
-      <div class="spot-demo" aria-hidden="true">
-        <div class="panel mock-buff">
-          <div class="mb-h"><img src="art/web/build.png" alt="" width="44" height="44"><b data-i18n="build">Стройка</b><span class="chip" data-i18n="sp1_norm">13 бафов по 10%</span></div>
-          <span class="eyebrow" data-i18n="sp1_now">Сейчас кидаем</span>
-          <div class="mb-who"><span class="ava r3"><span>I</span></span><div><b>Ironfox</b><small class="mono">X:503 · Y:569</small></div><span class="mb-n mono">7<small>/13</small></span></div>
-          <div class="meter"><i style="width:54%;background:var(--brick)"></i></div>
-          <button class="btn bolt" type="button" tabindex="-1"><svg><use href="#i-bolt"/></svg><span data-i18n="sp1_btn">Я кинул баф</span></button>
-          <div class="mb-next"><span class="eyebrow" data-i18n="sp1_next">Дальше</span>
-            <div><span class="mono muted">2</span><b>Velmora</b><span class="muted" data-i18n="sp1_q2">9 дн · 14 бафов</span></div>
-            <div><span class="mono muted">3</span><b>Brightwing</b><span class="muted" data-i18n="sp1_q3">6 дн · 11 бафов</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="spot spot-vs rev">
-      <div class="spot-txt">
-        <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
-        <h2 data-i18n="sp2_h">Битва союзов: очки каждого — прямо со скринов</h2>
-        <p data-i18n="sp2_p">Видно, сколько вы принесли в каждый день битвы и за неделю, и как это выглядит рядом с остальными. Скрины дневного рейтинга загружает R4, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд.</p>
-        <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Ваши очки по дням</b> и история неделя за неделей</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><span class="r45">R4/R5</span><b>Метки «кто отстаёт»</b>: нули, меньше 5M и ниже нормы союза</li><li data-i18n="sp2_l4"><span class="r45">R4/R5</span><b>Видны даже нули</b>: состав загружается по скринам списка из игры</li></ul>
-      </div>
-      <div class="spot-demo" aria-hidden="true">
-        <div class="vs-flow">
-          <div class="game-shot">
-            <div class="gs-tabs"><span class="on" data-i18n="sp2_d1">пн</span><span data-i18n="sp2_d2">вт</span><span data-i18n="sp2_d3">ср</span></div>
-            <div class="gs-row"><span class="gs-r">17</span><div><small>#512 [WLF]</small>Stormkid</div><span class="gs-p">46,25M</span></div>
-            <div class="gs-row"><span class="gs-r">18</span><div><small>#512 [WLF]</small>Lunaria</div><span class="gs-p">45,48M</span></div>
-            <div class="gs-row"><span class="gs-r">19</span><div><small>#512 [WLF]</small>Oakbeard</div><span class="gs-p">44,85M</span></div>
-            <span class="gs-cap" data-i18n="sp2_shot">скрин из игры</span>
-          </div>
-          <div class="vs-arrow"><span class="ai-badge big" data-i18n="sp_ai">ИИ</span><svg viewBox="0 0 40 16"><path d="M2 8h32M28 3l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small data-i18n="sp2_sec">15 сек</small></div>
-          <div class="panel mock-vs">
-            <div class="mv-score"><b class="us">[WLF]</b><span class="mv-badge">VS</span><b class="them">[FNX]</b><span class="mv-count"><i class="us">5</i>:<i class="them">2</i></span></div>
-            <table>
-              <thead><tr><th data-i18n="vs_player">Игрок</th><th data-i18n="sp2_d1">пн</th><th data-i18n="sp2_d2">вт</th><th data-i18n="sp2_d3">ср</th><th data-i18n="vs_total">Неделя</th></tr></thead>
-              <tbody>
-                <tr><td>Stormkid</td><td>46,2M</td><td>51,0M</td><td>48,7M</td><td><b>145,9M</b></td></tr>
-                <tr><td>Lunaria</td><td>45,5M</td><td class="lo">8,1M</td><td>39,0M</td><td><b>92,6M</b></td></tr>
-                <tr><td>Mossvane</td><td class="rw">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
-              </tbody>
-            </table>
-            <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1">Mossvane · 4 балла</span></span><span><i class="f yel"></i><span data-i18n="sp2_f2">Lunaria · 1</span></span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="spot spot-nt">
-      <div class="spot-txt">
-        <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
-        <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
-        <p data-i18n="sp3_p">Уведомления приходят туда, где вам удобно: в Telegram, ВК или в браузер телефона — ваша очередь, план рейда, объявления. А бот в чате союза сам пишет, чья очередь на бафы, кого нет на координатах и итоги битвы союзов.</p>
-        <ul class="spot-pts"><li data-i18n="sp3_l1"><b>Личные уведомления</b>: каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l2"><b>«Я кинул баф» прямо в чате</b> — без захода на сайт</li><li data-i18n="sp3_l3"><b>Команды в чате</b>: очередь, счёт битвы и ближайший рейд одним сообщением</li><li data-i18n="sp3_l4"><span class="r45">R4/R5</span><b>Объявления по расписанию</b> — каждый день или раз в неделю</li></ul>
-      </div>
-      <div class="spot-demo" aria-hidden="true">
-        <div class="nt-stack">
-          <div class="push"><img src="art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
-          <div class="chat tg">
-            <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat">Чат союза [WLF]</b></div>
-            <div class="bubble"><span class="bot-n">Штаб союза</span>
-              <p data-i18n="sp3_tg_msg">⚡ <b>Кидаем бафы на 🔨 стройку</b>
-Сейчас: <b>Ironfox</b> — X:503 Y:569
-Норма: осталось 6 из 13
-Следом: Velmora</p>
-              <div class="kb"><span data-i18n="sp3_btn_buff">✅ Я кинул баф</span><span data-i18n="sp3_btn_open">Открыть Штаб</span></div></div>
-          </div>
-          <div class="chat vk">
-            <div class="chat-h"><span class="chat-ic vk">VK</span><b data-i18n="sp3_vk_chat">Беседа союза [WLF]</b></div>
-            <div class="bubble"><span class="bot-n">Штаб союза</span>
-              <p data-i18n="sp3_vk_msg">⚔️ Битва союзов: итоги за понедельник
-Союз принёс 2,53B, в рейтинге 86 игроков.
-🥇 Stormkid — 78,07M
-🥈 Lunaria — 74,07M
-🥉 Oakbeard — 71,19M</p>
-              <div class="kb"><span data-i18n="sp3_btn_queue">Очередь</span><span data-i18n="sp3_btn_vs">Битва союзов</span></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="features">
-      <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">Каждый видит свою группу и маршрут по зданиям со старта и по таймеру. R4 отмечают основу и резерв как в игре, а 30 сильнейших сервис раскладывает по группам сам.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Вносите БМ своих отрядов и видите свой рост неделя за неделей. Руководству — общая таблица с сортировкой, чтобы знать, кого ставить на событие.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"><span class="r45">R4/R5</span>Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
-      <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и памятка</h3><p data-i18n="f4_p">Объявления и инструкции для новичков в одном месте, а не в сотне сообщений чата. Пишут и правят R4 и R5.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h">Ранги R1–R5</h3><p data-i18n="f3_p">Как в игре: R5 назначает R4, R4 помогают вести союз, исключённые пропадают из всех списков.</p></div>
-      <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Ник или ID и PIN, который придумываете сами; подбор PIN блокируется. Ваша история БМ привязана к ID из игры и переходит с вами в новый союз.</p></div>
+    <!-- short tiles: each opens the section's demo for a guest (the big blocks live in #v-demo now) -->
+    <div class="land-tiles" id="landTiles">
+      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь на бафы стройки и исследования двигается сама, следить за чатом не нужно.</span><ul class="tl"><li data-i18n="tile_now_1">Норма по дням считается в таймере сама</li><li data-i18n="tile_now_2">Видно, кто сейчас на бафе и когда ваш черёд</li><li data-i18n="tile_now_3">Напоминание в Telegram, ВК или в браузер</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="power"><span class="ic"><svg style="color:var(--grass)"><use href="#i-shield"/></svg></span><b data-i18n="nav_power">БМ</b><span class="tp" data-i18n="tile_power">Каждый вносит БМ своих отрядов за минуту.</span><ul class="tl"><li data-i18n="tile_power_1">Ваш рост неделя за неделей</li><li data-i18n="tile_power_2">Общая таблица с сортировкой для R4 и R5</li><li data-i18n="tile_power_3">История БМ переходит с вами в новый союз</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="vs"><span class="ic"><svg style="color:var(--warn)"><use href="#i-vs"/></svg></span><b data-i18n="nav_vs">VS</b><span class="tp" data-i18n="tile_vs">R4 загружают скрины рейтинга, а ИИ сам читает ники и очки.</span><ul class="tl"><li data-i18n="tile_vs_1">Очки каждого по дням и за неделю</li><li data-i18n="tile_vs_2">Счёт недели и история битв с соперниками</li><li data-i18n="tile_vs_3">Метки «кто отстаёт» для R4 и R5</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">План рейда на резервуар без таблиц и голосовых.</span><ul class="tl"><li data-i18n="tile_raid_1">Каждый видит свою группу и маршрут</li><li data-i18n="tile_raid_2">Основа и резерв отмечаются как в игре</li><li data-i18n="tile_raid_3">Сильнейших сервис раскладывает по группам сам</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">Новости</b><span class="tp" data-i18n="tile_news">Объявления и памятки в одном месте, а не в сотне сообщений чата.</span><ul class="tl"><li data-i18n="tile_news_1">Важная новость закрепляется сверху</li><li data-i18n="tile_news_2">Памятка союза для новичков</li><li data-i18n="tile_news_3">Уведомление о новом объявлении</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">Штаб</b><span class="tp" data-i18n="tile_hq">Пульт R4 и R5 для управления союзом.</span><ul class="tl"><li data-i18n="tile_hq_1">Заявки на вступление и ранги R1–R5</li><li data-i18n="tile_hq_2">События и состав союза по скринам из игры</li><li data-i18n="tile_hq_3">Обычные игроки этот раздел не видят</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
     </div>
 
     <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Четыре шага, и союз в деле</h2></div>
@@ -1858,6 +1791,130 @@ html.boot #v-load{display:flex!important}
       <button class="btn bolt" data-tab="now" id="bandBack" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button>
     </div>
     <p class="foot" data-i18n="foot">Штаб союза — фанатский сервис, не связан с разработчиками Tiles Survive.</p>
+  </section>
+
+  <!-- DEMO: a guest's look at a section; the home page's big blocks moved here, live made-up data comes page by page -->
+  <section class="view" id="v-demo">
+    <div class="vh"><div><span class="eyebrow" data-i18n="demo_eye">Знакомство с разделом</span><h1 id="demoH"></h1><p id="demoP"></p></div></div>
+    <div class="demo-part" data-demo="now" hidden>
+      <section class="spot">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="sp1_eye">Главное каждый день</span>
+          <h2 data-i18n="sp1_h">Очередь бафов, которая двигается сама</h2>
+          <p data-i18n="sp1_p">Встаёте в очередь на стройку или исследование, и сервис сам считает вашу норму по дням в таймере. Всегда видно, кто получает бафы сейчас, кто следующий и когда ваша очередь. Кинули баф — нажали кнопку, очередь сдвинулась. Без списков в чате и споров, кто следующий.</p>
+          <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Своя норма</b> по дням в таймере — отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><span class="r45">R4/R5</span>Лимит за заход, % бафов и заморозка очереди между сезонами</li></ul>
+        </div>
+        <div class="spot-demo" aria-hidden="true">
+          <div class="panel mock-buff">
+            <div class="mb-h"><img src="art/web/build.png" alt="" width="44" height="44"><b data-i18n="build">Стройка</b><span class="chip" data-i18n="sp1_norm">13 бафов по 10%</span></div>
+            <span class="eyebrow" data-i18n="sp1_now">Сейчас кидаем</span>
+            <div class="mb-who"><span class="ava r3"><span>I</span></span><div><b>Ironfox</b><small class="mono">X:503 · Y:569</small></div><span class="mb-n mono">7<small>/13</small></span></div>
+            <div class="meter"><i style="width:54%;background:var(--brick)"></i></div>
+            <button class="btn bolt" type="button" tabindex="-1"><svg><use href="#i-bolt"/></svg><span data-i18n="sp1_btn">Я кинул баф</span></button>
+            <div class="mb-next"><span class="eyebrow" data-i18n="sp1_next">Дальше</span>
+              <div><span class="mono muted">2</span><b>Velmora</b><span class="muted" data-i18n="sp1_q2">9 дн · 14 бафов</span></div>
+              <div><span class="mono muted">3</span><b>Brightwing</b><span class="muted" data-i18n="sp1_q3">6 дн · 11 бафов</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="spot spot-nt">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
+          <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
+          <p data-i18n="sp3_p">Уведомления приходят туда, где вам удобно: в Telegram, ВК или в браузер телефона — ваша очередь, план рейда, объявления. А бот в чате союза сам пишет, чья очередь на бафы, кого нет на координатах и итоги битвы союзов.</p>
+          <ul class="spot-pts"><li data-i18n="sp3_l1"><b>Личные уведомления</b>: каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l2"><b>«Я кинул баф» прямо в чате</b> — без захода на сайт</li><li data-i18n="sp3_l3"><b>Команды в чате</b>: очередь, счёт битвы и ближайший рейд одним сообщением</li><li data-i18n="sp3_l4"><span class="r45">R4/R5</span><b>Объявления по расписанию</b> — каждый день или раз в неделю</li></ul>
+        </div>
+        <div class="spot-demo" aria-hidden="true">
+          <div class="nt-stack">
+            <div class="push"><img src="art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
+            <div class="chat tg">
+              <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat">Чат союза [WLF]</b></div>
+              <div class="bubble"><span class="bot-n">Штаб союза</span>
+                <p data-i18n="sp3_tg_msg">⚡ <b>Кидаем бафы на 🔨 стройку</b>
+Сейчас: <b>Ironfox</b> — X:503 Y:569
+Норма: осталось 6 из 13
+Следом: Velmora</p>
+                <div class="kb"><span data-i18n="sp3_btn_buff">✅ Я кинул баф</span><span data-i18n="sp3_btn_open">Открыть Штаб</span></div></div>
+            </div>
+            <div class="chat vk">
+              <div class="chat-h"><span class="chat-ic vk">VK</span><b data-i18n="sp3_vk_chat">Беседа союза [WLF]</b></div>
+              <div class="bubble"><span class="bot-n">Штаб союза</span>
+                <p data-i18n="sp3_vk_msg">⚔️ Битва союзов: итоги за понедельник
+Союз принёс 2,53B, в рейтинге 86 игроков.
+🥇 Stormkid — 78,07M
+🥈 Lunaria — 74,07M
+🥉 Oakbeard — 71,19M</p>
+                <div class="kb"><span data-i18n="sp3_btn_queue">Очередь</span><span data-i18n="sp3_btn_vs">Битва союзов</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="demo-part" data-demo="queue" hidden>
+      <div class="demo-feats">
+        <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="f9_h"><span class="r45">R4/R5</span>Очередь под контролем</h3><p data-i18n="f9_p">Между сезонами очередь замораживается, R4 вносят её из таблицы, а запуск — одной кнопкой. Лимиты бафов для 5/10/15% и минимум дней задают R4 и R5.</p></div>
+      </div>
+    </div>
+    <div class="demo-part" data-demo="power" hidden>
+      <div class="demo-feats">
+        <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-chart"/></svg></div><h3 data-i18n="f2_h">Боевая мощь</h3><p data-i18n="f2_p">Вносите БМ своих отрядов и видите свой рост неделя за неделей. Руководству — общая таблица с сортировкой, чтобы знать, кого ставить на событие.</p></div>
+      </div>
+    </div>
+    <div class="demo-part" data-demo="raid" hidden>
+      <div class="demo-feats">
+        <div class="panel feat feat-hi"><div class="ic" style="color:var(--teal)"><svg><use href="#i-raid"/></svg></div><h3 data-i18n="f5_h">Рейд на резервуар</h3><p data-i18n="f5_p">Каждый видит свою группу и маршрут по зданиям со старта и по таймеру. R4 отмечают основу и резерв как в игре, а 30 сильнейших сервис раскладывает по группам сам.</p></div>
+      </div>
+    </div>
+    <div class="demo-part" data-demo="vs" hidden>
+      <section class="spot spot-vs rev">
+        <div class="spot-txt">
+          <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
+          <h2 data-i18n="sp2_h">Битва союзов: очки каждого — прямо со скринов</h2>
+          <p data-i18n="sp2_p">Видно, сколько вы принесли в каждый день битвы и за неделю, и как это выглядит рядом с остальными. Скрины дневного рейтинга загружает R4, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд.</p>
+          <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Ваши очки по дням</b> и история неделя за неделей</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><span class="r45">R4/R5</span><b>Метки «кто отстаёт»</b>: нули, меньше 5M и ниже нормы союза</li><li data-i18n="sp2_l4"><span class="r45">R4/R5</span><b>Видны даже нули</b>: состав загружается по скринам списка из игры</li></ul>
+        </div>
+        <div class="spot-demo" aria-hidden="true">
+          <div class="vs-flow">
+            <div class="game-shot">
+              <div class="gs-tabs"><span class="on" data-i18n="sp2_d1">пн</span><span data-i18n="sp2_d2">вт</span><span data-i18n="sp2_d3">ср</span></div>
+              <div class="gs-row"><span class="gs-r">17</span><div><small>#512 [WLF]</small>Stormkid</div><span class="gs-p">46,25M</span></div>
+              <div class="gs-row"><span class="gs-r">18</span><div><small>#512 [WLF]</small>Lunaria</div><span class="gs-p">45,48M</span></div>
+              <div class="gs-row"><span class="gs-r">19</span><div><small>#512 [WLF]</small>Oakbeard</div><span class="gs-p">44,85M</span></div>
+              <span class="gs-cap" data-i18n="sp2_shot">скрин из игры</span>
+            </div>
+            <div class="vs-arrow"><span class="ai-badge big" data-i18n="sp_ai">ИИ</span><svg viewBox="0 0 40 16"><path d="M2 8h32M28 3l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small data-i18n="sp2_sec">15 сек</small></div>
+            <div class="panel mock-vs">
+              <div class="mv-score"><b class="us">[WLF]</b><span class="mv-badge">VS</span><b class="them">[FNX]</b><span class="mv-count"><i class="us">5</i>:<i class="them">2</i></span></div>
+              <table>
+                <thead><tr><th data-i18n="vs_player">Игрок</th><th data-i18n="sp2_d1">пн</th><th data-i18n="sp2_d2">вт</th><th data-i18n="sp2_d3">ср</th><th data-i18n="vs_total">Неделя</th></tr></thead>
+                <tbody>
+                  <tr><td>Stormkid</td><td>46,2M</td><td>51,0M</td><td>48,7M</td><td><b>145,9M</b></td></tr>
+                  <tr><td>Lunaria</td><td>45,5M</td><td class="lo">8,1M</td><td>39,0M</td><td><b>92,6M</b></td></tr>
+                  <tr><td>Mossvane</td><td class="rw">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
+                </tbody>
+              </table>
+              <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1">Mossvane · 4 балла</span></span><span><i class="f yel"></i><span data-i18n="sp2_f2">Lunaria · 1</span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="demo-part" data-demo="news" hidden>
+      <div class="demo-feats">
+        <div class="panel feat"><div class="ic"><img src="art/web/science.png" alt="" width="52" height="52"></div><h3 data-i18n="f4_h">Новости и памятка</h3><p data-i18n="f4_p">Объявления и инструкции для новичков в одном месте, а не в сотне сообщений чата. Пишут и правят R4 и R5.</p></div>
+      </div>
+    </div>
+    <div class="demo-part" data-demo="hq" hidden>
+      <div class="demo-feats">
+        <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="f3_h">Ранги R1–R5</h3><p data-i18n="f3_p">Как в игре: R5 назначает R4, R4 помогают вести союз, исключённые пропадают из всех списков.</p></div>
+        <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-lock"/></svg></div><h3 data-i18n="f6_h">Надёжный вход</h3><p data-i18n="f6_p">Ник или ID и PIN, который придумываете сами; подбор PIN блокируется. Ваша история БМ привязана к ID из игры и переходит с вами в новый союз.</p></div>
+      </div>
+    </div>
+    <div class="panel cta-band">
+      <div><h2 style="font-size:clamp(19px,3.6vw,24px)" data-i18n="demo_cta_h">Попробуйте в своём союзе</h2><p data-i18n="demo_cta_p">Подключение бесплатное и занимает пару минут. Союз создаёт R5 или R4, остальные входят по ссылке-приглашению.</p></div>
+      <div class="ctas demo-ctas"><button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button><button class="btn ghost" data-goauth="invite" data-i18n="land_cta_invite">У меня есть приглашение</button></div>
+    </div>
   </section>
 
   <!-- AUTH -->
@@ -2328,6 +2385,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=ad9bac7fb8"></script>
+<script src="app.js?v=679f3507ae"></script>
 </body>
 </html>
