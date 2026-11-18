@@ -1138,14 +1138,15 @@ details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .hq-col{display:flex;flex-direction:column;gap:20px;min-width:0}
 @media (max-width:1100px){.hq{grid-template-columns:minmax(0,1fr)}}
 .panel h3{display:flex;align-items:center;gap:8px}
-.mem{display:flex;flex-direction:column}
-.mrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px 12px;padding:12px 2px;border-top:1px solid var(--line)}
+.mem{display:flex;flex-direction:column;container-type:inline-size}
+.mrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 2px;border-top:1px solid var(--line)}
 .mrow:first-child{border-top:0}
-.mrow .who2{margin-right:auto;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mrow .who2{margin-right:auto;flex:1 1 110px;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .mrow .who2 b{font:700 14.5px/1.25 var(--body);overflow-wrap:anywhere}
 .rk-mini{display:inline-grid;place-items:center;height:22px;min-width:34px;padding:0 6px;border-radius:999px;font:800 11.5px/1 var(--mono);background:var(--grass);color:var(--on-grass);flex:none}
 .rk-mini.r5{background:var(--bolt);color:var(--on-bolt)} .rk-mini.r4{background:var(--teal);color:var(--on-teal)}
 .rk-mini.r2{background:var(--panel-3);color:var(--fg)} .rk-mini.r1{background:var(--warn);color:#fff}
+.rk-mini.hlp{min-width:22px;padding:0;background:#b48cff;color:#1d0f3a;cursor:help} /* helper: a colour no rank uses */
 .mrow .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .rank-sel{height:38px;background:var(--panel-2);border:1.5px solid var(--line);border-radius:11px;padding:0 8px;font:700 13.5px/1 var(--body);color:var(--fg)}
 .more-btn{align-self:center;margin-top:8px}
@@ -1471,12 +1472,15 @@ html.scrolled header.top::before{opacity:1}
 .pfl{all:unset;cursor:pointer;overflow-wrap:anywhere;text-decoration:underline dashed var(--muted);text-decoration-thickness:1px;text-underline-offset:4px}
 .pfl:hover{color:var(--teal)} .pfl:focus-visible{outline:3px solid var(--bolt);border-radius:4px}
 /* member row: rank field and buttons in one even line */
-/* every row: avatar · nick · rank on one line, buttons below in the same columns for all players */
-.mrow .acts.acts.acts{grid-column:2/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px;margin-left:0;padding-bottom:3px;align-items:stretch}
+/* every row on one line: avatar · rank · (helper) · nick, buttons from the right edge in equal columns */
+.mrow .acts.acts.acts{display:grid;grid-auto-flow:column;grid-auto-columns:124px;gap:8px;width:auto;margin-left:auto;padding-bottom:3px;align-items:stretch}
+.mrow .acts > *{flex:none}
+/* a narrow list: several buttons move to their own line and share it equally; a single button stays in the row */
+@container (max-width:760px){.mrow .acts.acts.acts:not(:has(> :only-child)){width:100%;grid-auto-columns:minmax(0,1fr)}}
 .mrow .acts .rank-sel,.pf-manage .acts .rank-sel{width:100%;min-width:0;height:40px}
 .mrow .acts .btn,.pf-manage .acts .btn{width:100%;min-height:40px;padding-inline:8px;white-space:normal}
 @media (max-width:640px){
-  .mrow .acts.acts.acts{grid-column:1/-1;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
+  .mrow .acts.acts.acts:not(:has(> :only-child)){grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
   .mrow .acts .rank-sel,.pf-manage .acts .rank-sel{grid-column:1/-1}
   .mrow .acts .btn:last-child:nth-child(2n+2),.pf-manage .acts .btn:last-child:nth-child(2n+2){grid-column:1/-1}
 }
@@ -2261,6 +2265,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=5df3f51a57"></script>
+<script src="app.js?v=df74ededb9"></script>
 </body>
 </html>
