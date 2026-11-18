@@ -666,6 +666,8 @@ fieldset.f{border:0;padding:0;margin:0}
 .xyfix:hover{color:var(--teal);border-color:var(--teal)}
 .xyfix-l{margin-top:6px;font-size:13px}
 .qi.cur{background:var(--soft)} .qi.cur .n{color:var(--c)}
+.rtag{display:inline-block;vertical-align:2px;font:700 11px/1 var(--mono);padding:3px 6px;border-radius:6px;background:var(--panel-2);color:var(--muted);white-space:nowrap}
+.rtag.new{color:var(--teal)}
 .qi.me .nm::after{content:" · " attr(data-you);color:var(--muted);font-weight:600}
 .qi.hl{animation:hl 1.8s ease}
 @keyframes hl{0%,40%{background:var(--soft)}100%{background:transparent}}
@@ -1847,7 +1849,7 @@ html.boot #v-load{display:flex!important}
           <label for="jDays" data-i18n="join_days">Сколько дней в таймере</label>
           <input class="inp mono" id="jDays" type="number" min="1" max="200" value="30" inputmode="numeric">
         </div>
-        <p class="note" data-i18n="join_run_hint"><b>Записывайтесь, только когда уже запустили</b> стройку или исследование в игре. Дни берите из таймера.</p>
+        <p class="note" data-i18n="join_run_hint"><b>Записывайтесь, только когда уже запустили</b> стройку или исследование в игре. Дни берите из таймера. Если идут два одновременно — указывайте самое долгое: бафы ускоряют оба.</p>
         <div class="calc"><div class="big" id="jNorm">13</div><p id="jNormTxt"></p></div>
         <p class="err" id="jErr" role="alert"></p>
         <button class="btn bolt wide" type="submit"><svg><use href="#i-bolt"/></svg><span data-i18n="join_btn">Встать в очередь</span></button>
@@ -2248,6 +2250,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=b51fdcfbc7"></script>
+<script src="app.js?v=a87733a195"></script>
 </body>
 </html>
