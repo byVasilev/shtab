@@ -38,6 +38,7 @@
 <script>
 // a theme the player picked wins over the system one
 try { var th = localStorage.getItem("theme"); if(th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th); } catch(e) {}
+try { if((th || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")) === "light") document.querySelector('meta[name="theme-color"]').content = "#d8e4e7"; } catch(e) {}
 // signed in already: show a short loading screen instead of flashing the landing page
 try { if((localStorage.getItem("sb-xfxbobchtfkjsrcspmsv-auth-token") || /tgWebAppData=/.test(location.hash) || sessionStorage.getItem("inTg")) && !/[?&]owner/.test(location.search)) document.documentElement.classList.add("boot"); } catch(e) {}
 </script>
@@ -67,7 +68,7 @@ try { if((localStorage.getItem("sb-xfxbobchtfkjsrcspmsv-auth-token") || /tgWebAp
   --bg:#d8e4e7; --bg-2:#e1e9e0; --glow-a:rgba(21,150,168,.10); --glow-b:rgba(76,159,44,.08); --fog:rgba(255,255,255,.45); --iso:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='50' viewBox='0 0 88 50'%3E%3Cpath d='M0 25 44 0 88 25 44 50Z' fill='none' stroke='%231a5560' stroke-opacity='.15' stroke-width='1.2'/%3E%3C/svg%3E");
   --panel:#f3f6f2; --panel-2:#e6ede9; --panel-3:#d9e3df; --field:#ffffff; --accent-h:#0e7c8a; --edge:rgba(255,255,255,.9); --line:#c9d8d9; --shadow:rgba(30,60,70,.25);
   --panel-shadow:0 1px 2px rgba(17,35,42,.07),0 6px 16px -10px rgba(17,35,42,.22);
-  --fg:#11232a; --muted:#536a71; --faint:#93a7ad;
+  --fg:#11232a; --muted:#4d646b; --faint:#93a7ad;
   --grass:#5bb437; --grass-side:#3a7f20; --on-grass:#ffffff;
   --brick:#f07a2a; --brick-side:#a94e12; --on-brick:#ffffff; --brick-soft:rgba(240,122,42,.12);
   --teal:#1aa3b5; --teal-side:#0f6f7c; --on-teal:#ffffff; --teal-soft:rgba(26,163,181,.11);
@@ -79,7 +80,7 @@ try { if((localStorage.getItem("sb-xfxbobchtfkjsrcspmsv-auth-token") || /tgWebAp
   --bg:#d8e4e7; --bg-2:#e1e9e0; --glow-a:rgba(21,150,168,.10); --glow-b:rgba(76,159,44,.08); --fog:rgba(255,255,255,.45); --iso:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='50' viewBox='0 0 88 50'%3E%3Cpath d='M0 25 44 0 88 25 44 50Z' fill='none' stroke='%231a5560' stroke-opacity='.15' stroke-width='1.2'/%3E%3C/svg%3E");
   --panel:#f3f6f2; --panel-2:#e6ede9; --panel-3:#d9e3df; --field:#ffffff; --accent-h:#0e7c8a; --edge:rgba(255,255,255,.9); --line:#c9d8d9; --shadow:rgba(30,60,70,.25);
   --panel-shadow:0 1px 2px rgba(17,35,42,.07),0 6px 16px -10px rgba(17,35,42,.22);
-  --fg:#11232a; --muted:#536a71; --faint:#93a7ad;
+  --fg:#11232a; --muted:#4d646b; --faint:#93a7ad;
   --grass:#5bb437; --grass-side:#3a7f20; --on-grass:#ffffff;
   --brick:#f07a2a; --brick-side:#a94e12; --on-brick:#ffffff; --brick-soft:rgba(240,122,42,.12);
   --teal:#1aa3b5; --teal-side:#0f6f7c; --on-teal:#ffffff; --teal-soft:rgba(26,163,181,.11);
@@ -112,6 +113,8 @@ p{margin:0}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--bolt);outline-offset:2px;border-radius:10px}
+button,a,input,select,textarea,label,summary,[role=button]{touch-action:manipulation}
+@media (pointer:coarse){input:not([type=checkbox],[type=radio],[type=range],[type=color],[type=file]):not(.cell input),select,textarea{font-size:16px!important}}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .muted{color:var(--muted)}
 .eyebrow{font:800 11.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -129,7 +132,7 @@ button{cursor:pointer}
   display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border:0;border-radius:14px;
   background:var(--c);color:var(--ct);font:800 15px/1.1 var(--body);text-align:center;white-space:nowrap;
   box-shadow:0 4px 0 var(--cs),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .08s,box-shadow .08s,filter .15s}
-.btn:hover:not(:disabled){filter:brightness(1.06)}
+@media (hover:hover){.btn:hover:not(:disabled){filter:brightness(1.06)}}
 .btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--cs)}
 .btn:disabled{--c:var(--panel-2);--cs:var(--line);--ct:var(--muted);cursor:default;box-shadow:0 4px 0 var(--cs)}
 .btn.sm{min-height:38px;padding:0 13px;font-size:13.5px;border-radius:11px;box-shadow:0 3px 0 var(--cs),inset 0 1px 0 rgba(255,255,255,.25)}
@@ -280,7 +283,7 @@ section.view.on{display:block;animation:rise .35s ease both}
 .ver-pill i{width:7px;height:7px;border-radius:50%;background:var(--grass);box-shadow:0 0 0 3px color-mix(in srgb,var(--grass) 25%,transparent)}
 .ver-pill b{font-weight:700}
 .ver-pill span{height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:var(--panel-2);color:var(--teal)}
-.ver-pill:hover span,.ver-pill:focus-visible span{background:var(--teal);color:var(--on-teal)}
+.ver-pill:focus-visible span{background:var(--teal);color:var(--on-teal)} @media (hover:hover){.ver-pill:hover span{background:var(--teal);color:var(--on-teal)}}
 .land-stats{display:flex;flex-wrap:wrap;margin-top:6px}
 .land-stats > div{display:flex;flex-direction:column;gap:4px;padding:2px 22px;border-left:1px solid var(--line)}
 .land-stats > div:first-child{padding-left:0;border-left:0}
@@ -448,7 +451,7 @@ a.btn{text-decoration:none}
 .upd-bar > span{flex:1;min-width:200px}
 .upd-bar{position:relative;padding-right:44px}
 .upd-bar .x{position:absolute;top:6px;right:6px;background:none;border:0;color:var(--muted);font-size:16px;width:32px;height:32px;border-radius:10px;cursor:pointer}
-.upd-bar[data-chg]{cursor:pointer} .upd-bar[data-chg]:hover{border-color:color-mix(in srgb,var(--teal) 60%,var(--line))} .upd-bar[data-chg]:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.upd-bar[data-chg]{cursor:pointer} @media (hover:hover){.upd-bar[data-chg]:hover{border-color:color-mix(in srgb,var(--teal) 60%,var(--line))}} .upd-bar[data-chg]:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .service-note{background:color-mix(in srgb,var(--bolt) 12%,var(--panel));border-color:color-mix(in srgb,var(--bolt) 45%,var(--line))}
 .service-note-modal{margin:8px 0 12px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--bolt) 45%,var(--line));border-left:4px solid var(--bolt);border-radius:12px;background:color-mix(in srgb,var(--bolt) 10%,var(--panel-2))}
 .service-note-modal b{color:var(--bolt)} .service-note-modal p{margin:4px 0 0;font-size:14px;line-height:1.45}
@@ -498,7 +501,7 @@ a.btn{text-decoration:none}
 .vs-hsum > div{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .vs-hsum b{font:600 24px/1 var(--display)} .vs-hsum b.ok{color:var(--grass)} .vs-hsum b.bad{color:var(--warn)}
 .vs-hsum span{font:700 11.5px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.vs-htbl tbody tr{cursor:pointer} .vs-htbl tbody tr:hover td{background:var(--panel-2)}
+.vs-htbl tbody tr{cursor:pointer} @media (hover:hover){.vs-htbl tbody tr:hover td{background:var(--panel-2)}}
 .htag{color:var(--teal)}
 /* power of players from the game list who haven't signed up yet (R4/R5) */
 .pw-seed{margin-top:16px}
@@ -666,7 +669,7 @@ fieldset.f{border:0;padding:0;margin:0}
 .qi .nm{font-weight:800;overflow-wrap:anywhere}
 .qi .sub{font:600 12.5px/1.4 var(--body);color:var(--muted)}
 .xyfix{font:inherit;color:var(--fg);background:none;border:0;border-bottom:1px dashed var(--muted);padding:0;cursor:pointer}
-.xyfix:hover{color:var(--teal);border-color:var(--teal)}
+@media (hover:hover){.xyfix:hover{color:var(--teal);border-color:var(--teal)}}
 .xyfix-l{margin-top:6px;font-size:13px}
 .qi.cur{background:var(--soft)} .qi.cur .n{color:var(--c)}
 .rtag{display:inline-block;vertical-align:2px;font:700 11px/1 var(--mono);padding:3px 6px;border-radius:6px;background:var(--panel-2);color:var(--muted);white-space:nowrap}
@@ -749,7 +752,7 @@ td.vs-rew,.vs-sw.vs-rew{background:var(--vrf);color:var(--fg)}
 td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 3px 0 0 var(--vy)}
 .vs-z0t{color:var(--vzt);font-weight:800} .vs-rewt{color:var(--vrt);font-weight:800} .vs-lowt{color:var(--vyt);font-weight:800}
 .vs-pl{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.vs-pl:hover{color:var(--teal);text-decoration:underline}
+@media (hover:hover){.vs-pl:hover{color:var(--teal);text-decoration:underline}}
 @media (min-width:861px){#actSheet:has(.vs-plsheet){width:min(720px,96vw)}}
 /* the player's VS history slides up on phones and fades in on desktop */
 #actSheet[open]:has(.vs-plsheet){animation:sheetFade .22s ease-out}
@@ -801,7 +804,7 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .g-tools.g-tools .btn{width:100%;grid-column:auto;justify-content:center}
 #tour{position:fixed;inset:0;z-index:60}#tour[hidden]{display:none}
 #tour::before{content:"";position:absolute;inset:0}
-#tour .tour-hole{position:fixed;border-radius:14px;box-shadow:0 0 0 9999px rgba(4,10,14,.72),0 0 0 3px var(--bolt) inset;pointer-events:none;transition:all .2s ease}
+#tour .tour-hole{position:fixed;border-radius:14px;box-shadow:0 0 0 9999px rgba(4,10,14,.72),0 0 0 3px var(--bolt) inset;pointer-events:none;transition:top .2s ease,left .2s ease,width .2s ease,height .2s ease}
 #tour .tour-card{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));width:min(420px,calc(100% - 32px));background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 18px 50px -12px rgba(0,0,0,.6);display:grid;gap:8px}
 #tour .tour-card.up{bottom:auto;top:calc(88px + env(safe-area-inset-top,0px))}
 #tour .tour-card.mid{bottom:auto;top:50%;transform:translate(-50%,-50%)}
@@ -821,7 +824,7 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .help-ic{width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:12px;background:color-mix(in srgb,var(--bolt) 16%,transparent);color:var(--bolt)}
 .help-ic svg{width:22px;height:22px}
 .help-q{border-radius:12px;border:1px solid transparent;transition:background .15s,border-color .15s}
-.help-q:hover{background:var(--panel-2)}
+@media (hover:hover){.help-q:hover{background:var(--panel-2)}}
 .help-q[open]{background:var(--panel-2);border-color:var(--line)}
 .help-q summary{cursor:pointer;font-weight:800;line-height:1.35;list-style:none;display:flex;align-items:center;gap:10px;padding:12px}
 .help-q summary::-webkit-details-marker{display:none}
@@ -1023,7 +1026,7 @@ ol.steps-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:
 .pw th button:focus-visible{outline:3px solid var(--bolt);border-radius:4px}
 .pw th[aria-sort]{color:var(--fg)}
 .pw tbody tr{cursor:pointer}
-.pw tbody tr:hover td{background:var(--panel-2)}
+@media (hover:hover){.pw tbody tr:hover td{background:var(--panel-2)}}
 .pw tr.me td{background:var(--brick-soft)}
 .pw .rk{font:600 14px/1 var(--display);color:var(--faint);width:40px}
 .pw .nk{font-weight:800;white-space:nowrap}
@@ -1466,11 +1469,11 @@ html.scrolled header.top::before{opacity:1}
 /* waiting list: a cross next to the nickname, second tap confirms */
 .seed-chip{height:34px;padding:0 4px 0 12px}
 .seed-x{display:inline-grid;place-items:center;min-width:26px;height:26px;margin-left:2px;padding:0 6px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 12px/1 var(--body);cursor:pointer}
-.seed-x:hover{background:var(--panel-3);color:var(--fg)}
+@media (hover:hover){.seed-x:hover{background:var(--panel-3);color:var(--fg)}}
 .seed-chip.armed .seed-x{background:var(--warn);color:#fff}
 /* a nickname that opens the player page */
 .pfl{all:unset;cursor:pointer;overflow-wrap:anywhere;text-decoration:underline dashed var(--muted);text-decoration-thickness:1px;text-underline-offset:4px}
-.pfl:hover{color:var(--teal)} .pfl:focus-visible{outline:3px solid var(--bolt);border-radius:4px}
+@media (hover:hover){.pfl:hover{color:var(--teal)}} .pfl:focus-visible{outline:3px solid var(--bolt);border-radius:4px}
 /* member row: rank field and buttons in one even line */
 /* every row on one line: avatar · rank · (helper) · nick, buttons from the right edge in equal columns */
 .mrow .acts.acts.acts{display:grid;grid-auto-flow:column;grid-auto-columns:124px;gap:8px;width:auto;margin-left:auto;padding-bottom:3px;align-items:stretch}
@@ -2265,6 +2268,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=8c7f6f2db5"></script>
+<script src="app.js?v=85e583002b"></script>
 </body>
 </html>
