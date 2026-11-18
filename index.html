@@ -446,7 +446,9 @@ a.btn{text-decoration:none}
 .upd-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:12px;padding:10px 12px 10px 14px;border-radius:16px;background:color-mix(in srgb,var(--teal) 14%,var(--panel));border:1px solid color-mix(in srgb,var(--teal) 35%,var(--line));font-size:14px}
 .upd-bar > svg{width:18px;height:18px;color:var(--teal);flex:none}
 .upd-bar > span{flex:1;min-width:200px}
-.upd-bar .x{background:none;border:0;color:var(--muted);font-size:16px;width:32px;height:32px;border-radius:10px;cursor:pointer}
+.upd-bar{position:relative;padding-right:44px}
+.upd-bar .x{position:absolute;top:6px;right:6px;background:none;border:0;color:var(--muted);font-size:16px;width:32px;height:32px;border-radius:10px;cursor:pointer}
+.upd-bar[data-chg]{cursor:pointer} .upd-bar[data-chg]:hover{border-color:color-mix(in srgb,var(--teal) 60%,var(--line))} .upd-bar[data-chg]:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .service-note{background:color-mix(in srgb,var(--bolt) 12%,var(--panel));border-color:color-mix(in srgb,var(--bolt) 45%,var(--line))}
 .service-note-modal{margin:8px 0 12px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--bolt) 45%,var(--line));border-left:4px solid var(--bolt);border-radius:12px;background:color-mix(in srgb,var(--bolt) 10%,var(--panel-2))}
 .service-note-modal b{color:var(--bolt)} .service-note-modal p{margin:4px 0 0;font-size:14px;line-height:1.45}
@@ -1619,7 +1621,7 @@ html.boot #v-load{display:flex!important}
     </div>
   </header>
   <div class="upd-bar service-note" id="serviceNotice" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="service_notice">Сейчас сайт работает через VPN. Без VPN у пользователей могут возникать перебои. Мы ведём работы по устранению проблемы.</span><button class="x" type="button" data-noticex data-i18n-aria="close_notice">✕</button></div>
-  <div class="upd-bar" id="updBar" hidden><svg><use href="#i-bolt"/></svg><span id="updTxt"></span><button class="btn sm teal" type="button" data-chg data-i18n="chg_btn">Что нового</button><button class="x" type="button" data-updx aria-label="✕">✕</button></div>
+  <div class="upd-bar" id="updBar" hidden data-chg role="button" tabindex="0"><svg><use href="#i-bolt"/></svg><span id="updTxt"></span><button class="x" type="button" data-updx data-i18n-aria="close_notice">✕</button></div>
   <div class="viewbar" id="updBar" hidden><span data-i18n="upd_bar">Сайт обновился — откройте новую версию.</span><button class="btn sm" data-reloadsite data-i18n="upd_btn">Обновить</button></div>
   <div class="viewbar freezebar" id="freezeBar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-lock"/></svg><span id="freezeTxt"></span></div>
   <div class="viewbar" id="viewbar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg><span id="viewbarTxt"></span><button class="btn sm" data-owner data-i18n="view_back">К панели владельца</button></div>
@@ -2252,6 +2254,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=8b563c99fe"></script>
+<script src="app.js?v=d8a0f063f6"></script>
 </body>
 </html>
