@@ -1905,38 +1905,24 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
     <div class="demo-part" data-demo="vs" hidden>
-      <section class="spot spot-vs rev">
+      <section class="spot solo spot-vs">
         <div class="spot-txt">
-          <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="sp2_eye">Новое</span></span>
-          <h2 data-i18n="sp2_h">Битва союзов: очки каждого — прямо со скринов</h2>
-          <p data-i18n="sp2_p">Видно, сколько вы принесли в каждый день битвы и за неделю, и как это выглядит рядом с остальными. Скрины дневного рейтинга загружает R4, а ИИ сам читает ники и очки: 100 игроков — за 15 секунд.</p>
-          <ul class="spot-pts"><li data-i18n="sp2_l1"><b>Ваши очки по дням</b> и история неделя за неделей</li><li data-i18n="sp2_l2"><b>Счёт недели</b> и история всех битв с соперниками</li><li data-i18n="sp2_l3"><span class="r45">R4/R5</span><b>Метки «кто отстаёт»</b>: нули, меньше 5M и ниже нормы союза</li><li data-i18n="sp2_l4"><span class="r45">R4/R5</span><b>Видны даже нули</b>: состав загружается по скринам списка из игры</li></ul>
-        </div>
-        <div class="spot-demo" aria-hidden="true">
-          <div class="vs-flow">
-            <div class="game-shot">
-              <div class="gs-tabs"><span class="on" data-i18n="sp2_d1">пн</span><span data-i18n="sp2_d2">вт</span><span data-i18n="sp2_d3">ср</span></div>
-              <div class="gs-row"><span class="gs-r">17</span><div><small>#512 [WLF]</small>Stormkid</div><span class="gs-p">46,25M</span></div>
-              <div class="gs-row"><span class="gs-r">18</span><div><small>#512 [WLF]</small>Lunaria</div><span class="gs-p">45,48M</span></div>
-              <div class="gs-row"><span class="gs-r">19</span><div><small>#512 [WLF]</small>Oakbeard</div><span class="gs-p">44,85M</span></div>
-              <span class="gs-cap" data-i18n="sp2_shot">скрин из игры</span>
-            </div>
-            <div class="vs-arrow"><span class="ai-badge big" data-i18n="sp_ai">ИИ</span><svg viewBox="0 0 40 16"><path d="M2 8h32M28 3l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small data-i18n="sp2_sec">15 сек</small></div>
-            <div class="panel mock-vs">
-              <div class="mv-score"><b class="us">[WLF]</b><span class="mv-badge">VS</span><b class="them">[FNX]</b><span class="mv-count"><i class="us">5</i>:<i class="them">2</i></span></div>
-              <table>
-                <thead><tr><th data-i18n="vs_player">Игрок</th><th data-i18n="sp2_d1">пн</th><th data-i18n="sp2_d2">вт</th><th data-i18n="sp2_d3">ср</th><th data-i18n="vs_total">Неделя</th></tr></thead>
-                <tbody>
-                  <tr><td>Stormkid</td><td>46,2M</td><td>51,0M</td><td>48,7M</td><td><b>145,9M</b></td></tr>
-                  <tr><td>Lunaria</td><td>45,5M</td><td class="lo">8,1M</td><td>39,0M</td><td><b>92,6M</b></td></tr>
-                  <tr><td>Mossvane</td><td class="rw">3,4M</td><td class="z">0</td><td class="lo">5,2M</td><td><b>8,6M</b></td></tr>
-                </tbody>
-              </table>
-              <div class="mv-flags"><span><i class="f red"></i><span data-i18n="sp2_f1">Mossvane · 4 балла</span></span><span><i class="f yel"></i><span data-i18n="sp2_f2">Lunaria · 1</span></span></div>
-            </div>
-          </div>
+          <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="dv_eye">Битва союзов (VS)</span></span>
+          <h2 data-i18n="dv_h">Очки каждого игрока за каждый день битвы<br>прямо со скринов рейтинга</h2>
+          <p data-i18n="dv_p">Это раздел «VS» — битва союзов неделя за неделей. Раз в день R4 загружают скрины дневного рейтинга из игры, а ИИ сам читает ники и очки: сотню игроков примерно за 15 секунд. Перед сохранением R4 видит всё прочитанное и поправляет то, в чём сервис не уверен. Получается таблица на всю неделю: кто сколько принёс в каждый день, счёт битвы с соперником и история прошлых недель. Переключите «Смотреть как» на R4/R5 — увидите раздел глазами руководства союза.</p>
+          <ul class="spot-pts"><li data-i18n="dv_l1"><b>Счёт недели</b>: победа в дне даёт союзу от 1 до 4 очков, всего их 13, для победы нужно 7. Итог каждого дня отмечают R4</li><li data-i18n="dv_l2"><b>Таблица очков</b>: каждый игрок по дням и за неделю, сортировка по любому дню и сравнение с прошлой неделей. Нажмите на ник — откроется история игрока за все недели</li><li data-i18n="dv_l3"><b>Кто отстаёт — видно сразу</b>: свой цвет у нуля, у результата меньше 5M (не все награды дня) и у результата ниже нормы союза. В таблице есть и те, кто вообще не попал в рейтинг</li><li data-i18n="dv_l4"><span class="r45">R4/R5</span><b>Скрины, проверка, сохранение</b>: сомнительные ники отмечены, пропущенные места и непрочитанные строки видны сразу. Выбранного вручную игрока сервис в следующий раз узнаёт сам</li><li data-i18n="dv_l5"><span class="r45">R4/R5</span><b>Предварительно и окончательно</b>: пока день открыт, скрины можно загружать заново. День под замком больше не меняется и идёт в статистику</li><li data-i18n="dv_l6"><span class="r45">R4/R5</span><b>Кто ничего не принёс за неделю</b> и <b>склейка ников</b>: если скрины прочитали ник по-разному, результаты собираются под одним именем. В Штабе — метки «кто отстаёт» за неделю, три недели или всё время</li></ul>
         </div>
       </section>
+      <!-- a live copy of the VS section on a made-up alliance: the screenshots are read in advance, everything stays in the page's memory -->
+      <div class="panel demo-note"><p class="dv-note"></p><button class="btn ghost sm" type="button" data-dvreset data-i18n="dn_reset">Сбросить пример</button></div>
+      <div id="demoVS">
+        <div class="dq-bar">
+          <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
+            <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dvrole="r2" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dvrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
+        </div>
+        <p class="hint dq-role" id="dvRole"></p>
+        <div data-vw="body"></div>
+      </div>
     </div>
     <div class="demo-part" data-demo="news" hidden>
       <div class="demo-feats">
@@ -2062,7 +2048,7 @@ html.boot #v-load{display:flex!important}
   <!-- ALLIANCE VS -->
   <section class="view" id="v-vs">
     <div class="vh"><div><h1 data-i18n="vs_h">Битва союзов</h1><p id="vsSub"></p></div></div>
-    <div id="vsBody"></div>
+    <div id="vsBody" data-vw="body"></div>
     <input type="file" id="vsFiles" accept="image/*" multiple hidden>
     <input type="file" id="rosterFiles" accept="image/*" multiple hidden>
   </section>
@@ -2423,6 +2409,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=7371cfffdb"></script>
+<script src="app.js?v=daa814f99f"></script>
 </body>
 </html>
