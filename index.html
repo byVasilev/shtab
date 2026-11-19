@@ -1745,6 +1745,7 @@ html.boot #v-load{display:flex!important}
         <button data-ot="ally" aria-current="page"><svg><use href="#i-shield"/></svg><span data-i18n="own_tab_ally">Союзы</span></button>
         <button data-ot="people"><svg><use href="#i-user"/></svg><span data-i18n="own_tab_people">Игроки</span></button>
         <button data-ot="stats"><svg><use href="#i-chart"/></svg><span data-i18n="own_tab_stats">Статистика</span></button>
+        <button data-ot="visits"><svg><use href="#i-eye"/></svg><span data-i18n="own_tab_visits">Посещения</span></button>
         <button data-ot="inbox"><svg><use href="#i-msg"/></svg><span data-i18n="own_tab_inbox">Обращения</span><span class="dotn" id="inboxCnt" hidden></span></button>
         <button data-ot="cast"><svg><use href="#i-send"/></svg><span data-i18n="own_tab_cast">Рассылка</span></button>
       </nav>
@@ -2442,6 +2443,7 @@ html.boot #v-load{display:flex!important}
     </div>
     <div class="panel pad stack" id="ownCtr" hidden style="margin-bottom:16px"></div>
     <div class="stack" id="ownStatsTab" hidden style="gap:16px"></div>
+    <div class="stack" id="ownVisits" hidden style="gap:16px"></div>
     <div class="panel pad" id="ownInbox" hidden><div class="inbox-tools"><input class="inp" id="inboxQ" type="search" maxlength="40" data-i18n-ph="inb_q" data-i18n-aria="inb_q"><div class="chips inbox-f" role="group" id="inboxF"></div></div><div class="fb-list" id="inboxList"></div></div>
     <div class="panel pad stack" id="ownCast" hidden>
       <h3><svg width="20" height="20" aria-hidden="true" style="color:var(--bolt)"><use href="#i-bell"/></svg><span data-i18n="cast_h">Уведомление пользователям сервиса</span></h3>
@@ -2612,6 +2614,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=d31b10020b"></script>
+<script src="app.js?v=929bcb6b50"></script>
 </body>
 </html>
