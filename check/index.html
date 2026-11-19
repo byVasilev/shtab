@@ -17,7 +17,7 @@
 <div id="list"></div>
 <div id="sum"></div>
 <script>
-const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", PX = "https://89.111.153.87", PXN = "https://api.shtabsoyuza.ru", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
+const SB = "https://xfxbobchtfkjsrcspmsv.supabase.co", MSK = "https://152.228.118.107", PX = "https://89.111.153.87", PXN = "https://api.shtabsoyuza.ru", KEY = "sb_publishable_Bcd4qhozYBzAHhlR_Gx_IQ_UC3prOWw";
 // each check downloads something real and reports size and time; big downloads catch connections cut midway
 const checks = [
   ["Сайт (GitHub)", "сама страница и программа сайта", () => fetch("/app.js?c=" + Date.now(), {cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
@@ -29,6 +29,8 @@ const checks = [
   ["Посредник по имени", "api.shtabsoyuza.ru", () => fetch(PXN + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
   ["Посредник: короткий ответ", "запасной путь по адресу сервера", () => fetch(PX + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
   ["Посредник: большой ответ", "запасной путь, 120 КБ", () => fetch(PX + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
+  ["Москва: короткий ответ", "новый сервер базы в Москве", () => fetch(MSK + "/auth/v1/health", {headers:{apikey:KEY}, cache:"no-store"}).then(r => r.text().then(t => [r.ok, t.length]))],
+  ["Москва: большой ответ", "новый сервер в Москве, 120 КБ", () => fetch(MSK + "/rest/v1/rpc/conn_probe", {method:"POST", headers:{apikey:KEY, "Content-Type":"application/json"}, body:JSON.stringify({p_kb:120}), cache:"no-store"}).then(r => r.text().then(t => [r.ok && t.length > 120000, t.length]))],
 ];
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("нет ответа за " + ms / 1000 + " с")), ms))]);
 let running = false;
