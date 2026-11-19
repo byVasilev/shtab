@@ -1207,6 +1207,39 @@ details.guide .g-more{margin:-4px 20px 14px;display:inline-block}
 .bars i{flex:1;min-width:4px;background:var(--teal);border-radius:4px 4px 0 0;position:relative}
 .bars i:hover::after{content:attr(data-t);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);white-space:nowrap;font:700 11px/1 var(--body);background:var(--fg);color:var(--bg);padding:4px 6px;border-radius:6px;margin-bottom:4px}
 .bars-axis{display:flex;justify-content:space-between;font:600 11.5px/1 var(--body);color:var(--muted)}
+/* owner: site visits page */
+.vis-sub{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
+.vis-sub button{justify-content:center;padding:0 4px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.vis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.vis-dates{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:end}
+.vis-dates .btn{grid-column:1/-1;justify-content:center}
+@media (min-width:640px){.vis-dates{grid-template-columns:1fr 1fr auto;max-width:560px}.vis-dates .btn{grid-column:auto;height:45px}}
+.vbars{display:flex;align-items:flex-end;gap:3px;height:170px}
+.vbars>i{flex:1;min-width:3px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;border-radius:5px 5px 0 0;overflow:hidden;opacity:.9}
+.vbars>i>b{display:block;background:var(--teal)}
+.vbars>i>b.g{background:var(--bolt)}
+.vbars>i:hover,.vbars>i[aria-pressed="true"]{opacity:1}
+.vbars>i[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--fg)}
+.vis-cap{font:600 13px/1.4 var(--body);color:var(--fg);min-height:19px}
+.vis-leg{display:flex;gap:6px 14px;flex-wrap:wrap;font:600 13px/1.2 var(--body);color:var(--muted)}
+.vis-leg i,.vis-dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;flex:none}
+.delta{font:800 12.5px/1.2 var(--body);color:var(--muted)}
+.delta.up{color:var(--up)}.delta.down{color:var(--warn)}
+.donut-row{display:flex;gap:18px;align-items:center}
+.donut{width:118px;height:118px;flex:none}
+.donut text{font:600 22px var(--display);fill:var(--fg)}
+.donut .dl{font:700 10.5px var(--body);fill:var(--muted)}
+.donut-row .vis-list{flex:1;min-width:0}
+.vis-list{display:flex;flex-direction:column;gap:9px}
+.vis-li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px}
+.vis-li b{min-width:0;overflow-wrap:anywhere;display:flex;align-items:baseline}
+.vis-li span{font:600 13px/1.3 var(--mono,monospace);white-space:nowrap;color:var(--muted)}
+.heat{display:grid;grid-template-columns:22px repeat(24,minmax(0,1fr));gap:2px;font:700 10px/1 var(--body);color:var(--muted)}
+.heat i{aspect-ratio:1;border-radius:3px;background:var(--panel-2);cursor:pointer}
+.heat i[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--fg)}
+.heat span{display:flex;align-items:center}
+.heat .hx{grid-column:span 6;justify-content:flex-start;padding-top:3px}
+@media (max-width:420px){.donut-row{flex-direction:column;align-items:stretch}.donut{align-self:center}}
 .q-tools{display:flex;flex-wrap:wrap;gap:8px;padding:14px 14px 4px}
 details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .g-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -2614,6 +2647,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=929bcb6b50"></script>
+<script src="app.js?v=1c39db87b7"></script>
 </body>
 </html>
