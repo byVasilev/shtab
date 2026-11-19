@@ -244,7 +244,7 @@ section.view.on{display:block;animation:rise .35s ease both}
 @keyframes rise{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
 .vh{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 20px;margin-bottom:20px}
 .vh > div:first-child{display:flex;flex-direction:column;gap:8px;max-width:62ch}
-.vh h1{font-size:clamp(23px,4.6vw,32px)}
+.vh h1,.vh .vt{font-size:clamp(23px,4.6vw,32px)}
 .vh p{color:var(--muted);font-weight:500}
 
 /* ---------- landing ---------- */
@@ -353,7 +353,7 @@ a.btn{text-decoration:none}
 /* ---------- hero calculators ---------- */
 .calc-wrap{display:grid;gap:14px}
 .calc-back{justify-self:start}
-.calc-wrap h1{font-size:22px}
+.calc-wrap h1,.calc-wrap .vt{font-size:22px}
 .calc-mode{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px;max-width:420px}
 .calc-mode button{min-height:44px;border:0;background:none;border-radius:10px;color:var(--muted);font:800 15px/1 var(--body);cursor:pointer}
 .calc-mode button[aria-selected="true"]{background:var(--panel-3);color:var(--fg)}
@@ -409,7 +409,7 @@ a.btn{text-decoration:none}
 .calc-promo{justify-items:center;text-align:center}
 @media (max-width:370px){.calc-skill{grid-template-columns:1fr 130px}.calc-cost{grid-column:1/-1;text-align:left}}
 @media (min-width:861px){
-  .calc-wrap h1{font-size:30px}
+  .calc-wrap h1,.calc-wrap .vt{font-size:30px}
   .calc-grid{grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start}
   .calc-r{position:sticky;top:90px}
   .calc-stars{grid-template-columns:1fr 1fr;gap:16px}
@@ -1890,7 +1890,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- DEMO: a guest's look at a section; the home page's big blocks moved here, live made-up data comes page by page -->
   <section class="view" id="v-demo">
-    <div class="vh"><div><span class="eyebrow" data-i18n="demo_eye">Знакомство с разделом</span><h1 id="demoH"></h1><p id="demoP"></p></div></div>
+    <div class="vh"><div><span class="eyebrow" data-i18n="demo_eye">Знакомство с разделом</span><h2 class="vt" id="demoH"></h2><p id="demoP"></p></div></div>
     <div class="demo-part" data-demo="now" hidden>
       <section class="spot solo">
         <div class="spot-txt">
@@ -2199,7 +2199,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- NOW -->
   <section class="view" id="v-now">
-    <div class="vh"><div><h1 data-i18n="now_h">Кому кидаем сейчас</h1><p data-i18n="now_p">Найдите поселение по координатам, киньте баф в игре и отметьте здесь.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="now_h">Кому кидаем сейчас</h2><p data-i18n="now_p">Найдите поселение по координатам, киньте баф в игре и отметьте здесь.</p></div></div>
     <div class="pinslot"></div>
     <div id="evNow"></div>
     <details class="panel coords-help"><summary><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="find_h">Как найти игрока по координатам</span></summary>
@@ -2215,7 +2215,7 @@ html.boot #v-load{display:flex!important}
   <!-- QUEUE -->
   <section class="view" id="v-queue">
     <div class="vh">
-      <div><h1 data-i18n="q_h">Очередь</h1></div>
+      <div><h2 class="vt" data-i18n="q_h">Очередь</h2></div>
       <div class="row">
         <div class="seg" role="group" data-i18n-aria="q_seg_aria">
           <button data-q="build" aria-pressed="true" data-i18n="build">Стройка</button>
@@ -2232,7 +2232,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- JOIN -->
   <section class="view" id="v-join">
-    <div class="vh"><div><h1 data-i18n="join_h">Записаться на бафы</h1><p data-i18n="join_p">Ник и координаты берутся из профиля. Проверьте, что они актуальны.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="join_h">Записаться на бафы</h2><p data-i18n="join_p">Ник и координаты берутся из профиля. Проверьте, что они актуальны.</p></div></div>
     <div class="formgrid">
       <form class="panel pad stack" id="joinForm" novalidate style="gap:18px">
         <p class="frz" id="joinFrz" style="margin:0" hidden data-i18n="frz_join">❄ Запись закрыта до старта сезона. Очередь пока составляют R4 и R5, а когда сезон начнётся, запись откроют.</p>
@@ -2262,7 +2262,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- POWER -->
   <section class="view" id="v-power">
-    <div class="vh"><div><h1 data-i18n="pw_h">Боевая мощь союза</h1><p data-i18n="pw_p">БМ в миллионах. Обновляйте 1–2 раза в неделю, таблица видна всему союзу.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="pw_h">Боевая мощь союза</h2><p data-i18n="pw_p">БМ в миллионах. Обновляйте 1–2 раза в неделю, таблица видна всему союзу.</p></div></div>
     <div class="pinslot"></div>
     <div class="stats" id="pwStats" data-pw="stats"></div>
     <div class="pwgrid">
@@ -2289,13 +2289,13 @@ html.boot #v-load{display:flex!important}
 
   <!-- RAID -->
   <section class="view" id="v-raid">
-    <div class="vh"><div><h1 data-i18n="raid_h">Рейд на резервуар</h1><p id="raidSub" data-rw="sub"></p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="raid_h">Рейд на резервуар</h2><p id="raidSub" data-rw="sub"></p></div></div>
     <div id="raidBody" data-rw="body"></div>
   </section>
 
   <!-- ALLIANCE VS -->
   <section class="view" id="v-vs">
-    <div class="vh"><div><h1 data-i18n="vs_h">Битва союзов</h1><p id="vsSub"></p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="vs_h">Битва союзов</h2><p id="vsSub"></p></div></div>
     <div id="vsBody" data-vw="body"></div>
     <input type="file" id="vsFiles" accept="image/*" multiple hidden>
     <input type="file" id="rosterFiles" accept="image/*" multiple hidden>
@@ -2304,7 +2304,7 @@ html.boot #v-load{display:flex!important}
   <!-- NEWS -->
   <section class="view" id="v-news">
     <div class="vh">
-      <div><h1 data-i18n="news_h">Новости и памятка</h1><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
+      <div><h2 class="vt" data-i18n="news_h">Новости и памятка</h2><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
       <button class="btn bolt sm" id="newsAdd" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
     </div>
     <form class="panel news-form" id="newsForm" data-nw="form" novalidate hidden>
@@ -2325,7 +2325,7 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-help"><div class="calc-wrap help-wrap" id="helpBody"></div></section>
   <section class="view" id="v-calc"><div class="calc-wrap">
     <button class="btn ghost sm calc-back" data-home id="calcBack"></button>
-    <h1 data-i18n="calc_h">Калькуляторы героев</h1>
+    <h2 class="vt" data-i18n="calc_h">Калькуляторы героев</h2>
     <div class="calc-mode" role="tablist">
       <button role="tab" id="calcTStars" data-i18n="calc_tab_stars">Звёзды</button>
       <button role="tab" id="calcTBooks" data-i18n="calc_tab_books">Навыки</button>
@@ -2406,7 +2406,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- PROFILE -->
   <section class="view" id="v-profile">
-    <div class="vh"><div><h1 data-i18n="prof_h">Профиль</h1><p id="profLead" data-i18n="prof_p">По этим координатам вас ищут, когда кидают бафы.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="prof_h">Профиль</h2><p id="profLead" data-i18n="prof_p">По этим координатам вас ищут, когда кидают бафы.</p></div></div>
     <div class="seg vs-tabs prof-tabs" role="tablist"><button role="tab" data-proftab="data" data-i18n="prof_tab_data">Мои данные</button><button role="tab" data-proftab="set" data-i18n="prof_tab_set">Настройки</button></div>
     <div id="pfMine" class="pf"></div>
     <div id="profSet">
@@ -2474,7 +2474,7 @@ html.boot #v-load{display:flex!important}
   <!-- OWNER (service creator) -->
   <section class="view" id="v-owner">
     <div class="vh">
-      <div><h1 data-i18n="own_h">Панель владельца</h1><p data-i18n="own_p">Все подключённые союзы и обращения от их R5 и R4. Внутри союзов всем управляют они сами — вы можете только смотреть и заблокировать нарушителя.</p></div>
+      <div><h2 class="vt" data-i18n="own_h">Панель владельца</h2><p data-i18n="own_p">Все подключённые союзы и обращения от их R5 и R4. Внутри союзов всем управляют они сами — вы можете только смотреть и заблокировать нарушителя.</p></div>
       <button class="btn ghost sm" data-signout data-i18n="logout">Выйти из аккаунта</button>
     </div>
     <div class="panel pad stack" id="ownTg" style="margin-bottom:16px;gap:10px"></div>
@@ -2513,7 +2513,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- HQ (R5 / R4) -->
   <section class="view" id="v-hq">
-    <div class="vh"><div><h1 data-i18n="hq_h">Штаб</h1><p data-i18n="hq_p">Участники, ранги, заявки, жалобы и настройки. Видят только R5 и R4.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="hq_h">Штаб</h2><p data-i18n="hq_p">Участники, ранги, заявки, жалобы и настройки. Видят только R5 и R4.</p></div></div>
     <!-- HQ is split into tabs by topic; counters show where something is waiting -->
     <div class="seg hq-tabs" role="tablist">
       <button data-hqtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people">Состав</span><span class="dotn" id="hqtPeople" hidden></span></button>
@@ -2658,6 +2658,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=3b40052af2"></script>
+<script src="app.js?v=51606ec287"></script>
 </body>
 </html>
