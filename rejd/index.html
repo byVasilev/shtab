@@ -252,7 +252,7 @@ section.view.on{display:block;animation:rise .35s ease both}
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;padding-top:18px}
 .hero h1,.hero .land-h{font-size:clamp(28px,5.6vw,52px);line-height:1.08}
 .hero h1 em,.hero .land-h em{font-style:normal;color:var(--accent-h,var(--bolt))}
-.app-foot{display:flex;justify-content:center;padding:28px 0 8px}
+.app-foot{display:flex;flex-direction:column;align-items:center;padding:28px 0 8px}
 /* Help and About side by side, the same size, the pair centred */
 .app-foot .foot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(360px,100%)}
 .app-foot .foot-pair .btn{width:100%;justify-content:center}
@@ -629,6 +629,10 @@ a.btn{text-decoration:none}
 .dn-go{display:grid;margin-top:16px}.dn-go .btn{justify-content:center;white-space:normal;text-align:center;min-width:0}
 .land-more{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 14px;margin-top:28px;font:500 13.5px/1.4 var(--body);color:var(--faint)}.land-more span{flex-basis:100%;text-align:center}.land-more a{color:var(--muted);padding:8px 2px;text-decoration:underline;text-underline-offset:3px}.land-more a:hover{color:var(--fg)}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
+/* the site owner and contact (required for a site in Russia), right under the fan-service line */
+.foot.foot-own{margin-top:6px}
+.app-foot .foot-own{margin-top:16px}
+.foot-own a{color:inherit;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
 @media (max-width:900px){.features{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
 @media (max-width:760px){
   .hero{grid-template-columns:1fr;gap:8px}
@@ -1889,6 +1893,7 @@ html.boot #v-load{display:flex!important}
     <!-- every section has its own address; deploy.sh publishes a copy of this page at each one -->
     <nav class="land-more" data-i18n-aria="seo_links"><span data-i18n="seo_links">Разделы Штаба</span><a href="/bafy/" data-tab="now" data-i18n="seo_bafy">Бафы</a><a href="/ochered/" data-tab="queue" data-i18n="seo_queue">Очередь бафов</a><a href="/bm/" data-tab="power" data-i18n="seo_bm">Боевая мощь (БМ)</a><a href="/rejd/" data-tab="raid" data-i18n="seo_rejd">Рейд на резервуар</a><a href="/vs/" data-tab="vs" data-i18n="seo_vs">Битва союзов (VS)</a><a href="/novosti/" data-tab="news" data-i18n="seo_news">Новости союза</a><a href="/shtab/" data-tab="hq" data-i18n="seo_hq">Штаб для R4 и R5</a><a href="/kalkulyator/" data-tab="calc" data-i18n="seo_calc">Калькулятор героев</a><a href="/pomoshch/" data-tab="help" data-i18n="seo_help">Помощь</a></nav>
     <p class="foot" data-i18n="foot">Штаб союза — фанатский сервис, не связан с разработчиками Tiles Survive.</p>
+    <p class="foot foot-own"><span data-i18n="foot_own">Владелец сайта: Васильев Иван Андреевич, Москва</span> · <a href="mailto:support@shtabsoyuza.ru">support@shtabsoyuza.ru</a></p>
   </section>
 
   <!-- DEMO: a guest's look at a section; the home page's big blocks moved here, live made-up data comes page by page -->
@@ -2651,7 +2656,7 @@ html.boot #v-load{display:flex!important}
       </div>
     </div>
   </section>
-  <div class="app-foot" id="appFoot" hidden><div class="foot-pair"><button class="btn ghost sm" type="button" data-tab="help"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="help_btn">Помощь</span></button><button class="btn ghost sm" type="button" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn">О сервисе</span></button></div></div>
+  <div class="app-foot" id="appFoot" hidden><div class="foot-pair"><button class="btn ghost sm" type="button" data-tab="help"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="help_btn">Помощь</span></button><button class="btn ghost sm" type="button" data-about><svg aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="about_btn">О сервисе</span></button></div><p class="foot foot-own"><span data-i18n="foot_own">Владелец сайта: Васильев Иван Андреевич, Москва</span> · <a href="mailto:support@shtabsoyuza.ru">support@shtabsoyuza.ru</a></p></div>
 </div>
 
 <dialog class="act" id="actSheet"><div class="act-b" id="actSheetB" tabindex="-1"></div></dialog>
@@ -2661,6 +2666,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=26cc4d7e71"></script>
+<script src="/app.js?v=7b37817d33"></script>
 </body>
 </html>
