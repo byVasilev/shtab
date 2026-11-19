@@ -627,6 +627,7 @@ a.btn{text-decoration:none}
 @media (max-width:640px){.dq-bar{display:grid}.dq-bar .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}.dq-bar .seg button{justify-content:center;height:40px}}
 @media (max-width:640px){#demoNews .dq-bar>.btn{width:100%;justify-content:center;height:40px}}
 .dn-go{display:grid;margin-top:16px}.dn-go .btn{justify-content:center;white-space:normal;text-align:center;min-width:0}
+.land-more{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 14px;margin-top:28px;font:500 13.5px/1.4 var(--body);color:var(--faint)}.land-more span{flex-basis:100%;text-align:center}.land-more a{color:var(--muted);padding:8px 2px;text-decoration:underline;text-underline-offset:3px}.land-more a:hover{color:var(--fg)}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
 @media (max-width:900px){.features{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
 @media (max-width:760px){
@@ -1885,6 +1886,8 @@ html.boot #v-load{display:flex!important}
       <button class="btn bolt" data-goauth="create" id="bandCreate"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
       <button class="btn bolt" data-tab="now" id="bandBack" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button>
     </div>
+    <!-- a page per section for search engines; built by scripts/seo_pages.py on deploy -->
+    <nav class="land-more" data-i18n-aria="seo_links"><span data-i18n="seo_links">Подробнее о разделах</span><a href="bafy/" data-i18n="seo_bafy">Очередь бафов</a><a href="vs/" data-i18n="seo_vs">Битва союзов (VS)</a><a href="rejd/" data-i18n="seo_rejd">Рейд на резервуар</a><a href="bm/" data-i18n="seo_bm">Боевая мощь (БМ)</a><a href="bot/" data-i18n="seo_bot">Бот в Telegram и ВК</a><a href="kalkulyator/" data-i18n="seo_calc">Калькулятор героев</a></nav>
     <p class="foot" data-i18n="foot">Штаб союза — фанатский сервис, не связан с разработчиками Tiles Survive.</p>
   </section>
 
@@ -2658,6 +2661,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=51606ec287"></script>
+<script src="app.js?v=1cc5bb044e"></script>
 </body>
 </html>
