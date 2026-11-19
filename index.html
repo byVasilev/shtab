@@ -1227,9 +1227,15 @@ details.guide .g-more{margin:-4px 20px 14px;display:inline-block}
 .delta.up{color:var(--up)}.delta.down{color:var(--warn)}
 .donut-row{display:flex;gap:18px;align-items:center}
 .donut{width:118px;height:118px;flex:none}
-.donut text{font:600 22px var(--display);fill:var(--fg)}
+.donut text{font:600 24px var(--display);fill:var(--fg)}
 .donut .dl{font:700 10.5px var(--body);fill:var(--muted)}
-.donut-row .vis-list{flex:1;min-width:0}
+.donut-row .vis-leg2{flex:1;min-width:0}
+.vis-leg2{display:flex;flex-direction:column;gap:12px}
+.vis-leg2>div{display:grid;grid-template-columns:16px minmax(0,1fr);row-gap:3px;align-items:center}
+.vis-leg2 .vis-dot{margin:0}
+.vis-leg2 b{font-size:14.5px;line-height:1.2;overflow-wrap:normal;word-break:normal}
+.vis-leg2 span{grid-column:2;font:600 13px/1.2 var(--body);color:var(--muted)}
+.vis-code{display:block;padding:10px 12px;border-radius:10px;background:var(--panel-2);font:600 13px/1.4 var(--mono,monospace);overflow-wrap:anywhere;user-select:all}
 .vis-list{display:flex;flex-direction:column;gap:9px}
 .vis-li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px}
 .vis-li b{min-width:0;overflow-wrap:anywhere;display:flex;align-items:baseline}
@@ -1239,7 +1245,7 @@ details.guide .g-more{margin:-4px 20px 14px;display:inline-block}
 .heat i[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--fg)}
 .heat span{display:flex;align-items:center}
 .heat .hx{grid-column:span 6;justify-content:flex-start;padding-top:3px}
-@media (max-width:420px){.donut-row{flex-direction:column;align-items:stretch}.donut{align-self:center}}
+@media (max-width:360px){.donut-row{flex-direction:column;align-items:stretch}.donut{align-self:center}}
 .q-tools{display:flex;flex-wrap:wrap;gap:8px;padding:14px 14px 4px}
 details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .g-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -2647,6 +2653,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=1c39db87b7"></script>
+<script src="app.js?v=4203fecebd"></script>
 </body>
 </html>
