@@ -12,9 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0c171d">
 <meta name="robots" content="noai, noimageai">
-<link rel="icon" href="art/web/logo.png">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="art/app/apple-touch-icon.png">
+<link rel="icon" href="/art/web/logo.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/art/app/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Штаб союза">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -250,8 +250,8 @@ section.view.on{display:block;animation:rise .35s ease both}
 /* ---------- landing ---------- */
 #v-land{overflow-x:clip}
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;padding-top:18px}
-.hero h1{font-size:clamp(28px,5.6vw,52px);line-height:1.08}
-.hero h1 em{font-style:normal;color:var(--accent-h,var(--bolt))}
+.hero h1,.hero .land-h{font-size:clamp(28px,5.6vw,52px);line-height:1.08}
+.hero h1 em,.hero .land-h em{font-style:normal;color:var(--accent-h,var(--bolt))}
 .app-foot{display:flex;justify-content:center;padding:28px 0 8px}
 /* Help and About side by side, the same size, the pair centred */
 .app-foot .foot-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(360px,100%)}
@@ -1774,7 +1774,7 @@ html.boot #v-load{display:flex!important}
   <header class="top">
     <div class="bar">
       <button class="brand" data-home>
-        <img src="art/web/logo.png" alt="" width="40" height="40">
+        <img src="/art/web/logo.png" alt="" width="40" height="40">
         <span><b data-i18n="brand_title">Штаб союза</b><small id="allyName"></small></span>
       </button>
       <nav class="tabs" data-i18n-aria="nav_aria" id="nav" hidden>
@@ -1810,8 +1810,8 @@ html.boot #v-load{display:flex!important}
   <div class="viewbar" id="viewbar" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg><span id="viewbarTxt"></span><button class="btn sm" data-owner data-i18n="view_back">К панели владельца</button></div>
 
   <!-- LANDING (public link) -->
-  <section class="view" id="v-load" aria-busy="true"><img src="art/web/logo.png" alt="" width="64" height="64"><span data-i18n="loading">Загрузка…</span>
-    <div id="loadSlow" hidden><p></p><button class="btn" type="button" onclick="location.reload()"></button><a href="check/"></a></div></section>
+  <section class="view" id="v-load" aria-busy="true"><img src="/art/web/logo.png" alt="" width="64" height="64"><span data-i18n="loading">Загрузка…</span>
+    <div id="loadSlow" hidden><p></p><button class="btn" type="button" onclick="location.reload()"></button><a href="/check/"></a></div></section>
   <script>
   // the database can be slow or cut off on some networks: after a while offer a reload and the connection check
   setTimeout(function(){
@@ -1843,15 +1843,15 @@ html.boot #v-load{display:flex!important}
         </div>
       </div>
       <div class="hero-art">
-        <img class="isl" src="art/web/island.png" data-i18n-alt="island_alt" alt="Островок из тайлов с поселением в тумане" width="840" height="470">
-        <div class="fcard a"><img src="art/web/build.png" alt="" width="34" height="34"><div><small data-i18n="land_card1_s">Стройка · получено</small>Ironfox · <span class="mono">7/13</span></div></div>
-        <div class="fcard b ally-card" id="allyCard" hidden aria-live="polite"><img src="art/web/logo.png" alt="" width="34" height="34"><div><small data-i18n="ally_card_s">Уже в Штабе</small><span class="ally-rot"><span class="ally-in" id="allyIn"></span></span></div></div>
+        <img class="isl" src="/art/web/island.png" data-i18n-alt="island_alt" alt="Островок из тайлов с поселением в тумане" width="840" height="470">
+        <div class="fcard a"><img src="/art/web/build.png" alt="" width="34" height="34"><div><small data-i18n="land_card1_s">Стройка · получено</small>Ironfox · <span class="mono">7/13</span></div></div>
+        <div class="fcard b ally-card" id="allyCard" hidden aria-live="polite"><img src="/art/web/logo.png" alt="" width="34" height="34"><div><small data-i18n="ally_card_s">Уже в Штабе</small><span class="ally-rot"><span class="ally-in" id="allyIn"></span></span></div></div>
       </div>
     </div>
 
     <!-- short tiles: each opens the section's demo for a guest (the big blocks live in #v-demo now) -->
     <div class="land-tiles" id="landTiles">
-      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь на бафы стройки и исследования двигается сама, следить за чатом не нужно.</span><ul class="tl"><li data-i18n="tile_now_1">Норма по дням считается в таймере сама</li><li data-i18n="tile_now_2">Видно, кто сейчас на бафе и когда ваш черёд</li><li data-i18n="tile_now_3">Напоминание в Telegram, ВК или в браузер</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="/art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь на бафы стройки и исследования двигается сама, следить за чатом не нужно.</span><ul class="tl"><li data-i18n="tile_now_1">Норма по дням считается в таймере сама</li><li data-i18n="tile_now_2">Видно, кто сейчас на бафе и когда ваш черёд</li><li data-i18n="tile_now_3">Напоминание в Telegram, ВК или в браузер</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
       <button class="panel tile" type="button" data-tab="power"><span class="ic"><svg style="color:var(--grass)"><use href="#i-shield"/></svg></span><b data-i18n="nav_power">БМ</b><span class="tp" data-i18n="tile_power">Каждый вносит БМ своих отрядов за минуту.</span><ul class="tl"><li data-i18n="tile_power_1">Ваш рост неделя за неделей</li><li data-i18n="tile_power_2">Общая таблица с сортировкой для R4 и R5</li><li data-i18n="tile_power_3">История БМ переходит с вами в новый союз</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
       <button class="panel tile" type="button" data-tab="vs"><span class="ic"><svg style="color:var(--warn)"><use href="#i-vs"/></svg></span><b data-i18n="nav_vs">VS</b><span class="tp" data-i18n="tile_vs">R4 загружают скрины рейтинга, а ИИ сам читает ники и очки.</span><ul class="tl"><li data-i18n="tile_vs_1">Очки каждого по дням и за неделю</li><li data-i18n="tile_vs_2">Счёт недели и история битв с соперниками</li><li data-i18n="tile_vs_3">Метки «кто отстаёт» для R4 и R5</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
       <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">План рейда на резервуар без таблиц и голосовых.</span><ul class="tl"><li data-i18n="tile_raid_1">Каждый видит свою группу и маршрут</li><li data-i18n="tile_raid_2">Основа и резерв отмечаются как в игре</li><li data-i18n="tile_raid_3">Сильнейших сервис раскладывает по группам сам</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
@@ -1886,8 +1886,8 @@ html.boot #v-load{display:flex!important}
       <button class="btn bolt" data-goauth="create" id="bandCreate"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
       <button class="btn bolt" data-tab="now" id="bandBack" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button>
     </div>
-    <!-- a page per section for search engines; built by scripts/seo_pages.py on deploy -->
-    <nav class="land-more" data-i18n-aria="seo_links"><span data-i18n="seo_links">Подробнее о разделах</span><a href="bafy/" data-i18n="seo_bafy">Очередь бафов</a><a href="vs/" data-i18n="seo_vs">Битва союзов (VS)</a><a href="rejd/" data-i18n="seo_rejd">Рейд на резервуар</a><a href="bm/" data-i18n="seo_bm">Боевая мощь (БМ)</a><a href="bot/" data-i18n="seo_bot">Бот в Telegram и ВК</a><a href="kalkulyator/" data-i18n="seo_calc">Калькулятор героев</a></nav>
+    <!-- every section has its own address; deploy.sh publishes a copy of this page at each one -->
+    <nav class="land-more" data-i18n-aria="seo_links"><span data-i18n="seo_links">Разделы Штаба</span><a href="/bafy/" data-tab="now" data-i18n="seo_bafy">Бафы</a><a href="/ochered/" data-tab="queue" data-i18n="seo_queue">Очередь бафов</a><a href="/bm/" data-tab="power" data-i18n="seo_bm">Боевая мощь (БМ)</a><a href="/rejd/" data-tab="raid" data-i18n="seo_rejd">Рейд на резервуар</a><a href="/vs/" data-tab="vs" data-i18n="seo_vs">Битва союзов (VS)</a><a href="/novosti/" data-tab="news" data-i18n="seo_news">Новости союза</a><a href="/shtab/" data-tab="hq" data-i18n="seo_hq">Штаб для R4 и R5</a><a href="/kalkulyator/" data-tab="calc" data-i18n="seo_calc">Калькулятор героев</a><a href="/pomoshch/" data-tab="help" data-i18n="seo_help">Помощь</a></nav>
     <p class="foot" data-i18n="foot">Штаб союза — фанатский сервис, не связан с разработчиками Tiles Survive.</p>
   </section>
 
@@ -1925,7 +1925,7 @@ html.boot #v-load{display:flex!important}
         </div>
         <div class="spot-demo" aria-hidden="true">
           <div class="nt-stack">
-            <div class="push"><img src="art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
+            <div class="push"><img src="/art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
             <div class="chat tg">
               <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat">Чат союза [WLF]</b></div>
               <div class="bubble"><span class="bot-n">Штаб союза</span>
@@ -2195,7 +2195,7 @@ html.boot #v-load{display:flex!important}
   <!-- AUTH -->
   <section class="view" id="v-auth">
     <div class="auth">
-      <img class="isl" src="art/web/island.png" alt="" width="840" height="470">
+      <img class="isl" src="/art/web/island.png" alt="" width="840" height="470">
       <div class="panel" id="authCard"></div>
     </div>
   </section>
@@ -2453,7 +2453,7 @@ html.boot #v-load{display:flex!important}
       </form>
       <aside class="panel pad stack">
         <h3 data-i18n="howcoords_h">Как узнать свои координаты</h3>
-        <figure class="guide-shot"><img src="art/web/coords-guide.jpg" data-i18n-alt="shot_alt" alt="Карточка поселения в игре: координаты X и Y слева под иконкой" width="755" height="375"><span class="ring" aria-hidden="true"></span></figure>
+        <figure class="guide-shot"><img src="/art/web/coords-guide.jpg" data-i18n-alt="shot_alt" alt="Карточка поселения в игре: координаты X и Y слева под иконкой" width="755" height="375"><span class="ring" aria-hidden="true"></span></figure>
         <ol class="steps-list">
           <li data-i18n="step1">Откройте карту и нажмите на своё поселение.</li>
           <li data-i18n="step2">В карточке «Поселение» слева будут ваши координаты, например <span class="mono">X:503 Y:569</span>.</li>
@@ -2661,6 +2661,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="app.js?v=1cc5bb044e"></script>
+<script src="/app.js?v=af42f77210"></script>
 </body>
 </html>
