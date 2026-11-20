@@ -516,6 +516,11 @@ a.btn{text-decoration:none}
 .pw-seed .pw-seed-h{padding:16px 18px 6px;display:flex;flex-direction:column;gap:4px}
 .pw-seed td.sq{font-family:var(--mono);text-align:right}
 .seed-tag{font:700 10.5px/1 var(--body);padding:3px 6px;border-radius:6px;background:var(--panel-3);color:var(--muted);vertical-align:2px;letter-spacing:.02em}
+/* raid no-shows: badge in the pool and the card; chips R4/R5 tap after the raid */
+.ns-tag{font:700 10.5px/1 var(--body);padding:3px 6px;border-radius:6px;vertical-align:2px;white-space:nowrap}
+.ns-tag.one{background:color-mix(in srgb,var(--mid) 30%,transparent);color:var(--fg)} .ns-tag.many{background:var(--warn);color:#fff}
+.ns-box .mchips{gap:8px}.ns-chip{padding:0 12px;min-height:36px}.ns-chip[aria-pressed="true"],.ns-chip[data-on]{background:color-mix(in srgb,var(--warn) 16%,var(--panel-2));border-color:var(--warn);text-decoration:line-through;text-decoration-color:var(--warn)}
+.ns-chip[aria-disabled="true"]{opacity:.6}.ns-chip:disabled{opacity:.6;cursor:progress}.rh-ns-hint{margin:12px 2px 0}
 .seed-sq{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 @media (max-width:480px){.seed-sq{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .ann-editing{margin:0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--bolt) 16%,transparent);font-size:14px;line-height:1.45}
@@ -2665,6 +2670,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=2aedadbe4c"></script>
+<script src="/app.js?v=cc71466df7"></script>
 </body>
 </html>
