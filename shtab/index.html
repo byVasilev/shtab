@@ -444,24 +444,9 @@ a.btn{text-decoration:none}
 .ally-in.out{transform:translateY(-14px);opacity:0}
 .ally-in.in{transform:translateY(14px);opacity:0;transition:none}
 @media (prefers-reduced-motion:reduce){.ally-in{transition:none}}
-/* landing: is it safe */
-.safe{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:20px 32px;padding:26px;margin-top:24px}
-.safe-l h2{font-size:clamp(20px,4vw,28px);margin-top:8px}
-.safe-l p{margin:10px 0 0;color:var(--muted);max-width:42ch}
-.safe-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.safe-col{border-radius:16px;padding:16px;background:var(--panel-2)}
-.safe-col h3{margin:0 0 10px;font:800 13px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase}
-.safe-col ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.safe-col li{display:flex;gap:9px;align-items:center;font-weight:700;font-size:14.5px}
-.safe-col li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background-position:center;background-repeat:no-repeat;background-size:12px}
-.safe-col.yes h3{color:var(--grass)} .safe-col.yes li::before{background-color:color-mix(in srgb,var(--grass) 25%,transparent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5l2.5 2.5L10 3.5' fill='none' stroke='%237bd957' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-.safe-col.no h3{color:var(--warn)} .safe-col.no li{color:var(--muted)} .safe-col.no li::before{background-color:color-mix(in srgb,var(--warn) 22%,transparent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 3l6 6M9 3l-6 6' fill='none' stroke='%23e5484d' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")}
-.safe-facts{grid-column:1/-1;list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.safe-facts li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--muted)}
-.safe-facts b{color:var(--fg)}
-.safe-facts svg{width:20px;height:20px;flex:none;color:var(--teal);margin-top:1px}
-@media (max-width:820px){.safe{grid-template-columns:1fr}.safe-facts{grid-template-columns:1fr}}
-@media (max-width:460px){.safe-cols{grid-template-columns:1fr}}
+/* landing: is it safe, in one line */
+.safe-line{display:flex;gap:12px;align-items:center;padding:16px 20px;margin:24px 0 0;font-weight:700;line-height:1.45}
+.safe-line svg{width:22px;height:22px;flex:none;color:var(--grass)}
 .safe-hint{display:flex;gap:8px;align-items:flex-start;margin:2px 0 0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--teal) 12%,transparent);font-size:13px;line-height:1.4;color:var(--fg)}
 .safe-hint svg{width:16px;height:16px;flex:none;color:var(--teal);margin-top:1px}
 /* invite card on the choose screen */
@@ -584,15 +569,12 @@ a.btn{text-decoration:none}
 .cta-band p{color:var(--muted)}
 /* home page tiles: one per section, each opens its demo for a guest */
 .land-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
-.tile{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
-.tile > :not(.ic):not(b){grid-column:1/-1}.tile .tl{align-self:start}.tile small{justify-self:start}
+.tile{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
+.tile > :not(.ic):not(b){grid-column:1/-1}.tile .tp{align-self:start}.tile small{justify-self:start}
 .tile .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--panel-2)}
 .tile .ic img{width:40px;height:40px;object-fit:contain}.tile .ic svg{width:26px;height:26px}
 .tile b{font:800 17px/1.2 var(--display)}
 .tile .tp{color:var(--fg);font-size:14.5px;line-height:1.4;font-weight:600}
-.tile .tl{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:6px;flex:1}
-.tile .tl li{position:relative;padding-left:16px;color:var(--muted);font-size:13.5px;line-height:1.4}
-.tile .tl li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:2px;background:var(--brick)}
 .tile small{margin-top:4px;color:var(--muted);font-size:12.5px;text-decoration:underline;text-underline-offset:3px}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.tile{transition:border-color .2s,transform .25s cubic-bezier(.2,.8,.3,1.2),box-shadow .25s}.tile .ic{transition:transform .25s cubic-bezier(.2,.8,.3,1.4)}.tile:hover{border-color:color-mix(in srgb,var(--teal) 55%,var(--line));transform:translateY(-5px);box-shadow:0 14px 28px -14px var(--shadow)}.tile:hover .ic{transform:scale(1.12) rotate(-4deg)}}
 @media (hover:hover) and (prefers-reduced-motion:reduce){.tile:hover{border-color:color-mix(in srgb,var(--teal) 55%,var(--line))}}
@@ -604,8 +586,12 @@ a.btn{text-decoration:none}
 #v-demo .cta-band{margin-top:32px}
 .demo-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1 1 360px}.demo-ctas .btn{justify-content:center}
 @media (max-width:480px){.demo-ctas{grid-template-columns:1fr}}
-.demo-note{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 18px;margin:20px 0 18px;background:color-mix(in srgb,var(--bolt) 14%,var(--panel))}
-.demo-note p{margin:0;flex:1 1 260px;font:600 14.5px/1.45 var(--body)}
+/* demo pages: a short intro, then the live example inside a dashed frame labelled Example, then the rest folded */
+.demo-ex{position:relative;margin:30px 0 0;padding:26px 16px 16px;border:2px dashed color-mix(in srgb,var(--bolt) 50%,var(--line));border-radius:22px}
+.demo-ex-l{position:absolute;top:-14px;left:18px;padding:4px 12px;border-radius:99px;background:var(--bolt);color:var(--on-bolt);font:800 12.5px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase}
+.demo-reset{display:flex;justify-content:flex-end;margin-top:14px}
+.demo-fold{margin:18px 0 0}.demo-fold .spot-pts{margin:0;padding:2px 20px 20px}
+@media (max-width:520px){.demo-ex{padding:24px 10px 12px;border-radius:18px}}
 /* the guest's HQ tour: five tabs, each a grid of cards telling what its blocks do */
 .dh-pane{display:flex;flex-direction:column;gap:14px}
 .dh-pane[hidden]{display:none}
@@ -653,7 +639,22 @@ a.btn{text-decoration:none}
 .dn-q-one{margin-top:16px}.dn-mine{margin:8px 18px 4px;font-size:14px}.dn-q-one .frz.dn-mine{margin:10px 18px 16px}
 @media (max-width:640px){.dq-bar{display:grid}.dq-bar .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}.dq-bar .seg button{justify-content:center;height:40px}}
 @media (max-width:640px){#demoNews .dq-bar>.btn{width:100%;justify-content:center;height:40px}}
-.dn-go{display:grid;margin-top:16px}.dn-go .btn{justify-content:center;white-space:normal;text-align:center;min-width:0}
+/* the path through a demo: a numbered caption before each block, the numbers joined by a dotted line */
+.tap-hint{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:99px;background:var(--bolt);color:var(--on-bolt);font:800 11px/1.4 var(--body);vertical-align:middle;white-space:nowrap}
+tr.dp-tap td{animation:dpTap 1.6s ease-in-out infinite}
+@keyframes dpTap{50%{background:color-mix(in srgb,var(--bolt) 18%,transparent)}}
+@media (prefers-reduced-motion:reduce){tr.dp-tap td{animation:none;background:color-mix(in srgb,var(--bolt) 12%,transparent)}}
+#demoNews .news{align-items:stretch}
+.dw-add{display:flex;justify-content:flex-end;margin:0 0 12px}
+.demo-step{position:relative;display:flex;gap:12px;align-items:flex-start;margin:24px 0 12px}
+.demo-step::before,.demo-step::after{content:"";position:absolute;left:14px;border-left:2px dashed color-mix(in srgb,var(--bolt) 60%,var(--line))}
+.demo-step::before{top:-24px;height:24px}.demo-step::after{top:30px;bottom:-12px}
+.demo-step.first{margin-top:6px}.demo-step.first::before{display:none}
+.demo-step-n{position:relative;z-index:1;flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bolt);color:var(--on-bolt);font:800 14px/1 var(--mono)}
+.demo-step p{margin:5px 0 0;font:600 15px/1.45 var(--body);color:var(--fg)}
+.demo-next{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:10px 14px;margin-top:20px}
+.demo-next .btn{min-width:180px;justify-content:space-between}.demo-next .btn b{font-size:18px;line-height:1}
+@media (max-width:520px){.demo-next .btn{flex:1 1 100%}}
 .land-more{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 14px;margin-top:28px;font:500 13.5px/1.4 var(--body);color:var(--faint)}.land-more span{flex-basis:100%;text-align:center}.land-more a{color:var(--muted);padding:8px 2px;text-decoration:underline;text-underline-offset:3px}.land-more a:hover{color:var(--fg)}
 .foot{margin-top:28px;text-align:center;font:600 12.5px/1.5 var(--body);color:var(--faint)}
 /* the site owner and contact (required for a site in Russia), right under the fan-service line */
@@ -1023,7 +1024,8 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 @media (max-width:520px){.hq-tabs button{flex:1 1 0;flex-direction:column;gap:3px;height:54px;padding:0 4px;font-size:11.5px}.hq-tabs .dotn{position:absolute;top:4px;right:calc(50% - 22px)}}
 
 .spot-nt{background:linear-gradient(135deg,color-mix(in srgb,#2aa1de 14%,var(--panel)) 0%,var(--panel) 50%,color-mix(in srgb,#4c75a3 16%,var(--panel)) 100%)}
-.spot-nt .spot-pts li::before{background:#2aa1de;box-shadow:0 2px 0 #1a6f9c}
+.spot.spot-sm{margin-top:40px;padding:26px;gap:24px}.spot-sm .spot-txt h2{font-size:clamp(20px,3vw,28px)}
+@media (max-width:640px){.spot.spot-sm{padding:20px 16px;margin-top:28px}}
 .nt-stack{position:relative;width:min(100%,430px);display:flex;flex-direction:column;gap:12px}
 .chat{border-radius:18px;background:var(--panel-2);border:1px solid var(--line);padding:10px 12px 12px;box-shadow:0 24px 44px -30px rgba(0,0,0,.65)}
 .chat.tg{transform:rotate(-1.2deg)} .chat.vk{transform:rotate(1deg);margin-left:22px}
@@ -1871,7 +1873,7 @@ html.boot #v-load{display:flex!important}
       <div class="stack" style="gap:18px">
         <div class="hero-top"><span class="eyebrow" data-i18n="land_eyebrow">Для союзов Tiles Survive</span><button class="ver-pill" type="button" data-chg><i></i><b id="verPill"></b><span data-i18n="chg_open">Что нового →</span></button></div>
         <h2 class="land-h" data-i18n="land_h">Бафы, БМ и порядок в союзе — <em>в одном штабе</em></h2>
-        <p class="lead" data-i18n="land_lead">Ваша очередь на бафы, уведомления и план на рейд — в одном месте — в браузере или в Telegram. А R5 и R4 ведут союз с телефона — очередь, БМ, битву союзов и рейд.</p>
+        <p class="lead" data-i18n="land_lead">Очередь на бафы, уведомления и план на рейд — в браузере или в Telegram. А R5 и R4 ведут союз с телефона.</p>
         <div class="land-acts">
         <div class="ctas" id="landCtas">
           <button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button>
@@ -1880,7 +1882,7 @@ html.boot #v-load{display:flex!important}
         <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button></div>
         <div class="land-row">
           <div class="land-stats" id="landStats" hidden></div>
-          <button class="btn ghost land-calc" data-tab="calc"><svg aria-hidden="true"><use href="#i-cstar"/></svg><span data-i18n="calc_h">Калькуляторы героев</span></button>
+          <button class="btn teal land-calc" data-tab="calc"><svg aria-hidden="true"><use href="#i-cstar"/></svg><span data-i18n="calc_h">Калькуляторы героев</span></button>
         </div>
         </div>
       </div>
@@ -1893,35 +1895,47 @@ html.boot #v-load{display:flex!important}
 
     <!-- short tiles: each opens the section's demo for a guest (the big blocks live in #v-demo now) -->
     <div class="land-tiles" id="landTiles">
-      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="/art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь на бафы стройки и исследования двигается сама, следить за чатом не нужно.</span><ul class="tl"><li data-i18n="tile_now_1">Норма по дням считается в таймере сама</li><li data-i18n="tile_now_2">Видно, кто сейчас на бафе и когда ваш черёд</li><li data-i18n="tile_now_3">Напоминание в Telegram, ВК или в браузер</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
-      <button class="panel tile" type="button" data-tab="power"><span class="ic"><svg style="color:var(--grass)"><use href="#i-shield"/></svg></span><b data-i18n="nav_power">БМ</b><span class="tp" data-i18n="tile_power">Каждый вносит БМ своих отрядов за минуту.</span><ul class="tl"><li data-i18n="tile_power_1">Ваш рост неделя за неделей</li><li data-i18n="tile_power_2">Общая таблица с сортировкой для R4 и R5</li><li data-i18n="tile_power_3">История БМ переходит с вами в новый союз</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
-      <button class="panel tile" type="button" data-tab="vs"><span class="ic"><svg style="color:var(--warn)"><use href="#i-vs"/></svg></span><b data-i18n="nav_vs">VS</b><span class="tp" data-i18n="tile_vs">R4 загружают скрины рейтинга, а ИИ сам читает ники и очки.</span><ul class="tl"><li data-i18n="tile_vs_1">Очки каждого по дням и за неделю</li><li data-i18n="tile_vs_2">Счёт недели и история битв с соперниками</li><li data-i18n="tile_vs_3">Метки «кто отстаёт» для R4 и R5</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
-      <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">План рейда на резервуар без таблиц и голосовых.</span><ul class="tl"><li data-i18n="tile_raid_1">Каждый видит свою группу и маршрут</li><li data-i18n="tile_raid_2">Основа и резерв отмечаются как в игре</li><li data-i18n="tile_raid_3">Сильнейших сервис раскладывает по группам сам</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
-      <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">Новости</b><span class="tp" data-i18n="tile_news">Объявления и памятки в одном месте, а не в сотне сообщений чата.</span><ul class="tl"><li data-i18n="tile_news_1">Важная новость закрепляется сверху</li><li data-i18n="tile_news_2">Памятка союза для новичков</li><li data-i18n="tile_news_3">Уведомление о новом объявлении</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
-      <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">Штаб</b><span class="tp" data-i18n="tile_hq">Пульт R4 и R5 для управления союзом.</span><ul class="tl"><li data-i18n="tile_hq_1">Заявки на вступление и ранги R1–R5</li><li data-i18n="tile_hq_2">События и состав союза по скринам из игры</li><li data-i18n="tile_hq_3">Обычные игроки этот раздел не видят</li></ul><small data-i18n="tile_more">Ознакомиться подробнее</small></button>
+      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="/art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь бафов двигается сама — чат читать не нужно.</span><small data-i18n="tile_more">Подробнее →</small></button>
+      <button class="panel tile" type="button" data-tab="power"><span class="ic"><svg style="color:var(--grass)"><use href="#i-shield"/></svg></span><b data-i18n="nav_power">БМ</b><span class="tp" data-i18n="tile_power">БМ отрядов за минуту и ваш рост неделя за неделей.</span><small data-i18n="tile_more">Подробнее →</small></button>
+      <button class="panel tile" type="button" data-tab="vs"><span class="ic"><svg style="color:var(--warn)"><use href="#i-vs"/></svg></span><b data-i18n="nav_vs">VS</b><span class="tp" data-i18n="tile_vs">Скрины рейтинга — и ИИ сам считает очки каждого.</span><small data-i18n="tile_more">Подробнее →</small></button>
+      <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">Каждый видит свою группу и маршрут — без таблиц.</span><small data-i18n="tile_more">Подробнее →</small></button>
+      <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">Новости</b><span class="tp" data-i18n="tile_news">Объявления и памятка в одном месте, а не в чате.</span><small data-i18n="tile_more">Подробнее →</small></button>
+      <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">Штаб</b><span class="tp" data-i18n="tile_hq">Пульт R4 и R5: заявки, ранги и состав союза.</span><small data-i18n="tile_more">Подробнее →</small></button>
     </div>
+
+    <!-- notifications and the chat bot, compact: text on one side, a push and a Telegram message on the other -->
+    <section class="spot spot-nt spot-sm">
+        <div class="spot-txt">
+          <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
+          <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
+          <p data-i18n="sp3_p">Telegram, ВК или браузер телефона. Игроку приходит, что подошла его очередь, план рейда и новости, а бот в чате союза сам пишет, чья очередь и итоги битвы.</p>
+        </div>
+        <div class="spot-demo" aria-hidden="true">
+          <div class="nt-stack">
+            <div class="push"><img src="/art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
+            <div class="chat tg">
+              <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat">Чат союза [WLF]</b></div>
+              <div class="bubble"><span class="bot-n">Штаб союза</span>
+                <p data-i18n="sp3_tg_msg">⚡ <b>Кидаем бафы на 🔨 стройку</b>
+Сейчас: <b>Ironfox</b> — X:503 Y:569
+Норма: осталось 6 из 13
+Следом: Velmora</p>
+                <div class="kb"><span data-i18n="sp3_btn_buff">✅ Я кинул баф</span><span data-i18n="sp3_btn_open">Открыть Штаб</span></div></div>
+            </div>
+          </div>
+        </div>
+    </section>
 
     <div class="steps-h"><span class="eyebrow" data-i18n="how_eyebrow">Как подключиться</span><h2 style="font-size:clamp(20px,4vw,28px);margin-top:8px" data-i18n="how_h">Четыре шага, и союз в деле</h2></div>
     <div class="steps">
       <div class="panel step"><span class="num">1</span><div><h3 data-i18n="s1_h">R5 или R4 создаёт союз</h3><p data-i18n="s1_p">Название, тег и штат. Создатель становится R5 и может потом передать роль главе.</p></div></div>
       <div class="panel step"><span class="num">2</span><div><h3 data-i18n="sr_h">Загрузите состав из игры</h3><p data-i18n="sr_p">Несколько скринов списка союза — и Штаб знает всех: видно, кто ещё не зарегистрировался, а в битве союзов — кто не набрал ни очка.</p></div></div>
       <div class="panel step"><span class="num">3</span><div><h3 data-i18n="s2_h">Ссылка уходит в чат союза</h3><p data-i18n="s2_p">У каждого союза своя ссылка-приглашение — обычная и для Telegram. Без неё к вам не попасть.</p></div></div>
-      <div class="panel step"><span class="num">4</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. R5 или R4 подтверждают заявку; если состав загружен из игры, ранг вернётся сам.</p></div></div>
+      <div class="panel step"><span class="num">4</span><div><h3 data-i18n="s3_h">Игроки регистрируются</h3><p data-i18n="s3_p">Ник или ID, координаты и PIN. Руководство подтверждает заявку, а ранг из игры вернётся сам.</p></div></div>
     </div>
 
-    <!-- what players fear: links and their game account -->
-    <section class="panel safe">
-      <div class="safe-l"><span class="eyebrow" data-i18n="safe_eyebrow">Безопасность</span><h2 data-i18n="safe_h">Безопасно ли это?</h2><p data-i18n="safe_p">Штаб — просто сайт для порядка в союзе. Он никак не подключается к игре и ничего в ней не делает.</p></div>
-      <div class="safe-cols">
-        <div class="safe-col yes"><h3 data-i18n="safe_yes_h">Спрашиваем</h3><ul><li data-i18n="safe_y1">Ник</li><li data-i18n="safe_y2">ID из игры</li><li data-i18n="safe_y3">Координаты</li><li data-i18n="safe_y4">PIN — придумываете сами</li></ul></div>
-        <div class="safe-col no"><h3 data-i18n="safe_no_h">Не спрашиваем никогда</h3><ul><li data-i18n="safe_n1">Пароль от игры</li><li data-i18n="safe_n2">Почту</li><li data-i18n="safe_n3">Телефон</li><li data-i18n="safe_n4">Вход в аккаунт игры</li></ul></div>
-      </div>
-      <ul class="safe-facts">
-        <li><svg><use href="#i-lock"/></svg><span data-i18n="safe_f1">Ссылки-приглашения ведут только на <b>shtabsoyuza.ru</b> или в официального бота <b>@shtab_soyuza_bot</b> в Telegram.</span></li>
-        <li><svg><use href="#i-shield"/></svg><span data-i18n="safe_f2">ID — не секрет: администрация игры сама просит писать его в комментариях к раздачам подарков.</span></li>
-        <li><svg><use href="#i-rank"/></svg><span data-i18n="safe_f3">Аккаунт можно удалить в любой момент в профиле, вместе со всеми данными.</span></li>
-      </ul>
-    </section>
+    <!-- what players fear: one line, the details are in FAQ -->
+    <p class="panel safe-line"><svg aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="safe_line">Пароль от игры, почта и телефон не нужны — только ник, ID и PIN, который придумываете сами.</span></p>
 
     <div class="panel cta-band">
       <div><h2 style="font-size:clamp(19px,3.6vw,24px)" data-i18n="band_h">Союз живёт сам, без разработчика</h2><p data-i18n="band_p">Всем внутри управляют ваши R5 и R4. Ушёл лидер — передайте R5, и всё продолжит работать.</p></div>
@@ -1939,70 +1953,37 @@ html.boot #v-load{display:flex!important}
     <div class="demo-part" data-demo="now" hidden>
       <section class="spot solo">
         <div class="spot-txt">
-          <span class="eyebrow" data-i18n="sp1_eye">Главное каждый день</span>
           <h2 data-i18n="sp1_h">Очередь бафов, которая двигается сама</h2>
-          <p data-i18n="sp1_p">Встаёте в очередь на стройку или исследование и пишете, сколько дней осталось в таймере. Дальше сервис считает всё сам: вашу норму, сколько дней остаётся после каждого полученного и отданного бафа, когда пройдут 48 часов перезарядки и кто следующий. Кинули баф — нажали кнопку, и очередь сдвинулась. Без списков в чате игры и таблиц очередь движется заметно быстрее: никто не ждёт, пока R4 вручную перепишет список, а R4 больше не нужно возиться с таблицами — всем проще.</p>
-          <ul class="spot-pts"><li data-i18n="sp1_l1"><b>Норма считается сама</b> — по дням в таймере и % бафов союза, отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза; нажали по ошибке — можно отменить в течение часа</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><b>Новое исследование — новая норма</b>: впишите больше дней, и сервис сам поймёт, что вы запустили новое, не теряя места в очереди</li><li data-i18n="sp1_l5"><span class="r45">R4/R5</span><b>Блок «Ждут проверки»</b>: кто набрал лимит за заход, но не всю норму, уходит на проверку, а бафы уже получает следующий. R4 видят оценку дней и одним нажатием возвращают игрока в очередь или закрывают запись</li><li data-i18n="sp1_l6"><span class="r45">R4/R5</span>Лимит за заход, % бафов, минимум дней и заморозка очереди между сезонами — R4 остаётся только разобрать спорное</li></ul>
+          <p data-i18n="sp1_p">Встаёте в очередь и пишете, сколько дней в таймере. Норму, перезарядку 48 часов и кто следующий сервис считает сам. Кинули баф — нажали кнопку, и очередь сдвинулась.</p>
         </div>
       </section>
       <!-- a live copy of the Buffs section on a made-up alliance: everything stays in the page's memory -->
-      <div class="panel demo-note"><p class="dn-note"></p><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div id="demoNow">
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoNow">
         <details class="panel coords-help"><summary><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="find_h">Как найти игрока по координатам</span></summary>
           <ol class="steps-list"><li data-i18n="find1">Откройте карту.</li><li data-i18n="find2">В самом верху нажмите на звёздочку с координатами.</li><li data-i18n="find3">В открывшемся окне замените цифры X и Y на координаты из карточки ниже и нажмите «Вперёд».</li></ol></details>
         <div class="now"></div>
       </div>
-      <div class="dn-go"><button class="btn ghost" type="button" data-tab="queue"><svg><use href="#i-q"/></svg><span data-i18n="dn_go_queue">Записаться в очередь →</span></button></div>
+        <div class="demo-reset"><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
+      </div>
+      <details class="panel coords-help demo-fold"><summary><svg aria-hidden="true"><use href="#i-note"/></svg><span data-i18n="demo_feats">Что ещё умеет раздел</span></summary><ul class="spot-pts"><li data-i18n="sp1_l1"><b>Норма считается сама</b> — по дням в таймере и % бафов союза, отдельно для стройки и исследования</li><li data-i18n="sp1_l2"><b>Одна кнопка «Я кинул баф»</b> — на сайте или прямо в чате союза; нажали по ошибке — можно отменить в течение часа</li><li data-i18n="sp1_l3"><b>«Нет на координатах»</b> — очередь не стоит из-за одного</li><li data-i18n="sp1_l4"><b>Новое исследование — новая норма</b>: впишите больше дней, и сервис сам поймёт, что вы запустили новое, не теряя места в очереди</li><li data-i18n="sp1_l5"><span class="r45">R4/R5</span><b>Блок «Ждут проверки»</b>: кто набрал лимит за заход, но не всю норму, уходит на проверку, а бафы уже получает следующий. R4 видят оценку дней и одним нажатием возвращают игрока в очередь или закрывают запись</li><li data-i18n="sp1_l6"><span class="r45">R4/R5</span>Лимит за заход, % бафов, минимум дней и заморозка очереди между сезонами — R4 остаётся только разобрать спорное</li></ul></details>
+      <div class="demo-next"><span class="eyebrow" data-i18n="demo_next_l">Дальше</span><button class="btn ghost" type="button" data-tab="queue"><span data-i18n="nav_queue">Очередь</span><b aria-hidden="true">→</b></button></div>
       <div class="how">
         <div data-i18n="how1"><b>Один получатель за раз</b>Все кидают бафы текущему игроку, пока он не наберёт норму. Потом очередь сама переходит к следующему.</div>
         <div data-i18n="how2"><b>Норма считается сама</b>По числу дней в таймере. После нормы на таймере остаётся около 2,5 дня.</div>
         <div data-i18n="how3"><b>Свой баф раз в 2 дня</b>Отметить чаще нельзя. Получатель видит, кто отметился, и может сообщить, если баф не пришёл.</div>
       </div>
-      <section class="spot spot-nt">
-        <div class="spot-txt">
-          <span class="eyebrow" data-i18n="sp3_eye">Telegram · ВКонтакте · браузер</span>
-          <h2 data-i18n="sp3_h">Бот в чате союза и личные уведомления</h2>
-          <p data-i18n="sp3_p">Уведомления приходят туда, где удобно: в Telegram, ВК или в браузер телефона. Игроку — что подошла его очередь, что пора обновить дни перед очередью, что прошли 48 часов и можно снова кидать баф, план рейда, новости и объявления. А бот в чате союза сам пишет, чья очередь на бафы, кого нет на координатах и итоги битвы союзов.</p>
-          <ul class="spot-pts"><li data-i18n="sp3_l1"><b>Личные уведомления</b>: каждый выбирает, о чём сообщать</li><li data-i18n="sp3_l2"><b>«Я кинул баф» прямо в чате</b> — без захода на сайт</li><li data-i18n="sp3_l3"><b>Команды в чате</b>: очередь, счёт битвы и ближайший рейд одним сообщением</li><li data-i18n="sp3_l4"><span class="r45">R4/R5</span><b>Объявления по расписанию</b> — каждый день, через день или раз в неделю</li><li data-i18n="sp3_l5"><span class="r45">R4/R5</span><b>Всё важное для R4 приходит само</b>: новая заявка в союз, игрок ждёт проверки после лимита за заход, «баф не пришёл», игрок сам увеличил дни</li></ul>
-        </div>
-        <div class="spot-demo" aria-hidden="true">
-          <div class="nt-stack">
-            <div class="push"><img src="/art/web/logo.png" alt="" width="32" height="32"><div><b data-i18n="sp3_push_h">Ваша очередь на бафы</b><span data-i18n="sp3_push_p">Вы первый в очереди на стройку. Будьте на своих координатах.</span></div><small data-i18n="sp3_push_t">сейчас</small></div>
-            <div class="chat tg">
-              <div class="chat-h"><span class="chat-ic tg">✈</span><b data-i18n="sp3_tg_chat">Чат союза [WLF]</b></div>
-              <div class="bubble"><span class="bot-n">Штаб союза</span>
-                <p data-i18n="sp3_tg_msg">⚡ <b>Кидаем бафы на 🔨 стройку</b>
-Сейчас: <b>Ironfox</b> — X:503 Y:569
-Норма: осталось 6 из 13
-Следом: Velmora</p>
-                <div class="kb"><span data-i18n="sp3_btn_buff">✅ Я кинул баф</span><span data-i18n="sp3_btn_open">Открыть Штаб</span></div></div>
-            </div>
-            <div class="chat vk">
-              <div class="chat-h"><span class="chat-ic vk">VK</span><b data-i18n="sp3_vk_chat">Беседа союза [WLF]</b></div>
-              <div class="bubble"><span class="bot-n">Штаб союза</span>
-                <p data-i18n="sp3_vk_msg">⚔️ Битва союзов: итоги за понедельник
-Союз принёс 2,53B, в рейтинге 86 игроков.
-🥇 Stormkid — 78,07M
-🥈 Lunaria — 74,07M
-🥉 Oakbeard — 71,19M</p>
-                <div class="kb"><span data-i18n="sp3_btn_queue">Очередь</span><span data-i18n="sp3_btn_vs">Битва союзов</span></div></div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
     <div class="demo-part" data-demo="queue" hidden>
       <section class="spot solo">
         <div class="spot-txt">
-          <span class="eyebrow" data-i18n="dq_eye">Очередь союза целиком</span>
           <h2 data-i18n="dq_h">Вся очередь на одной странице<br>и всё, что с ней делают R4 и R5</h2>
-          <p data-i18n="dq_p">Здесь видна вся очередь союза, отдельно на стройку и на исследование. У каждого игрока — место, координаты, сколько дней он указал и сколько осталось по оценке сейчас, его норма бафов и сколько он уже получил. Первый в списке — тот, кому кидают бафы прямо сейчас. Игроки сами записываются и выходят, а R4 и R5 (и помощники, которым это разрешили) правят очередь прямо здесь: меняют дни, двигают игроков, добавляют и убирают. Переключите «Смотреть как» на R4/R5 и попробуйте сами.</p>
-          <ul class="spot-pts"><li data-i18n="dq_l1"><b>Стройка, исследование, архив</b> — две очереди и все закрытые записи; в архиве у каждой записи видно, кто кидал бафы</li><li data-i18n="dq_l2"><b>Оценка дней</b> — пока игрок ждёт, сервис сам считает, сколько у него осталось: время идёт, а каждый полученный и отданный баф срезает таймер</li><li data-i18n="dq_l3"><b>Ждут проверки</b> — кто получил лимит бафов за заход, но не всю норму, или у кого к его очереди по оценке осталось меньше дня. Игрок пишет, сколько осталось на самом деле, а R4 возвращает его в очередь с новой нормой (после лимита — в конец, после «меньше дня» — вторым) или закрывает запись</li><li data-i18n="dq_l4"><b>Правка очереди</b> — R4/R5 меняют дни, двигают игроков вверх и вниз, исправляют координаты, убирают и добавляют вручную, например из таблицы прошлого сезона</li><li data-i18n="dq_l5"><b>Заморозка между сезонами</b> — очередь и запись на паузе, пока R4 её наполняют; запуск — одной кнопкой</li><li data-i18n="dq_l6"><b>Правила союза</b> — лимит бафов за заход для 5, 10 и 15% и минимум дней для записи R4 и R5 задают в Штабе</li></ul>
+          <p data-i18n="dq_p">Игроки записываются и выходят сами, а первый в списке получает бафы прямо сейчас.</p>
         </div>
       </section>
       <!-- a live copy of the Queue section on the same made-up alliance as Buffs: everything stays in the page's memory -->
-      <div class="panel demo-note"><p class="dn-note"></p><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div id="demoQ">
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoQ">
         <div class="dq-bar">
           <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dnrole="r2" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dnrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
@@ -2018,25 +1999,21 @@ html.boot #v-load{display:flex!important}
         <p class="qfoot" data-qw="sum"></p>
         <div id="demoNowQ"></div>
       </div>
-      <div class="dn-go"><button class="btn ghost" type="button" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="dq_go_now">Кидать бафы — в разделе «Бафы» →</span></button></div>
+        <div class="demo-reset"><button class="btn ghost sm" type="button" data-dnreset data-i18n="dn_reset">Сбросить пример</button></div>
+      </div>
+      <details class="panel coords-help demo-fold"><summary><svg aria-hidden="true"><use href="#i-note"/></svg><span data-i18n="demo_feats">Что ещё умеет раздел</span></summary><ul class="spot-pts"><li data-i18n="dq_l1"><b>Стройка, исследование, архив</b> — две очереди и все закрытые записи; в архиве у каждой записи видно, кто кидал бафы</li><li data-i18n="dq_l2"><b>Оценка дней</b> — пока игрок ждёт, сервис сам считает, сколько у него осталось: время идёт, а каждый полученный и отданный баф срезает таймер</li><li data-i18n="dq_l3"><b>Ждут проверки</b> — кто получил лимит бафов за заход, но не всю норму, или у кого к его очереди по оценке осталось меньше дня. Игрок пишет, сколько осталось на самом деле, а R4 возвращает его в очередь с новой нормой (после лимита — в конец, после «меньше дня» — вторым) или закрывает запись</li><li data-i18n="dq_l4"><b>Правка очереди</b> — R4/R5 меняют дни, двигают игроков вверх и вниз, исправляют координаты, убирают и добавляют вручную, например из таблицы прошлого сезона</li><li data-i18n="dq_l5"><b>Заморозка между сезонами</b> — очередь и запись на паузе, пока R4 её наполняют; запуск — одной кнопкой</li><li data-i18n="dq_l6"><b>Правила союза</b> — лимит бафов за заход для 5, 10 и 15% и минимум дней для записи R4 и R5 задают в Штабе</li></ul></details>
+      <div class="demo-next"><span class="eyebrow" data-i18n="demo_next_l">Дальше</span><button class="btn ghost" type="button" data-tab="power"><span data-i18n="nav_power">БМ</span><b aria-hidden="true">→</b></button></div>
     </div>
     <div class="demo-part" data-demo="power" hidden>
       <section class="spot solo">
         <div class="spot-txt">
-          <span class="eyebrow" data-i18n="dp_eye">Боевая мощь (БМ)</span>
           <h2 data-i18n="dp_h">БМ всего союза в одной таблице<br>и рост каждого игрока неделя за неделей</h2>
-          <p data-i18n="dp_p">Это раздел «БМ». Раз или два в неделю каждый игрок вписывает силу своих пяти отрядов так, как она показана в игре: на это уходит минута. Сайт хранит каждое обновление, поэтому видно, кто растёт и насколько быстро. Таблицу видит весь союз: руководство сразу понимает, кого ставить на событие или в рейд, а игроки видят своё место среди союзников. Переключите «Смотреть как» на R4/R5, чтобы увидеть, что в разделе может руководство.</p>
-          <ul class="spot-pts"><li data-i18n="dp_l1"><b>Мой БМ</b>: пять полей по отрядам, итог считается сразу. Недописанные цифры не пропадут, если закрыть вкладку или переключиться в игру</li><li data-i18n="dp_l2"><b>Сводка сверху</b>: общий БМ союза и его рост за неделю, сколько игроков обновились за 7 дней и ваше место в союзе</li><li data-i18n="dp_l3"><b>Таблица</b>: каждый отряд, итог, прирост за неделю и маленький график роста. Сортировка по любому столбцу, поиск по нику, фильтры «Давно не обновляли» и «Не вносили»</li><li data-i18n="dp_l4"><b>Карточка игрока</b>: нажмите на строку, и откроется график роста по датам, отряды и метка «Растёт», «Быстро растёт» или «Без роста» за последние недели. История БМ привязана к ID из игры и переходит с игроком в новый союз</li><li data-i18n="dp_l5"><span class="r45">R4/R5</span><b>Правка чужого БМ</b> в карточке игрока и <b>«Ещё не в Штабе»</b>: отряды игроков из состава игры, которые пока не зарегистрировались. По 1-му отряду сервис раскладывает группы на рейд</li></ul>
+          <p data-i18n="dp_p">Раз в неделю каждый вписывает БМ своих пяти отрядов — это минута, а R4 и R5 могут внести БМ за другого игрока. Видно, кто растёт и кого ставить на событие.</p>
         </div>
       </section>
       <!-- a live copy of the Power section on a made-up alliance: everything stays in the page's memory -->
-      <div class="panel demo-note"><p class="dp-note"></p><button class="btn ghost sm" type="button" data-dpreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div id="demoPW">
-        <div class="dq-bar">
-          <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
-            <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dprole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dprole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
-        </div>
-        <p class="hint dq-role" id="dpRole"></p>
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoPW">
         <div class="stats" data-pw="stats"></div>
         <div class="pwgrid">
           <form class="panel pad stack" id="dpwForm" novalidate>
@@ -2058,19 +2035,21 @@ html.boot #v-load{display:flex!important}
         </div>
         <div class="panel pw-seed" data-pw="seed" hidden></div>
       </div>
+        <div class="demo-reset"><button class="btn ghost sm" type="button" data-dpreset data-i18n="dn_reset">Сбросить пример</button></div>
+      </div>
+      <details class="panel coords-help demo-fold"><summary><svg aria-hidden="true"><use href="#i-note"/></svg><span data-i18n="demo_feats">Что ещё умеет раздел</span></summary><ul class="spot-pts"><li data-i18n="dp_l1"><b>Мой БМ</b>: пять полей по отрядам, итог считается сразу. Недописанные цифры не пропадут, если закрыть вкладку или переключиться в игру</li><li data-i18n="dp_l2"><b>Сводка сверху</b>: общий БМ союза и его рост за неделю, сколько игроков обновились за 7 дней и ваше место в союзе</li><li data-i18n="dp_l3"><b>Таблица</b>: каждый отряд, итог, прирост за неделю и маленький график роста. Сортировка по любому столбцу, поиск по нику, фильтры «Давно не обновляли» и «Не вносили»</li><li data-i18n="dp_l4"><b>Карточка игрока</b>: нажмите на строку, и откроется график роста по датам, отряды и метка «Растёт», «Быстро растёт» или «Без роста» за последние недели. История БМ привязана к ID из игры и переходит с игроком в новый союз</li><li data-i18n="dp_l5"><span class="r45">R4/R5</span><b>Правка чужого БМ</b> в карточке игрока и <b>«Ещё не в Штабе»</b>: отряды игроков из состава игры, которые пока не зарегистрировались. По 1-му отряду сервис раскладывает группы на рейд</li></ul></details>
+      <div class="demo-next"><span class="eyebrow" data-i18n="demo_next_l">Дальше</span><button class="btn ghost" type="button" data-tab="raid"><span data-i18n="nav_raid">Рейд</span><b aria-hidden="true">→</b></button></div>
     </div>
     <div class="demo-part" data-demo="raid" hidden>
       <section class="spot solo">
         <div class="spot-txt">
-          <span class="eyebrow" data-i18n="dr_eye">Рейд на резервуар</span>
           <h2 data-i18n="dr_h">Состав, группы и маршрут по минутам<br>в одном плане на рейд</h2>
-          <p data-i18n="dr_p">Это раздел «Рейд». Перед рейдом руководство отмечает, кто идёт в основу, кто в резерв, а кто пропускает, как при записи в игре. Потом одним нажатием сервис раскладывает игроков по группам: пятеро сильнейших по 1-му отряду становятся ударной группой, остальные делят ключевые здания, лишние встают на замену. У каждой группы свой маршрут по таймеру рейда. Когда план готов, его публикуют, и каждый игрок видит свою группу, с кем идёт и какое здание брать в какую минуту. Переключите «Смотреть как» на R4/R5, чтобы собрать план самому.</p>
-          <ul class="spot-pts"><li data-i18n="dr_l1"><b>Мой план</b>: ваша группа и её лидер, вход в начале или из резерва позже, кто идёт с вами и маршрут по минутам: во сколько и какое здание брать</li><li data-i18n="dr_l2"><b>Вся раскладка</b> под вашим планом: кто в какой группе и кто стоит на замене. Вкладка <b>«История рейдов»</b>: с кем бились, победа или поражение и как стояли группы</li><li data-i18n="dr_l3"><span class="r45">R4/R5</span><b>Шаг «Пул»</b>: у каждого игрока кнопки «Основа», «Резерв» и «Нет» и заметка, поиск по нику и фильтры. Кнопка «Сообщить составу» заранее пишет каждому в бота, где он стоит</li><li data-i18n="dr_l4"><span class="r45">R4/R5</span><b>Шаг «Группы»</b>: «Разложить автоматически», своя группа под любое здание, перенос игрока нажатием на ник, лидер группы, вход из резерва и замены. На компьютере игроков можно перетаскивать мышкой</li><li data-i18n="dr_l5"><span class="r45">R4/R5</span><b>Шаг «План»</b>: свой маршрут каждой группе по времени и зданиям, текст к каждому этапу и указания группе</li><li data-i18n="dr_l6"><span class="r45">R4/R5</span><b>Публикация</b>: каждый игрок получает свой план в Telegram или ВК, а чат союза — всю раскладку. После правок план можно разослать ещё раз, и напишут только тем, чьё место изменилось</li></ul>
+          <p data-i18n="dr_p">Руководство отмечает основу и резерв, а сервис сам раскладывает игроков по группам. Каждый видит свою группу и какое здание брать в какую минуту.</p>
         </div>
       </section>
       <!-- a live copy of the Raid section on the sample alliance: everything stays in the page's memory -->
-      <div class="panel demo-note"><p class="dr-note"></p><button class="btn ghost sm" type="button" data-drreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div id="demoRaid">
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoRaid">
         <div class="dq-bar">
           <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-drrole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-drrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
@@ -2078,19 +2057,21 @@ html.boot #v-load{display:flex!important}
         <p class="hint dq-role" id="drRole"></p>
         <div data-rw="body"></div>
       </div>
+        <div class="demo-reset"><button class="btn ghost sm" type="button" data-drreset data-i18n="dn_reset">Сбросить пример</button></div>
+      </div>
+      <details class="panel coords-help demo-fold"><summary><svg aria-hidden="true"><use href="#i-note"/></svg><span data-i18n="demo_feats">Что ещё умеет раздел</span></summary><ul class="spot-pts"><li data-i18n="dr_l1"><b>Мой план</b>: ваша группа и её лидер, вход в начале или из резерва позже, кто идёт с вами и маршрут по минутам: во сколько и какое здание брать</li><li data-i18n="dr_l2"><b>Вся раскладка</b> под вашим планом: кто в какой группе и кто стоит на замене. Вкладка <b>«История рейдов»</b>: с кем бились, победа или поражение и как стояли группы</li><li data-i18n="dr_l3"><span class="r45">R4/R5</span><b>Шаг «Пул»</b>: у каждого игрока кнопки «Основа», «Резерв» и «Нет» и заметка, поиск по нику и фильтры. Кнопка «Сообщить составу» заранее пишет каждому в бота, где он стоит</li><li data-i18n="dr_l4"><span class="r45">R4/R5</span><b>Шаг «Группы»</b>: «Разложить автоматически», своя группа под любое здание, перенос игрока нажатием на ник, лидер группы, вход из резерва и замены. На компьютере игроков можно перетаскивать мышкой</li><li data-i18n="dr_l5"><span class="r45">R4/R5</span><b>Шаг «План»</b>: свой маршрут каждой группе по времени и зданиям, текст к каждому этапу и указания группе</li><li data-i18n="dr_l6"><span class="r45">R4/R5</span><b>Публикация</b>: каждый игрок получает свой план в Telegram или ВК, а чат союза — всю раскладку. После правок план можно разослать ещё раз, и напишут только тем, чьё место изменилось</li></ul></details>
+      <div class="demo-next"><span class="eyebrow" data-i18n="demo_next_l">Дальше</span><button class="btn ghost" type="button" data-tab="vs"><span data-i18n="nav_vs">VS</span><b aria-hidden="true">→</b></button></div>
     </div>
     <div class="demo-part" data-demo="vs" hidden>
       <section class="spot solo spot-vs">
         <div class="spot-txt">
-          <span class="eyebrow"><span class="ai-badge" data-i18n="sp_ai">ИИ</span><span data-i18n="dv_eye">Битва союзов (VS)</span></span>
           <h2 data-i18n="dv_h">Очки каждого игрока за каждый день битвы<br>прямо со скринов рейтинга</h2>
-          <p data-i18n="dv_p">Это раздел «VS» — битва союзов неделя за неделей. Раз в день R4 загружают скрины дневного рейтинга из игры, а ИИ сам читает ники и очки: сотню игроков примерно за 15 секунд. Перед сохранением R4 видит всё прочитанное и поправляет то, в чём сервис не уверен. Получается таблица на всю неделю: кто сколько принёс в каждый день, счёт битвы с соперником и история прошлых недель. Переключите «Смотреть как» на R4/R5 — увидите раздел глазами руководства союза.</p>
-          <ul class="spot-pts"><li data-i18n="dv_l1"><b>Счёт недели</b>: победа в дне даёт союзу от 1 до 4 очков, всего их 13, для победы нужно 7. Итог каждого дня отмечают R4</li><li data-i18n="dv_l2"><b>Таблица очков</b>: каждый игрок по дням и за неделю, сортировка по любому дню и сравнение с прошлой неделей. Нажмите на ник — откроется история игрока за все недели</li><li data-i18n="dv_l3"><b>Кто отстаёт — видно сразу</b>: свой цвет у нуля, у результата меньше 5M (не все награды дня) и у результата ниже нормы союза. В таблице есть и те, кто вообще не попал в рейтинг</li><li data-i18n="dv_l4"><span class="r45">R4/R5</span><b>Скрины, проверка, сохранение</b>: сомнительные ники отмечены, пропущенные места и непрочитанные строки видны сразу. Выбранного вручную игрока сервис в следующий раз узнаёт сам</li><li data-i18n="dv_l5"><span class="r45">R4/R5</span><b>Предварительно и окончательно</b>: пока день открыт, скрины можно загружать заново. День под замком больше не меняется и идёт в статистику</li><li data-i18n="dv_l6"><span class="r45">R4/R5</span><b>Кто ничего не принёс за неделю</b> и <b>склейка ников</b>: если скрины прочитали ник по-разному, результаты собираются под одним именем. В Штабе — метки «кто отстаёт» за неделю, три недели или всё время</li></ul>
+          <p data-i18n="dv_p">Раз в день R4 загружают скрины рейтинга, а ИИ сам читает ники и очки — сотню игроков примерно за 15 секунд. Получается таблица на всю неделю и счёт битвы.</p>
         </div>
       </section>
       <!-- a live copy of the VS section on a made-up alliance: the screenshots are read in advance, everything stays in the page's memory -->
-      <div class="panel demo-note"><p class="dv-note"></p><button class="btn ghost sm" type="button" data-dvreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div id="demoVS">
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoVS">
         <div class="dq-bar">
           <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dvrole="r2" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dvrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
@@ -2098,23 +2079,24 @@ html.boot #v-load{display:flex!important}
         <p class="hint dq-role" id="dvRole"></p>
         <div data-vw="body"></div>
       </div>
+        <div class="demo-reset"><button class="btn ghost sm" type="button" data-dvreset data-i18n="dn_reset">Сбросить пример</button></div>
+      </div>
+      <details class="panel coords-help demo-fold"><summary><svg aria-hidden="true"><use href="#i-note"/></svg><span data-i18n="demo_feats">Что ещё умеет раздел</span></summary><ul class="spot-pts"><li data-i18n="dv_l1"><b>Счёт недели</b>: победа в дне даёт союзу от 1 до 4 очков, всего их 13, для победы нужно 7. Итог каждого дня отмечают R4</li><li data-i18n="dv_l2"><b>Таблица очков</b>: каждый игрок по дням и за неделю, сортировка по любому дню и сравнение с прошлой неделей. Нажмите на ник — откроется история игрока за все недели</li><li data-i18n="dv_l3"><b>Кто отстаёт — видно сразу</b>: свой цвет у нуля, у результата меньше 5M (не все награды дня) и у результата ниже нормы союза. В таблице есть и те, кто вообще не попал в рейтинг</li><li data-i18n="dv_l4"><span class="r45">R4/R5</span><b>Скрины, проверка, сохранение</b>: сомнительные ники отмечены, пропущенные места и непрочитанные строки видны сразу. Выбранного вручную игрока сервис в следующий раз узнаёт сам</li><li data-i18n="dv_l5"><span class="r45">R4/R5</span><b>Предварительно и окончательно</b>: пока день открыт, скрины можно загружать заново. День под замком больше не меняется и идёт в статистику</li><li data-i18n="dv_l6"><span class="r45">R4/R5</span><b>Кто ничего не принёс за неделю</b> и <b>склейка ников</b>: если скрины прочитали ник по-разному, результаты собираются под одним именем. В Штабе — метки «кто отстаёт» за неделю, три недели или всё время</li></ul></details>
+      <div class="demo-next"><span class="eyebrow" data-i18n="demo_next_l">Дальше</span><button class="btn ghost" type="button" data-tab="news"><span data-i18n="nav_news">Новости</span><b aria-hidden="true">→</b></button></div>
     </div>
     <div class="demo-part" data-demo="news" hidden>
       <section class="spot solo">
         <div class="spot-txt">
-          <span class="eyebrow" data-i18n="dw_eye">Новости и памятка</span>
           <h2 data-i18n="dw_h">Объявления руководства и памятка союза<br>в одном месте, а не в сотне сообщений чата</h2>
-          <p data-i18n="dw_p">Это раздел «Новости». Здесь R4 и R5 пишут объявления союза: когда рейд, что важно на этой неделе, новые правила. Важную новость закрепляют, и она видна сверху на вкладках «Бафы» и «БМ», так что её не пропустит никто. При публикации можно сразу разослать уведомление каждому игроку. Рядом лежит памятка: то, что нужно знать всегда, особенно новичкам. Переключите «Смотреть как» на R4/R5, чтобы написать новость или пункт памятки самому.</p>
-          <ul class="spot-pts"><li data-i18n="dw_l1"><b>Лента новостей</b>: свежие сверху, закреплённая всегда первой, у каждой видно, кто и когда её написал</li><li data-i18n="dw_l2"><b>Памятка союза</b>: правила и инструкции, каждая раскрывается нажатием, длинная показывается начало и кнопка «Показать полностью». Тут же кнопка калькуляторов героев</li><li data-i18n="dw_l3"><b>На языке читателя</b>: если игрок открыл сайт на английском, новости и памятка показываются ему в переводе, и наоборот. Оригинал можно открыть одним нажатием</li><li data-i18n="dw_l4"><span class="r45">R4/R5</span><b>Новость</b>: заголовок и текст, «Закрепить» и «Отправить уведомление игрокам» в приложение, Telegram и ВК. У готовой новости кнопки «Изменить», «Закрепить» и «Удалить», а «Отправить ещё раз» шлёт её игрокам или ботом в чат союза</li><li data-i18n="dw_l5"><span class="r45">R4/R5</span><b>Памятка</b>: добавить пункт, исправить его, поставить выше или ниже, удалить. Длина текста не ограничена</li></ul>
+          <p data-i18n="dw_p">R4 и R5 пишут объявления и памятку союза, а важное закрепляют сверху — его никто не пропустит.</p>
         </div>
       </section>
       <!-- a live copy of the News section on the sample alliance: everything stays in the page's memory -->
-      <div class="panel demo-note"><p class="dw-note"></p><button class="btn ghost sm" type="button" data-dwreset data-i18n="dn_reset">Сбросить пример</button></div>
-      <div id="demoNews">
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoNews">
         <div class="dq-bar">
           <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dwrole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dwrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
-          <button class="btn bolt sm" type="button" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
         </div>
         <p class="hint dq-role" id="dwRole"></p>
         <form class="panel news-form" id="dwForm" data-nw="form" novalidate hidden>
@@ -2126,24 +2108,27 @@ html.boot #v-load{display:flex!important}
           <p class="err" role="alert"></p>
           <div class="row"><button class="btn bolt" type="submit" data-nw="submit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
         </form>
+        <div class="dw-add" data-nw="add" hidden><button class="btn bolt sm" type="button" data-newsnew><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button></div>
         <div class="news">
           <div class="panel" data-nw="list"></div>
           <div class="panel" data-nw="guides"></div>
         </div>
       </div>
+        <div class="demo-reset"><button class="btn ghost sm" type="button" data-dwreset data-i18n="dn_reset">Сбросить пример</button></div>
+      </div>
+      <details class="panel coords-help demo-fold"><summary><svg aria-hidden="true"><use href="#i-note"/></svg><span data-i18n="demo_feats">Что ещё умеет раздел</span></summary><ul class="spot-pts"><li data-i18n="dw_l1"><b>Лента новостей</b>: свежие сверху, закреплённая всегда первой, у каждой видно, кто и когда её написал</li><li data-i18n="dw_l2"><b>Памятка союза</b>: правила и инструкции, каждая раскрывается нажатием, длинная показывается начало и кнопка «Показать полностью». Тут же кнопка калькуляторов героев</li><li data-i18n="dw_l3"><b>На языке читателя</b>: если игрок открыл сайт на английском, новости и памятка показываются ему в переводе, и наоборот. Оригинал можно открыть одним нажатием</li><li data-i18n="dw_l4"><span class="r45">R4/R5</span><b>Новость</b>: заголовок и текст, «Закрепить» и «Отправить уведомление игрокам» в приложение, Telegram и ВК. У готовой новости кнопки «Изменить», «Закрепить» и «Удалить», а «Отправить ещё раз» шлёт её игрокам или ботом в чат союза</li><li data-i18n="dw_l5"><span class="r45">R4/R5</span><b>Памятка</b>: добавить пункт, исправить его, поставить выше или ниже, удалить. Длина текста не ограничена</li></ul></details>
+      <div class="demo-next"><span class="eyebrow" data-i18n="demo_next_l">Дальше</span><button class="btn ghost" type="button" data-tab="hq"><span data-i18n="nav_hq">Штаб</span><b aria-hidden="true">→</b></button></div>
     </div>
     <div class="demo-part" data-demo="hq">
       <section class="spot solo">
         <div class="spot-txt">
-          <span class="eyebrow" data-i18n="dh_eye">Только для R4 и R5</span>
-          <h2 data-i18n="dh_h">Пульт руководства союзом:<br>всё для R4 и R5 на одной странице</h2>
-          <p data-i18n="dh_p">Это раздел «Штаб». Обычные игроки его не видят: он открывается только R4, R5 и помощникам, которым R4 дали часть прав. Здесь принимают новичков, раздают ранги, рассылают уведомления, запускают события игры и настраивают правила союза. Всё разложено по пяти вкладкам, а красная цифра на вкладке показывает, где вас ждёт дело.</p>
-          <ul class="spot-pts"><li data-i18n="dh_l1"><b>Не нужно сидеть в игре</b>: заявку новичка, жалобу на баф или отстающих в VS видно с телефона в любую минуту</li><li data-i18n="dh_l2"><b>Работу можно поделить</b>: R5 назначает R4, а R4 делают помощником любого игрока, например только для рейда или новостей, на нужный срок</li><li data-i18n="dh_l3"><b>Ранги как в игре</b>: R4 меняют ранги R1–R3 и исключают игроков, назначать R4 и передавать лидерство может только R5</li><li data-i18n="dh_l4"><b>Ничего не теряется</b>: исключённого можно вернуть, отметку бафа исправить, а каждое исправление попадает в журнал</li></ul>
+          <h2 data-i18n="dh_h">Пульт руководства союзом:<br>всё на одной странице</h2>
+          <p data-i18n="dh_p">Заявки, ранги, уведомления, события и правила союза — на пяти вкладках.</p>
         </div>
       </section>
       <!-- the HQ tour: the same five tabs as the real HQ, each tells what its blocks do; nothing here talks to the server -->
-      <div class="panel demo-note"><p data-i18n="dh_note">Нажимайте на вкладки ниже: в каждой рассказано, какие там блоки и что в них можно сделать. Примеры взяты у союза [SKD], которого нет в игре.</p></div>
-      <div id="demoHQ">
+      <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
+        <div id="demoHQ">
         <div class="seg hq-tabs" role="tablist">
           <button type="button" data-dhtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people">Состав</span><span class="dotn">2</span></button>
           <button type="button" data-dhtab="activity" role="tab"><svg><use href="#i-chart"/></svg><span data-i18n="hqt_activity">Активность</span><span class="dotn">1</span></button>
@@ -2155,26 +2140,23 @@ html.boot #v-load{display:flex!important}
           <p class="dh-lead" data-i18n="dh_people">Кто в союзе и кто просится в него.</p>
           <div class="dh-cards">
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-add"/></svg></div><h3 data-i18n="hq_new">Новые игроки</h3><p data-i18n="dh_req_p">Игрок сам подаёт заявку по ссылке-приглашению. В заявке видны его координаты, БМ с ростом за последние недели, прошлые ники и есть ли он в списке союза из игры.</p>
-            <ul class="dh-do"><li data-i18n="dh_req_1">Принять или отклонить в одно нажатие</li><li data-i18n="dh_req_2">«Принять всех из списка» сразу, если пришло несколько своих</li><li data-i18n="dh_req_3">Открыть карточку игрока с графиком БМ перед решением</li></ul>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b>Nightjar</b><span data-i18n="dh_req_ex">заявка 2 ч назад · X:540 Y:470 · 41,2 млн</span><span class="pill ok" style="align-self:flex-start;margin-top:4px" data-i18n="dh_req_tag">✓ есть в списке союза · R3</span></div></div></div></div>
-          <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="mem_h">Участники союза</h3><p data-i18n="dh_mem_p">Весь союз списком до 100 человек: сначала R5 и R4, дальше по рангам, с поиском по нику.</p>
-            <ul class="dh-do"><li data-i18n="dh_mem_1">Поменять ранг из выпадающего списка</li><li data-i18n="dh_mem_2">Отметить «Отсутствует» до нужной даты: все видят отметку, а причину только R4 и R5</li><li data-i18n="dh_mem_3">Сделать помощником: очередь, VS, рейд, события или новости, ранг игрока не меняется</li><li data-i18n="dh_mem_4">Сбросить забытый PIN, исключить игрока и вернуть исключённого</li></ul></div>
-          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-shield"/></svg></div><h3 data-i18n="dh_inv_h">Приглашение и состав из игры</h3><p data-i18n="dh_inv_p">Новички вступают только по ссылке союза, поэтому чужой случайно не зайдёт.</p>
-            <ul class="dh-do"><li data-i18n="dh_inv_1">Ссылка для сайта и для Telegram, а «Сменить ссылку» отключает старую</li><li data-i18n="dh_inv_2">Скрины списка союза из игры: Штаб узнаёт всех ещё до регистрации, в VS у них видны нули, а при вступлении сразу вернётся ранг</li><li data-i18n="dh_inv_3">Если игрок забыл PIN и попросил помощи, просьба появится наверху вкладки</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-rank"/></svg></div><h3 data-i18n="mem_h">Участники союза</h3><p data-i18n="dh_mem_p">Весь союз списком до 100 человек: сначала R5 и R4, дальше по рангам, с поиском по нику.</p></div>
+          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-shield"/></svg></div><h3 data-i18n="dh_inv_h">Приглашение и состав из игры</h3><p data-i18n="dh_inv_p">Новички вступают только по ссылке союза. А весь состав можно сразу загрузить скринами списка союза из игры: Штаб узнает всех ещё до регистрации и при вступлении сам вернёт ранг.</p>
+            <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
+              <div class="req"><div><b>Corvin</b><span data-i18n="dh_seed_ex">со скрина списка союза · R3 · ещё не на сайте</span></div></div></div></div>
           </div>
         </div>
         <div class="dh-pane" data-dhpane="activity" role="tabpanel" hidden>
           <p class="dh-lead" data-i18n="dh_act">Кто помогает союзу, а за кем стоит присмотреть.</p>
           <div class="dh-scroll">
           <div class="dh-cards scroll" data-dhrow>
-          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-vs"/></svg></div><h3 data-i18n="vsm_h">Битва союзов: кто отстаёт</h3><p data-i18n="dh_vsm_p">Сводка битвы союзов за выбранный период: у кого были нули, дни меньше 5M или ниже нормы союза. За каждый такой день игрок получает баллы, и чем их больше, тем ярче метка.</p>
-            <ul class="dh-do"><li data-i18n="dh_vsm_1">Смотреть только нули, только дни ниже нормы или всех по среднему вкладу</li><li data-i18n="dh_vsm_2">Период: последние дни или вся неделя</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-vs"/></svg></div><h3 data-i18n="vsm_h">Битва союзов: кто отстаёт</h3><p data-i18n="dh_vsm_p">Сводка битвы союзов за выбранный период: у кого были нули, дни меньше 5M или ниже нормы союза. За каждый такой день игрок получает баллы, и чем их больше, тем ярче метка.</p></div>
           <div class="panel feat"><div class="ic" style="color:var(--warn)"><svg><use href="#i-bolt"/></svg></div><h3 data-i18n="hq_dis">Баф не пришёл</h3><p data-i18n="dh_dis_p">Если игрок нажал «Баф не пришёл», жалоба попадает сюда. Снимите отметку, если бафа и правда не было, или нажмите «Всё ок».</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b>Saffra → Ironfox</b><span data-i18n="dh_dis_ex">Стройка · отметка 3 ч назад</span></div></div></div></div>
-          <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-build"/></svg></div><h3 data-i18n="bfx_h">Отметки бафов за 3 дня</h3><p data-i18n="dh_bfx_p">Все отметки бафов за последние трое суток. Ошибки в очереди исправляются здесь, без переписки в чате.</p>
-            <ul class="dh-do"><li data-i18n="dh_bfx_1">«Кинул другой»: перенести отметку на настоящего дарителя</li><li data-i18n="dh_bfx_2">Удалить отметку, если бафа не было</li><li data-i18n="dh_bfx_3">Отметить баф за игрока, который не может войти на сайт</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-build"/></svg></div><h3 data-i18n="bfx_h">Отметки бафов за 3 дня</h3><p data-i18n="dh_bfx_p">Все отметки бафов за последние трое суток. Ошибки в очереди исправляются здесь, без переписки в чате.</p></div>
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="hq_stale">БМ не обновляли больше недели</h3><p data-i18n="dh_stale_p">Кто не обновлял свой БМ больше недели. Кнопка «Напомнить им» покажет каждому напоминание при входе на сайт.</p></div>
           </div>
             <div class="dh-nav">
@@ -2188,11 +2170,9 @@ html.boot #v-load{display:flex!important}
           <p class="dh-lead" data-i18n="dh_comms">Как достучаться до союза и до разработчика.</p>
           <div class="dh-cards">
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="ann_h">Рассылки: игрокам и в чат</h3><p data-i18n="dh_ann_p">Уведомление всем игрокам и в чат союза. Удобно для сборов, событий и напоминаний, которые повторяются каждую неделю.</p>
-            <ul class="dh-do"><li data-i18n="dh_ann_1">Когда: сейчас, один раз в нужные дату и время, через день, по дням недели или вручную</li><li data-i18n="dh_ann_2">Куда: игрокам (пуш, Telegram и ВК) и в чат союза</li><li data-i18n="dh_ann_3">Видно, сколько игроков получат уведомление; готовую рассылку можно изменить</li></ul>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ann_ex">Так игрок получит уведомление</span>
               <div class="dh-push"><span class="dh-app"><svg><use href="#i-shield"/></svg></span><div><b data-i18n="dh_push_h">[SKD] Завтра рейд на резервуар</b><span data-i18n="dh_push_p">Сбор в 20:00 МСК. Свою группу смотрите во вкладке «Рейд».</span></div></div></div></div>
-          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-send"/></svg></div><h3 data-i18n="dh_chat_h">Чат союза в Telegram и ВК</h3><p data-i18n="dh_chat_p">Добавьте бота в беседу союза, и он сам будет присылать туда главное.</p>
-            <ul class="dh-do"><li data-i18n="dh_chat_1">Чья очередь на бафы с кнопкой «Я кинул баф», отметки «нет на координатах», рейд, новости и итоги VS</li><li data-i18n="dh_chat_2">Вы сами выбираете, что присылать, а у бота есть команды вроде /queue и /vs</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-send"/></svg></div><h3 data-i18n="dh_chat_h">Чат союза в Telegram и ВК</h3><p data-i18n="dh_chat_p">Добавьте бота в беседу союза, и он сам будет присылать туда главное.</p></div>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-msg"/></svg></div><h3 data-i18n="fb_h">Написать разработчику</h3><p data-i18n="dh_fb_p">Идея, ошибка или вопрос уходят разработчику, а ответ появится здесь же под вашим сообщением.</p></div>
           </div>
         </div>
@@ -2202,8 +2182,7 @@ html.boot #v-load{display:flex!important}
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-cal"/></svg></div><h3 data-i18n="ev_tpl_h">Шаблоны событий</h3><p data-i18n="dh_tpl_p">События в игре повторяются. Шаблон заводят один раз: название, сколько дней идёт и подсказку, на что тратить бонусы. Дальше запуск в одно нажатие.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b data-i18n="dh_tpl_ex_h">Магнат · 5 дней</b><span data-i18n="dh_tpl_ex">Подсказка: ускорения копите до последнего дня</span><span class="pill run" style="align-self:flex-start;margin-top:4px" data-i18n="dh_tpl_ex_on">Идёт, до конца 2 дня</span></div></div></div></div>
-          <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="dh_run_h">Запуск и напоминание</h3><p data-i18n="dh_run_p">Началось событие в игре — нажмите «Запустить». Забыли сразу? Поставьте настоящее время старта, конец сайт посчитает сам.</p>
-            <ul class="dh-do"><li data-i18n="dh_run_1">Игроки видят событие на главной с таймером</li><li data-i18n="dh_run_2">За сутки до конца игрокам и в чат союза придёт напоминание потратить бонусы</li><li data-i18n="dh_run_3">«Изменить», «Завершить» раньше срока или «Напомнить» ещё раз</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="dh_run_h">Запуск и напоминание</h3><p data-i18n="dh_run_p">Началось событие в игре — нажмите «Запустить». Забыли сразу? Поставьте настоящее время старта, конец сайт посчитает сам.</p></div>
           </div>
         </div>
         <div class="dh-pane" data-dhpane="settings" role="tabpanel" hidden>
@@ -2213,11 +2192,9 @@ html.boot #v-load{display:flex!important}
           <div class="panel feat"><div class="ic" style="color:var(--brick)"><svg><use href="#i-sci"/></svg></div><h3 data-i18n="pct_h">Бафы в союзе сейчас</h3><p data-i18n="dh_pct_p">Сколько процентов дают бафы в союзе сейчас, отдельно для стройки и исследования. От этого сайт считает, сколько бафов положено каждому в очереди.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="dh-pct"><span data-i18n="build">Стройка</span><b>15%</b><span data-i18n="sci">Исследование</span><b>10%</b></div></div></div>
-          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="dh_rules_h">Правила очереди</h3><p data-i18n="dh_rules_p">Чтобы бафы доставались всем по очереди, а не одному.</p>
-            <ul class="dh-do"><li data-i18n="dh_rules_1">Лимит бафов за один заход: набрал лимит, а нужно ещё, значит в «Ждут проверки»</li><li data-i18n="dh_rules_2">Минимум дней, чтобы встать в очередь</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-q"/></svg></div><h3 data-i18n="dh_rules_h">Правила очереди</h3><p data-i18n="dh_rules_p">Чтобы бафы доставались всем по очереди, а не одному.</p></div>
           <div class="panel feat"><div class="ic" style="color:var(--warn)"><svg><use href="#i-vs"/></svg></div><h3 data-i18n="vsmin_h">Норма союза в битве (VS)</h3><p data-i18n="dh_vsmin_p">Сколько очков в день вы ждёте от каждого в битве союзов. Кто набрал меньше, подсветится в таблице VS и попадёт в сводку на вкладке «Активность».</p></div>
-          <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-hq"/></svg></div><h3 data-i18n="ally_box_h">Союз</h3><p data-i18n="dh_ally_p">Данные самого союза.</p>
-            <ul class="dh-do"><li data-i18n="dh_ally_1">Тег и название меняет только R5</li><li data-i18n="dh_ally_2">Номер штата: переехали в другой штат, поменяйте здесь</li><li data-i18n="dh_ally_3">Показывать ли союз на главной странице сайта</li></ul></div>
+          <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-hq"/></svg></div><h3 data-i18n="ally_box_h">Союз</h3><p data-i18n="dh_ally_p">Данные самого союза.</p></div>
           </div>
             <div class="dh-nav">
               <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
@@ -2227,9 +2204,10 @@ html.boot #v-load{display:flex!important}
           </div>
         </div>
       </div>
+      </div>
     </div>
     <div class="panel cta-band">
-      <div><h2 style="font-size:clamp(19px,3.6vw,24px)" data-i18n="demo_cta_h">Попробуйте в своём союзе</h2><p data-i18n="demo_cta_p">Подключение бесплатное и занимает пару минут. Союз создаёт R5 или R4, остальные входят по ссылке-приглашению.</p></div>
+      <div><h2 style="font-size:clamp(19px,3.6vw,24px)" data-i18n="demo_cta_h">Попробуйте в своём союзе</h2><p data-i18n="demo_cta_p">Бесплатно, подключение за пару минут.</p></div>
       <div class="ctas demo-ctas"><button class="btn bolt" data-goauth="create"><svg><use href="#i-add"/></svg><span data-i18n="land_cta_create">Подключить свой союз</span></button><button class="btn ghost" data-goauth="invite" data-i18n="land_cta_invite">У меня есть приглашение</button></div>
     </div>
   </section>
@@ -2705,6 +2683,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=d4f787257b"></script>
+<script src="/app.js?v=94d696f0bf"></script>
 </body>
 </html>
