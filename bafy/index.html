@@ -769,6 +769,8 @@ fieldset.f{border:0;padding:0;margin:0}
 .seg button{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;border:0;background:none;height:36px;padding:0 13px;border-radius:10px;font:800 13.5px/1 var(--body);color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--panel-3);color:var(--fg)}
 /* the four "when" choices share the width evenly; two rows on a phone */
+.ann-when-f select{max-width:340px}
+.ann-where{display:flex;flex-wrap:wrap;gap:6px 20px}
 .seg.ann-when{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));width:100%}
 .seg.ann-when button{justify-content:center;padding:0 6px}
 @media (max-width:480px){.seg.ann-when{grid-template-columns:repeat(6,minmax(0,1fr))}.seg.ann-when button{grid-column:span 2}.seg.ann-when button:nth-child(n+4){grid-column:span 3}}
@@ -821,6 +823,20 @@ td.num{font-family:var(--mono)}
 .vs-count .us{color:var(--teal)} .vs-count .them{color:var(--warn)} .vs-count span{color:var(--muted);font-size:30px}
 .vs-rule{grid-column:1/-1;margin:0;text-align:center}
 @media (max-width:620px){.vs-score{grid-template-columns:1fr 1fr;padding:16px}.vs-mid{grid-column:1/-1;grid-row:2}.vs-tag{font-size:24px}.vs-nm{font-size:14px}}
+.rs-sum{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:14px 22px;padding:16px 20px;margin-bottom:16px;
+  background:linear-gradient(100deg,color-mix(in srgb,var(--teal) 14%,var(--panel)) 0%,var(--panel) 45%,var(--panel) 60%,color-mix(in srgb,var(--warn) 12%,var(--panel)) 100%)}
+.rs-sum.win{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--grass) 55%,transparent)} .rs-sum.loss{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--warn) 50%,transparent)}
+.rs-last{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}
+.rs-vs{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.rs-vs .vs-tag{font-size:22px}.rs-vs .vs-tag.us{color:var(--teal)}.rs-vs .vs-tag.them{color:var(--warn)}
+.rs-vs .vs-badge{min-width:40px;height:24px;font-size:13px;border-radius:8px}
+.rs-tally{display:flex;flex-direction:column;gap:10px;min-width:0}
+.rs-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rs-nums > div{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border-radius:12px;background:color-mix(in srgb,var(--panel-2) 70%,transparent)}
+.rs-nums b{font:600 22px/1 var(--display)} .rs-nums b.ok{color:var(--grass)} .rs-nums b.bad{color:var(--warn)}
+.rs-nums span{font:700 10.5px/1.2 var(--body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rs-bar{height:8px;border-radius:99px;background:color-mix(in srgb,var(--warn) 70%,var(--panel));overflow:hidden}.rs-bar i{display:block;height:100%;background:var(--grass);border-radius:99px}
+.rs-more{align-self:flex-end;font-size:14px}
+@media (max-width:620px){.rs-sum{grid-template-columns:1fr;padding:14px 16px}.rs-more{align-self:flex-start}}
 .vs-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:12px;margin-bottom:16px}
 .vs-day{padding:14px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--dc,var(--panel-3))}
 .vs-day.future{opacity:.62}
@@ -920,6 +936,10 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 #tour .tour-card.up{bottom:auto;top:calc(88px + env(safe-area-inset-top,0px))}
 #tour .tour-card.mid{bottom:auto;top:50%;transform:translate(-50%,-50%)}
 #tour .tour-card h3{margin:0}#tour .tour-card p{margin:0;line-height:1.5}
+#tour .tour-card{max-height:calc(100dvh - 120px);overflow:auto}
+#tour .tour-l{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14px;line-height:1.45;color:var(--muted)}
+.vh .how-btn{align-self:flex-start;gap:7px}.vh .how-btn[hidden]{display:none}
+.how-q{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--bolt);color:#1b1206;font-size:12px;font-weight:800;line-height:1}
 #tour .tour-acts{display:flex;gap:8px;justify-content:flex-end}#tour .tour-skip{justify-self:start;color:var(--muted);font-size:13px}
 @media (min-width:861px){#tour .tour-card{bottom:32px}}
 .help-btn b{font:800 17px/1 var(--body)}
@@ -1687,9 +1707,30 @@ html.scrolled header.top::before{opacity:1}
 .pf-facts b{font:700 14px/1.3 var(--body);overflow-wrap:anywhere} .pf-facts b.mono{font-family:var(--mono)}
 .pf-facts small,.pf-tiles small{font:600 12.5px/1.3 var(--body);color:var(--muted)}
 .pf-edit{grid-column:1/-1;display:flex}
+.framed{border:0 solid transparent;background-clip:padding-box;position:relative;overflow:visible;border-radius:0}
+.framed::after{content:"";position:absolute;inset:var(--frb,0);border:0 solid transparent;border-image-source:var(--fri,none);border-image-slice:var(--frs,0);border-image-width:var(--frw,0);border-image-repeat:stretch;pointer-events:none;z-index:3}
+/* the frame lives: a glint runs over metal and gold, fire flickers, lightning flashes */
+.framed::before{content:"";position:absolute;inset:var(--frb,0);border:0 solid transparent;border-image-source:var(--fri,none);border-image-slice:var(--frs,0);border-image-width:var(--frw,0);border-image-repeat:stretch;pointer-events:none;z-index:4;
+  filter:brightness(2.4) saturate(1.3);-webkit-mask-image:linear-gradient(110deg,transparent 38%,#000 50%,transparent 62%);mask-image:linear-gradient(110deg,transparent 38%,#000 50%,transparent 62%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:frGlint 5.5s ease-in-out infinite}
+.framed[data-fr="r1"]::before{animation-duration:8s;filter:brightness(1.7)}
+.framed[data-fr="vs"]::before,.framed[data-fr="grow"]::before{display:none}
+.framed[data-fr="vs"]::after,.fr-ava.vs > img{animation:frFire 1.9s ease-in-out infinite}
+.framed[data-fr="grow"]::after,.fr-ava.grow > img{animation:frZap 3.2s linear infinite}
+@keyframes frGlint{0%{-webkit-mask-position:100% 0;mask-position:100% 0}55%,100%{-webkit-mask-position:0 0;mask-position:0 0}}
+@keyframes frFire{0%,100%{filter:brightness(1) saturate(1)}18%{filter:brightness(1.18) saturate(1.15)}33%{filter:brightness(.94)}52%{filter:brightness(1.12) saturate(1.2)}70%{filter:brightness(.97)}86%{filter:brightness(1.15)}}
+@keyframes frZap{0%,62%,70%,78%,100%{filter:brightness(1)}64%{filter:brightness(1.9) saturate(1.4)}66%{filter:brightness(1.05)}74%{filter:brightness(1.6)}}
+@media (prefers-reduced-motion:reduce){.framed::before{display:none}.framed::after,.fr-ava > img{animation:none !important}}
+.pf-hero.framed{padding:calc(18px + var(--frd,0px))}.rc.framed{padding:var(--frd,0px)}
+.fr-rib{position:absolute !important;left:50%;top:0;transform:translate(-50%,-50%);z-index:5;white-space:nowrap;padding:5px 14px;border-radius:8px;font:800 12px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--fc);box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.fr-ava{position:relative;display:inline-grid;place-items:center;flex:none;margin:12px}
+.fr-ava > img{position:absolute;max-width:none;pointer-events:none}
+.pf-hero .fr-ava span.ava.ava.ava.ava.ava.lg{width:64px;height:64px;font-size:26px}
+.fr-medal{width:30px;height:30px;flex:none}
+.rc.framed .rc-h{padding-top:22px}.rc.framed .btn.give{white-space:normal;height:auto;min-height:52px;flex-wrap:wrap;justify-content:center;text-align:center}
 .pf-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .pf-tiles > .panel{padding:14px 16px;display:flex;flex-direction:column;gap:7px;border-radius:16px;min-width:0}
-.pf-tiles b{font:600 22px/1 var(--display)} .pf-tiles b.bad{color:var(--warn)} .pf-tiles b.warnv{color:var(--bolt)}
+.pf-tiles b{font:600 clamp(24px,5vw,30px)/1 var(--display)} .pf-tiles b.bad{color:var(--warn)} .pf-tiles b.warnv{color:var(--bolt)}
 .pf-cols{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;align-items:start}
 .pf-card{padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
 .pf-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px}
@@ -2590,8 +2631,8 @@ html.boot #v-load{display:flex!important}
             <p class="ann-editing" id="annEditing" hidden></p>
             <div class="f"><label for="annTitle" data-i18n="ann_title">Заголовок</label><input class="inp" id="annTitle" maxlength="80" autocomplete="off" data-i18n-ph="ann_title_ph"></div>
             <div class="f"><label for="annBody" data-i18n="ann_body">Текст</label><textarea class="inp" id="annBody" maxlength="300" style="min-height:90px" data-i18n-ph="ann_body_ph"></textarea></div>
-            <div class="f"><span class="lbl" data-i18n="ann_when">Когда</span>
-              <div class="seg ann-when"><button type="button" data-annwhen="now" aria-pressed="true" data-i18n="ann_now">Сейчас</button><button type="button" data-annwhen="at" aria-pressed="false" data-i18n="ann_at">Один раз</button><button type="button" data-annwhen="alt" aria-pressed="false" data-i18n="ann_alt">Через день</button><button type="button" data-annwhen="days" aria-pressed="false" data-i18n="ann_days">По дням</button><button type="button" data-annwhen="none" aria-pressed="false" data-i18n="ann_none">Вручную</button></div>
+            <div class="f ann-when-f"><label for="annWhen" data-i18n="ann_when">Когда</label>
+              <select class="inp" id="annWhen"><option value="now" data-i18n="annw_now">Сейчас</option><option value="at" data-i18n="annw_at">Один раз</option><option value="alt" data-i18n="annw_alt">Через день</option><option value="days" data-i18n="annw_days">По дням недели</option><option value="none" data-i18n="annw_none">Сохранить без отправки</option></select>
               <p class="hint" style="margin:0" id="annWhenHint"></p></div>
             <div class="xy" id="annAt" hidden><div class="f"><label for="annDate" data-i18n="ann_date">Дата</label><input class="inp mono" type="date" id="annDate"></div>
               <div class="f"><label for="annTime" data-i18n="ann_time">Время (МСК)</label><input class="inp mono" type="time" id="annTime" value="20:00"></div></div>
@@ -2600,8 +2641,8 @@ html.boot #v-load{display:flex!important}
               <div class="f" style="max-width:200px"><label for="annDTime" data-i18n="ann_time">Время (МСК)</label><input class="inp mono" type="time" id="annDTime" value="19:00"></div>
               <p class="hint" style="margin:0" id="annSrv"></p></div>
             <div class="f"><span class="lbl" data-i18n="ann_where">Куда отправлять</span>
-              <label class="check"><input type="checkbox" id="annToPl" checked><span data-i18n="ann_to_pl">Игрокам: пуш, Telegram и ВК</span></label>
-              <label class="check"><input type="checkbox" id="annToChat" checked><span data-i18n="ann_to_chat">Ботом в чат союза</span></label></div>
+              <div class="ann-where"><label class="check"><input type="checkbox" id="annToPl" checked><span data-i18n="ann_to_pl">Игрокам: пуш, Telegram и ВК</span></label>
+              <label class="check"><input type="checkbox" id="annToChat" checked><span data-i18n="ann_to_chat">Ботом в чат союза</span></label></div></div>
             <p class="err" role="alert"></p>
             <div class="row" style="gap:8px"><button class="btn bolt" type="submit" id="annSubmit" data-i18n="ann_send">Отправить</button><button class="btn ghost" type="submit" id="annAsNew" hidden data-i18n="ann_as_new">Сохранить как новую</button><button class="btn ghost" type="button" id="annCancel" data-anncancel hidden data-i18n="ros_cancel">Отмена</button></div>
           </form>
@@ -2683,6 +2724,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=94d696f0bf"></script>
+<script src="/app.js?v=375dbc0773"></script>
 </body>
 </html>
