@@ -1308,6 +1308,11 @@ details.guide .tr-note{padding:0 20px 10px}
 .fb .top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:700 13px/1.2 var(--body);color:var(--muted)}
 .fb .top b{color:var(--fg)}
 .fb .top .pill{margin-left:auto}
+.fb-att{display:flex;flex-direction:column;gap:8px}.fb-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.fb-thumb{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--panel-2);border:1px solid var(--line)}
+.fb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.fb-thumb button{position:absolute;top:2px;right:2px;width:28px;height:28px;border-radius:8px;border:0;background:rgba(0,0,0,.6);color:#fff;font:700 14px/1 var(--body);display:grid;place-items:center}
+.fb-shots{display:flex;flex-direction:column;gap:12px}.fb-shots img{width:100%;height:auto;border-radius:10px;display:block;background:var(--panel-2)}
 .fb:has(.fb-x){position:relative}.fb:has(.fb-x) .top{padding-right:40px;min-height:32px}
 .inbox-tools{display:grid;gap:10px;margin-bottom:16px}.chips.inbox-f{display:flex;flex-wrap:wrap;width:auto}
 .fb-btns{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;margin-top:4px}.fb-btns .btn{width:100%}
@@ -2610,6 +2615,8 @@ html.boot #v-load{display:flex!important}
               <select class="inp" id="fbType"><option value="idea" data-i18n="fb_idea">Идея или пожелание</option><option value="bug" data-i18n="fb_bug">Что-то не работает</option><option value="other" data-i18n="fb_other">Другое</option></select></div>
           </div>
           <div class="f"><label for="fbText" data-i18n="fb_text">Сообщение</label><textarea class="inp" id="fbText" maxlength="2000" data-i18n-ph="fb_ph"></textarea></div>
+          <div class="fb-att" id="fbAtt"></div>
+          <input type="file" id="fbFiles" accept="image/*" multiple hidden>
           <p class="err" role="alert"></p>
           <button class="btn teal" type="submit" style="align-self:flex-start" data-i18n="fb_send">Отправить</button>
           <div id="fbMine"></div>
@@ -2670,6 +2677,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=cc71466df7"></script>
+<script src="/app.js?v=c18f36c21c"></script>
 </body>
 </html>
