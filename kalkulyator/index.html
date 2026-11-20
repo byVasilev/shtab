@@ -107,7 +107,7 @@ body{color:var(--fg);font:500 15px/1.5 var(--body);min-height:100vh;-webkit-font
 @media (max-width:860px){.backdrop .tiles-bg{background-size:66px 37.5px}.backdrop .fog{filter:blur(30px)}}
 /* see-through clouds over the whole page, top to bottom (pictures in /art/web/fx): they drift slowly; the cloud under the mouse alone drifts away from it and brightens (--px/--py/--hv, set in app.js) */
 .backdrop .cloud{position:absolute;display:block;aspect-ratio:2/1;background:center/contain no-repeat;opacity:calc(var(--o,.5) * var(--cloud-k,.42) * (1 + var(--hv,0) * .6));
-  translate:var(--px,0px) var(--py,0px);transition:translate 1.4s cubic-bezier(.2,.7,.3,1),opacity 1s ease;
+  translate:var(--px,0px) var(--py,0px);
   animation:cloudDrift var(--t,60s) ease-in-out infinite alternate;will-change:transform,translate}
 .backdrop .cloud.c1{background-image:url(/art/web/fx/cloud1.webp);width:52vw;left:-12vw;top:-4vh;--d:90px;--t:70s;--o:1}
 .backdrop .cloud.c2{background-image:url(/art/web/fx/cloud2.webp);width:38vw;right:-8vw;top:12vh;--d:50px;--t:85s;--o:.8;animation-delay:-20s}
@@ -2705,6 +2705,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=552762e147"></script>
+<script src="/app.js?v=52e3ca9e7b"></script>
 </body>
 </html>
