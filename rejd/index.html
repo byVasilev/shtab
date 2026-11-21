@@ -291,6 +291,43 @@ section.view.on{display:block;animation:rise .35s ease both}
 .fcard small{display:block;color:var(--muted);font-weight:600;font-size:11.5px}
 .fcard img{width:34px;height:34px;flex:none}
 .fcard.a{left:0;bottom:12%}
+.mascot{flex:none;width:var(--mw,118px);margin:-14px 0 -8px;position:relative;-webkit-tap-highlight-color:transparent}
+.mascot img{display:block;width:100%;height:auto;transform-origin:50% 100%;filter:drop-shadow(0 12px 14px rgba(0,0,0,.45));animation:mBreath 4.2s ease-in-out infinite;transition:filter .3s}
+.mascot::after{content:"";position:absolute;left:12%;right:12%;bottom:-2px;height:12px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent);z-index:-1;transition:transform .3s,opacity .3s}
+.mascot:is(:hover,:active) img{animation:mAlive .9s ease-in-out infinite;filter:drop-shadow(0 18px 16px rgba(0,0,0,.4)) drop-shadow(0 0 10px var(--glow)) drop-shadow(0 0 22px color-mix(in srgb,var(--glow) 55%,transparent))}
+.mascot:is(:hover,:active)::after{transform:scale(.8);opacity:.6}
+@keyframes mBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(1.012,.988)}}
+@keyframes mAlive{0%,100%{transform:translateY(-8px) rotate(-2.5deg) scale(1.04)}50%{transform:translateY(-13px) rotate(2.5deg) scale(1.05)}}
+.vh:has(> .mascot){flex-wrap:nowrap;align-items:center}
+.vh > .mascot,.vh > .mascot.float{margin-left:auto;margin-right:auto}
+.mascot:not(.float)::after{left:-30%;right:-30%;bottom:-22%;height:46%;border-radius:0;background:url(/art/web/fx/cloud3.webp) center/100% 100% no-repeat,url(/art/web/fx/mist.webp) center 70%/90% 80% no-repeat;filter:brightness(1.6) contrast(1.1);opacity:1;z-index:0;transition:none}
+.mascot:not(.float):is(:hover,:active)::after{transform:none;opacity:1}
+.mascot img{position:relative;z-index:1;translate:0 var(--sink,0)}
+.vh > .how-btn{align-self:flex-start;flex:none;order:9}
+.mascot.float img{animation:mFloat 4.5s ease-in-out infinite}
+.mascot.float{width:64px;margin:-8px 4px -4px;padding-bottom:14px}
+.spot.solo > .mascot.float{width:82px;margin:-10px 0 -12px;justify-self:center}
+.mascot.float::after{left:14%;right:14%;bottom:0;height:12px;z-index:0;background:radial-gradient(closest-side,#fffbe6,#ffd75a 35%,color-mix(in srgb,var(--glow) 60%,transparent) 65%,transparent);box-shadow:0 0 18px 6px color-mix(in srgb,var(--glow) 45%,transparent);animation:mSpot 4.5s ease-in-out infinite}
+.mascot.float:is(:hover,:active) img{animation:mFloat 4.5s ease-in-out infinite}
+.mascot.float:is(:hover,:active)::after{transform:none;opacity:1}
+@keyframes mFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes mSpot{0%,100%{scale:1;opacity:1}50%{scale:.75;opacity:.7}}
+#newsAdd{margin:0 0 14px}
+.vh:has(> .mascot) > div:first-child{flex:0 1 auto;min-width:0}
+#v-demo .spot.solo:has(> .mascot){grid-template-columns:fit-content(60ch) minmax(0,1fr);gap:20px;align-items:center}
+.spot.solo > .mascot{justify-self:center}
+.spot.solo > .mascot{width:170px;margin:-24px 0 -30px}
+.spot.solo > .mascot[style*="--mw:"]{width:calc(var(--mw) + 40px)}
+.miner{position:absolute;right:-2%;bottom:2%;width:27%;z-index:2;cursor:default}
+.miner img{position:relative;display:block;width:100%;height:auto;transform-origin:50% 100%;filter:drop-shadow(0 16px 16px rgba(0,0,0,.45)) drop-shadow(0 0 1px rgba(255,170,60,.6));animation:mBreath 4.2s ease-in-out infinite}
+.miner:hover img{animation:mAlive .9s ease-in-out infinite}
+.torch-glow,.torch-light{position:absolute;pointer-events:none;border-radius:50%;left:22.4%;top:11.6%;translate:-50% -50%}
+.torch-glow{width:70%;aspect-ratio:1;background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,170,50,.55) 35%,rgba(255,110,20,0) 100%);mix-blend-mode:screen;animation:torch 1.6s steps(1,end) infinite,torchS 2.3s ease-in-out infinite;z-index:1}
+.torch-light{width:520%;aspect-ratio:1;background:radial-gradient(closest-side,rgba(255,170,60,.28),rgba(255,140,40,.1) 45%,rgba(255,120,30,0) 72%);mix-blend-mode:screen;animation:torchS 2.3s ease-in-out infinite;z-index:-1}
+@keyframes torch{0%{opacity:.85}12%{opacity:1}25%{opacity:.75}37%{opacity:.95}50%{opacity:.8}62%{opacity:1}75%{opacity:.7}87%{opacity:.92}}
+@keyframes torchS{0%,100%{scale:1}30%{scale:1.08}55%{scale:.94}80%{scale:1.05}}
+@media (max-width:640px){.vh:has(> .how-btn){flex-wrap:wrap}.vh > .how-btn{order:-2;margin-left:auto}.vh:has(> .how-btn)::after{content:"";order:-1;flex:1 0 100%;height:0;margin-top:-14px}.vh:has(> .how-btn) > div:first-child{flex:1 1 0}.mascot{--mw:84px;width:84px!important;margin:-6px 0 -4px}#v-demo .spot.solo:has(> .mascot){grid-template-columns:1fr;gap:6px}.spot.solo > .mascot{width:140px!important;justify-self:center;margin:0 0 -10px}.spot.solo > .mascot[style*="--mw:"]{width:210px!important}.spot.solo > .mascot.wide{width:min(280px,85%)!important}.mascot.float{width:52px!important}.spot.solo > .mascot.float{width:72px!important;margin:0 0 -6px}.miner{width:26%;right:0;bottom:0}}
+@media (prefers-reduced-motion:reduce){.mascot img,.mascot::after,.miner img,.torch-glow,.torch-light{animation:none!important}}
 .fcard.b{right:2%;top:6%}
 .fcard .mono{font-size:15px}
 .ros-how summary{cursor:pointer;font-weight:800;font-size:14px}
@@ -927,7 +964,7 @@ td.vs-low,.vs-sw.vs-low{background:var(--vyf);color:var(--vyc);box-shadow:inset 
 .vs-read .btn{align-self:flex-start;grid-area:auto}
 .away-chip{font-size:11px;padding:2px 7px;vertical-align:middle;background:color-mix(in srgb,var(--teal) 16%,var(--panel-2));color:var(--teal)}.fb-reply{margin-top:8px;padding:10px 12px;border-left:3px solid var(--teal);border-radius:10px;background:color-mix(in srgb,var(--teal) 8%,var(--panel-2))}.fb-reply p{margin:4px 0 0}
 .mchip[draggable="true"]{cursor:grab}.mchip.dragging{opacity:.45}.grp.drop-only{display:none}body.rdragging .grp.drop-only{display:flex}body.rdragging [data-dropg]{outline:2px dashed color-mix(in srgb,var(--teal) 45%,transparent);outline-offset:-2px}[data-dropg].drop-on{outline:2px solid var(--teal);background:color-mix(in srgb,var(--teal) 10%,var(--panel))}
-@media (max-width:640px){#v-queue .vh .row{display:grid;gap:10px;width:100%}#v-queue .vh .seg{width:100%}#qJoinBtn{width:100%;min-height:44px;justify-content:center;font-size:15px}}
+@media (max-width:640px){.q-tools{grid-auto-flow:row}.q-tools > .btn{min-height:44px;font-size:15px}}
 .g-tools.g-tools{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-flow:row;gap:10px;padding:6px 20px 16px;border-bottom:1px solid var(--line)}.g-tools.g-tools:has(> .btn + .btn){grid-template-columns:repeat(2,minmax(0,1fr))}
 .g-tools.g-tools .btn{width:100%;grid-column:auto;justify-content:center}
 #tour{position:fixed;inset:0;z-index:60}#tour[hidden]{display:none}
@@ -1307,7 +1344,9 @@ details.guide .g-more{margin:-4px 20px 14px;display:inline-block}
 .vis-li b{min-width:0;overflow-wrap:anywhere;display:flex;align-items:baseline}
 .vis-li span{font:600 13px/1.3 var(--mono,monospace);white-space:nowrap;color:var(--muted)}
 @media (max-width:480px){.donut-row{flex-direction:column;align-items:stretch}.donut{align-self:center}}
-.q-tools{display:flex;flex-wrap:wrap;gap:8px;padding:14px 14px 4px}
+.q-tools{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px;padding:14px 14px 4px}
+.q-tools > .btn{width:100%;justify-content:center}
+.q-seg{display:flex;width:100%;margin:0 0 16px}.q-seg > button{flex:1 1 0}
 details.guide .g-acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 16px}
 .g-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .g-form{padding:0 20px 18px;border-bottom:1px solid var(--line)}
@@ -1930,6 +1969,7 @@ html.boot #v-load{display:flex!important}
       </div>
       <div class="hero-art">
         <img class="isl" src="/art/web/island.png" data-i18n-alt="island_alt" alt="Островок из тайлов с поселением в тумане" width="840" height="470">
+        <div class="miner" aria-hidden="true"><i class="torch-light"></i><img src="/art/web/heroes/miner.webp" alt="" width="251" height="460"><i class="torch-glow"></i></div>
         <div class="fcard a"><img src="/art/web/build.png" alt="" width="34" height="34"><div><small data-i18n="land_card1_s">Стройка · получено</small>Ironfox · <span class="mono">7/13</span></div></div>
         <div class="fcard b ally-card" id="allyCard" hidden aria-live="polite"><img src="/art/web/logo.png" alt="" width="34" height="34"><div><small data-i18n="ally_card_s">Уже в Штабе</small><span class="ally-rot"><span class="ally-in" id="allyIn"></span></span></div></div>
       </div>
@@ -2022,6 +2062,7 @@ html.boot #v-load{display:flex!important}
           <h2 data-i18n="dq_h">Вся очередь на одной странице<br>и всё, что с ней делают R4 и R5</h2>
           <p data-i18n="dq_p">Игроки записываются и выходят сами, а первый в списке получает бафы прямо сейчас.</p>
         </div>
+        <div class="mascot wide" style="--glow:#ffd23f;--mw:210px" aria-hidden="true"><img src="/art/web/heroes/pets.webp" alt="" width="640" height="294" loading="lazy"></div>
       </section>
       <!-- a live copy of the Queue section on the same made-up alliance as Buffs: everything stays in the page's memory -->
       <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
@@ -2052,6 +2093,7 @@ html.boot #v-load{display:flex!important}
           <h2 data-i18n="dp_h">БМ всего союза в одной таблице<br>и рост каждого игрока неделя за неделей</h2>
           <p data-i18n="dp_p">Раз в неделю каждый вписывает БМ своих пяти отрядов — это минута, а R4 и R5 могут внести БМ за другого игрока. Видно, кто растёт и кого ставить на событие.</p>
         </div>
+        <div class="mascot" style="--glow:#3fe39a;--mw:150px;--sink:10%" aria-hidden="true"><img src="/art/web/heroes/brute.webp" alt="" width="460" height="413" loading="lazy"></div>
       </section>
       <!-- a live copy of the Power section on a made-up alliance: everything stays in the page's memory -->
       <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
@@ -2088,6 +2130,7 @@ html.boot #v-load{display:flex!important}
           <h2 data-i18n="dr_h">Состав, группы и маршрут по минутам<br>в одном плане на рейд</h2>
           <p data-i18n="dr_p">Руководство отмечает основу и резерв, а сервис сам раскладывает игроков по группам. Каждый видит свою группу и какое здание брать в какую минуту.</p>
         </div>
+        <div class="mascot" style="--glow:#ff6a4d;--sink:9%" aria-hidden="true"><img src="/art/web/heroes/boss.webp" alt="" width="300" height="400" loading="lazy"></div>
       </section>
       <!-- a live copy of the Raid section on the sample alliance: everything stays in the page's memory -->
       <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
@@ -2110,6 +2153,7 @@ html.boot #v-load{display:flex!important}
           <h2 data-i18n="dv_h">Очки каждого игрока за каждый день битвы<br>прямо со скринов рейтинга</h2>
           <p data-i18n="dv_p">Раз в день R4 загружают скрины рейтинга, а ИИ сам читает ники и очки — сотню игроков примерно за 15 секунд. Получается таблица на всю неделю и счёт битвы.</p>
         </div>
+        <div class="mascot" style="--glow:#b47bff" aria-hidden="true"><img src="/art/web/heroes/gent.webp" alt="" width="292" height="400" loading="lazy"></div>
       </section>
       <!-- a live copy of the VS section on a made-up alliance: the screenshots are read in advance, everything stays in the page's memory -->
       <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
@@ -2132,6 +2176,7 @@ html.boot #v-load{display:flex!important}
           <h2 data-i18n="dw_h">Объявления руководства и памятка союза<br>в одном месте, а не в сотне сообщений чата</h2>
           <p data-i18n="dw_p">R4 и R5 пишут объявления и памятку союза, а важное закрепляют сверху — его никто не пропустит.</p>
         </div>
+        <div class="mascot" style="--glow:#6fb8ff" aria-hidden="true"><img src="/art/web/heroes/news.webp" alt="" width="279" height="400" loading="lazy"></div>
       </section>
       <!-- a live copy of the News section on the sample alliance: everything stays in the page's memory -->
       <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
@@ -2167,6 +2212,7 @@ html.boot #v-load{display:flex!important}
           <h2 data-i18n="dh_h">Пульт руководства союзом:<br>всё на одной странице</h2>
           <p data-i18n="dh_p">Заявки, ранги, уведомления, события и правила союза — на пяти вкладках.</p>
         </div>
+        <div class="mascot float" style="--glow:#ffc83d" aria-hidden="true"><img src="/art/web/heroes/obelisk.webp" alt="" width="213" height="400" loading="lazy"></div>
       </section>
       <!-- the HQ tour: the same five tabs as the real HQ, each tells what its blocks do; nothing here talks to the server -->
       <div class="demo-ex"><span class="demo-ex-l" data-i18n="demo_ex">Пример</span>
@@ -2281,14 +2327,11 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-queue">
     <div class="vh">
       <div><h2 class="vt" data-i18n="q_h">Очередь</h2></div>
-      <div class="row">
-        <div class="seg" role="group" data-i18n-aria="q_seg_aria">
-          <button data-q="build" aria-pressed="true" data-i18n="build">Стройка</button>
-          <button data-q="sci" aria-pressed="false" data-i18n="sci">Исследование</button>
-          <button data-q="arch" aria-pressed="false" data-i18n="arch">Архив</button>
-        </div>
-        <button class="btn bolt sm" id="qJoinBtn" data-qw="join" data-tab="join"><svg><use href="#i-add"/></svg><span data-i18n="q_join">Записаться</span></button>
-      </div>
+    </div>
+    <div class="seg q-seg" role="group" data-i18n-aria="q_seg_aria">
+      <button data-q="build" aria-pressed="true" data-i18n="build">Стройка</button>
+      <button data-q="sci" aria-pressed="false" data-i18n="sci">Исследование</button>
+      <button data-q="arch" aria-pressed="false" data-i18n="arch">Архив</button>
     </div>
     <div class="panel pad qcheck" id="qCheck" data-qw="check" hidden></div>
     <div class="panel qwrap" id="qwrap" data-qw="list"></div>
@@ -2327,7 +2370,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- POWER -->
   <section class="view" id="v-power">
-    <div class="vh"><div><h2 class="vt" data-i18n="pw_h">Боевая мощь союза</h2><p data-i18n="pw_p">БМ в миллионах. Обновляйте 1–2 раза в неделю, таблица видна всему союзу.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="pw_h">Боевая мощь союза</h2><p data-i18n="pw_p">БМ в миллионах. Обновляйте 1–2 раза в неделю, таблица видна всему союзу.</p></div><div class="mascot" style="--glow:#3fe39a;--mw:150px;--sink:10%" aria-hidden="true"><img src="/art/web/heroes/brute.webp" alt="" width="460" height="413" loading="lazy"></div></div>
     <div class="pinslot"></div>
     <div class="stats" id="pwStats" data-pw="stats"></div>
     <div class="pwgrid">
@@ -2354,13 +2397,13 @@ html.boot #v-load{display:flex!important}
 
   <!-- RAID -->
   <section class="view" id="v-raid">
-    <div class="vh"><div><h2 class="vt" data-i18n="raid_h">Рейд на резервуар</h2><p id="raidSub" data-rw="sub"></p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="raid_h">Рейд на резервуар</h2><p id="raidSub" data-rw="sub"></p></div><div class="mascot" style="--glow:#ff6a4d;--sink:9%" aria-hidden="true"><img src="/art/web/heroes/boss.webp" alt="" width="300" height="400" loading="lazy"></div></div>
     <div id="raidBody" data-rw="body"></div>
   </section>
 
   <!-- ALLIANCE VS -->
   <section class="view" id="v-vs">
-    <div class="vh"><div><h2 class="vt" data-i18n="vs_h">Битва союзов</h2><p id="vsSub"></p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="vs_h">Битва союзов</h2><p id="vsSub"></p></div><div class="mascot" style="--glow:#b47bff" aria-hidden="true"><img src="/art/web/heroes/gent.webp" alt="" width="292" height="400" loading="lazy"></div></div>
     <div id="vsBody" data-vw="body"></div>
     <input type="file" id="vsFiles" accept="image/*" multiple hidden>
     <input type="file" id="rosterFiles" accept="image/*" multiple hidden>
@@ -2370,7 +2413,7 @@ html.boot #v-load{display:flex!important}
   <section class="view" id="v-news">
     <div class="vh">
       <div><h2 class="vt" data-i18n="news_h">Новости и памятка</h2><p data-i18n="news_p">Объявления руководства союза и полезные инструкции.</p></div>
-      <button class="btn bolt sm" id="newsAdd" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
+      <div class="mascot" style="--glow:#6fb8ff" aria-hidden="true"><img src="/art/web/heroes/news.webp" alt="" width="279" height="400" loading="lazy"></div>
     </div>
     <form class="panel news-form" id="newsForm" data-nw="form" novalidate hidden>
       <h3 id="newsFormH" data-nw="formh"></h3>
@@ -2381,6 +2424,7 @@ html.boot #v-load{display:flex!important}
       <p class="err" role="alert"></p>
       <div class="row"><button class="btn bolt" type="submit" id="nSubmit" data-nw="submit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
     </form>
+    <button class="btn bolt sm" id="newsAdd" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
     <div class="news">
       <div class="panel" id="newsList" data-nw="list"></div>
       <div class="panel" id="guidesBox" data-nw="guides"></div>
@@ -2578,7 +2622,7 @@ html.boot #v-load{display:flex!important}
 
   <!-- HQ (R5 / R4) -->
   <section class="view" id="v-hq">
-    <div class="vh"><div><h2 class="vt" data-i18n="hq_h">Штаб</h2><p data-i18n="hq_p">Участники, ранги, заявки, жалобы и настройки. Видят только R5 и R4.</p></div></div>
+    <div class="vh"><div><h2 class="vt" data-i18n="hq_h">Штаб</h2><p data-i18n="hq_p">Участники, ранги, заявки, жалобы и настройки. Видят только R5 и R4.</p></div><div class="mascot float" style="--glow:#ffc83d" aria-hidden="true"><img src="/art/web/heroes/obelisk.webp" alt="" width="213" height="400" loading="lazy"></div></div>
     <!-- HQ is split into tabs by topic; counters show where something is waiting -->
     <div class="seg hq-tabs" role="tablist">
       <button data-hqtab="people" role="tab"><svg><use href="#i-user"/></svg><span data-i18n="hqt_people">Состав</span><span class="dotn" id="hqtPeople" hidden></span></button>
@@ -2725,6 +2769,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=cc27a0e290"></script>
+<script src="/app.js?v=b03b411033"></script>
 </body>
 </html>
