@@ -457,7 +457,6 @@ a.btn{text-decoration:none}
 .map-lbl text{paint-order:stroke;stroke:rgba(0,0,0,.55);stroke-width:.22em;stroke-linejoin:round;fill:#fff}
 .map-lbl .b{font-weight:600;font-size:.9em}
 .map-lbl .t{font-weight:800;font-size:1.1em}
-.map-view{position:absolute;left:10px;top:10px;z-index:2}
 .map-ctl{position:absolute;right:10px;bottom:10px;z-index:2;display:grid;grid-auto-flow:column;grid-auto-columns:40px;gap:6px}
 .map-ctl button{height:40px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--fg);font:700 18px/1 var(--mono);cursor:pointer;padding:0}
 .map-ctl button:hover{background:var(--panel-3)}
@@ -482,7 +481,6 @@ html.map-lock .to-top{display:none}
 .map-grid.full .map-side .panel{background:color-mix(in srgb,var(--panel) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .map-grid.full .map-brush{top:12px;left:12px;right:12px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;pointer-events:none}
 .map-grid.full .map-brush button{flex:none;pointer-events:auto;box-shadow:0 8px 20px -10px var(--shadow)}
-.map-grid.full .map-view{top:64px;left:12px}
 .map-grid.full .map-ctl{right:12px;bottom:12px}
 .map-grid.full .map-ctl .map-sidebtn{display:block}
 .map-grid.full.side-t .map-ctl .map-sidebtn{background:var(--panel-3)}
@@ -507,7 +505,6 @@ html.map-lock .to-top{display:none}
   .map-grid.full .map-side{top:12px;left:12px;width:330px;max-height:calc(100% - 84px);overflow:auto;gap:10px}
   .map-grid.full.side-t .map-side{display:none}
   .map-grid.full:not(.side-t) .map-brush{left:354px}
-  .map-grid.full:not(.side-t) .map-view{left:354px}
   .map-grid.full .map-foot{grid-template-columns:repeat(3,190px)}
   .map-grid.full:not(.side-t) .map-foot{left:354px}
   .map-stage{height:min(72vh,680px)}
@@ -2877,6 +2874,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=775d142db4"></script>
+<script src="/app.js?v=be193ca718"></script>
 </body>
 </html>
