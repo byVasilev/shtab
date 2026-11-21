@@ -414,8 +414,6 @@ a.btn{text-decoration:none}
   .land-row .land-stats > div > span{font-size:8px;letter-spacing:0}
 }
 /* ---------- the state map ---------- */
-.land-tools{grid-column:2;display:grid;gap:8px;min-width:0}
-.land-tools .land-calc{grid-column:auto}
 .map-top{display:grid;gap:6px}
 .map-top p{margin:0;max-width:720px}
 .map-gate{max-width:520px}
@@ -460,15 +458,46 @@ a.btn{text-decoration:none}
 .map-lbl .b{font-weight:600;font-size:.9em}
 .map-lbl .t{font-weight:800;font-size:1.1em}
 .map-view{position:absolute;left:10px;top:10px;z-index:2}
-.map-ctl{position:absolute;right:10px;bottom:10px;z-index:2;display:grid;grid-template-columns:repeat(5,40px);gap:6px}
+.map-ctl{position:absolute;right:10px;bottom:10px;z-index:2;display:grid;grid-auto-flow:column;grid-auto-columns:40px;gap:6px}
 .map-ctl button{height:40px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--fg);font:700 18px/1 var(--mono);cursor:pointer;padding:0}
 .map-ctl button:hover{background:var(--panel-3)}
+.map-ctl svg{width:20px;height:20px;display:block;margin:auto;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.map-ctl .map-sidebtn{display:none}
+.map-stage:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.map-foot{display:grid;gap:14px}
+.map-sug{display:grid;gap:8px}
+.map-sug .hint{margin:0}
+.map-sugl{display:flex;flex-wrap:wrap;gap:6px}
+.map-sugl button{min-height:38px;padding:0 11px;border:1.5px dashed var(--line);border-radius:11px;background:none;color:var(--fg);font:700 13.5px/1.2 var(--body);cursor:pointer;max-width:100%;text-align:left}
+.map-sugl button:hover{border-color:var(--teal);background:color-mix(in srgb,var(--teal) 12%,transparent)}
+.map-sugl b{color:var(--teal)}
+/* full screen: the map fills the window, the tools sit around it */
+html.map-lock,html.map-lock body{overflow:hidden}
+.map-grid.full{position:fixed;inset:0;z-index:60;margin:0;padding:10px;gap:10px;background:var(--bg);height:100vh;height:100dvh;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.map-grid.full .map-main{display:flex;flex-direction:column;gap:8px;min-height:0;height:100%}
+.map-grid.full .map-stage{flex:1 1 auto;height:auto;min-height:0}
+.map-grid.full .map-main > .hint{display:none}
+.map-grid.full .map-foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.map-grid.full .map-foot .map-pair{display:contents}
+.map-grid.full .map-foot .btn{min-height:44px;padding-inline:8px;font-size:14px}
+.map-grid.full .map-brush{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;flex:none}
+.map-grid.full .map-brush button{flex:none}
+@media (max-width:860px){
+  .map-grid.full .map-side{display:none}
+  .map-grid.full.side-open .map-side{display:grid;position:fixed;left:10px;right:10px;top:58px;max-height:calc(100dvh - 130px);overflow:auto;z-index:62;
+    padding:10px;border-radius:20px;background:var(--bg);box-shadow:0 20px 50px -10px var(--shadow)}
+  .map-grid.full .map-ctl .map-sidebtn{display:block}
+  .map-grid.full.side-open .map-ctl .map-sidebtn{background:var(--panel-3)}
+  .map-grid.full .map-foot .btn svg{display:none}
+}
 .map-msg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);font-weight:700;pointer-events:none}
 .map-msg:empty{display:none}
 .map-wide{width:100%}
 @media (min-width:861px){
   .map-grid{grid-template-columns:340px minmax(0,1fr);gap:18px;align-items:start}
   .map-side{position:sticky;top:90px}
+  .map-grid.full{grid-template-columns:330px minmax(0,1fr)}
+  .map-grid.full .map-side{position:static;max-height:100%;overflow:auto}
   .map-stage{height:min(72vh,680px)}
 }
 /* ---------- hero calculators ---------- */
@@ -671,6 +700,7 @@ a.btn{text-decoration:none}
 .land-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
 .tile{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
 .tile > :not(.ic):not(b){grid-column:1/-1}.tile .tp{align-self:start}.tile small{justify-self:start}
+.tile-wide{grid-column:1/-1}
 .tile .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--panel-2)}
 .tile .ic img{width:40px;height:40px;object-fit:contain}.tile .ic svg{width:26px;height:26px}
 .tile b{font:800 17px/1.2 var(--display)}
@@ -2027,10 +2057,7 @@ html.boot #v-load{display:flex!important}
         <div class="ctas" id="landBack" hidden><button class="btn bolt" data-tab="now"><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button></div>
         <div class="land-row">
           <div class="land-stats" id="landStats" hidden></div>
-          <div class="land-tools">
           <button class="btn teal land-calc" data-tab="calc"><svg aria-hidden="true"><use href="#i-cstar"/></svg><span data-i18n="calc_h">Калькуляторы героев</span></button>
-          <button class="btn teal land-calc" data-tab="map"><svg aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="map_h">Карта штата</span></button>
-          </div>
         </div>
         </div>
       </div>
@@ -2050,6 +2077,7 @@ html.boot #v-load{display:flex!important}
       <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">Каждый видит свою группу и маршрут — без таблиц.</span><small data-i18n="tile_more">Подробнее →</small></button>
       <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">Новости</b><span class="tp" data-i18n="tile_news">Объявления и памятка в одном месте, а не в чате.</span><small data-i18n="tile_more">Подробнее →</small></button>
       <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">Штаб</b><span class="tp" data-i18n="tile_hq">Пульт R4 и R5: заявки, ранги и состав союза.</span><small data-i18n="tile_more">Подробнее →</small></button>
+      <button class="panel tile tile-wide" type="button" data-tab="map"><span class="ic"><svg style="color:var(--teal)"><use href="#i-map"/></svg></span><b data-i18n="map_h">Карта штата</b><span class="tp" data-i18n="tile_map">Поделите территории штата между союзами прямо на карте сезона и скачайте её картинкой для чата штата. Без регистрации.</span><small data-i18n="tile_map_go">Открыть карту →</small></button>
     </div>
 
     <!-- notifications and the chat bot, compact: text on one side, a push and a Telegram message on the other -->
@@ -2837,6 +2865,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=f7fb51778c"></script>
+<script src="/app.js?v=defd74ff74"></script>
 </body>
 </html>
