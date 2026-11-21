@@ -43,7 +43,7 @@ try { if((th || (matchMedia("(prefers-color-scheme: light)").matches ? "light" :
 try { if((localStorage.getItem("sb-xfxbobchtfkjsrcspmsv-auth-token") || /tgWebAppData=/.test(location.hash) || sessionStorage.getItem("inTg")) && !/[?&]owner/.test(location.search)) document.documentElement.classList.add("boot"); } catch(e) {}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Golos+Text:wght@400;500;600;700;800&family=Tektur:wght@500;600;700&display=swap">
 <style>
 /* Layout: a "command tablet" floating over the game's fog — dark by default, panels with a soft top edge,
    tactile game buttons. Construction = brick, research = teal, a buff = energy yellow, growth = grass. */
@@ -58,9 +58,10 @@ try { if((localStorage.getItem("sb-xfxbobchtfkjsrcspmsv-auth-token") || /tgWebAp
   --bolt:#ffd23f; --bolt-side:#bf9100; --on-bolt:#2a1f00;
   --warn:#ff6b57; --warn-side:#a83322; --up:#8fe36b; --mid:#ffd23f;
   --ghost:#22404c; --ghost-side:#0f2129;
-  --display:"Unbounded","Arial Black",system-ui,sans-serif;
-  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --display:"Russo One","Arial Black",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Tektur",ui-monospace,Menlo,monospace;
+  font-synthesis-weight:none;
   color-scheme:dark;
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
@@ -128,7 +129,7 @@ body{color:var(--fg);font:500 15px/1.5 var(--body);min-height:100vh;-webkit-font
 @media (prefers-reduced-motion:reduce){.backdrop .cloud{animation:none;transition:none;translate:none}}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 120px}
-h1,h2{font-family:var(--display);font-weight:600;letter-spacing:-.015em;text-wrap:balance;margin:0;line-height:1.15}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:0;text-wrap:balance;margin:0;line-height:1.15}
 h3{font:800 16.5px/1.3 var(--body);margin:0}
 p{margin:0}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -2724,6 +2725,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=375dbc0773"></script>
+<script src="/app.js?v=cc27a0e290"></script>
 </body>
 </html>
