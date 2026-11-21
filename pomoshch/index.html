@@ -471,24 +471,30 @@ a.btn{text-decoration:none}
 .map-sugl button{min-height:38px;padding:0 11px;border:1.5px dashed var(--line);border-radius:11px;background:none;color:var(--fg);font:700 13.5px/1.2 var(--body);cursor:pointer;max-width:100%;text-align:left}
 .map-sugl button:hover{border-color:var(--teal);background:color-mix(in srgb,var(--teal) 12%,transparent)}
 .map-sugl b{color:var(--teal)}
-/* full screen: the map fills the window, the tools sit around it */
+/* full screen: the map itself covers the whole screen, every panel floats on top of it along the edges */
 html.map-lock,html.map-lock body{overflow:hidden}
 html.map-lock .to-top{display:none}
-.map-grid.full{position:fixed;inset:0;z-index:15;margin:0;padding:10px;gap:10px;background:var(--bg);height:100vh;height:100dvh;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
-.map-grid.full .map-main{display:flex;flex-direction:column;gap:8px;min-height:0;height:100%}
-.map-grid.full .map-stage{flex:1 1 auto;height:auto;min-height:0}
+.map-grid.full{position:fixed;inset:0;z-index:15;margin:0;padding:0;display:block;background:var(--bg);height:100vh;height:100dvh}
+.map-grid.full .map-main{display:block;height:100%}
+.map-grid.full .map-stage{position:absolute;inset:0;height:auto;min-height:0;border:0;border-radius:0}
 .map-grid.full .map-main > .hint{display:none}
-.map-grid.full .map-foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.map-grid.full .map-side,.map-grid.full .map-brush,.map-grid.full .map-foot{position:absolute;z-index:3}
+.map-grid.full .map-side .panel{background:color-mix(in srgb,var(--panel) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.map-grid.full .map-brush{top:12px;left:12px;right:12px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;pointer-events:none}
+.map-grid.full .map-brush button{flex:none;pointer-events:auto;box-shadow:0 8px 20px -10px var(--shadow)}
+.map-grid.full .map-view{top:64px;left:12px}
+.map-grid.full .map-ctl{right:12px;bottom:12px}
+.map-grid.full .map-ctl .map-sidebtn{display:block}
+.map-grid.full.side-t .map-ctl .map-sidebtn{background:var(--panel-3)}
+.map-grid.full .map-foot{left:12px;bottom:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .map-grid.full .map-foot .map-pair{display:contents}
-.map-grid.full .map-foot .btn{min-height:44px;padding-inline:8px;font-size:14px;white-space:normal;line-height:1.15;text-align:center}
-.map-grid.full .map-brush{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;flex:none}
-.map-grid.full .map-brush button{flex:none}
+.map-grid.full .map-foot .btn{min-height:44px;padding-inline:10px;font-size:14px;white-space:normal;line-height:1.15;text-align:center}
 @media (max-width:860px){
+  /* phone: the alliance list opens over the map with the three-line button; the buttons sit along the bottom */
   .map-grid.full .map-side{display:none}
-  .map-grid.full.side-open .map-side{display:grid;position:fixed;left:10px;right:10px;top:58px;max-height:calc(100dvh - 130px);overflow:auto;z-index:62;
-    padding:10px;border-radius:20px;background:var(--bg);box-shadow:0 20px 50px -10px var(--shadow)}
-  .map-grid.full .map-ctl .map-sidebtn{display:block}
-  .map-grid.full.side-open .map-ctl .map-sidebtn{background:var(--panel-3)}
+  .map-grid.full.side-t .map-side{display:grid;gap:10px;left:10px;right:10px;top:64px;max-height:calc(100% - 200px);overflow:auto}
+  .map-grid.full .map-ctl{bottom:66px;right:10px}
+  .map-grid.full .map-foot{left:10px;right:10px;bottom:10px}
   .map-grid.full .map-foot .btn svg{display:none}
 }
 .map-msg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);font-weight:700;pointer-events:none}
@@ -497,8 +503,13 @@ html.map-lock .to-top{display:none}
 @media (min-width:861px){
   .map-grid{grid-template-columns:340px minmax(0,1fr);gap:18px;align-items:start}
   .map-side{position:sticky;top:90px}
-  .map-grid.full{grid-template-columns:330px minmax(0,1fr)}
-  .map-grid.full .map-side{position:static;max-height:100%;overflow:auto}
+  /* computer: the alliances on the left (the three-line button hides them), the picker along the top, the buttons at the bottom */
+  .map-grid.full .map-side{top:12px;left:12px;width:330px;max-height:calc(100% - 84px);overflow:auto;gap:10px}
+  .map-grid.full.side-t .map-side{display:none}
+  .map-grid.full:not(.side-t) .map-brush{left:354px}
+  .map-grid.full:not(.side-t) .map-view{left:354px}
+  .map-grid.full .map-foot{grid-template-columns:repeat(3,190px)}
+  .map-grid.full:not(.side-t) .map-foot{left:354px}
   .map-stage{height:min(72vh,680px)}
 }
 /* ---------- hero calculators ---------- */
@@ -2866,6 +2877,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=b5e4c758b5"></script>
+<script src="/app.js?v=775d142db4"></script>
 </body>
 </html>
