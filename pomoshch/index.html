@@ -1880,18 +1880,48 @@ html.scrolled header.top::before{opacity:1}
   -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:frGlint 5.5s ease-in-out infinite}
 .framed[data-fr="r1"]::before{animation-duration:8s;filter:brightness(1.7)}
 .framed[data-fr="vs"]::before,.framed[data-fr="grow"]::before{display:none}
-.framed[data-fr="vs"]::after,.fr-ava.vs > img{animation:frFire 1.9s ease-in-out infinite}
+.framed[data-fr="vs"]::after{animation:frFire 1.9s ease-in-out infinite}
+/* around avatars: fire breathes and glows, the rest get a glint and a soft glow in the award's colour */
+.fr-ava.vs > img{animation:frFireAva 1.6s ease-in-out infinite;transform-origin:50% 60%}
+.fr-ava > img.gl{filter:brightness(2.3) saturate(1.3);-webkit-mask-image:linear-gradient(110deg,transparent 38%,#000 50%,transparent 62%);mask-image:linear-gradient(110deg,transparent 38%,#000 50%,transparent 62%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:frGlint 3.6s ease-in-out infinite}
+.fr-ava.r1 > img.gl{animation-duration:6s;filter:brightness(1.7)}
+.fr-ava.bm > img:not(.gl){animation:frGlow 3.6s ease-in-out infinite;--gc:rgba(111,168,232,.85)}
+.fr-ava.buff > img:not(.gl){animation:frGlow 3.6s ease-in-out infinite;--gc:rgba(85,201,127,.85)}
+.fr-ava.r5 > img:not(.gl){animation:frGlow 4.5s ease-in-out infinite;--gc:rgba(255,210,63,.7)}
+@keyframes frFireAva{0%,100%{transform:scale(1);filter:brightness(1) saturate(1) drop-shadow(0 0 3px rgba(255,110,40,.45))}
+  20%{transform:scale(1.025,1.04);filter:brightness(1.25) saturate(1.25) drop-shadow(0 0 9px rgba(255,120,40,.9))}
+  40%{transform:scale(.995,.99);filter:brightness(.95) drop-shadow(0 0 4px rgba(255,110,40,.5))}
+  62%{transform:scale(1.02,1.035);filter:brightness(1.2) saturate(1.2) drop-shadow(0 0 8px rgba(255,140,40,.85))}
+  80%{transform:scale(1);filter:brightness(1.02) drop-shadow(0 0 5px rgba(255,110,40,.6))}}
+@keyframes frGlow{0%,100%{filter:drop-shadow(0 0 1px var(--gc))}50%{filter:drop-shadow(0 0 8px var(--gc))}}
 .framed[data-fr="grow"]::after,.fr-ava.grow > img{animation:frZap 3.2s linear infinite}
 @keyframes frGlint{0%{-webkit-mask-position:100% 0;mask-position:100% 0}55%,100%{-webkit-mask-position:0 0;mask-position:0 0}}
 @keyframes frFire{0%,100%{filter:brightness(1) saturate(1)}18%{filter:brightness(1.18) saturate(1.15)}33%{filter:brightness(.94)}52%{filter:brightness(1.12) saturate(1.2)}70%{filter:brightness(.97)}86%{filter:brightness(1.15)}}
 @keyframes frZap{0%,62%,70%,78%,100%{filter:brightness(1)}64%{filter:brightness(1.9) saturate(1.4)}66%{filter:brightness(1.05)}74%{filter:brightness(1.6)}}
-@media (prefers-reduced-motion:reduce){.framed::before{display:none}.framed::after,.fr-ava > img{animation:none !important}}
+@media (prefers-reduced-motion:reduce){.framed::before,.fr-ava > img.gl{display:none}.framed::after,.fr-ava > img{animation:none !important}}
 .pf-hero.framed{padding:calc(18px + var(--frd,0px))}.rc.framed{padding:var(--frd,0px)}
 .fr-rib{position:absolute !important;left:50%;top:0;transform:translate(-50%,-50%);z-index:5;white-space:nowrap;padding:5px 14px;border-radius:8px;font:800 12px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--fc);box-shadow:0 3px 0 rgba(0,0,0,.35)}
 .fr-ava{position:relative;display:inline-grid;place-items:center;flex:none;margin:12px}
 .fr-ava > img{position:absolute;max-width:none;pointer-events:none}
+/* the frames have a square window, so the avatar inside fills it as a square, not a circle */
+.fr-ava > .ava{border-radius:6px}
 .pf-hero .fr-ava span.ava.ava.ava.ava.ava.lg{width:64px;height:64px;font-size:26px}
 .fr-medal{width:30px;height:30px;flex:none}
+/* the honour board on top of News */
+.honor{padding:16px 12px 4px;margin-bottom:18px}
+.hon-h{display:flex;align-items:baseline;gap:10px;padding:0 8px 4px}.hon-h h3{margin:0;font:400 18px/1.2 var(--display)}.hon-h span{margin-left:auto;font:600 12.5px/1.3 var(--body);color:var(--muted)}
+.hon-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.hon-c{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;padding:2px 2px 12px;border:0;border-radius:14px;background:none;color:inherit;font:inherit;text-align:center;cursor:pointer}
+.hon-c:hover{background:var(--panel-2)}.hon-c:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.hon-c.none{cursor:default;opacity:.55}.hon-c.none:hover{background:none}.hon-c.none .ava{background:var(--panel-3)}
+.hon-c b{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 14px/1.2 var(--body)}
+.hon-k{font:800 11px/1.2 var(--body);letter-spacing:.03em;text-transform:uppercase}.hon-v{font:600 12px/1.25 var(--body);color:var(--muted)}
+.hon-c .fr-ava .ava.lg{width:56px;height:56px;font-size:22px}
+.hon-help{border-top:1px solid var(--line);margin:4px -12px 0}
+.hon-help summary{list-style:none;cursor:pointer;padding:13px 20px;font:700 14px/1.3 var(--body);color:var(--teal)}.hon-help summary::-webkit-details-marker{display:none}
+.hon-help ul{margin:0;padding:0 20px 14px 38px;color:var(--muted);font-size:14px;display:grid;gap:6px}.hon-help b{color:var(--fg)}
+@media (max-width:420px){.honor{padding:14px 6px 4px}.hon-g{gap:0}.hon-c .fr-ava{margin:9px}.hon-c .fr-ava .ava.lg{width:46px;height:46px;font-size:19px}.hon-c b{font-size:12.5px}.hon-k{font-size:10px}.hon-v{font-size:11px}.hon-help{margin:4px -6px 0}}
 .rc.framed .rc-h{padding-top:22px}.rc.framed .btn.give{white-space:normal;height:auto;min-height:52px;flex-wrap:wrap;justify-content:center;text-align:center}
 .pf-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .pf-tiles > .panel{padding:14px 16px;display:flex;flex-direction:column;gap:7px;border-radius:16px;min-width:0}
@@ -2552,6 +2582,7 @@ html.boot #v-load{display:flex!important}
       <p class="err" role="alert"></p>
       <div class="row"><button class="btn bolt" type="submit" id="nSubmit" data-nw="submit"></button><button class="btn ghost" type="button" data-newscancel data-i18n="cancel">Отмена</button></div>
     </form>
+    <div class="panel honor" data-nw="honor" hidden></div>
     <button class="btn bolt sm" id="newsAdd" data-nw="add" data-newsnew hidden><svg><use href="#i-add"/></svg><span data-i18n="news_add">Добавить новость</span></button>
     <div class="news">
       <div class="panel" id="newsList" data-nw="list"></div>
@@ -2899,6 +2930,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=8eeba975f1"></script>
+<script src="/app.js?v=3a7f44400d"></script>
 </body>
 </html>
