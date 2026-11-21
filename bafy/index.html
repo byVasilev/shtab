@@ -467,6 +467,23 @@ a.btn{text-decoration:none}
 .map-ctl .map-sidebtn{display:none}
 .map-stage:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .map-foot{display:grid;gap:14px}
+.map-hq{display:grid;gap:6px}
+.map-hq .hint{margin:0}
+.map-saved{margin:0}
+.map-svl{display:grid;gap:10px}
+.map-sv{display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--panel-2)}
+.map-svt{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.map-svf{font-size:13px;font-weight:700;color:var(--teal);overflow-wrap:anywhere}
+.map-sv .hint{margin:0;overflow-wrap:anywhere}
+.map-svb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.map-svb .btn{width:100%;padding-inline:8px;white-space:normal;line-height:1.15}
+.map-svb > :last-child:nth-child(odd){grid-column:1/-1}
+@media (min-width:700px){.map-svb{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}.map-svb > :last-child:nth-child(odd){grid-column:auto}}
+.map-saved .bfx-body > .btn{justify-self:start}
+dialog.map-view{width:min(1100px,calc(100% - 24px))}
+.map-viewi{display:grid;place-items:center;min-height:160px;border-radius:14px;background:#dfeaf1;overflow:hidden}
+.map-viewi img{display:block;width:100%;height:auto}
+.map-viewi .hint{margin:0;color:#3e5a69}
 .map-sug{display:grid;gap:8px}
 .map-sug .hint{margin:0}
 .map-sugl{display:flex;flex-wrap:wrap;gap:6px}
@@ -487,7 +504,8 @@ html.map-lock .to-top{display:none}
 .map-grid.full .map-ctl{right:12px;bottom:12px}
 .map-grid.full .map-ctl .map-sidebtn{display:block}
 .map-grid.full.side-t .map-ctl .map-sidebtn{background:var(--panel-3)}
-.map-grid.full .map-foot{left:12px;bottom:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.map-grid.full .map-foot{left:12px;bottom:12px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px}
+.map-grid.full .map-hq{display:none}
 .map-grid.full .map-foot .map-pair{display:contents}
 .map-grid.full .map-foot .btn{min-height:44px;padding-inline:10px;font-size:14px;white-space:normal;line-height:1.15;text-align:center}
 @media (max-width:860px){
@@ -2872,11 +2890,12 @@ html.boot #v-load{display:flex!important}
 
 <dialog class="act" id="actSheet"><div class="act-b" id="actSheetB" tabindex="-1"></div></dialog>
 <dialog class="sheet" id="pwSheet"><div class="sheet-b" id="pwSheetB"></div></dialog>
+<dialog class="sheet map-view" id="mapView"><div class="sheet-b" id="mapViewB"></div></dialog>
 
 <div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastUndo" data-i18n="undo">Отменить</button></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=3b75bc90cb"></script>
+<script src="/app.js?v=f2f1868f73"></script>
 </body>
 </html>
