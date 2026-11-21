@@ -36,11 +36,15 @@
 <meta name="twitter:image" content="https://shtabsoyuza.ru/art/web/og3.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Боевая мощь (БМ) союза в Tiles Survive — таблица и рост", "url": "https://shtabsoyuza.ru/bm/", "description": "Каждый вносит БМ своих отрядов и видит свой рост. У руководства — общая таблица, чтобы знать, кого ставить на событие.", "inLanguage": "ru", "isPartOf": {"@type": "WebSite", "name": "Штаб союза", "url": "https://shtabsoyuza.ru/"}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Штаб союза", "item": "https://shtabsoyuza.ru/"}, {"@type": "ListItem", "position": 2, "name": "Боевая мощь (БМ) в Tiles Survive", "item": "https://shtabsoyuza.ru/bm/"}]}}</script>
 <script>
+// inside a function: a name declared here at the top would clash with a name of the minified app.js (the site once stopped loading over "th")
+(function(){
 // a theme the player picked wins over the system one
-try { var th = localStorage.getItem("theme"); if(th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th); } catch(e) {}
+var th = null;
+try { th = localStorage.getItem("theme"); if(th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th); } catch(e) {}
 try { if((th || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")) === "light") document.querySelector('meta[name="theme-color"]').content = "#d8e4e7"; } catch(e) {}
 // signed in already: show a short loading screen instead of flashing the landing page
 try { if((localStorage.getItem("sb-xfxbobchtfkjsrcspmsv-auth-token") || /tgWebAppData=/.test(location.hash) || sessionStorage.getItem("inTg")) && !/[?&]owner/.test(location.search)) document.documentElement.classList.add("boot"); } catch(e) {}
+})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Golos+Text:wght@400;500;600;700;800&family=Tektur:wght@500;600;700&display=swap">
@@ -2833,6 +2837,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=3ccaeac14f"></script>
+<script src="/app.js?v=f7fb51778c"></script>
 </body>
 </html>
