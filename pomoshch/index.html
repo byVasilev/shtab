@@ -435,6 +435,14 @@ a.btn{text-decoration:none}
 .map-arow .inp.mono,.map-addrow .inp.mono{padding:0 10px;text-transform:none}
 .map-stat{margin:0 0 4px 54px;font-size:12.5px;line-height:1.45;color:var(--muted)}
 .map-arow .inp{height:44px}
+.map-left{margin:0}
+.map-leftl{list-style:none;margin:0;padding:0;display:grid}
+.map-leftl li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;min-height:32px;padding:3px 0;border-top:1px solid var(--line);font-size:14px}
+.map-leftl li:first-child{border-top:0}
+.map-leftl b{display:grid;place-items:center;height:24px;border-radius:8px;background:var(--panel-3);font:800 12.5px/1 var(--mono)}
+.map-leftl em{font:600 13px/1 var(--mono);color:var(--muted)}
+.map-leftl strong{color:var(--fg);font-size:15px}
+.map-leftl .none{opacity:.5}
 .map-col{width:46px;height:44px;padding:3px;border:1.5px solid var(--line);border-radius:12px;background:var(--field,var(--panel-2));cursor:pointer}
 .map-col::-webkit-color-swatch-wrapper{padding:0}
 .map-col::-webkit-color-swatch{border:0;border-radius:8px}
@@ -2931,6 +2939,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=fd19f19223"></script>
+<script src="/app.js?v=c24783fd9d"></script>
 </body>
 </html>
