@@ -468,6 +468,9 @@ a.btn{text-decoration:none}
 .map-lbl{pointer-events:none;font-family:var(--body);text-anchor:middle}
 .map-lbl text{paint-order:stroke;stroke:rgba(0,0,0,.55);stroke-width:.22em;stroke-linejoin:round;fill:#fff}
 .map-lbl .b{font-weight:600;font-size:.9em}
+/* light theme: building names are dark with a light outline; the alliance tags stay white */
+:root[data-theme="light"] .map-lbl :is(.b,.s){fill:#0b1a22;stroke:rgba(255,255,255,.75)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .map-lbl :is(.b,.s){fill:#0b1a22;stroke:rgba(255,255,255,.75)}}
 .map-lbl .t{font-weight:800;font-size:1.1em}
 .map-ctl{position:absolute;right:10px;bottom:10px;z-index:2;display:grid;grid-auto-flow:column;grid-auto-columns:40px;gap:6px}
 .map-ctl button{height:40px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--fg);font:700 18px/1 var(--mono);cursor:pointer;padding:0}
@@ -3131,6 +3134,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=807425acde"></script>
+<script src="/app.js?v=37783648b7"></script>
 </body>
 </html>
