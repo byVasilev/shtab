@@ -465,7 +465,8 @@ a.btn{text-decoration:none}
 .map-stage{position:relative;height:min(68vh,560px);min-height:340px;overflow:hidden;border-radius:20px;border:1px solid var(--line);
   background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--teal) 14%,var(--bg-2)),var(--bg));touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
 .map-stage:active{cursor:grabbing}
-.map-cam{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.map-cam{position:absolute;left:0;top:0;transform-origin:0 0}
+.map-cam.moving{will-change:transform}
 .map-svg{display:block;overflow:visible}
 .map-svg path{fill:color-mix(in srgb,var(--panel) 70%,#fff);stroke:color-mix(in srgb,var(--fg) 45%,transparent);stroke-linejoin:round;cursor:pointer;transition:filter .12s}
 .map-svg path[data-b="b6"],.map-svg path[data-b="cap"]{fill:color-mix(in srgb,var(--teal) 30%,var(--panel))}
@@ -3140,6 +3141,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=b9b30de742"></script>
+<script src="/app.js?v=88839d68f5"></script>
 </body>
 </html>
