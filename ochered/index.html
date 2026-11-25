@@ -21,6 +21,10 @@
 <title>Очередь бафов в Tiles Survive — вся очередь союза | Штаб союза</title>
 <meta name="description" content="Вся очередь союза целиком: кто стоит, сколько дней осталось у каждого. R4 и R5 правят её и запускают одной кнопкой.">
 <link rel="canonical" href="https://shtabsoyuza.ru/ochered/">
+<!-- the two languages of the same page; section_pages.py puts each section's own addresses here -->
+<link rel="alternate" hreflang="ru" href="https://shtabsoyuza.ru/ochered/">
+<link rel="alternate" hreflang="en" href="https://shtabsoyuza.ru/en/buff-queue/">
+<link rel="alternate" hreflang="x-default" href="https://shtabsoyuza.ru/en/buff-queue/">
 <!-- how a shared link looks in Telegram, VK and elsewhere -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Штаб союза">
@@ -2304,7 +2308,7 @@ html.boot #v-load{display:flex!important}
   // the database can be slow or cut off on some networks: after a while offer a reload and the connection check
   setTimeout(function(){
     if(!document.documentElement.classList.contains("boot")) return;
-    var en = false; try { en = (localStorage.getItem("lang") || navigator.language).slice(0, 2) === "en"; } catch(e) {}
+    var en = false; try { en = /^\/en(\/|$)/.test(location.pathname) || (localStorage.getItem("lang") || navigator.language).slice(0, 2) === "en"; } catch(e) {}
     var b = document.getElementById("loadSlow");
     b.querySelector("p").textContent = en ? "The connection is slow. Try reloading the page." : "Связь медленная. Попробуйте обновить страницу.";
     b.querySelector("button").textContent = en ? "Reload" : "Обновить";
@@ -3136,6 +3140,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=55c3cf96fa"></script>
+<script src="/app.js?v=b9b30de742"></script>
 </body>
 </html>
