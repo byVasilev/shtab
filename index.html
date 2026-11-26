@@ -330,7 +330,8 @@ html,body{overflow-x:clip}
 .spot.solo > .mascot{width:170px;margin:-24px 0 -30px}
 .spot.solo > .mascot[style*="--mw:"]{width:calc(var(--mw) + 40px)}
 .miner{position:absolute;right:-2%;bottom:2%;width:27%;z-index:2;cursor:default}
-.miner img{position:relative;display:block;width:100%;height:auto;transform-origin:50% 100%;filter:drop-shadow(0 16px 16px rgba(0,0,0,.45)) drop-shadow(0 0 1px rgba(255,170,60,.6));animation:mBreath 4.2s ease-in-out infinite}
+.miner img{position:relative;z-index:1;display:block;width:100%;height:auto;transform-origin:50% 100%;filter:drop-shadow(0 16px 16px rgba(0,0,0,.45)) drop-shadow(0 0 1px rgba(255,170,60,.6));animation:mBreath 4.2s ease-in-out infinite}
+.miner::after{content:"";position:absolute;left:-28%;right:-28%;bottom:-13%;height:24%;background:url(/art/web/fx/cloud3.webp) center/100% 100% no-repeat,url(/art/web/fx/mist.webp) center 70%/90% 80% no-repeat;filter:brightness(1.6) contrast(1.1);z-index:0;pointer-events:none}
 .miner:hover img{animation:mAlive .9s ease-in-out infinite}
 .torch-glow,.torch-light{position:absolute;pointer-events:none;border-radius:50%;left:22.4%;top:11.6%;translate:-50% -50%}
 .torch-glow{width:70%;aspect-ratio:1;background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,170,50,.55) 35%,rgba(255,110,20,0) 100%);mix-blend-mode:screen;animation:torch 1.6s steps(1,end) infinite,torchS 2.3s ease-in-out infinite;z-index:1}
@@ -753,8 +754,11 @@ html.map-lock .to-top{display:none}
 .cta-band p{color:var(--muted)}
 /* home page tiles: one per section, each opens its demo for a guest */
 .land-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
-.tile{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
-.tile > :not(.ic):not(b){grid-column:1/-1}.tile .tp{align-self:start}.tile small{justify-self:start}
+.tile{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
+.tile > :not(.ic):not(b):not(.tile-go){grid-column:1/-1}
+.tile-go{grid-column:3;grid-row:1;width:34px;height:34px;border-radius:50%;background:var(--panel-2);display:grid;place-items:center}
+.tile-go::before{content:"";width:9px;height:9px;border:solid var(--muted);border-width:2.5px 2.5px 0 0;transform:translateX(-2px) rotate(45deg)}
+@media (hover:hover){.tile:hover .tile-go::before{border-color:var(--teal)}}.tile .tp{align-self:start}.tile small{justify-self:start}
 .tile-wide{grid-column:1/-1}
 .tile .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--panel-2)}
 .tile .ic img{width:40px;height:40px;object-fit:contain}.tile .ic svg{width:26px;height:26px}
@@ -820,7 +824,8 @@ html.map-lock .to-top{display:none}
 #v-demo .demo-more{margin:18px 0 0}#v-demo .demo-more .spot{margin:0 12px 12px}
 #v-demo .spot.solo{grid-template-columns:1fr;margin-top:20px}#v-demo .spot.solo .spot-txt p{max-width:none}
 .dq-bar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 16px;margin-top:4px}
-.dq-as{display:grid;gap:6px}.dq-role{margin:12px 0 16px;font-size:14px}
+.btn-fill{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px}.btn-fill:empty{display:none}.btn-fill>.btn{width:100%;justify-content:center}
+.dq-as{display:grid;gap:6px}.seg.dq-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);width:100%;margin-bottom:16px}.seg.dq-tabs button{justify-content:center;padding:0 6px}.dq-role{margin:12px 0 16px;font-size:14px}
 .dn-q-one{margin-top:16px}.dn-mine{margin:8px 18px 4px;font-size:14px}.dn-q-one .frz.dn-mine{margin:10px 18px 16px}
 @media (max-width:640px){.dq-bar{display:grid}.dq-bar .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}.dq-bar .seg button{justify-content:center;height:40px}}
 @media (max-width:640px){#demoNews .dq-bar>.btn{width:100%;justify-content:center;height:40px}}
@@ -2348,13 +2353,13 @@ html.boot #v-load{display:flex!important}
 
     <!-- short tiles: each opens the section's demo for a guest (the big blocks live in #v-demo now) -->
     <div class="land-tiles" id="landTiles">
-      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="/art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь бафов двигается сама — чат читать не нужно.</span><small data-i18n="tile_more">Подробнее →</small></button>
-      <button class="panel tile" type="button" data-tab="power"><span class="ic"><svg style="color:var(--grass)"><use href="#i-shield"/></svg></span><b data-i18n="nav_power">БМ</b><span class="tp" data-i18n="tile_power">БМ отрядов за минуту и ваш рост неделя за неделей.</span><small data-i18n="tile_more">Подробнее →</small></button>
-      <button class="panel tile" type="button" data-tab="vs"><span class="ic"><svg style="color:var(--warn)"><use href="#i-vs"/></svg></span><b data-i18n="nav_vs">VS</b><span class="tp" data-i18n="tile_vs">Скрины рейтинга — и ИИ сам считает очки каждого.</span><small data-i18n="tile_more">Подробнее →</small></button>
-      <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">Каждый видит свою группу и маршрут — без таблиц.</span><small data-i18n="tile_more">Подробнее →</small></button>
-      <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">Новости</b><span class="tp" data-i18n="tile_news">Объявления и памятка в одном месте, а не в чате.</span><small data-i18n="tile_more">Подробнее →</small></button>
-      <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">Штаб</b><span class="tp" data-i18n="tile_hq">Пульт R4 и R5: заявки, ранги и состав союза.</span><small data-i18n="tile_more">Подробнее →</small></button>
-      <button class="panel tile tile-wide" type="button" data-tab="map"><span class="ic"><svg style="color:var(--teal)"><use href="#i-map"/></svg></span><b data-i18n="map_h">Карта штата Tiles Survive</b><span class="tp" data-i18n="tile_map">Поделите территории штата между союзами прямо на карте сезона и скачайте её картинкой для чата штата. Без регистрации.</span><small data-i18n="tile_map_go">Открыть карту →</small></button>
+      <button class="panel tile" type="button" data-tab="now"><span class="ic"><img src="/art/web/build.png" alt="" width="40" height="40"></span><b data-i18n="nav_now">Бафы</b><span class="tp" data-i18n="tile_now">Очередь бафов двигается сама — чат читать не нужно.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile" type="button" data-tab="power"><span class="ic"><svg style="color:var(--grass)"><use href="#i-shield"/></svg></span><b data-i18n="nav_power">БМ</b><span class="tp" data-i18n="tile_power">БМ отрядов за минуту и ваш рост неделя за неделей.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile" type="button" data-tab="vs"><span class="ic"><svg style="color:var(--warn)"><use href="#i-vs"/></svg></span><b data-i18n="nav_vs">VS</b><span class="tp" data-i18n="tile_vs">Скрины рейтинга — и ИИ сам считает очки каждого.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Рейд</b><span class="tp" data-i18n="tile_raid">Каждый видит свою группу и маршрут — без таблиц.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">Новости</b><span class="tp" data-i18n="tile_news">Объявления и памятка в одном месте, а не в чате.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">Штаб</b><span class="tp" data-i18n="tile_hq">Пульт R4 и R5: заявки, ранги и состав союза.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile tile-wide" type="button" data-tab="map"><span class="ic"><svg style="color:var(--teal)"><use href="#i-map"/></svg></span><b data-i18n="map_h">Карта штата Tiles Survive</b><span class="tp" data-i18n="tile_map">Поделите территории штата между союзами прямо на карте сезона и скачайте её картинкой для чата штата. Без регистрации.</span><i class="tile-go" aria-hidden="true"></i></button>
     </div>
 
     <!-- notifications and the chat bot, compact: text on one side, a push and a Telegram message on the other -->
@@ -2442,13 +2447,13 @@ html.boot #v-load{display:flex!important}
         <div class="dq-bar">
           <div class="dq-as"><span class="eyebrow" data-i18n="dq_as">Смотреть как</span>
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dnrole="r2" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dnrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
-          <div class="seg" role="group" data-i18n-aria="q_seg_aria">
-            <button type="button" data-q="build" data-i18n="build">Стройка</button>
-            <button type="button" data-q="sci" data-i18n="sci">Исследование</button>
-            <button type="button" data-q="arch" data-i18n="arch">Архив</button>
-          </div>
         </div>
         <p class="hint dq-role" id="dqRole"></p>
+        <div class="seg dq-tabs" role="group" data-i18n-aria="q_seg_aria">
+          <button type="button" data-q="build" data-i18n="build">Стройка</button>
+          <button type="button" data-q="sci" data-i18n="sci">Исследование</button>
+          <button type="button" data-q="arch" data-i18n="arch">Архив</button>
+        </div>
         <div class="panel pad qcheck" data-qw="check" hidden></div>
         <div class="panel qwrap" data-qw="list"></div>
         <p class="qfoot" data-qw="sum"></p>
@@ -3144,6 +3149,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=c4305a24de"></script>
+<script src="/app.js?v=a7c49eb4dd"></script>
 </body>
 </html>
