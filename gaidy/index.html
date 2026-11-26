@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<script>(function(){var l;try{l=localStorage.getItem("lang")}catch(e){}if(l!=="ru"&&l!=="en")l=(navigator.language||"ru").toLowerCase().indexOf("ru")===0?"ru":"en";window.shLang=l;document.documentElement.lang=l})()</script>
+<title>Гайды по Tiles Survive — Штаб союза</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Golos+Text:wght@400;500;600;700;800&family=Tektur:wght@500;600;700&display=swap">
+<style>
+:root{
+  --bg:#0c171d;--panel:#152730;--panel-2:#1c333e;--line:#25404b;
+  --fg:#eef5f3;--muted:#9fb7bd;--faint:#78949d;
+  --grass:#7bd957;--brick:#f0995e;--teal:#3fd0e0;--bolt:#ffd23f;--warn:#ff6b57;
+  --display:"Russo One","Arial Black",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --iso:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='50' viewBox='0 0 88 50'%3E%3Cpath d='M0 25 44 0 88 25 44 50Z' fill='none' stroke='%23d8f0f4' stroke-opacity='.12' stroke-width='1.2'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(63,208,224,.10),transparent),radial-gradient(900px 500px at 90% 0,rgba(126,217,87,.07),transparent),var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px 60px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.15;text-wrap:balance}
+
+/* шапка */
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.crumbs{color:var(--faint);font-size:14px}.crumbs a{color:var(--muted)}
+.lang{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--muted);font:600 13px var(--body);padding:7px 12px;cursor:pointer;min-height:36px}
+.lang button.on{background:var(--teal);color:#04232a}
+
+.hero{position:relative;border-radius:22px;padding:28px 20px 22px;background:var(--iso),linear-gradient(135deg,#123642,#0f2229 60%,#1a2f1c);border:1px solid var(--line);overflow:hidden}
+.hero h1{font-size:clamp(28px,6vw,46px)}
+.hero h1 span{color:var(--bolt)}
+.hero p{color:var(--muted);margin:8px 0 18px;max-width:560px}
+.hero .pic{position:absolute;right:-10px;bottom:-14px;width:min(42%,300px);opacity:.9;pointer-events:none}
+@media(max-width:600px){.hero .pic{width:130px;opacity:.35;right:-20px;bottom:-20px}}
+
+.search{position:relative;max-width:560px;z-index:1}
+.search input{width:100%;font:500 16px var(--body);color:var(--fg);background:rgba(8,18,23,.85);border:2px solid var(--line);border-radius:14px;padding:14px 44px 14px 46px;outline:none;transition:border-color .2s}
+.search input:focus{border-color:var(--teal)}
+.search .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:18px;opacity:.7}
+.search .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--muted);font-size:20px;width:36px;height:36px;cursor:pointer;display:none}
+.hints{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;position:relative;z-index:1}
+.hints button{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 11px;font:500 13px var(--body);cursor:pointer}
+.hints button:hover{color:var(--fg);border-color:var(--teal)}
+
+/* якоря */
+.chips{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:12px 0;margin:8px 0 4px;background:linear-gradient(var(--bg) 75%,transparent);scrollbar-width:none}
+.chips a{flex:none;display:flex;align-items:center;gap:6px;padding:8px 13px;border-radius:12px;background:var(--panel);border:1px solid var(--line);font-weight:600;font-size:14px;white-space:nowrap}
+.chips a i{font-style:normal}
+.chips{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.chips .track{display:flex;gap:8px;width:max-content;animation:tick 45s linear infinite}
+.chips:hover .track,.chips:focus-within .track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(calc(-50% - 4px))}}
+@media(prefers-reduced-motion:reduce){.chips{overflow-x:auto}.chips .track{animation:none}.chips .track a[aria-hidden]{display:none}}
+.chips a:hover{border-color:var(--c)}
+
+/* путь развития */
+.path{display:flex;align-items:center;gap:8px;color:var(--faint);font-size:13px;margin:6px 0 14px}
+.path b{color:var(--muted);font-weight:600}
+.path .bar{flex:1;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--grass),var(--teal),var(--bolt),var(--brick))}
+
+/* сетка блоков: категории, в каждой ровный ряд на всю ширину */
+.sitehead{margin:12px 0 16px;padding:14px;border-radius:14px;border:1px dashed var(--line);color:var(--faint);font-size:13px;text-align:center}
+#grid{display:flex;flex-direction:column;gap:34px}
+.ghead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.ghead h2{font-size:24px}
+.ghead span{color:var(--faint);font-size:14px}
+.row-of{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:600px){.row-of.n2{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:780px){.row-of.n3{grid-template-columns:repeat(3,1fr)}}
+.blk{--c:var(--teal);position:relative;border-radius:20px;padding:18px;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 22%,var(--panel)),var(--panel) 70%);border:1px solid color-mix(in srgb,var(--c) 35%,var(--line));overflow:hidden;display:flex;flex-direction:column;min-height:300px;transition:transform .2s,box-shadow .2s}
+.blk:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.4),0 0 0 1px var(--c)}
+.row-of.n2 .blk{min-height:320px}
+.blk.bgpic{background:linear-gradient(180deg,rgba(12,23,29,.2),rgba(12,23,29,.93) 60%),var(--bgimg) center/cover,var(--panel)}
+.blk .num{position:absolute;right:16px;top:12px;font:700 44px var(--display);color:var(--c);opacity:.18}
+.blk .head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.blk .ico{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:28px;background:color-mix(in srgb,var(--c) 25%,transparent);border:1px solid color-mix(in srgb,var(--c) 50%,transparent)}
+.blk .ico img{width:44px;height:44px;object-fit:contain}
+.blk h2{font-size:21px}
+.blk .lvl{font-size:12px;color:var(--c);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.blk .desc{color:var(--muted);font-size:14px;margin:4px 0 12px}
+.list{display:flex;flex-direction:column;gap:6px}
+.row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(8,18,23,.55);border:1px solid rgba(255,255,255,.06);font-weight:600;font-size:15px;transition:background .15s,border-color .15s}
+.row:hover{background:rgba(8,18,23,.8);border-color:var(--c)}
+.row .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.row .t{flex:1}
+.row .min{color:var(--faint);font-size:12px;font-weight:500;white-space:nowrap}
+.row .arr{color:var(--c)}
+.tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--bolt);color:#2a1f00;margin-left:4px;vertical-align:2px}
+.more{margin-top:8px;background:none;border:1px dashed color-mix(in srgb,var(--c) 50%,transparent);color:var(--c);border-radius:12px;padding:9px;font:600 14px var(--body);cursor:pointer;width:100%}
+.row.hide{display:none}
+.blk.open .row.hide{display:flex}
+
+/* блок-одна-статья: весь кликабельный */
+a.blk .go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--c)}
+
+/* скоро */
+.blk.soon{filter:saturate(.45);opacity:.75}
+.blk.soon:hover{transform:none;box-shadow:none}
+.soonbadge{margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;border:1px dashed var(--line);color:var(--muted);font-size:14px;font-weight:600}
+
+/* поиск: результаты */
+.results{display:none;margin:16px 0}
+.results.on{display:block}
+.results h3{font-size:18px;margin-bottom:10px}
+.results .row{margin-bottom:6px;background:var(--panel)}
+.results .cat{font-size:12px;color:var(--faint);font-weight:500}
+mark{background:rgba(255,210,63,.3);color:inherit;border-radius:3px}
+.empty{padding:22px;border-radius:16px;background:var(--panel);border:1px dashed var(--line);color:var(--muted);text-align:center}
+.dim .blk:not(.match){opacity:.25}
+
+/* плашка «скоро» для запуска */
+.launch{margin:40px 0 0;padding:22px;border-radius:20px;text-align:center;background:var(--iso),linear-gradient(135deg,rgba(255,210,63,.18),rgba(240,153,94,.12));border:1px solid rgba(255,210,63,.35)}
+.launch h3{font-size:22px;color:var(--bolt)}
+.launch p{color:var(--muted);margin:6px 0 0}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.sitefoot{margin-top:40px;padding:20px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.sitefoot .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(360px,100%)}
+.sitefoot .pair a{display:flex;justify-content:center;align-items:center;min-height:44px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);font-weight:700;font-size:14px}
+.sitefoot .pair a:hover{border-color:var(--teal)}
+.sitefoot small{color:var(--faint);font:600 12.5px/1.5 var(--body)}
+.sitefoot .ph{font-size:12px;color:var(--faint);opacity:.7}
+
+/* шапка и подвал сайта */
+.sh-top{padding-top:12px;margin-bottom:14px}
+.sh-bar{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 12px;border-radius:20px;background:color-mix(in srgb,var(--panel) 86%,transparent);border:1px solid var(--line);box-shadow:0 16px 34px -24px rgba(0,0,0,.6)}
+.sh-brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0;color:var(--fg)}
+.sh-brand img{width:40px;height:40px;flex:none;object-fit:contain}
+.sh-brand b{font:400 15px/1.1 var(--display);white-space:nowrap}
+.sh-lang{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:3px;flex:none}
+.sh-lang button{border:0;background:none;height:36px;min-width:42px;border-radius:9px;color:var(--muted);font:800 12px/1 var(--body);cursor:pointer}
+.sh-lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.sitefoot small a{color:inherit;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+/* статьи, которых ещё нет */
+a[aria-disabled]{pointer-events:none;cursor:default}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sh-top"><div class="sh-bar"><a class="sh-brand" href="/" data-shref="home"><img src="/art/web/logo.png" alt="" width="40" height="40"><b data-sh="brand">Штаб союза</b></a><div class="sh-lang" role="group" aria-label="Язык / Language"><button type="button" data-set="ru" aria-pressed="true">RU</button><button type="button" data-set="en" aria-pressed="false">EN</button></div></div></header>
+
+  <section class="hero">
+    <img class="pic" src="/art/web/commander.png" alt="">
+    <h1 data-t="h1">Гайды по <span>Tiles Survive</span></h1>
+    <p data-t="lead">Путь от первого дня до сезонов штата: что строить, кого качать и как играть с союзом.</p>
+    <div class="search">
+      <span class="ic">🔍</span>
+      <input id="q" type="search" autocomplete="off" data-ph="ph" placeholder="Найти гайд: герои, снаряжение, резервуар…">
+      <button class="clr" id="clr" aria-label="Очистить">×</button>
+    </div>
+    <div class="hints" id="hints"></div>
+  </section>
+
+  <nav class="chips" id="chips"></nav>
+  <div class="path"><b data-t="p1">Новичок</b><span class="bar"></span><b data-t="p2">Опытный</b></div>
+
+  <section class="results" id="results"></section>
+  <section id="grid"></section>
+
+  <div class="launch">
+    <h3 data-t="lt">✨ Скоро новые гайды</h3>
+    <p data-t="lp">Мы пишем следующие статьи — они будут появляться здесь.</p>
+  </div>
+  <footer class="sitefoot"><div class="pair"><a href="/pomoshch/" data-shref="help" data-sh="help">Вопросы и ответы</a><a href="/" data-shref="home" data-sh="home">На главную</a></div><small><span data-sh="own">Васильев Иван Андреевич · Москва</span> · <a href="mailto:support@shtabsoyuza.ru">support@shtabsoyuza.ru</a></small></footer>
+</div>
+
+<script>
+const SH={brand:["Штаб союза","Alliance HQ"],help:["Вопросы и ответы","Questions & answers"],home:["На главную","Home"],own:["Васильев Иван Андреевич · Москва","Ivan Vasilev · Moscow, Russia"]};
+const SHREF={home:["/","/en/"],help:["/pomoshch/","/en/help/"]};
+function shApply(l){const i=l==="en"?1:0;
+ document.querySelectorAll("[data-sh]").forEach(e=>e.textContent=SH[e.dataset.sh][i]);
+ document.querySelectorAll("[data-shref]").forEach(e=>e.href=SHREF[e.dataset.shref][i]);
+ document.querySelectorAll(".sh-lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.set===l));
+ try{localStorage.setItem("lang",l)}catch(e){}}
+// Демо-данные: названия статей примерные, проверить по игре перед написанием.
+const BLOCKS=[
+ {id:"start",g:"base",c:"var(--grass)",ico:"🌱",lvl:["Новичку","Beginner"],
+  t:["Первые шаги","First steps"],d:["С чего начать и каких ошибок не делать в первые дни.","Where to start and which mistakes to avoid."],
+  a:[["С чего начать: гайд для новичков","How to start: beginner guide",6,1,"/gaidy/pervye-shagi/"],["10 ошибок новичка","10 beginner mistakes",5],["Как получать ресурсы","How to get resources",6],["Коды подарков и как их ввести","Gift codes and how to redeem",2],["Как выбрать союз","How to pick an alliance",4],["Ежедневный план на 15 минут","A 15-minute daily routine",4]],
+  k:"новичок начало старт ошибки коды ресурсы еда дерево beginner start"},
+ {id:"town",g:"base",c:"var(--brick)",ico:"img:/art/web/build.png",lvl:["Развитие","Growth"],
+  t:["Поселение и здания","Settlement & buildings"],d:["Порядок постройки и что улучшать в первую очередь.","Build order and upgrade priorities."],
+  a:[["Порядок постройки зданий","Building order",7],["Электростанция: зачем и до какого уровня","Power plant: why and how far",5]],
+  k:"здания постройка база город электростанция building"},
+ {id:"science",g:"base",c:"var(--teal)",ico:"img:/art/web/science.png",lvl:["Развитие","Growth"],
+  t:["Исследования","Research"],d:["Какие ветки изучать первыми.","Which branches to research first."],
+  a:[["Что исследовать в первую очередь","Research priorities",6]],
+  k:"исследования наука лаборатория research"},
+ {id:"heroes",g:"power",c:"#c77dff",ico:"🦸",lvl:["Главное","Core"],
+  t:["Герои","Heroes"],d:["Кого качать, как распределять звёзды и навыки.","Who to level, stars and skills."],
+  a:[["Тир-лист героев","Hero tier list",10,1],["Кого качать первым","Who to level first",6],["Фракции героев","Hero factions",5],["Звёзды и осколки","Stars and shards",5],["Навыки героев","Hero skills",7]],
+  k:"герои тир лист фракции звезды навыки прокачка hero tier"},
+ {id:"gear",g:"power",c:"var(--bolt)",ico:"🛡️",lvl:["Усиление","Power"],
+  t:["Снаряжение","Gear"],d:["Что надевать и как улучшать.","What to equip and how to upgrade."],
+  a:[["Гайд по снаряжению","Gear guide",8]],
+  k:"снаряжение шмот экипировка снаряга перековка gear equipment"},
+ {id:"army",g:"power",c:"var(--warn)",ico:"⚔️",lvl:["Бой","Combat"],
+  t:["Войска и бой","Troops & combat"],d:["Составы, лечение и бои.","Lineups, healing and fights."],a:[],
+  k:"войска бой составы лечение армия troops"},
+ {id:"ally",g:"ally",c:"var(--teal)",ico:"🤝",bg:"/art/web/island.png",lvl:["Союз","Alliance"],
+  t:["Союз и события","Alliance & events"],d:["VS, рейд на резервуар, БМ — и как это вести в Штабе.","VS, reservoir raid, BM — and how to run them in HQ."],
+  a:[["Рейд на резервуар: полный гайд","Reservoir raid: full guide",9,1],["Битва союзов (VS): как набрать очки","Alliance VS: how to score",7],["БМ: как это работает","BM explained",6],["Очередь бафов в союзе","Buff queue in an alliance",4]],
+  k:"союз события vs резервуар рейд бм бафы alliance raid reservoir"},
+ {id:"season",g:"ally",bg:"/art/web/island.png",c:"#6ec6ff",ico:"❄️",lvl:["Опытному","Advanced"],
+  t:["Сезоны и штат","Seasons & state"],d:["Сезоны, карта штата, переезд.","Seasons, state map, transfer."],a:[],
+  k:"сезон штат карта переезд season state map"},
+];
+const UI={
+ crumb:["Гайды","Guides"],h1:["Гайды по <span>Tiles Survive</span>","<span>Tiles Survive</span> guides"],
+ lead:["Путь от первого дня до сезонов штата: что строить, кого качать и как играть с союзом.","From day one to state seasons: what to build, who to level and how to play with your alliance."],
+ groups:{base:[["Старт и развитие","Start & growth"],["С чего начать и как развиваться","Where to start and how to grow"]],power:[["Сила отряда","Squad power"],["Герои, снаряжение и бои","Heroes, gear and fights"]],ally:[["Союз и штат","Alliance & state"],["Общие события и сезоны","Shared events and seasons"]]},
+ ph:["Найти гайд: герои, снаряжение, резервуар…","Find a guide: heroes, gear, reservoir…"],
+ p1:["Новичок","Beginner"],p2:["Опытный","Advanced"],
+ lt:["✨ Скоро новые гайды","✨ More guides coming soon"],lp:["Мы пишем следующие статьи — они будут появляться здесь.","We are writing the next articles — they will appear here."],
+ more:["Показать все","Show all"],less:["Свернуть","Collapse"],soon:["⏳ Скоро","⏳ Coming soon"],
+ min:["мин","min"],neu:["новое","new"],found:["Нашлось","Found"],none:["Такой статьи пока нет. Загляните в похожие разделы:","No such article yet. Try these sections:"],
+ hints:[["снаряжение","резервуар","тир-лист","новичок"],["gear","reservoir","tier list","beginner"]]
+};
+let L=shLang==="en"?1:0;const $=s=>document.querySelector(s);const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+const go=a=>a[4]?`href="${a[4]}"`:'aria-disabled="true"';
+function ico(b){return b.ico.startsWith("img:")?`<img src="${b.ico.slice(4)}" alt="">`:b.ico}
+function head(b,i){return `<span class="num">${i+1}</span><div class="head"><div class="ico">${ico(b)}</div><div><div class="lvl">${b.lvl[L]}</div><h2>${b.t[L]}</h2></div></div><div class="desc">${b.d[L]}</div>`}
+function row(a,hide){return `<a class="row${hide?" hide":""}" ${go(a)}><span class="dot"></span><span class="t">${a[L]}${a[3]?`<span class="tag">${UI.neu[L]}</span>`:""}</span><span class="min">${a[2]} ${UI.min[L]}</span></a>`}
+
+function render(){
+ document.documentElement.lang=L?"en":"ru";shApply(L?"en":"ru");document.title=L?"Tiles Survive guides — Alliance HQ":"Гайды по Tiles Survive — Штаб союза";
+ document.querySelectorAll("[data-t]").forEach(e=>e.innerHTML=UI[e.dataset.t][L]);
+ $("#q").placeholder=UI.ph[L];
+ $("#hints").innerHTML=UI.hints[L].map(h=>`<button>${h}</button>`).join("");
+ const ch=BLOCKS.map(b=>`<a href="#${b.id}" style="--c:${b.c}"><i>${b.ico.startsWith("img:")?(b.id==="town"?"🏗️":"🔬"):b.ico}</i>${b.t[L]}</a>`).join("");
+ $("#chips").innerHTML=`<div class="track">${ch}${ch.replace(/<a /g,'<a aria-hidden="true" tabindex="-1" ')}</div>`;
+ const card=(b,i)=>{
+  const cls=`blk${b.bg?" bgpic":""}${b.a.length?"":" soon"}`;
+  const st=`--c:${b.c};${b.bg?`--bgimg:url(${b.bg})`:""}`;
+  if(!b.a.length) return `<div class="${cls}" id="${b.id}" style="${st}">${head(b,i)}<span class="soonbadge">${UI.soon[L]}</span></div>`;
+  const N=4;
+  return `<div class="${cls}" id="${b.id}" style="${st}">${head(b,i)}<div class="list">${b.a.map((a,j)=>row(a,j>=N)).join("")}</div>${b.a.length>N?`<button class="more">${UI.more[L]} (${b.a.length})</button>`:""}</div>`;
+ };
+ $("#grid").innerHTML=Object.keys(UI.groups).map(g=>{const bs=BLOCKS.map((b,i)=>[b,i]).filter(([b])=>b.g===g);
+  return `<div class="group"><div class="ghead"><h2>${UI.groups[g][0][L]}</h2><span>${UI.groups[g][1][L]}</span></div><div class="row-of n${bs.length}">${bs.map(([b,i])=>card(b,i)).join("")}</div></div>`}).join("");
+ search();
+}
+function norm(s){return s.toLowerCase().replace(/ё/g,"е")}
+function search(){
+ const q=norm($("#q").value.trim());$("#clr").style.display=q?"block":"none";
+ const R=$("#results"),G=$("#grid");
+ if(!q){R.className="results";G.classList.remove("dim");G.querySelectorAll(".blk").forEach(e=>e.classList.remove("match"));return}
+ const hits=[],cats=new Set();
+ BLOCKS.forEach(b=>{const bk=norm(b.k+" "+b.t.join(" "));
+  b.a.forEach(a=>{if(norm(a[0]+" "+a[1]).includes(q)||bk.includes(q)){hits.push([a,b]);cats.add(b.id)}});
+  if(bk.includes(q))cats.add(b.id)});
+ G.classList.add("dim");G.querySelectorAll(".blk").forEach(e=>e.classList.toggle("match",cats.has(e.id)));
+ const hl=s=>{const i=norm(s).indexOf(q);return i<0?esc(s):esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+q.length))+"</mark>"+esc(s.slice(i+q.length))};
+ R.className="results on";
+ R.innerHTML=hits.length?`<h3>${UI.found[L]}: ${hits.length}</h3>`+hits.map(([a,b])=>`<a class="row" ${go(a)} style="--c:${b.c}"><span class="dot"></span><span class="t">${hl(a[L])}<br><span class="cat">${b.ico.startsWith("img:")?"":b.ico} ${b.t[L]}</span></span><span class="min">${a[2]} ${UI.min[L]}</span></a>`).join("")
+  :`<div class="empty">${UI.none[L]}<br><br>${BLOCKS.filter(b=>b.a.length).slice(0,3).map(b=>`<a href="#${b.id}" style="color:${b.c};font-weight:700">${b.t[L]}</a>`).join(" · ")}</div>`;
+}
+$("#q").addEventListener("input",search);
+$("#clr").onclick=()=>{$("#q").value="";search();$("#q").focus()};
+$("#hints").addEventListener("click",e=>{if(e.target.tagName==="BUTTON"){$("#q").value=e.target.textContent;search()}});
+$("#grid").addEventListener("click",e=>{const m=e.target.closest(".more");if(!m)return;const b=m.closest(".blk");b.classList.toggle("open");const n=b.querySelectorAll(".row").length;m.textContent=b.classList.contains("open")?UI.less[L]:`${UI.more[L]} (${n})`});
+window.setLang=l=>{L=l;render()};
+document.querySelectorAll(".sh-lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.set==="en"?1:0));
+render();
+</script>
+</body>
+</html>

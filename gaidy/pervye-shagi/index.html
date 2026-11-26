@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<script>(function(){var l;try{l=localStorage.getItem("lang")}catch(e){}if(l!=="ru"&&l!=="en")l=(navigator.language||"ru").toLowerCase().indexOf("ru")===0?"ru":"en";window.shLang=l;document.documentElement.lang=l})()</script>
+<title>Tiles Survive для новичков: с чего начать — Штаб союза</title>
+<meta name="description" content="Tiles Survive гайд для новичков: что делать в первый день, что строить, куда тратить ускорения и зачем сразу вступать в союз.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Golos+Text:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#0c171d;--panel:#152730;--panel-2:#1c333e;--line:#25404b;
+  --fg:#eef5f3;--muted:#9fb7bd;--faint:#78949d;
+  --grass:#7bd957;--brick:#f0995e;--teal:#3fd0e0;--bolt:#ffd23f;--warn:#ff6b57;
+  --c:var(--grass);
+  --display:"Russo One","Arial Black",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --iso:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='50' viewBox='0 0 88 50'%3E%3Cpath d='M0 25 44 0 88 25 44 50Z' fill='none' stroke='%23d8f0f4' stroke-opacity='.12' stroke-width='1.2'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(63,208,224,.10),transparent),var(--bg);color:var(--fg);font:17px/1.65 var(--body)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.2;text-wrap:balance}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 60px}
+.sitehead{margin:12px 0 16px;padding:14px;border-radius:14px;border:1px dashed var(--line);color:var(--faint);font-size:13px;text-align:center}
+
+/* назад к гайдам */
+.back{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);font-weight:600;font-size:14px;color:var(--muted);transition:border-color .15s,color .15s}
+.back:hover{border-color:var(--c);color:var(--fg)}
+.back .g{display:grid;grid-template-columns:repeat(2,6px);gap:2px}.back .g i{width:6px;height:6px;border-radius:2px;background:var(--c)}
+
+/* обложка */
+.cover{position:relative;margin:14px 0 18px;border-radius:22px;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;background:linear-gradient(180deg,rgba(12,23,29,.1),rgba(12,23,29,.95) 70%),url(/art/web/island.png) center/cover,var(--panel);border:1px solid color-mix(in srgb,var(--c) 40%,var(--line))}
+.cat{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--c) 22%,transparent);border:1px solid color-mix(in srgb,var(--c) 50%,transparent);color:var(--c);font-weight:700;font-size:13px;margin-bottom:10px}
+.cover h1{font-size:clamp(26px,5.5vw,42px)}
+.meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-top:10px}
+.meta span{display:inline-flex;gap:5px;align-items:center}
+
+/* главное за 30 секунд */
+.tldr{border-radius:18px;padding:18px;background:linear-gradient(135deg,rgba(255,210,63,.14),rgba(240,153,94,.08));border:1px solid rgba(255,210,63,.35);margin-bottom:18px}
+.tldr h2{font-size:18px;color:var(--bolt);margin-bottom:8px}
+.tldr ul{margin:0;padding-left:20px}.tldr li{margin:4px 0}
+
+/* оглавление вверху */
+.toc{border-radius:18px;padding:16px;background:var(--panel);border:1px solid var(--line);margin-bottom:26px}
+.toc h2{font-size:18px;margin-bottom:10px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:6px;counter-reset:n}
+@media(min-width:640px){.toc ol{grid-template-columns:1fr 1fr}}
+.toc a{counter-increment:n;display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:rgba(8,18,23,.5);border:1px solid rgba(255,255,255,.06);font-weight:600;font-size:15px;line-height:1.3;height:100%;transition:border-color .15s,background .15s}
+.toc a::before{content:counter(n);flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 22%,transparent);color:var(--c);font:13px var(--display)}
+.toc a:hover,.toc a.on{border-color:var(--c);background:rgba(8,18,23,.85)}
+
+/* текст + боковое оглавление на широком экране */
+.body{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:980px){.body{grid-template-columns:minmax(0,1fr) 240px}}
+.side{display:none}
+@media(min-width:980px){.side{display:block;position:sticky;top:16px;align-self:start}}
+.side b{display:block;font-size:13px;color:var(--faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.side a{display:block;padding:6px 10px;border-left:2px solid var(--line);color:var(--muted);font-size:14px;line-height:1.35}
+.side a.on{border-color:var(--c);color:var(--fg)}
+.prog{position:fixed;left:0;top:0;height:3px;background:var(--c);width:0;z-index:9}
+
+article section{margin-bottom:34px}
+article h2{font-size:24px;margin-bottom:12px;padding-top:4px}
+article p{margin:0 0 14px;color:#dbe7e5}
+article ul{margin:0 0 14px;padding-left:22px}
+figure{margin:18px 0;border-radius:16px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+figure img{display:block;width:100%;max-height:340px;object-fit:cover;background:var(--panel-2)}
+figcaption{padding:10px 14px;font-size:14px;color:var(--faint)}
+.note{display:flex;gap:12px;padding:14px 16px;border-radius:14px;margin:16px 0;font-size:16px}
+.note .i{font-size:22px;line-height:1.2}
+.note.tip{background:rgba(123,217,87,.10);border:1px solid rgba(123,217,87,.35)}
+.note.warn{background:rgba(255,107,87,.10);border:1px solid rgba(255,107,87,.35)}
+.note.hq{background:rgba(63,208,224,.10);border:1px solid rgba(63,208,224,.35)}
+.note b{display:block}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px;border-radius:14px;overflow:hidden}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--panel-2);font-weight:700}
+td{background:var(--panel)}
+.tw{overflow-x:auto}
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.check li::before{content:"✓";color:var(--grass);font-weight:800}
+.top{display:inline-flex;margin-top:4px;font-size:13px;color:var(--faint)}
+.top:hover{color:var(--fg)}
+
+/* соседние статьи */
+.pn{display:grid;grid-template-columns:1fr;gap:12px;margin:10px 0 30px}
+@media(min-width:600px){.pn{grid-template-columns:1fr 1fr}}
+.pn a{display:block;padding:16px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:border-color .15s,transform .15s}
+.pn a:hover{border-color:var(--c);transform:translateY(-2px)}
+.pn small{display:block;color:var(--faint);font-size:13px;margin-bottom:4px}
+.pn b{font-size:16px}
+.pn a.next{text-align:right}
+@media(max-width:599px){.pn a.next{text-align:left}}
+.rel h2{font-size:22px;margin-bottom:12px}
+.relg{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:780px){.relg{grid-template-columns:repeat(3,1fr)}}
+.relg a{--c2:var(--teal);display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:16px;min-height:120px;background:linear-gradient(160deg,color-mix(in srgb,var(--c2) 20%,var(--panel)),var(--panel) 70%);border:1px solid color-mix(in srgb,var(--c2) 35%,var(--line));transition:transform .15s,box-shadow .15s}
+.relg a:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--c2)}
+.relg .k{font-size:12px;font-weight:700;color:var(--c2);text-transform:uppercase;letter-spacing:.04em}
+.relg b{font-size:16px;line-height:1.3}
+.relg span{color:var(--faint);font-size:13px;margin-top:auto}
+.backrow{display:flex;justify-content:center;margin-top:28px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.sitefoot{margin-top:40px;padding:20px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.sitefoot .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(360px,100%)}
+.sitefoot .pair a{display:flex;justify-content:center;align-items:center;min-height:44px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);font-weight:700;font-size:14px}
+.sitefoot .pair a:hover{border-color:var(--teal)}
+.sitefoot small{color:var(--faint);font:600 12.5px/1.5 var(--body)}
+.sitefoot .ph{font-size:12px;color:var(--faint);opacity:.7}
+
+/* язык демо (на сайте — переключатель в шапке) */
+.lang{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(240px,100%);margin:0 auto 14px}
+.lang button{min-height:44px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font:600 14px var(--body);cursor:pointer}
+.lang button[aria-pressed=true]{border-color:var(--c);color:var(--fg)}
+[data-l]{display:none}
+html[lang=ru] [data-l=ru],html[lang=en] [data-l=en]{display:block}
+@media(max-width:599px){.pn>span{display:none}}
+
+/* содержание: на телефоне — сворачиваемое сверху, на широком — только сбоку */
+.tocm summary{cursor:pointer;font:18px var(--display);list-style:none;display:flex;justify-content:space-between;align-items:center}
+.tocm summary::-webkit-details-marker{display:none}
+.tocm summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.tocm[open] summary::after{transform:rotate(-135deg)}
+.tocm[open] ol{margin-top:12px}
+@media(min-width:980px){.tocm{display:none}}
+
+/* появление при прокрутке */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease var(--d,0ms),transform .5s ease var(--d,0ms)}
+.js .rv.in{opacity:1;transform:none}
+.ic{font-size:22px;line-height:1}
+
+/* шаги первого дня — лента */
+.flow{list-style:none;margin:0 0 20px;padding:0;position:relative}
+.flow li{position:relative;display:grid;grid-template-columns:34px 30px 1fr;gap:12px;align-items:start;padding:12px 14px;margin:0 0 10px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:30px;top:100%;width:2px;height:10px;background:color-mix(in srgb,var(--c) 50%,transparent)}
+.flow .n{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 20%,transparent);color:var(--c);font:15px var(--display)}
+.flow .ic{padding-top:5px}
+.flow b{display:block;font-weight:600;line-height:1.35;color:var(--fg)}
+.flow div span{display:block;color:var(--muted);font-size:15px;line-height:1.45;margin-top:2px}
+
+/* ритм дня */
+.rhythm{border-radius:16px;background:var(--panel);border:1px solid var(--line);padding:14px;margin:0 0 14px}
+.times{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.times div{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:12px;background:var(--panel-2);font-weight:600;font-size:14px;text-align:center}
+.checks{margin-top:12px}
+.checks small{display:block;color:var(--faint);font-size:13px;margin-bottom:8px;text-align:center}
+.checks>div{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:640px){.checks>div{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.checks span{display:flex;gap:8px;align-items:center;padding:8px 12px;border-radius:10px;border:1px dashed color-mix(in srgb,var(--c) 40%,var(--line));font-size:14px;color:var(--muted)}
+.checks i{font-style:normal}
+
+/* ресурсы */
+.res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+@media(min-width:640px){.res{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.res div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:14px 10px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+.rico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:28px;background:var(--panel-2);border:1px solid var(--line);margin-bottom:4px}
+.res b{color:var(--fg);font-weight:600}
+.res span:last-child{color:var(--muted);font-size:13px;line-height:1.35}
+.trip{padding:16px 14px 0}
+.tripline{height:6px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin:4px 0 12px}
+.tripline i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--grass),var(--bolt));transform-origin:left;animation:trip 6s ease-in-out infinite}
+@keyframes trip{0%{transform:scaleX(0)}75%,100%{transform:scaleX(1)}}
+.tripsteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tripsteps div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;font-size:13px;color:var(--muted);line-height:1.35;animation:tstep 6s infinite calc(var(--k) * 2s)}
+@keyframes tstep{0%,30%{color:var(--fg)}34%,100%{color:var(--muted)}}
+.coal{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:14px;background:var(--panel);border:1px dashed color-mix(in srgb,var(--muted) 40%,var(--line));margin:0 0 14px}
+.coal .rico{flex:none;margin:0}
+.coal b{display:block;color:var(--fg);font-weight:600}
+.coal span{color:var(--muted);font-size:15px;line-height:1.5}
+
+/* отряды */
+.sqs{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 14px}
+@media(min-width:640px){.sqs{grid-template-columns:1fr 1fr}}
+.sq{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+.sq b{color:var(--fg);font-weight:600}
+.sq>span{color:var(--muted);font-size:14px;line-height:1.5}
+.slots{display:flex;gap:6px}
+.slots i{width:34px;height:34px;border-radius:10px;border:1px dashed var(--line);background:var(--panel-2)}
+.slots i.on{border:1px solid color-mix(in srgb,var(--teal) 60%,transparent);background:color-mix(in srgb,var(--teal) 25%,var(--panel-2)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='9' r='4' fill='%23eef5f3' fill-opacity='.85'/%3E%3Cpath d='M4 21c1-4 4.5-6 8-6s7 2 8 6' fill='%23eef5f3' fill-opacity='.85'/%3E%3C/svg%3E") center/70% no-repeat}
+.sq.fight .slots i.on{border-color:color-mix(in srgb,var(--bolt) 70%,transparent);background-color:color-mix(in srgb,var(--bolt) 28%,var(--panel-2))}
+.rimg{display:block;width:56px;height:56px;border-radius:14px;margin-bottom:4px}
+.coal .rimg{flex:none;margin:0}
+
+/* параллельная стройка */
+.par{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line);margin:0 0 14px}
+.pmain{padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(255,210,63,.22),rgba(240,153,94,.12));color:var(--fg);font-weight:600;font-size:15px}
+.par small{display:block;color:var(--faint);font-size:13px;margin:10px 0 8px}
+
+/* ссылка в тексте */
+.inl{color:var(--teal);text-decoration:underline;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,var(--teal) 45%,transparent)}
+.inl:hover{text-decoration-color:var(--teal)}
+/* «следующая статья» — компактно */
+.pn{display:flex;justify-content:flex-end}
+.pn>span{display:none}
+.pn a.next{padding:10px 14px;border-radius:12px;text-align:left}
+.pn small{font-size:12px;margin-bottom:0}
+.pn b{font-size:15px}
+.sq .slots+.slots+.slots{opacity:.45}
+
+/* напоследок */
+.final{padding:18px;border-radius:16px;background:linear-gradient(135deg,rgba(123,217,87,.12),rgba(63,208,224,.06));border:1px solid rgba(123,217,87,.3)}
+.final p{margin:0 0 10px;color:var(--fg)}
+.final p:last-child{margin:0}
+
+/* сундук союза */
+.chest{display:flex;gap:14px;align-items:center;padding:14px;border-radius:14px;background:linear-gradient(160deg,color-mix(in srgb,var(--bolt) 10%,var(--panel)),var(--panel) 70%);border:1px solid var(--line);margin:0 0 14px}
+.cico{flex:none;font-size:34px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px) rotate(-4deg)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);font-size:14px}
+.chips i{font-style:normal}
+
+/* потолок Электростанции */
+.capfig{padding:16px 14px 0}
+.cap{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;height:190px;align-items:end}
+.capline{position:absolute;left:0;right:0;bottom:calc(var(--h) * .82 + 36px);border-top:2px dashed var(--bolt);z-index:1}
+.capline span{position:absolute;right:0;top:-22px;font-size:12px;color:var(--bolt);background:var(--panel);padding:0 4px}
+.bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:6px}
+.bar i{display:block;width:100%;max-width:56px;height:calc(var(--h) * .82);border-radius:10px 10px 4px 4px;background:color-mix(in srgb,var(--teal) 35%,var(--panel-2));transform-origin:bottom;transition:transform .7s cubic-bezier(.2,.8,.2,1) var(--d)}
+.js .capfig:not(.in) .bar i{transform:scaleY(0)}
+.bar.main i{background:linear-gradient(180deg,var(--bolt),var(--brick))}
+.bar span{font-size:12px;color:var(--muted);text-align:center;line-height:1.25;min-height:30px}
+
+/* цикл стройки */
+.cycle{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 14px;position:relative}
+@media(min-width:640px){.cycle{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cs{position:relative;display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line);animation:cyc 6s infinite calc(var(--k) * 2s)}
+.cs b{color:var(--fg);font-weight:600;margin-top:6px}
+.cs span:last-child{color:var(--muted);font-size:14px;line-height:1.45}
+@keyframes cyc{0%,30%{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 24px -6px var(--c)}34%,100%{border-color:var(--line);box-shadow:none}}
+.rep{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--faint);font-size:14px}
+@media(min-width:640px){.rep{grid-column:1/-1}}
+.spin{display:inline-block;color:var(--c);font-size:20px;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* карточки: ускорения, что даёт союз */
+.jars{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 14px}
+@media(min-width:640px){.jars{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.jars div{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:14px;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 12%,var(--panel)),var(--panel) 70%);border:1px solid var(--line)}
+.jars b{color:var(--fg);font-weight:600;margin-top:6px}
+.jars div span:last-child{color:var(--muted);font-size:14px;line-height:1.45}
+.gives div{background:linear-gradient(160deg,color-mix(in srgb,var(--teal) 12%,var(--panel)),var(--panel) 70%)}
+.signs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.signs span{padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--grass) 12%,transparent);border:1px solid color-mix(in srgb,var(--grass) 35%,transparent);font-size:14px}
+.signs span::before{content:"✓ ";color:var(--grass)}
+
+/* ошибки */
+.errs{list-style:none;padding:0;display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:640px){.errs{grid-template-columns:1fr 1fr}}
+.errs li{display:flex;gap:10px;align-items:center;margin:0;padding:12px 14px;border-radius:12px;background:rgba(255,107,87,.06);border:1px solid rgba(255,107,87,.25);font-size:15px;line-height:1.4}
+.errs li::before{content:"✕";flex:none;width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:rgba(255,107,87,.15);color:var(--warn);font-weight:700;font-size:13px}
+
+@media(prefers-reduced-motion:reduce){.cs,.spin,.tripline i,.tripsteps div,.cico{animation:none!important}.js .rv{opacity:1;transform:none}.bar i{transform:none}}
+
+/* шапка и подвал сайта */
+.sh-top{padding-top:12px;margin-bottom:14px}
+.sh-bar{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 12px;border-radius:20px;background:color-mix(in srgb,var(--panel) 86%,transparent);border:1px solid var(--line);box-shadow:0 16px 34px -24px rgba(0,0,0,.6)}
+.sh-brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0;color:var(--fg)}
+.sh-brand img{width:40px;height:40px;flex:none;object-fit:contain}
+.sh-brand b{font:400 15px/1.1 var(--display);white-space:nowrap}
+.sh-lang{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:3px;flex:none}
+.sh-lang button{border:0;background:none;height:36px;min-width:42px;border-radius:9px;color:var(--muted);font:800 12px/1 var(--body);cursor:pointer}
+.sh-lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.sitefoot small a{color:inherit;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+/* статьи, которых ещё нет */
+a[aria-disabled]{pointer-events:none;cursor:default}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="wrap">
+  <header class="sh-top"><div class="sh-bar"><a class="sh-brand" href="/" data-shref="home"><img src="/art/web/logo.png" alt="" width="40" height="40"><b data-sh="brand">Штаб союза</b></a><div class="sh-lang" role="group" aria-label="Язык / Language"><button type="button" data-set="ru" aria-pressed="true">RU</button><button type="button" data-set="en" aria-pressed="false">EN</button></div></div></header>
+<div data-l="ru">
+  <a class="back" href="/gaidy/"><span class="g"><i></i><i></i><i></i><i></i></span>Все гайды</a>
+  <header class="cover"><span class="cat">🌱 Первые шаги</span><h1>С чего начать Tiles Survive: гайд для новичков</h1><div class="meta"><span>⏱ 6 мин чтения</span><span>📅 26.11.2026</span></div></header>
+  <aside class="tldr"><h2>⚡ Главное за 30 секунд</h2><ul><li>Главное здание — Электростанция. Всё остальное строится под неё.</li><li>Разделите героев на два отряда для добычи — пусть они не стоят без дела.</li><li>Качайте героев SSR из фракции силачей.</li><li>Ускорения копите и тратьте в нужный день.</li></ul></aside>
+  <details class="toc tocm" id="top-ru"><summary>📑 Содержание</summary><ol class="tocl"></ol></details>
+  <div class="body"><article class="art">
+<section id="pervyj-den"><h2>Что делать в первый день</h2><p>Первый день задаёт темп на всю неделю. Идите по порядку:</p><ol class="flow"><li class="rv" style="--d:0ms"><span class="n">1</span><span class="ic">🎓</span><div><b>Пройдите обучение</b><span>Оно открывает игру по шагам — не пропускайте.</span></div></li><li class="rv" style="--d:90ms"><span class="n">2</span><span class="ic">🎁</span><div><b>Заберите награды</b><span>Ежедневные и за задания — они бесплатные.</span></div></li><li class="rv" style="--d:180ms"><span class="n">3</span><span class="ic">👥</span><div><b>Соберите отряды</b><span>Разделите героев на отряды — как, расскажем ниже.</span></div></li><li class="rv" style="--d:270ms"><span class="n">4</span><span class="ic">⛏️</span><div><b>Отправьте отряды на добычу</b><span>Все до одного, дома никто не сидит.</span></div></li><li class="rv" style="--d:360ms"><span class="n">5</span><span class="ic">⚡</span><div><b>Улучшайте Электростанцию</b><span>Поставьте её в очередь стройки.</span></div></li><li class="rv" style="--d:450ms"><span class="n">6</span><span class="ic">🤝</span><div><b>Вступите в союз</b><span>Подробнее — ниже в статье.</span></div></li></ol><p>Дальше заходите три раза в день:</p><div class="rhythm rv"><div class="times">
+<div><span class="ic">🌅</span>Утром</div><div><span class="ic">🌇</span>Вечером</div><div><span class="ic">🌙</span>Перед сном</div>
+</div><div class="checks"><small>Каждый раз проверяйте</small><div>
+<span><i>🏗️</i>Очередь стройки свободна?</span><span><i>⛏️</i>Отряды добывают?</span><span><i>🎁</i>Есть награды?</span>
+</div></div></div></section>
+<section id="otryady"><h2>Отряды и герои</h2><p>Со старта у вас немного героев. Герои собираются в отряды — до 5 героев в одном отряде. Для разных задач отряды собирают по-разному:</p><div class="sqs">
+<div class="sq gath rv"><b>Для добычи</b><div class="slots"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="slots"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="slots"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><span>Распределите героев поровну по всем отрядам, которые можно отправить на добычу. Пусть работают все отряды, а не один.</span></div>
+<div class="sq fight rv"><b>Для боёв</b><div class="slots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span>Для сражений и уровней в «Приключениях героев» соберите один отряд из основных героев. Их и качайте.</span></div>
+</div><p>Кого качать: в будущем вся боевая мощь будет на героях SSR. Поэтому:</p><div class="jars"><div class="rv" style="--d:0ms"><span class="ic">⭐</span><b>Ставьте на SSR</b><span>Не качайте на максимум героев ниже SSR.</span></div><div class="rv" style="--d:110ms"><span class="ic">🧩</span><b>Берегите универсальные фрагменты</b><span>Тратьте их только на героев SSR.</span></div><div class="rv" style="--d:220ms"><span class="ic">💪</span><b>Начните с силачей</b><span>Это первая фракция, которую получится развивать со старта.</span></div></div><div class="note tip"><span class="i">💡</span><div><b>Совет</b>Собирайте героев SSR из фракции силачей и качайте их универсальными фрагментами и фрагментами самого героя — на них нарисован этот герой.</div></div></section>
+<section id="resursy"><h2>Ресурсы: что и где добывать</h2><p>Четыре основных ресурса добывают отряды. Отправьте отряд в нужную локацию на карте:</p><div class="res">
+<div class="rv" style="--d:0ms"><img class="rimg" src="/art/web/guides/res-wood.png" alt="Древесина" width="56" height="56" loading="lazy"><b>Древесина</b><span>заброшенная лесопилка</span></div>
+<div class="rv" style="--d:100ms"><img class="rimg" src="/art/web/guides/res-food.png" alt="Еда" width="56" height="56" loading="lazy"><b>Еда</b><span>заброшенная теплица</span></div>
+<div class="rv" style="--d:200ms"><img class="rimg" src="/art/web/guides/res-metal.png" alt="Металл" width="56" height="56" loading="lazy"><b>Металл</b><span>заброшенная плавильня</span></div>
+<div class="rv" style="--d:300ms"><img class="rimg" src="/art/web/guides/res-fuel.png" alt="Топливо" width="56" height="56" loading="lazy"><b>Топливо</b><span>заброшенный завод</span></div>
+</div><figure class="trip rv"><div class="tripline"><i></i></div><div class="tripsteps">
+<div style="--k:0"><span class="ic">📤</span><span>Отряд отправили на добычу</span></div><div style="--k:1"><span class="ic">⛏️</span><span>Он добывает несколько часов</span></div><div style="--k:2"><span class="ic">🎒</span><span>Возвращается с ресурсами</span></div>
+</div><figcaption>Чем выше уровень локации, тем дольше отряд добывает и тем больше приносит.</figcaption></figure><p>Древесина, еда, металл и топливо нужны везде: на стройку, исследования и обучение войск. Добывайте то, чего не хватает прямо сейчас.</p>
+<div class="coal rv"><img class="rimg" src="/art/web/guides/res-coal.png" alt="Уголь" width="56" height="56" loading="lazy"><div><b>Уголь</b><span>Его не добывают отрядами. Уголь приходит из ящиков приключений во вкладке «Приключения героев» — забирайте их регулярно. Тратится уголь в основном на исследования.</span></div></div></section>
+<section id="stroit"><h2>Что строить первым</h2><p>Электростанция ограничивает уровень остальных зданий: пока она отстаёт, всё остальное упирается в потолок.</p><figure class="capfig rv"><div class="cap"><div class="capline" style="--h:70%"><span>потолок</span></div>
+<div class="bar main" style="--h:70%;--d:0ms"><i></i><span>Электростанция</span></div>
+<div class="bar" style="--h:70%;--d:120ms"><i></i><span>Лаборатория</span></div>
+<div class="bar" style="--h:55%;--d:240ms"><i></i><span>Казармы</span></div>
+<div class="bar" style="--h:40%;--d:360ms"><i></i><span>Госпиталь</span></div>
+</div><figcaption>Схема: остальные здания не поднимутся выше Электростанции.</figcaption></figure><p>Поэтому стройка идёт по кругу:</p><div class="cycle rv">
+<div class="cs" style="--k:0"><span class="ic">⚡</span><b>Улучшайте</b><span>Электростанцию, пока получается</span></div>
+<div class="cs" style="--k:1"><span class="ic">🔍</span><b>Упёрлись?</b><span>Посмотрите, какое здание не пускает её выше</span></div>
+<div class="cs" style="--k:2"><span class="ic">🧱</span><b>Подтяните</b><span>это здание — и снова Электростанцию</span></div>
+<div class="rep"><span class="spin" aria-hidden="true">↻</span>и снова по кругу</div></div><p>Чем выше уровень Электростанции, тем дольше она строится. Не ждите — пока она строится, запустите во второй очереди стройки другое здание:</p>
+<div class="par rv"><div class="pmain">⚡ Электростанция строится</div><small>а в это время, например:</small><div class="chips"><span>🔬 Лаборатория</span><span>🛡️ Гарнизон</span><span>📡 Станция связи</span><span>🪖 Казармы</span></div></div></section>
+<section id="uskoreniya"><h2>Ускорения: копите</h2><p>Самая частая ошибка новичка — нажать ускорение сразу, как только оно появилось. Копите любые ускорения: стройки, исследований и общие.</p><p>Когда вы вступите в союз, откроется Дуэль союзов. В ней каждый день засчитывается своё, и если качать нужное в свой день, наград будет заметно больше. Как это устроено — в статье <a class="inl" aria-disabled="true">«Дуэль союзов: как набирать очки»</a>.</p><div class="note tip"><span class="i">💡</span><div><b>Совет</b>Ещё есть «Игра по-крупному»: в определённые часы за прокачку нужного дают дополнительные сундуки. Привыкайте качаться не когда накопилось, а когда за это больше дают.</div></div></section>
+<section id="soyuz"><h2>Зачем сразу вступить в союз</h2><p>В союзе можно забирать сундуки с ускорениями:</p><div class="chest rv"><span class="cico">🎁</span><div class="chips"><span><i>🔨</i>стройки</span><span><i>🔬</i>исследований</span><span><i>⏩</i>общие</span><span><i>🪖</i>обучения войск</span><span><i>❤️‍🩹</i>лечения войск</span></div></div>
+<p>А ещё через союз идут события — например, Дуэль союзов.</p><p>Как выбрать союз — смотрите на место в топе штата:</p><ol class="flow"><li class="rv" style="--d:0ms"><span class="n">1</span><span class="ic">🏆</span><div><b>Вступайте как можно выше</b><span>Чем выше союз в топе штата, тем он активнее: там отвечают в чате, помогают, есть правила.</span></div></li><li class="rv" style="--d:90ms"><span class="n">2</span><span class="ic">💪</span><div><b>Попали в тихий союз?</b><span>Ничего страшного: покачайтесь в нём немного.</span></div></li><li class="rv" style="--d:180ms"><span class="n">3</span><span class="ic">⬆️</span><div><b>Проситесь выше</b><span>Когда подрастёте, просите принять вас в союз выше в топе.</span></div></li></ol><div class="note warn"><span class="i">⚠️</span><div><b>Важно</b>В сильном союзе есть свои нормы: от вас тоже будут ждать участия в делах союза.</div></div></section>
+<section id="oshibki"><h2>Частые ошибки новичков</h2><ul class="errs"><li class="rv" style="--d:0ms">Тратить ускорения сразу, а не в нужный день</li><li class="rv" style="--d:80ms">Держать всех героев в одном отряде на добыче</li><li class="rv" style="--d:160ms">Тратить универсальные фрагменты на героев ниже SSR</li><li class="rv" style="--d:240ms">Оставлять вторую очередь стройки пустой</li><li class="rv" style="--d:320ms">Забывать про ящики в «Приключениях героев»</li><li class="rv" style="--d:400ms">Долго играть без союза</li></ul></section>
+<section id="naposledok"><h2>Напоследок</h2><div class="final rv"><p>Tiles Survive — игра не на один вечер. Здесь выигрывает не тот, кто тратит всё сразу, а тот, кто копит и качается в нужный день.</p><p>Держите Электростанцию в работе, не давайте отрядам простаивать и найдите свой союз. Остальное придёт с опытом — а мы поможем следующими гайдами.</p></div></section>
+  </article><aside class="side"><b>Содержание</b><div class="sidel"></div></aside></div>
+  <nav class="pn"><span></span><a class="next" aria-disabled="true"><small>Следующая статья</small><b>Дуэль союзов: как набирать очки</b></a></nav>
+  <section class="rel"><h2>Читайте также</h2><div class="relg"><a aria-disabled="true" style="--c2:var(--teal)"><span class="k">🤝 Союз и события</span><b>Дуэль союзов: как набирать очки</b><span>скоро</span></a><a aria-disabled="true" style="--c2:var(--teal)"><span class="k">🤝 Союз и события</span><b>Рейд на резервуар</b><span>скоро</span></a><a aria-disabled="true" style="--c2:var(--teal)"><span class="k">🤝 Союз и события</span><b>Союз: ранги, бафы и порядок</b><span>скоро</span></a></div></section>
+  <div class="backrow"><a class="back" href="/gaidy/"><span class="g"><i></i><i></i><i></i><i></i></span>Все гайды</a></div>
+</div>
+<div data-l="en">
+  <a class="back" href="/gaidy/"><span class="g"><i></i><i></i><i></i><i></i></span>All guides</a>
+  <header class="cover"><span class="cat">🌱 First steps</span><h1>How to start Tiles Survive: beginner guide</h1><div class="meta"><span>⏱ 5 min read</span><span>📅 26.11.2026</span></div></header>
+  <aside class="tldr"><h2>⚡ Key points in 30 seconds</h2><ul><li>Your main building is the Power Plant. Everything else is built around it.</li><li>Split your heroes into two gathering squads — never let them idle.</li><li>Level SSR heroes from the Strongmen faction.</li><li>Save speedups and spend them on the right day.</li></ul></aside>
+  <details class="toc tocm" id="top-en"><summary>📑 Contents</summary><ol class="tocl"></ol></details>
+  <div class="body"><article class="art">
+<section id="en-day-one"><h2>What to do on day one</h2><p>Your first day sets the pace for the week. Go in order:</p><ol class="flow"><li class="rv" style="--d:0ms"><span class="n">1</span><span class="ic">🎓</span><div><b>Finish the tutorial</b><span>It opens the game step by step — don't skip it.</span></div></li><li class="rv" style="--d:90ms"><span class="n">2</span><span class="ic">🎁</span><div><b>Claim rewards</b><span>Daily ones and from tasks — they're free.</span></div></li><li class="rv" style="--d:180ms"><span class="n">3</span><span class="ic">👥</span><div><b>Form your squads</b><span>Split heroes into squads — see how below.</span></div></li><li class="rv" style="--d:270ms"><span class="n">4</span><span class="ic">⛏️</span><div><b>Send squads to gather</b><span>Every one of them, nobody stays home.</span></div></li><li class="rv" style="--d:360ms"><span class="n">5</span><span class="ic">⚡</span><div><b>Upgrade the Power Plant</b><span>Put it in the build queue.</span></div></li><li class="rv" style="--d:450ms"><span class="n">6</span><span class="ic">🤝</span><div><b>Join an alliance</b><span>More on this below.</span></div></li></ol><p>After that, log in three times a day:</p><div class="rhythm rv"><div class="times">
+<div><span class="ic">🌅</span>Morning</div><div><span class="ic">🌇</span>Evening</div><div><span class="ic">🌙</span>Before bed</div>
+</div><div class="checks"><small>Each time, check</small><div>
+<span><i>🏗️</i>Is the build queue free?</span><span><i>⛏️</i>Are squads gathering?</span><span><i>🎁</i>Anything to claim?</span>
+</div></div></div></section>
+<section id="en-squads"><h2>Squads and heroes</h2><p>You start with only a few heroes. Heroes are grouped into squads — up to 5 per squad. Build squads differently for different jobs:</p><div class="sqs">
+<div class="sq gath rv"><b>For gathering</b><div class="slots"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="slots"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="slots"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><span>Split your heroes evenly across all the squads you can send to gather. Keep every squad working, not just one.</span></div>
+<div class="sq fight rv"><b>For fighting</b><div class="slots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span>For battles and Hero Adventures levels, build one squad of your main heroes. Those are the ones to level.</span></div>
+</div><p>Who to level: later on, all your combat power will come from SSR heroes. So:</p><div class="jars"><div class="rv" style="--d:0ms"><span class="ic">⭐</span><b>Bet on SSR</b><span>Don't max out heroes below SSR.</span></div><div class="rv" style="--d:110ms"><span class="ic">🧩</span><b>Save universal shards</b><span>Spend them only on SSR heroes.</span></div><div class="rv" style="--d:220ms"><span class="ic">💪</span><b>Start with Strongmen</b><span>It's the first faction you can build up from the start.</span></div></div><div class="note tip"><span class="i">💡</span><div><b>Tip</b>Collect SSR heroes from the Strongmen faction and level them with universal shards and the hero's own shards — the ones showing that hero.</div></div></section>
+<section id="en-resources"><h2>Resources: what to gather and where</h2><p>Squads gather the four main resources. Send a squad to the right spot on the map:</p><div class="res">
+<div class="rv" style="--d:0ms"><img class="rimg" src="/art/web/guides/res-wood.png" alt="Wood" width="56" height="56" loading="lazy"><b>Wood</b><span>abandoned sawmill</span></div>
+<div class="rv" style="--d:100ms"><img class="rimg" src="/art/web/guides/res-food.png" alt="Food" width="56" height="56" loading="lazy"><b>Food</b><span>abandoned greenhouse</span></div>
+<div class="rv" style="--d:200ms"><img class="rimg" src="/art/web/guides/res-metal.png" alt="Metal" width="56" height="56" loading="lazy"><b>Metal</b><span>abandoned smelter</span></div>
+<div class="rv" style="--d:300ms"><img class="rimg" src="/art/web/guides/res-fuel.png" alt="Fuel" width="56" height="56" loading="lazy"><b>Fuel</b><span>abandoned factory</span></div>
+</div><figure class="trip rv"><div class="tripline"><i></i></div><div class="tripsteps">
+<div style="--k:0"><span class="ic">📤</span><span>Squad sent to gather</span></div><div style="--k:1"><span class="ic">⛏️</span><span>Gathers for a few hours</span></div><div style="--k:2"><span class="ic">🎒</span><span>Comes back with resources</span></div>
+</div><figcaption>The higher the spot's level, the longer the squad gathers and the more it brings back.</figcaption></figure><p>Wood, food, metal and fuel go into everything: construction, research and troop training. Gather whatever you're short of right now.</p>
+<div class="coal rv"><img class="rimg" src="/art/web/guides/res-coal.png" alt="Coal" width="56" height="56" loading="lazy"><div><b>Coal</b><span>Squads don't gather it. Coal comes from adventure chests in the Hero Adventures tab — claim them regularly. Coal is spent mostly on research.</span></div></div></section>
+<section id="en-build"><h2>What to build first</h2><p>The Power Plant caps the level of every other building: while it lags, everything else hits a ceiling.</p><figure class="capfig rv"><div class="cap"><div class="capline" style="--h:70%"><span>cap</span></div>
+<div class="bar main" style="--h:70%;--d:0ms"><i></i><span>Power Plant</span></div>
+<div class="bar" style="--h:70%;--d:120ms"><i></i><span>Laboratory</span></div>
+<div class="bar" style="--h:55%;--d:240ms"><i></i><span>Barracks</span></div>
+<div class="bar" style="--h:40%;--d:360ms"><i></i><span>Hospital</span></div>
+</div><figcaption>Diagram: other buildings can't go above the Power Plant.</figcaption></figure><p>So building goes in a loop:</p><div class="cycle rv">
+<div class="cs" style="--k:0"><span class="ic">⚡</span><b>Upgrade</b><span>the Power Plant while you can</span></div>
+<div class="cs" style="--k:1"><span class="ic">🔍</span><b>Stuck?</b><span>See which building blocks the next level</span></div>
+<div class="cs" style="--k:2"><span class="ic">🧱</span><b>Raise</b><span>that building — then the Power Plant again</span></div>
+<div class="rep"><span class="spin" aria-hidden="true">↻</span>and round again</div></div><p>The higher the Power Plant, the longer it takes. Don't wait — while it's building, start another building in your second build queue:</p>
+<div class="par rv"><div class="pmain">⚡ Power Plant is building</div><small>meanwhile, for example:</small><div class="chips"><span>🔬 Laboratory</span><span>🛡️ Garrison</span><span>📡 Communication Station</span><span>🪖 Barracks</span></div></div></section>
+<section id="en-speedups"><h2>Speedups: save them</h2><p>The most common beginner mistake is using a speedup the moment you get it. Save every kind: construction, research and general.</p><p>Once you join an alliance, Alliance Duel opens. Each day scores something different, and leveling the right thing on its day brings noticeably more rewards. How it works — in the guide <a class="inl" aria-disabled="true">«Alliance Duel: how to score points»</a>.</p><div class="note tip"><span class="i">💡</span><div><b>Tip</b>There's also Big Play: during certain hours, leveling the right thing gives extra chests. Get used to leveling not when you've saved enough, but when it pays the most.</div></div></section>
+<section id="en-alliance"><h2>Why join an alliance right away</h2><p>In an alliance you can claim chests with speedups:</p><div class="chest rv"><span class="cico">🎁</span><div class="chips"><span><i>🔨</i>construction</span><span><i>🔬</i>research</span><span><i>⏩</i>general</span><span><i>🪖</i>troop training</span><span><i>❤️‍🩹</i>healing</span></div></div>
+<p>Events such as Alliance Duel also run through the alliance.</p><p>How to choose — look at the state ranking:</p><ol class="flow"><li class="rv" style="--d:0ms"><span class="n">1</span><span class="ic">🏆</span><div><b>Join as high as you can</b><span>The higher an alliance ranks in your state, the more active it is: people reply, help and there are rules.</span></div></li><li class="rv" style="--d:90ms"><span class="n">2</span><span class="ic">💪</span><div><b>Ended up in a quiet one?</b><span>No problem: grow there for a while.</span></div></li><li class="rv" style="--d:180ms"><span class="n">3</span><span class="ic">⬆️</span><div><b>Ask to move up</b><span>Once you're stronger, ask to join an alliance higher in the ranking.</span></div></li></ol><div class="note warn"><span class="i">⚠️</span><div><b>Important</b>Strong alliances have their own standards: they'll expect you to take part too.</div></div></section>
+<section id="en-mistakes"><h2>Common beginner mistakes</h2><ul class="errs"><li class="rv" style="--d:0ms">Using speedups at once instead of on the right day</li><li class="rv" style="--d:80ms">Keeping all heroes in one gathering squad</li><li class="rv" style="--d:160ms">Spending universal shards on heroes below SSR</li><li class="rv" style="--d:240ms">Leaving the second build queue empty</li><li class="rv" style="--d:320ms">Forgetting chests in Hero Adventures</li><li class="rv" style="--d:400ms">Playing without an alliance for too long</li></ul></section>
+<section id="en-final"><h2>Final word</h2><div class="final rv"><p>Tiles Survive isn't a one-evening game. The winner isn't who spends everything at once, but who saves up and levels on the right day.</p><p>Keep the Power Plant busy, never let squads idle and find your alliance. The rest comes with experience — and our next guides will help.</p></div></section>
+  </article><aside class="side"><b>Contents</b><div class="sidel"></div></aside></div>
+  <nav class="pn"><span></span><a class="next" aria-disabled="true"><small>Next guide</small><b>Alliance Duel: how to score points</b></a></nav>
+  <section class="rel"><h2>Read also</h2><div class="relg"><a aria-disabled="true" style="--c2:var(--teal)"><span class="k">🤝 Alliance &amp; events</span><b>Alliance Duel: how to score points</b><span>soon</span></a><a aria-disabled="true" style="--c2:var(--teal)"><span class="k">🤝 Alliance &amp; events</span><b>Reservoir raid</b><span>soon</span></a><a aria-disabled="true" style="--c2:var(--teal)"><span class="k">🤝 Alliance &amp; events</span><b>Alliance: ranks, buffs and order</b><span>soon</span></a></div></section>
+  <div class="backrow"><a class="back" href="/gaidy/"><span class="g"><i></i><i></i><i></i><i></i></span>All guides</a></div>
+</div>
+  <footer class="sitefoot"><div class="pair"><a href="/pomoshch/" data-shref="help" data-sh="help">Вопросы и ответы</a><a href="/" data-shref="home" data-sh="home">На главную</a></div><small><span data-sh="own">Васильев Иван Андреевич · Москва</span> · <a href="mailto:support@shtabsoyuza.ru">support@shtabsoyuza.ru</a></small></footer>
+</div>
+<script>
+const SH={brand:["Штаб союза","Alliance HQ"],help:["Вопросы и ответы","Questions & answers"],home:["На главную","Home"],own:["Васильев Иван Андреевич · Москва","Ivan Vasilev · Moscow, Russia"]};
+const SHREF={home:["/","/en/"],help:["/pomoshch/","/en/help/"]};
+function shApply(l){const i=l==="en"?1:0;
+ document.querySelectorAll("[data-sh]").forEach(e=>e.textContent=SH[e.dataset.sh][i]);
+ document.querySelectorAll("[data-shref]").forEach(e=>e.href=SHREF[e.dataset.shref][i]);
+ document.querySelectorAll(".sh-lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.set===l));
+ try{localStorage.setItem("lang",l)}catch(e){}}
+document.documentElement.classList.add("js");
+const titles={ru:"Tiles Survive для новичков: с чего начать — Штаб союза",en:"How to start Tiles Survive: beginner guide — Alliance HQ"};
+const rvo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rvo.unobserve(e.target)}}),{rootMargin:"0px 0px -10% 0px"});
+document.querySelectorAll(".rv").forEach(el=>rvo.observe(el));
+document.querySelectorAll("[data-l]").forEach(box=>{
+  const secs=[...box.querySelectorAll(".art>section")];
+  const links=secs.map(s=>`<a href="#${s.id}">${s.querySelector("h2").textContent}</a>`).join("");
+  box.querySelector(".tocl").innerHTML=links.replace(/<a /g,"<li><a ").replace(/<\/a>/g,"</a></li>");
+  box.querySelector(".sidel").innerHTML=links;
+  const all=[...box.querySelectorAll(".tocl a,.sidel a")];
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)all.forEach(a=>a.classList.toggle("on",a.hash==="#"+e.target.id))})},{rootMargin:"-20% 0px -70% 0px"});
+  secs.forEach(s=>io.observe(s));
+});
+function setLang(l){document.documentElement.lang=l;document.title=titles[l];shApply(l)}
+document.querySelectorAll(".sh-lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.set));
+setLang(shLang);
+const prog=document.getElementById("prog");
+addEventListener("scroll",()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
+</script>
+</body>
+</html>
