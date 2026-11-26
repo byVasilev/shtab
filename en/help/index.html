@@ -425,7 +425,7 @@ a.btn{text-decoration:none}
 .map-top{display:grid;gap:6px}
 .map-top p{margin:0;max-width:720px}
 .map-gate{max-width:520px}
-.map-gatewrap{display:grid;gap:16px;align-items:start}@media(min-width:900px){.map-gatewrap{grid-template-columns:minmax(0,520px) minmax(0,1fr)}.map-gatewrap .map-gate{max-width:none}}.map-gatewrap .map-faq{margin:0}
+.map-gatewrap{display:grid;gap:16px}@media(min-width:900px){.map-gatewrap{grid-template-columns:1fr 1fr;align-items:stretch}.map-gatewrap .map-gate{max-width:none}}.map-gatewrap .map-faq{margin:0}.map-faq-side h2{margin:0;font-size:20px}
 .map-gate h2{margin:0;font-size:20px}
 .map-gate .hint{margin:0}
 .map-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -610,7 +610,7 @@ html.map-lock .to-top{display:none}
 .calc-stepper.goal{max-width:190px}
 .calc-wide{width:100%}
 .calc-promo{justify-items:center;text-align:center}
-.map-faq .bfx-body{display:grid;gap:10px}.map-faq .bfx-body p{margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--teal-soft);color:var(--muted);line-height:1.5}.map-faq .bfx-body p b{display:block;margin-bottom:4px;color:var(--teal);font-weight:700}
+.map-faq .bfx-body{display:grid;gap:0}.map-faq .bfx-body p{margin:0;padding:12px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;line-height:1.5}.map-faq .bfx-body p:first-child{border-top:0;padding-top:4px}.map-faq .bfx-body p:last-child{padding-bottom:0}.map-faq .bfx-body p b{display:block;margin-bottom:2px;color:var(--teal);font-size:15px;font-weight:700}
 @media (max-width:370px){.calc-skill{grid-template-columns:1fr 130px}.calc-cost{grid-column:1/-1;text-align:left}}
 @media (min-width:861px){
   .calc-wrap h1,.calc-wrap .vt{font-size:30px}
@@ -3143,6 +3143,6 @@ Next: Velmora</p>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=e848bb4982"></script>
+<script src="/app.js?v=4c47da607c"></script>
 </body>
 </html>
