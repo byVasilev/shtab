@@ -789,6 +789,8 @@ html.map-lock .to-top{display:none}
 .dh-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:16px}
 .dh-cards.scroll{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 32px) / 3);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px;scrollbar-width:thin}
 .dh-cards.scroll > .feat{scroll-snap-align:start}
+/* a tab whose cards all fit on a wide screen stays a plain row there; on a phone it scrolls sideways like the rest */
+@media (min-width:901px){.dh-cards.scroll.fit{grid-auto-flow:row;grid-template-columns:repeat(var(--n),minmax(0,1fr));overflow:visible}.dh-scroll:has(.fit) .dh-nav{display:none}.dh-scroll:has(.fit)::after{display:none}}
 .dh-scroll{position:relative}
 .dh-scroll::after{content:"";position:absolute;top:0;right:0;bottom:48px;width:var(--dhfade,0px);pointer-events:none;border-radius:20px 0 0 20px;background:linear-gradient(90deg,transparent,var(--bg) 85%);transition:opacity .2s}
 .dh-scroll.at-end::after{opacity:0}
@@ -970,6 +972,7 @@ fieldset.f{border:0;padding:0;margin:0}
 .qi:first-child{border-top:0}
 .qi .n{font:600 15px/1 var(--display);color:var(--faint);text-align:center}
 .qi .nm{font-weight:800;overflow-wrap:anywhere}
+.q-who{display:flex;align-items:center;gap:10px;min-width:0}.q-who>div{min-width:0}
 .qi .sub{font:600 12.5px/1.4 var(--body);color:var(--muted)}
 .xyfix{font:inherit;color:var(--fg);background:none;border:0;border-bottom:1px dashed var(--muted);padding:0;cursor:pointer}
 @media (hover:hover){.xyfix:hover{color:var(--teal);border-color:var(--teal)}}
@@ -2563,6 +2566,7 @@ Next: Velmora</p>
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dwrole="r3" data-i18n="dq_as_pl">Player</button><button type="button" data-dwrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
         </div>
         <p class="hint dq-role" id="dwRole"></p>
+        <div class="panel honor" data-nw="honor"></div>
         <form class="panel news-form" id="dwForm" data-nw="form" novalidate hidden>
           <h3 data-nw="formh"></h3>
           <div class="f"><label for="dwTitle" data-i18n="news_title">Title</label><input class="inp" id="dwTitle" data-nw="title" maxlength="90" autocomplete="off"></div>
@@ -2603,7 +2607,8 @@ Next: Velmora</p>
         </div>
         <div class="dh-pane" data-dhpane="people" role="tabpanel">
           <p class="dh-lead" data-i18n="dh_people">Who is in the alliance and who wants to join.</p>
-          <div class="dh-cards">
+          <div class="dh-scroll">
+          <div class="dh-cards scroll fit" style="--n:3" data-dhrow>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-add"/></svg></div><h3 data-i18n="hq_new">New players</h3><p data-i18n="dh_req_p">A player applies by the invite link. The request shows their coordinates, power with its growth over recent weeks, past nicknames and whether they are on the alliance list from the game.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Example</span>
               <div class="req"><div><b>Nightjar</b><span data-i18n="dh_req_ex">applied 2 h ago · X:540 Y:470 · 41.2 M</span><span class="pill ok" style="align-self:flex-start;margin-top:4px" data-i18n="dh_req_tag">✓ on the alliance list · R3</span></div></div></div></div>
@@ -2611,6 +2616,12 @@ Next: Velmora</p>
           <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-shield"/></svg></div><h3 data-i18n="dh_inv_h">Invite and the list from the game</h3><p data-i18n="dh_inv_p">Newcomers join only by the alliance link. And the whole line-up can be loaded at once from screenshots of the alliance list in the game: HQ knows everyone before they sign up and gives their rank back when they join.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Example</span>
               <div class="req"><div><b>Corvin</b><span data-i18n="dh_seed_ex">from the alliance list screenshot · R3 · not on the site yet</span></div></div></div></div>
+          </div>
+            <div class="dh-nav">
+              <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
+              <div class="dh-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <button class="dh-go dh-next" type="button" data-dhgo="1" data-i18n-aria="dh_next"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 5l7 7-7 7"/></svg></button>
+            </div>
           </div>
         </div>
         <div class="dh-pane" data-dhpane="activity" role="tabpanel" hidden>
@@ -2633,21 +2644,35 @@ Next: Velmora</p>
         </div>
         <div class="dh-pane" data-dhpane="comms" role="tabpanel" hidden>
           <p class="dh-lead" data-i18n="dh_comms">How to reach the alliance and the developer.</p>
-          <div class="dh-cards">
+          <div class="dh-scroll">
+          <div class="dh-cards scroll fit" style="--n:3" data-dhrow>
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="ann_h">Posts: to players and the chat</h3><p data-i18n="dh_ann_p">A notification to every player and to the alliance chat. Handy for gatherings, events and reminders that repeat every week.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ann_ex">How a player gets the notification</span>
               <div class="dh-push"><span class="dh-app"><svg><use href="#i-shield"/></svg></span><div><b data-i18n="dh_push_h">[SKD] Reservoir raid tomorrow</b><span data-i18n="dh_push_p">Gather at 20:00 MSK. See your group on the Raid tab.</span></div></div></div></div>
           <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-send"/></svg></div><h3 data-i18n="dh_chat_h">Alliance chat in Telegram and VK</h3><p data-i18n="dh_chat_p">Add the bot to the alliance chat, and it will post the main things there itself.</p></div>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-msg"/></svg></div><h3 data-i18n="fb_h">Message the developer</h3><p data-i18n="dh_fb_p">An idea, a bug or a question goes to the developer, and the reply shows right under your message.</p></div>
           </div>
+            <div class="dh-nav">
+              <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
+              <div class="dh-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <button class="dh-go dh-next" type="button" data-dhgo="1" data-i18n-aria="dh_next"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
         </div>
         <div class="dh-pane" data-dhpane="events" role="tabpanel" hidden>
           <p class="dh-lead" data-i18n="dh_ev">Game events with a timer and a reminder.</p>
-          <div class="dh-cards two">
+          <div class="dh-scroll">
+          <div class="dh-cards scroll fit" style="--n:2" data-dhrow>
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-cal"/></svg></div><h3 data-i18n="ev_tpl_h">Event templates</h3><p data-i18n="dh_tpl_p">Events in the game come round again. A template is made once: the name, how many days it runs and a tip on what to spend the bonuses on. After that it starts in one tap.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Example</span>
               <div class="req"><div><b data-i18n="dh_tpl_ex_h">Tycoon · 5 days</b><span data-i18n="dh_tpl_ex">Tip: save speed-ups for the last day</span><span class="pill run" style="align-self:flex-start;margin-top:4px" data-i18n="dh_tpl_ex_on">Running, 2 days left</span></div></div></div></div>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="dh_run_h">Start and reminder</h3><p data-i18n="dh_run_p">An event started in the game: tap Start. Forgot to do it right away? Set the real start time and the site works out the end.</p></div>
+          </div>
+            <div class="dh-nav">
+              <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
+              <div class="dh-dots" aria-hidden="true"><i></i><i></i></div>
+              <button class="dh-go dh-next" type="button" data-dhgo="1" data-i18n-aria="dh_next"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 5l7 7-7 7"/></svg></button>
+            </div>
           </div>
         </div>
         <div class="dh-pane" data-dhpane="settings" role="tabpanel" hidden>
@@ -3149,6 +3174,6 @@ Next: Velmora</p>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=a7c49eb4dd"></script>
+<script src="/app.js?v=1799a883e9"></script>
 </body>
 </html>

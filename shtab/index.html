@@ -789,6 +789,8 @@ html.map-lock .to-top{display:none}
 .dh-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:16px}
 .dh-cards.scroll{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 32px) / 3);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px;scrollbar-width:thin}
 .dh-cards.scroll > .feat{scroll-snap-align:start}
+/* a tab whose cards all fit on a wide screen stays a plain row there; on a phone it scrolls sideways like the rest */
+@media (min-width:901px){.dh-cards.scroll.fit{grid-auto-flow:row;grid-template-columns:repeat(var(--n),minmax(0,1fr));overflow:visible}.dh-scroll:has(.fit) .dh-nav{display:none}.dh-scroll:has(.fit)::after{display:none}}
 .dh-scroll{position:relative}
 .dh-scroll::after{content:"";position:absolute;top:0;right:0;bottom:48px;width:var(--dhfade,0px);pointer-events:none;border-radius:20px 0 0 20px;background:linear-gradient(90deg,transparent,var(--bg) 85%);transition:opacity .2s}
 .dh-scroll.at-end::after{opacity:0}
@@ -970,6 +972,7 @@ fieldset.f{border:0;padding:0;margin:0}
 .qi:first-child{border-top:0}
 .qi .n{font:600 15px/1 var(--display);color:var(--faint);text-align:center}
 .qi .nm{font-weight:800;overflow-wrap:anywhere}
+.q-who{display:flex;align-items:center;gap:10px;min-width:0}.q-who>div{min-width:0}
 .qi .sub{font:600 12.5px/1.4 var(--body);color:var(--muted)}
 .xyfix{font:inherit;color:var(--fg);background:none;border:0;border-bottom:1px dashed var(--muted);padding:0;cursor:pointer}
 @media (hover:hover){.xyfix:hover{color:var(--teal);border-color:var(--teal)}}
@@ -2563,6 +2566,7 @@ html.boot #v-load{display:flex!important}
             <div class="seg" role="group" data-i18n-aria="dq_as"><button type="button" data-dwrole="r3" data-i18n="dq_as_pl">Игрок</button><button type="button" data-dwrole="r4" data-i18n="dq_as_r4">R4/R5</button></div></div>
         </div>
         <p class="hint dq-role" id="dwRole"></p>
+        <div class="panel honor" data-nw="honor"></div>
         <form class="panel news-form" id="dwForm" data-nw="form" novalidate hidden>
           <h3 data-nw="formh"></h3>
           <div class="f"><label for="dwTitle" data-i18n="news_title">Заголовок</label><input class="inp" id="dwTitle" data-nw="title" maxlength="90" autocomplete="off"></div>
@@ -2603,7 +2607,8 @@ html.boot #v-load{display:flex!important}
         </div>
         <div class="dh-pane" data-dhpane="people" role="tabpanel">
           <p class="dh-lead" data-i18n="dh_people">Кто в союзе и кто просится в него.</p>
-          <div class="dh-cards">
+          <div class="dh-scroll">
+          <div class="dh-cards scroll fit" style="--n:3" data-dhrow>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-add"/></svg></div><h3 data-i18n="hq_new">Новые игроки</h3><p data-i18n="dh_req_p">Игрок сам подаёт заявку по ссылке-приглашению. В заявке видны его координаты, БМ с ростом за последние недели, прошлые ники и есть ли он в списке союза из игры.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b>Nightjar</b><span data-i18n="dh_req_ex">заявка 2 ч назад · X:540 Y:470 · 41,2 млн</span><span class="pill ok" style="align-self:flex-start;margin-top:4px" data-i18n="dh_req_tag">✓ есть в списке союза · R3</span></div></div></div></div>
@@ -2611,6 +2616,12 @@ html.boot #v-load{display:flex!important}
           <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-shield"/></svg></div><h3 data-i18n="dh_inv_h">Приглашение и состав из игры</h3><p data-i18n="dh_inv_p">Новички вступают только по ссылке союза. А весь состав можно сразу загрузить скринами списка союза из игры: Штаб узнает всех ещё до регистрации и при вступлении сам вернёт ранг.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b>Corvin</b><span data-i18n="dh_seed_ex">со скрина списка союза · R3 · ещё не на сайте</span></div></div></div></div>
+          </div>
+            <div class="dh-nav">
+              <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
+              <div class="dh-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <button class="dh-go dh-next" type="button" data-dhgo="1" data-i18n-aria="dh_next"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 5l7 7-7 7"/></svg></button>
+            </div>
           </div>
         </div>
         <div class="dh-pane" data-dhpane="activity" role="tabpanel" hidden>
@@ -2633,21 +2644,35 @@ html.boot #v-load{display:flex!important}
         </div>
         <div class="dh-pane" data-dhpane="comms" role="tabpanel" hidden>
           <p class="dh-lead" data-i18n="dh_comms">Как достучаться до союза и до разработчика.</p>
-          <div class="dh-cards">
+          <div class="dh-scroll">
+          <div class="dh-cards scroll fit" style="--n:3" data-dhrow>
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="ann_h">Рассылки: игрокам и в чат</h3><p data-i18n="dh_ann_p">Уведомление всем игрокам и в чат союза. Удобно для сборов, событий и напоминаний, которые повторяются каждую неделю.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ann_ex">Так игрок получит уведомление</span>
               <div class="dh-push"><span class="dh-app"><svg><use href="#i-shield"/></svg></span><div><b data-i18n="dh_push_h">[SKD] Завтра рейд на резервуар</b><span data-i18n="dh_push_p">Сбор в 20:00 МСК. Свою группу смотрите во вкладке «Рейд».</span></div></div></div></div>
           <div class="panel feat"><div class="ic" style="color:var(--teal)"><svg><use href="#i-send"/></svg></div><h3 data-i18n="dh_chat_h">Чат союза в Telegram и ВК</h3><p data-i18n="dh_chat_p">Добавьте бота в беседу союза, и он сам будет присылать туда главное.</p></div>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-msg"/></svg></div><h3 data-i18n="fb_h">Написать разработчику</h3><p data-i18n="dh_fb_p">Идея, ошибка или вопрос уходят разработчику, а ответ появится здесь же под вашим сообщением.</p></div>
           </div>
+            <div class="dh-nav">
+              <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
+              <div class="dh-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <button class="dh-go dh-next" type="button" data-dhgo="1" data-i18n-aria="dh_next"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
         </div>
         <div class="dh-pane" data-dhpane="events" role="tabpanel" hidden>
           <p class="dh-lead" data-i18n="dh_ev">События игры с таймером и напоминанием.</p>
-          <div class="dh-cards two">
+          <div class="dh-scroll">
+          <div class="dh-cards scroll fit" style="--n:2" data-dhrow>
           <div class="panel feat"><div class="ic" style="color:var(--bolt)"><svg><use href="#i-cal"/></svg></div><h3 data-i18n="ev_tpl_h">Шаблоны событий</h3><p data-i18n="dh_tpl_p">События в игре повторяются. Шаблон заводят один раз: название, сколько дней идёт и подсказку, на что тратить бонусы. Дальше запуск в одно нажатие.</p>
             <div class="dh-ex"><span class="eyebrow" data-i18n="dh_ex">Пример</span>
               <div class="req"><div><b data-i18n="dh_tpl_ex_h">Магнат · 5 дней</b><span data-i18n="dh_tpl_ex">Подсказка: ускорения копите до последнего дня</span><span class="pill run" style="align-self:flex-start;margin-top:4px" data-i18n="dh_tpl_ex_on">Идёт, до конца 2 дня</span></div></div></div></div>
           <div class="panel feat"><div class="ic" style="color:var(--grass)"><svg><use href="#i-bell"/></svg></div><h3 data-i18n="dh_run_h">Запуск и напоминание</h3><p data-i18n="dh_run_p">Началось событие в игре — нажмите «Запустить». Забыли сразу? Поставьте настоящее время старта, конец сайт посчитает сам.</p></div>
+          </div>
+            <div class="dh-nav">
+              <button class="dh-go dh-prev" type="button" data-dhgo="-1" data-i18n-aria="dh_prev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg></button>
+              <div class="dh-dots" aria-hidden="true"><i></i><i></i></div>
+              <button class="dh-go dh-next" type="button" data-dhgo="1" data-i18n-aria="dh_next"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 5l7 7-7 7"/></svg></button>
+            </div>
           </div>
         </div>
         <div class="dh-pane" data-dhpane="settings" role="tabpanel" hidden>
@@ -3149,6 +3174,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=a7c49eb4dd"></script>
+<script src="/app.js?v=1799a883e9"></script>
 </body>
 </html>
