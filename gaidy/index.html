@@ -140,6 +140,16 @@ mark{background:rgba(255,210,63,.3);color:inherit;border-radius:3px}
 .sitefoot small a{color:inherit;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
 /* статьи, которых ещё нет */
 a[aria-disabled]{pointer-events:none;cursor:default}
+/* подписи и значки поверх картинок */
+.blk.bgpic{background:linear-gradient(180deg,rgba(12,23,29,.6) 0,rgba(12,23,29,.12) 30%,rgba(12,23,29,.3) 44%,rgba(12,23,29,.93) 66%),var(--bgimg) center/cover,var(--panel)}
+.blk .lvl{display:inline-block;padding:2px 9px;border-radius:999px;background:rgba(8,18,23,.8);margin-bottom:4px}
+.blk h2{text-shadow:0 1px 2px rgba(0,0,0,.9),0 2px 12px rgba(0,0,0,.8)}
+.blk .ico{background:rgba(8,18,23,.75);border-color:color-mix(in srgb,var(--c) 70%,transparent)}
+.blk .ico img{width:46px;height:46px}
+.blk.bgpic .desc{color:#dbe7e9;text-shadow:0 1px 6px rgba(0,0,0,.95)}
+.blk.soon{filter:none;opacity:1}
+.blk.soon .soonbadge{background:rgba(8,18,23,.8)}
+.chips a i img{width:22px;height:22px;display:block;object-fit:contain}
 </style>
 </head>
 <body>
@@ -181,34 +191,34 @@ function shApply(l){const i=l==="en"?1:0;
  try{localStorage.setItem("lang",l)}catch(e){}}
 // Демо-данные: названия статей примерные, проверить по игре перед написанием.
 const BLOCKS=[
- {id:"start",g:"base",c:"var(--grass)",ico:"🌱",lvl:["Новичку","Beginner"],
+ {id:"start",bg:"/art/web/guides/bg-start.jpg",g:"base",c:"var(--grass)",ico:"img:/art/web/guides/ic-start.png",lvl:["Новичку","Beginner"],
   t:["Первые шаги","First steps"],d:["С чего начать и каких ошибок не делать в первые дни.","Where to start and which mistakes to avoid."],
-  a:[["С чего начать: гайд для новичков","How to start: beginner guide",6,1,"/gaidy/pervye-shagi/"],["10 ошибок новичка","10 beginner mistakes",5],["Как получать ресурсы","How to get resources",6],["Коды подарков и как их ввести","Gift codes and how to redeem",2],["Как выбрать союз","How to pick an alliance",4],["Ежедневный план на 15 минут","A 15-minute daily routine",4]],
+  a:[["С чего начать: гайд для новичков","How to start: beginner guide",6,1,"/gaidy/pervye-shagi/","первый день электростанция стройка отряды герои ресурсы уголь ускорения союз ошибки power plant squads heroes resources coal speedups alliance mistakes"]],
   k:"новичок начало старт ошибки коды ресурсы еда дерево beginner start"},
- {id:"town",bg:"/art/web/guides/bg-town.jpg",g:"base",c:"var(--brick)",ico:"img:/art/web/build.png",lvl:["Развитие","Growth"],
+ {id:"town",bg:"/art/web/guides/bg-town.jpg",g:"base",c:"var(--brick)",ico:"img:/art/web/guides/ic-town.png",lvl:["Развитие","Growth"],
   t:["Поселение и здания","Settlement & buildings"],d:["Порядок постройки и что улучшать в первую очередь.","Build order and upgrade priorities."],
-  a:[["Порядок постройки зданий","Building order",7],["Электростанция: зачем и до какого уровня","Power plant: why and how far",5]],
+  a:[],
   k:"здания постройка база город электростанция building"},
- {id:"science",bg:"/art/web/guides/bg-science.jpg",g:"base",c:"var(--teal)",ico:"img:/art/web/science.png",lvl:["Развитие","Growth"],
+ {id:"science",bg:"/art/web/guides/bg-science.jpg",g:"base",c:"var(--teal)",ico:"img:/art/web/guides/ic-science.png",lvl:["Развитие","Growth"],
   t:["Исследования","Research"],d:["Какие ветки изучать первыми.","Which branches to research first."],
-  a:[["Что исследовать в первую очередь","Research priorities",6]],
+  a:[],
   k:"исследования наука лаборатория research"},
- {id:"heroes",bg:"/art/web/guides/bg-heroes.jpg",g:"power",c:"#c77dff",ico:"🦸",lvl:["Главное","Core"],
+ {id:"heroes",bg:"/art/web/guides/bg-heroes.jpg",g:"power",c:"#c77dff",ico:"img:/art/web/guides/ic-heroes.png",lvl:["Главное","Core"],
   t:["Герои","Heroes"],d:["Кого качать, как распределять звёзды и навыки.","Who to level, stars and skills."],
-  a:[["Тир-лист героев","Hero tier list",10,1],["Кого качать первым","Who to level first",6],["Фракции героев","Hero factions",5],["Звёзды и осколки","Stars and shards",5],["Навыки героев","Hero skills",7]],
+  a:[],
   k:"герои тир лист фракции звезды навыки прокачка hero tier"},
- {id:"gear",bg:"/art/web/guides/bg-gear.jpg",g:"power",c:"var(--bolt)",ico:"🛡️",lvl:["Усиление","Power"],
+ {id:"gear",bg:"/art/web/guides/bg-gear.jpg",g:"power",c:"var(--bolt)",ico:"img:/art/web/guides/ic-gear.png",lvl:["Усиление","Power"],
   t:["Снаряжение","Gear"],d:["Что надевать и как улучшать.","What to equip and how to upgrade."],
-  a:[["Гайд по снаряжению","Gear guide",8]],
+  a:[],
   k:"снаряжение шмот экипировка снаряга перековка gear equipment"},
- {id:"army",bg:"/art/web/guides/bg-army.jpg",g:"power",c:"var(--warn)",ico:"⚔️",lvl:["Бой","Combat"],
+ {id:"army",bg:"/art/web/guides/bg-army.jpg",g:"power",c:"var(--warn)",ico:"img:/art/web/guides/ic-army.png",lvl:["Бой","Combat"],
   t:["Войска и бой","Troops & combat"],d:["Составы, лечение и бои.","Lineups, healing and fights."],a:[],
   k:"войска бой составы лечение армия troops"},
- {id:"ally",g:"ally",c:"var(--teal)",ico:"🤝",bg:"/art/web/guides/bg-ally.jpg",lvl:["Союз","Alliance"],
+ {id:"ally",g:"ally",c:"var(--teal)",ico:"img:/art/web/guides/ic-ally.png",bg:"/art/web/guides/bg-ally.jpg",lvl:["Союз","Alliance"],
   t:["Союз и события","Alliance & events"],d:["VS, рейд на резервуар, БМ — и как это вести в Штабе.","VS, reservoir raid, BM — and how to run them in HQ."],
-  a:[["Рейд на резервуар: полный гайд","Reservoir raid: full guide",9,1],["Битва союзов (VS): как набрать очки","Alliance VS: how to score",7],["БМ: как это работает","BM explained",6],["Очередь бафов в союзе","Buff queue in an alliance",4]],
+  a:[],
   k:"союз события vs резервуар рейд бм бафы alliance raid reservoir"},
- {id:"season",g:"ally",bg:"/art/web/island.png",c:"#6ec6ff",ico:"❄️",lvl:["Опытному","Advanced"],
+ {id:"season",g:"ally",bg:"/art/web/island.png",c:"#6ec6ff",ico:"img:/art/web/guides/ic-season.png",lvl:["Опытному","Advanced"],
   t:["Сезоны и штат","Seasons & state"],d:["Сезоны, карта штата, переезд.","Seasons, state map, transfer."],a:[],
   k:"сезон штат карта переезд season state map"},
 ];
@@ -221,7 +231,7 @@ const UI={
  lt:["✨ Скоро новые гайды","✨ More guides coming soon"],lp:["Мы пишем следующие статьи — они будут появляться здесь.","We are writing the next articles — they will appear here."],
  more:["Показать все","Show all"],less:["Свернуть","Collapse"],soon:["⏳ Скоро","⏳ Coming soon"],
  min:["мин","min"],neu:["новое","new"],found:["Нашлось","Found"],none:["Такой статьи пока нет. Загляните в похожие разделы:","No such article yet. Try these sections:"],
- hints:[["снаряжение","резервуар","тир-лист","новичок"],["gear","reservoir","tier list","beginner"]]
+ hints:[["новичок","ресурсы","ускорения","отряды"],["beginner","resources","speedups","squads"]]
 };
 let L=shLang==="en"?1:0;const $=s=>document.querySelector(s);const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 
@@ -235,7 +245,7 @@ function render(){
  document.querySelectorAll("[data-t]").forEach(e=>e.innerHTML=UI[e.dataset.t][L]);
  $("#q").placeholder=UI.ph[L];
  $("#hints").innerHTML=UI.hints[L].map(h=>`<button>${h}</button>`).join("");
- const ch=BLOCKS.map(b=>`<a href="#${b.id}" style="--c:${b.c}"><i>${b.ico.startsWith("img:")?(b.id==="town"?"🏗️":"🔬"):b.ico}</i>${b.t[L]}</a>`).join("");
+ const ch=BLOCKS.map(b=>`<a href="#${b.id}" style="--c:${b.c}"><i>${ico(b)}</i>${b.t[L]}</a>`).join("");
  $("#chips").innerHTML=`<div class="track">${ch}${ch.replace(/<a /g,'<a aria-hidden="true" tabindex="-1" ')}</div>`;
  const card=(b,i)=>{
   const cls=`blk${b.bg?" bgpic":""}${b.a.length?"":" soon"}`;
@@ -255,7 +265,7 @@ function search(){
  if(!q){R.className="results";G.classList.remove("dim");G.querySelectorAll(".blk").forEach(e=>e.classList.remove("match"));return}
  const hits=[],cats=new Set();
  BLOCKS.forEach(b=>{const bk=norm(b.k+" "+b.t.join(" "));
-  b.a.forEach(a=>{if(norm(a[0]+" "+a[1]).includes(q)||bk.includes(q)){hits.push([a,b]);cats.add(b.id)}});
+  b.a.forEach(a=>{if(norm(a[0]+" "+a[1]+" "+(a[5]||"")).includes(q)||bk.includes(q)){hits.push([a,b]);cats.add(b.id)}});
   if(bk.includes(q))cats.add(b.id)});
  G.classList.add("dim");G.querySelectorAll(".blk").forEach(e=>e.classList.toggle("match",cats.has(e.id)));
  const hl=s=>{const i=norm(s).indexOf(q);return i<0?esc(s):esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+q.length))+"</mark>"+esc(s.slice(i+q.length))};
