@@ -436,7 +436,8 @@ a.btn{text-decoration:none}
 .map-side,.map-main{display:grid;gap:14px;min-width:0;align-content:start}
 .map-me{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:700;min-width:0}
 .map-me span{overflow-wrap:anywhere}
-.map-sel{font-family:var(--body);font-size:15px;padding-right:6px}
+.map-sel{font-family:var(--body);font-size:15px;height:46px;padding-right:32px;-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.calc-2 > .calc-f > #mapState{height:46px}
 .map-allies{display:grid;gap:8px}
 .map-allies:empty{display:none}
 .map-ally{display:grid;gap:4px}
@@ -1887,7 +1888,7 @@ html.scrolled header.top::before{opacity:1}
 @media (max-width:640px){
   .mrow .acts.acts.acts:not(:has(> :only-child)){grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-left:0}
   .mrow .acts .rank-sel,.pf-manage .acts .rank-sel{grid-column:1/-1}
-  .mrow .acts .btn:last-child:nth-child(2n+2),.pf-manage .acts .btn:last-child:nth-child(2n+2){grid-column:1/-1}
+  .mrow .acts:has(> .rank-sel) .btn:last-child:nth-child(2n+2),.pf-manage .acts:has(> .rank-sel) .btn:last-child:nth-child(2n+2),.mrow .acts:not(:has(> .rank-sel)) .btn:last-child:nth-child(odd),.pf-manage .acts:not(:has(> .rank-sel)) .btn:last-child:nth-child(odd){grid-column:1/-1}
 }
 /* the player page */
 .pf{display:flex;flex-direction:column;gap:14px}
@@ -3174,6 +3175,6 @@ Next: Velmora</p>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=e3cb41108a"></script>
+<script src="/app.js?v=05b0f65ac0"></script>
 </body>
 </html>
