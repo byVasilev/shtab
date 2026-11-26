@@ -1972,6 +1972,11 @@ html.scrolled header.top::before{opacity:1}
 .pf-buflist{list-style:none;margin:0 0 10px;padding:4px 12px;border-radius:12px;background:var(--panel-2)}
 .pf-buflist li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
 .pf-buflist li:first-child{border-top:0}
+/* "didn't arrive" and the R4 fixes: a full-width line under the nick and time, a pair shares it equally */
+.pf-buflist li{flex-wrap:wrap}
+.pf-buflist li > .btn,.pf-buflist .arch-fix{flex:1 0 100%}
+.pf-buflist .arch-fix{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pf-buflist li .btn{min-height:40px}
 .pf-buflist li small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 .pf-buflist .pf-bufdisp{color:var(--warn)}
 .pf-bufnote{margin:0 0 10px;font-size:13px}
@@ -3175,6 +3180,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=05b0f65ac0"></script>
+<script src="/app.js?v=b0cf3c8d8e"></script>
 </body>
 </html>
