@@ -1780,8 +1780,8 @@ div.vs-acts.vs-acts.vs-acts > .btn:first-child{grid-column:1/-1}
 .xyfix-l{padding:8px 0;margin-top:0}
 .vs-sort{padding:8px 4px;margin:-8px -4px}
 .pw th button{padding:8px 4px;margin:-8px -4px}
-/* the page doesn't show through above the floating header */
-header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:calc(80px + 30px);z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+/* what scrolls under the floating header is only blurred a little, without a dark band */
+header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:calc(80px + 30px);z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
 html.scrolled header.top::before{opacity:1}
 /* room for the whole header on small laptops and tablets */
 .brand{flex:none}
@@ -2273,6 +2273,7 @@ html.boot #v-load{display:flex!important}
   <symbol id="i-rank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 14 8-5 8 5"/><path d="m4 19 8-5 8 5"/><path d="m4 9 8-5 8 5"/></symbol>
   <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></symbol>
   <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 3.5 5v13.5C7 18 10 18.5 12 20c2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5V20"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6l-1 6 4 3H6l4-3z"/><path d="M12 13v8"/></symbol>
   <symbol id="i-raid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9M9 4l11 11"/><path d="m14 4 6 6M4 14l6 6"/></symbol>
   <symbol id="i-vs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></symbol>
@@ -2305,6 +2306,7 @@ html.boot #v-load{display:flex!important}
         <button data-tab="raid"><svg><use href="#i-raid"/></svg><span data-i18n="nav_raid">Рейд</span></button>
         <button data-tab="vs"><svg><use href="#i-vs"/></svg><span data-i18n="nav_vs">VS</span></button>
         <button data-tab="map"><svg><use href="#i-map"/></svg><span data-i18n="nav_map">Карта</span></button>
+        <button data-tab="guides"><svg><use href="#i-book"/></svg><span data-i18n="nav_guides">Гайды</span></button>
         <button data-tab="news"><svg><use href="#i-news"/></svg><span data-i18n="nav_news">Новости</span></button>
         <button data-tab="hq" id="hqTab" hidden><svg><use href="#i-hq"/></svg><span data-i18n="nav_hq">Штаб</span><span class="dotn" id="hqCnt" hidden></span></button>
       </nav>
@@ -2423,7 +2425,7 @@ html.boot #v-load{display:flex!important}
       <button class="btn bolt" data-tab="now" id="bandBack" hidden><svg><use href="#i-bolt"/></svg><span data-i18n="land_back">Вернуться в Штаб</span></button>
     </div>
     <!-- every section has its own address; deploy.sh publishes a copy of this page at each one -->
-    <nav class="land-more" data-i18n-aria="seo_links"><span data-i18n="seo_links">Разделы Штаба</span><a href="/bafy/" data-tab="now" data-i18n="seo_bafy">Бафы</a><a href="/ochered/" data-tab="queue" data-i18n="seo_queue">Очередь бафов</a><a href="/bm/" data-tab="power" data-i18n="seo_bm">Боевая мощь (БМ)</a><a href="/rejd/" data-tab="raid" data-i18n="seo_rejd">Рейд на резервуар</a><a href="/vs/" data-tab="vs" data-i18n="seo_vs">Битва союзов (VS)</a><a href="/novosti/" data-tab="news" data-i18n="seo_news">Новости союза</a><a href="/shtab/" data-tab="hq" data-i18n="seo_hq">Штаб для R4 и R5</a><a href="/kalkulyator/" data-tab="calc" data-i18n="seo_calc">Калькулятор героев</a><a href="/karta/" data-tab="map" data-i18n="seo_map">Карта штата</a><a href="/pomoshch/" data-tab="help" data-i18n="seo_help">Вопросы и ответы</a></nav>
+    <nav class="land-more" data-i18n-aria="seo_links"><span data-i18n="seo_links">Разделы Штаба</span><a href="/bafy/" data-tab="now" data-i18n="seo_bafy">Бафы</a><a href="/ochered/" data-tab="queue" data-i18n="seo_queue">Очередь бафов</a><a href="/bm/" data-tab="power" data-i18n="seo_bm">Боевая мощь (БМ)</a><a href="/rejd/" data-tab="raid" data-i18n="seo_rejd">Рейд на резервуар</a><a href="/vs/" data-tab="vs" data-i18n="seo_vs">Битва союзов (VS)</a><a href="/novosti/" data-tab="news" data-i18n="seo_news">Новости союза</a><a href="/shtab/" data-tab="hq" data-i18n="seo_hq">Штаб для R4 и R5</a><a href="/kalkulyator/" data-tab="calc" data-i18n="seo_calc">Калькулятор героев</a><a href="/karta/" data-tab="map" data-i18n="seo_map">Карта штата</a><a href="/gaidy/" data-tab="guides" data-i18n="seo_guides">Гайды по игре</a><a href="/pomoshch/" data-tab="help" data-i18n="seo_help">Вопросы и ответы</a></nav>
     <p class="foot" data-i18n="foot">Штаб союза — фанатский сервис, не связан с разработчиками Tiles Survive.</p>
   </section>
 
@@ -2854,6 +2856,7 @@ html.boot #v-load{display:flex!important}
 
   <section class="view" id="v-help"><div class="calc-wrap help-wrap" id="helpBody"></div></section>
   <section class="view on" id="v-map"><div class="calc-wrap map-wrap" id="mapBody"><h1 class="vt">Карта штата Tiles Survive</h1><p>Разделите территории штата между союзами на карте сезона: впишите союзы, дайте им цвета и отметьте области — деревни, заводы, городки, мегаполисы, центры исследований и военные базы. Карту можно приближать и поворачивать, а готовую скачать картинкой PNG. Без регистрации.</p><h2>Как пользоваться картой штата</h2><p><b>Какие сезоны есть?</b> Карты сезонов 1–2 (Аркадия), 3 и 4. Сезон выбирается рядом с номером штата. В сезонах 1–3 подписаны все здания: деревни, заводы, городки, мегаполисы, центры исследований, военные базы, а в 3 сезоне ещё торговые посты и бастионы.</p><p><b>Как отметить территории союза?</b> Впишите тег союза и нажмите «Добавить» — ему дастся свой цвет. Выберите союз кнопкой над картой и нажимайте на области. «Отменить» возвращает последний шаг.</p><p><b>Сколько зданий осталось свободно?</b> Список «Здания на карте» показывает, сколько зданий каждого вида ещё никому не отдано.</p><p><b>Как отправить карту в чат штата?</b> Нажмите «Скачать картинку PNG» — получится PNG с картой, списком союзов и их зданиями. Её можно переслать в Telegram, ВК или игровой чат.</p><p><b>Нужна ли регистрация?</b> Нет. Карта хранится в вашем браузере. Если ваш союз подключён к Штабу, карту можно сохранить в Штаб (до 5 карт), чтобы её видел весь союз.</p></div></section>
+  <section class="view" id="v-guides"><div id="guidesBody"></div></section>
   <section class="view" id="v-calc"><div class="calc-wrap">
     <button class="btn ghost sm calc-back" data-home id="calcBack"></button>
     <h2 class="vt" data-i18n="calc_h">Калькуляторы героев</h2>
@@ -3192,6 +3195,6 @@ html.boot #v-load{display:flex!important}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=050a918a31"></script>
+<script src="/app.js?v=d190c29c8d"></script>
 </body>
 </html>

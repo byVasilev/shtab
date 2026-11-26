@@ -42,7 +42,6 @@ User-agent: *
 Allow: /
 Disallow: /check/
 Disallow: /owner/
-Disallow: /gaidy/
 
 Sitemap: https://shtabsoyuza.ru/sitemap.xml
 
