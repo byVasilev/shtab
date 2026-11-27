@@ -1851,8 +1851,9 @@ div.vs-acts.vs-acts.vs-acts > .btn:first-child{grid-column:1/-1}
 .vs-sort{padding:8px 4px;margin:-8px -4px}
 .pw th button{padding:8px 4px;margin:-8px -4px}
 /* what scrolls under the floating header is only blurred a little, without a dark band */
-header.top::before{content:"";position:absolute;left:0;right:0;top:-80px;height:calc(80px + 30px);z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
-html.scrolled header.top::before{opacity:1}
+/* the soft blur behind the header is always on (nothing is under it at the very top): switching it on and off at scroll 4px rebuilt the blur layer
+   on every bounce and browsers flashed it white; it starts exactly at the screen edge, a blur over the space above the screen flashed white too */
+header.top::before{content:"";position:absolute;left:0;right:0;top:calc(-1 * env(safe-area-inset-top,0px));height:calc(env(safe-area-inset-top,0px) + 30px);z-index:-1;pointer-events:none;transform:translateZ(0);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
 /* room for the whole header on small laptops and tablets */
 .brand{flex:none}
 @media (min-width:861px) and (max-width:1160px){nav.tabs:not(.drum) button{padding:0 8px}}
@@ -3265,6 +3266,6 @@ Next: Velmora</p>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=6bdf1884ac"></script>
+<script src="/app.js?v=1794733f32"></script>
 </body>
 </html>
