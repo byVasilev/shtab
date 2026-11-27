@@ -755,7 +755,8 @@ html.map-lock .to-top{display:none}
 .cta-band > div{flex:1 1 280px;display:flex;flex-direction:column;gap:6px}
 .cta-band p{color:var(--muted)}
 /* home page tiles: one per section, each opens its demo for a guest */
-.land-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
+.land-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin-top:48px}
+.land-tiles > .tile{grid-column:span 2}.land-tiles > .tile-half{grid-column:span 3}
 .tile{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;align-items:center;gap:10px 12px;padding:18px;text-align:left;color:var(--fg);font:inherit;cursor:pointer}
 .tile > :not(.ic):not(b):not(.tile-go){grid-column:1/-1}
 .tile-go{grid-column:3;grid-row:1;width:34px;height:34px;border-radius:50%;background:var(--panel-2);display:grid;place-items:center}
@@ -769,7 +770,7 @@ html.map-lock .to-top{display:none}
 .tile small{margin-top:4px;color:var(--muted);font-size:12.5px;text-decoration:underline;text-underline-offset:3px}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.tile{transition:border-color .2s,transform .25s cubic-bezier(.2,.8,.3,1.2),box-shadow .25s}.tile .ic{transition:transform .25s cubic-bezier(.2,.8,.3,1.4)}.tile:hover{border-color:color-mix(in srgb,var(--teal) 55%,var(--line));transform:translateY(-5px);box-shadow:0 14px 28px -14px var(--shadow)}.tile:hover .ic{transform:scale(1.12) rotate(-4deg)}}
 @media (hover:hover) and (prefers-reduced-motion:reduce){.tile:hover{border-color:color-mix(in srgb,var(--teal) 55%,var(--line))}}
-@media (max-width:900px){.land-tiles{grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}}
+@media (max-width:900px){.land-tiles{grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}.land-tiles > .tile,.land-tiles > .tile-half{grid-column:auto}}
 @media (max-width:640px){.land-tiles{grid-template-columns:1fr}}
 /* a guest's demo of a section */
 #v-demo .spot{margin-top:24px}
@@ -2453,7 +2454,8 @@ html.boot #v-load{display:flex!important}
       <button class="panel tile" type="button" data-tab="raid"><span class="ic"><svg style="color:var(--teal)"><use href="#i-raid"/></svg></span><b data-i18n="nav_raid">Raid</b><span class="tp" data-i18n="tile_raid">Everyone sees their group and route, no spreadsheets.</span><i class="tile-go" aria-hidden="true"></i></button>
       <button class="panel tile" type="button" data-tab="news"><span class="ic"><svg style="color:var(--bolt)"><use href="#i-news"/></svg></span><b data-i18n="nav_news">News</b><span class="tp" data-i18n="tile_news">Announcements and notes in one place, not lost in the chat.</span><i class="tile-go" aria-hidden="true"></i></button>
       <button class="panel tile" type="button" data-tab="hq"><span class="ic"><svg style="color:var(--brick)"><use href="#i-hq"/></svg></span><b data-i18n="nav_hq">HQ</b><span class="tp" data-i18n="tile_hq">The R4 and R5 desk: requests, ranks and the member list.</span><i class="tile-go" aria-hidden="true"></i></button>
-      <button class="panel tile tile-wide" type="button" data-tab="map"><span class="ic"><svg style="color:var(--teal)"><use href="#i-map"/></svg></span><b data-i18n="map_h">Tiles Survive state map</b><span class="tp" data-i18n="tile_map">Split the state’s territories between alliances right on the season map and download it as a picture for the state chat. No sign-up.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile tile-half" type="button" data-tab="map"><span class="ic"><svg style="color:var(--teal)"><use href="#i-map"/></svg></span><b data-i18n="map_h">Tiles Survive state map</b><span class="tp" data-i18n="tile_map">Split the state’s territories between alliances right on the season map and download it as a picture for the state chat. No sign-up.</span><i class="tile-go" aria-hidden="true"></i></button>
+      <button class="panel tile tile-half" type="button" data-tab="guides"><span class="ic"><svg style="color:var(--grass)"><use href="#i-book"/></svg></span><b data-i18n="nav_guides">Guides</b><span class="tp" data-i18n="tile_guides">Plain-language articles about the game: first steps, the reservoir raid, research and seasons. No sign-up.</span><i class="tile-go" aria-hidden="true"></i></button>
     </div>
 
     <!-- notifications and the chat bot, compact: text on one side, a push and a Telegram message on the other -->
@@ -3266,6 +3268,6 @@ Next: Velmora</p>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
-<script src="/app.js?v=963f633156"></script>
+<script src="/app.js?v=ca1e4fc847"></script>
 </body>
 </html>
